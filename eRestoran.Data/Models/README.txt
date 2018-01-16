@@ -1,0 +1,1 @@
+Directory for models that will be used for database.

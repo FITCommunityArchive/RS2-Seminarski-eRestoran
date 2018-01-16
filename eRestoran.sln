@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran", "eRestoran\eRestoran.csproj", "{11DA17F1-B447-4FC0-842C-DA6BB7B463F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.Api", "eRestoran.Api\eRestoran.Api.csproj", "{FDA4C710-50D6-459E-A8F1-AC73D26CD1FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.Data", "eRestoran.Data\eRestoran.Data.csproj", "{C30F9D89-7205-4312-8409-4341AE7B717B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.Client", "eRestoran.Client\eRestoran.Client.csproj", "{5A7D5317-42DB-4888-9C1E-3210803494D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{11DA17F1-B447-4FC0-842C-DA6BB7B463F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11DA17F1-B447-4FC0-842C-DA6BB7B463F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11DA17F1-B447-4FC0-842C-DA6BB7B463F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11DA17F1-B447-4FC0-842C-DA6BB7B463F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA4C710-50D6-459E-A8F1-AC73D26CD1FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA4C710-50D6-459E-A8F1-AC73D26CD1FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA4C710-50D6-459E-A8F1-AC73D26CD1FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA4C710-50D6-459E-A8F1-AC73D26CD1FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30F9D89-7205-4312-8409-4341AE7B717B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30F9D89-7205-4312-8409-4341AE7B717B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30F9D89-7205-4312-8409-4341AE7B717B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30F9D89-7205-4312-8409-4341AE7B717B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A7D5317-42DB-4888-9C1E-3210803494D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A7D5317-42DB-4888-9C1E-3210803494D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A7D5317-42DB-4888-9C1E-3210803494D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A7D5317-42DB-4888-9C1E-3210803494D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A717C0AE-EF6E-444E-A11C-1090606D9718}
 	EndGlobalSection
 EndGlobal
