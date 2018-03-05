@@ -18,9 +18,9 @@ namespace eRestoran.Api.Controllers
         private MyContext db = new MyContext();
 
         // GET: api/Korisnici
-        public IQueryable<Korisnik> GetKorisnici()
+        public List<Korisnik> GetKorisnici()
         {
-            return db.Korisnici;
+            return db.Korisnici.ToList();
         }
 
         // GET: api/Korisnici/5
