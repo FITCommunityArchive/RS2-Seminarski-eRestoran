@@ -1,48 +1,50 @@
-﻿
-using FirstUserControlUsage;
+﻿using FirstUserControlUsage;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace FastFoodDemo
 {
     public partial class Form1 : Form
     {
-        CardsPanel carsPanel1 = new CardsPanel();
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private string activeControl { get; set; }
+        private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
+
         public Form1()
         {
             InitializeComponent();
-           
+            cardsPanel1.SendToBack();
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
             firstCustomControl1.BringToFront();
+            activeControl = firstCustomControl1.Name;
         }
 
+        #region Events
         private void button1_Click(object sender, EventArgs e)
         {
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
-            firstCustomControl1.BringToFront();
+            SwitchActiveControls(firstCustomControl1);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            firstCustomControl1.SendToBack();
+            SwitchActiveControls(cardsPanel1);
             cardsPanel1.ViewModel = LoadSomeData();
             cardsPanel1.DataBind();
             SidePanel.Height = button2.Height;
             SidePanel.Top = button2.Top;
-          
-
-            //Thanks for watching Friends...
-            //Please dont forget to Subscribe... :) :) :) 
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -50,15 +52,17 @@ namespace FastFoodDemo
             this.Close();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
+        #endregion
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        #region Methods
         private CardsViewModel LoadSomeData()
         {
             ObservableCollection<CardViewModel> cards = new ObservableCollection<CardViewModel>();
@@ -66,61 +70,63 @@ namespace FastFoodDemo
             {
                 Age = 1,
                 Name = "Dan",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Chrysanthemum.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Age = 2,
-                Name = "Gill",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Age = 3,
-                Name = "Glyn",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Age = 4,
-                Name = "Lorna",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
-            {
-                Age = 5,
-                Name = "Holly",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
             });
             cards.Add(new CardViewModel()
             {
                 Age = 1,
                 Name = "Dan",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Chrysanthemum.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
             {
-                Age = 2,
-                Name = "Gill",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
             {
-                Age = 3,
-                Name = "Glyn",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
             {
-                Age = 4,
-                Name = "Lorna",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
-            });
-            cards.Add(new CardViewModel()
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
             {
-                Age = 5,
-                Name = "Holly",
-                Picture = new Bitmap(Image.FromFile("C:\\Users\\ajdin\\Pictures\\Sample\\Desert.jpg"), new Size(100, 100))
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
+            {
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
+            {
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
+            {
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
+            {
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
+            {
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            }); cards.Add(new CardViewModel()
+            {
+                Age = 1,
+                Name = "Dan",
+                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
             });
             CardsViewModel VM = new CardsViewModel()
             {
@@ -128,5 +134,15 @@ namespace FastFoodDemo
             };
             return VM;
         }
+
+        private void SwitchActiveControls(Control newActiveControl)
+        {
+            var currentActiveControl = Controls.Find(activeControl, false)[0];
+            if (currentActiveControl != null)
+                currentActiveControl.Visible = false;
+            newActiveControl.Visible = true;
+            activeControl = newActiveControl.Name;
+        } 
+        #endregion
     }
 }

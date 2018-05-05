@@ -51,8 +51,8 @@ namespace FastFoodDemo
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cardsPanel1 = new FirstUserControlUsage.CardsPanel();
-            this.firstCustomControl1 = new FastFoodDemo.FirstCustomControl();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.firstCustomControl1 = new FastFoodDemo.FirstCustomControl();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.cardsPanel1.SuspendLayout();
@@ -114,7 +114,6 @@ namespace FastFoodDemo
             this.button5.Text = "       Reservations";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -307,7 +306,6 @@ namespace FastFoodDemo
             this.label2.Size = new System.Drawing.Size(99, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Restaurant";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -340,13 +338,6 @@ namespace FastFoodDemo
             this.cardsPanel1.TabIndex = 6;
             this.cardsPanel1.ViewModel = null;
             // 
-            // firstCustomControl1
-            // 
-            this.firstCustomControl1.Location = new System.Drawing.Point(209, 156);
-            this.firstCustomControl1.Name = "firstCustomControl1";
-            this.firstCustomControl1.Size = new System.Drawing.Size(805, 423);
-            this.firstCustomControl1.TabIndex = 5;
-            // 
             // vScrollBar1
             // 
             this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -354,6 +345,13 @@ namespace FastFoodDemo
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 375);
             this.vScrollBar1.TabIndex = 0;
+            // 
+            // firstCustomControl1
+            // 
+            this.firstCustomControl1.Location = new System.Drawing.Point(209, 156);
+            this.firstCustomControl1.Name = "firstCustomControl1";
+            this.firstCustomControl1.Size = new System.Drawing.Size(805, 423);
+            this.firstCustomControl1.TabIndex = 5;
             // 
             // Form1
             // 
@@ -375,6 +373,7 @@ namespace FastFoodDemo
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
