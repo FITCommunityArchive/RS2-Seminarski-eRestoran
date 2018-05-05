@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRestoran.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -23,11 +24,7 @@ namespace eRestoran.Client.Helpers
             return client.GetAsync(route).Result;
         }
 
-        public HttpResponseMessage PostResponse(Korisniks k)
-        {
-            return client.PostAsJsonAsync(route, k).Result;
-        }
-
+      
         public HttpResponseMessage GetResponse(string parametar)
         {
             return client.GetAsync(route + "/" + parametar).Result;
