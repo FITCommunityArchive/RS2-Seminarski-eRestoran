@@ -332,18 +332,18 @@ namespace FastFoodDemo
             // 
             this.cardsPanel1.AutoScroll = true;
             this.cardsPanel1.Controls.Add(this.vScrollBar1);
-            this.cardsPanel1.Location = new System.Drawing.Point(215, 185);
+            this.cardsPanel1.Location = new System.Drawing.Point(215, 113);
             this.cardsPanel1.Name = "cardsPanel1";
-            this.cardsPanel1.Size = new System.Drawing.Size(760, 375);
+            this.cardsPanel1.Size = new System.Drawing.Size(794, 447);
             this.cardsPanel1.TabIndex = 6;
             this.cardsPanel1.ViewModel = null;
             // 
             // vScrollBar1
             // 
             this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(743, 0);
+            this.vScrollBar1.Location = new System.Drawing.Point(777, 0);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 375);
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 447);
             this.vScrollBar1.TabIndex = 0;
             // 
             // firstCustomControl1

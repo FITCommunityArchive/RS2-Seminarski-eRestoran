@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace FastFoodDemo
 {
@@ -63,74 +64,115 @@ namespace FastFoodDemo
         #endregion
 
         #region Methods
-        private CardsViewModel LoadSomeData()
+        private PonudaVM LoadSomeData()
         {
-            ObservableCollection<CardViewModel> cards = new ObservableCollection<CardViewModel>();
-            cards.Add(new CardViewModel()
+            List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
+            cards.Add(new PonudaVM.PonudaInfo()
             {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+                Cijena = 1,
+                Naziv="Naziv",
+                Kategorija="Kategorija",
+                Kolicina=10,
+                KolicinaString="Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
             });
-            cards.Add(new CardViewModel()
+            cards.Add(new PonudaVM.PonudaInfo()
             {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
+                Cijena = 1,
+                Naziv = "naziv",
+                Kategorija = "kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
+            }); cards.Add(new PonudaVM.PonudaInfo()
             {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
+                Cijena = 1,
+                Naziv = "naziv",
+                Kategorija = "kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
+            }); cards.Add(new PonudaVM.PonudaInfo()
             {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
+                Cijena = 1,
+                Naziv = "naziv",
+                Kategorija = "kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
+            }); cards.Add(new PonudaVM.PonudaInfo()
             {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
-            {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
-            {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
-            {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
-            {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
-            {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
-            {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            }); cards.Add(new CardViewModel()
-            {
-                Age = 1,
-                Name = "Dan",
-                Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+                Cijena = 1,
+                Naziv = "naziv",
+                Kategorija = "kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
             });
-            CardsViewModel VM = new CardsViewModel()
+
+            cards.Add(new PonudaVM.PonudaInfo()
             {
-                Cards = cards
+                Cijena = 1,
+                Naziv = "Naziv",
+                Kategorija = "Kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
+            });
+            cards.Add(new PonudaVM.PonudaInfo()
+            {
+                Cijena = 1,
+                Naziv = "Naziv",
+                Kategorija = "Kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
+            });
+            cards.Add(new PonudaVM.PonudaInfo()
+            {
+                Cijena = 1,
+                Naziv = "Naziv",
+                Kategorija = "Kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
+            });
+            cards.Add(new PonudaVM.PonudaInfo()
+            {
+                Cijena = 1,
+                Naziv = "Naziv",
+                Kategorija = "Kategorija",
+                Kolicina = 10,
+                KolicinaString = "Deset",
+                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+
+
+            });
+
+            //  cards.Add(new CardViewModel()
+            //{
+            //    Age = 1,
+            //    Name = "Dan",
+            //Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            //});
+            PonudaVM VM = new PonudaVM()
+            {
+                Ponuda = cards
             };
             return VM;
         }

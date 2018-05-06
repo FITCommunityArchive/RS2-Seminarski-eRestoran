@@ -14,15 +14,15 @@ namespace FirstUserControlUsage
         private Panel panel1;
         const int CardHeight = 240;
 
-        public CardsViewModel ViewModel { get; set; }
+        public PonudaVM ViewModel { get; set; }
 
         public CardsPanel()
         {
         }
-        public CardsPanel(CardsViewModel viewModel)
+        public CardsPanel(PonudaVM viewModel)
         {
             ViewModel = viewModel;
-            ViewModel.Cards.CollectionChanged += Cards_CollectionChanged;
+           
         }
 
         private void Cards_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -35,9 +35,9 @@ namespace FirstUserControlUsage
             SuspendLayout();
             Controls.Clear();
 
-            for (int i = 0; i < ViewModel.Cards.Count; i++)
+            for (int i = 0; i < ViewModel.Ponuda.Count; i++)
             {
-                var newCtl = new CardControl(ViewModel.Cards[i]);
+                var newCtl = new CardControl(ViewModel.Ponuda[i]);
                 newCtl.DataBind();
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);

@@ -12,13 +12,13 @@ namespace FirstUserControlUsage
 {
     public partial class CardControl : UserControl
     {
-        public CardViewModel ViewModel { get; set; }
+        public PonudaVM.PonudaInfo ViewModel { get; set; }
 
         public CardControl()
         {
             InitializeComponent();
         }
-        public CardControl(CardViewModel viewModel)
+        public CardControl(PonudaVM.PonudaInfo viewModel)
         {
             ViewModel = viewModel;
             InitializeComponent();
@@ -28,11 +28,23 @@ namespace FirstUserControlUsage
         {
             SuspendLayout();
 
-            tbAge.Text = ViewModel.Age.ToString();
-            tbName.Text = ViewModel.Name;
-            pbPicture.Image = ViewModel.Picture;
+            Kategorija.Text = ViewModel.Kategorija;
+            Naziv.Text = ViewModel.Naziv;
+            Cijena.Text = ViewModel.Cijena.ToString();
+            Kolicina.Text = ViewModel.KolicinaString;
+            pictureBox1.Image = ViewModel.urIPicture;
 
             ResumeLayout();
+        }
+
+        private void CardControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
