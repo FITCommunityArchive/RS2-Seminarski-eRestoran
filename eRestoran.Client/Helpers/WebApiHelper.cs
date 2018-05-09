@@ -29,5 +29,10 @@ namespace eRestoran.Client.Helpers
         {
             return client.GetAsync(route + "/" + parametar).Result;
         }
+
+        public HttpResponseMessage PostResponse(object obj)
+        {
+            return client.PostAsJsonAsync(route, obj).Result;
+        }
     }
 }

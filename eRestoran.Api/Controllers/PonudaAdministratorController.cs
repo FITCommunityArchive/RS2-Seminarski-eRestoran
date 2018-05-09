@@ -1,4 +1,5 @@
 ﻿
+using eRestoran.Api.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 using eRestoran.VM;
@@ -6,16 +7,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
+using static eRestoran.VM.PrikazKriticnihZaliha;
 
 namespace eRestoran.Areas.ModulAdministracija.Controllers
 {
-    public class PonudaAdministratorController : Controller
+    public class PonudaAdministratorController : ApiController
     {
         MyContext ctx = new MyContext();
         // GET: PonudaAdministrator
-        public ActionResult PrikaziPonudu()
+        
+        public List<PonudaVM.PonudaInfo> GetPonuda()
         {
+            MyContext ctx = new MyContext();
             PonudaVM model = new PonudaVM();
             model.Pica = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Pica").Select(x => new PonudaVM.PonudaInfo
             {
@@ -29,17 +34,16 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             {
                 Id = x.Id,
                 Kategorija = "Jela",
-                KolicinaString="N/A",
+                KolicinaString = "N/A",
                 Cijena = x.Cijena,
                 Naziv = x.Naziv,
 
             }).ToList();
 
             model.Ponuda.AddRange(model.Pica);
-
-            return View(model);
+            return model.Ponuda;
         }
-        public ActionResult PrikaziJela()
+        public List<PonudaVM.PonudaInfo> GetJela()
         {
            
             PonudaVM model = new PonudaVM();
@@ -52,9 +56,31 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Naziv = x.Naziv,
 
             }).ToList();
-            return View(model);
+            return model.Jela;
         }
-        public ActionResult PrikaziPica()
+        public UrediJelo GetJelo(int id)
+        {
+
+            UrediJelo model = new UrediJelo();
+            model = ctx.JelaStavke.Where(x => x.JeloId == id).Select(x => new UrediJelo
+            {
+                JeloId = x.JeloId,
+                Menu = x.Jelo.Menu,
+                Cijena = x.Jelo.Cijena,
+                Naziv = x.Jelo.Naziv,
+                ListaStavki = ctx.JelaStavke.Where(y => y.JeloId == id).Select(y => new ProizvodStavka {
+                   Naziv=y.Proizvod.Naziv,
+                   Cijena=y.Proizvod.Cijena.ToString(),
+                  ProizvodId=y.ProizvodId,
+                  TipProizvoda=y.Proizvod.TipProizvoda.Naziv
+
+                }).ToList()
+
+
+            }).FirstOrDefault();
+            return model;
+        }
+        public List<PonudaVM.PonudaInfo> GetPica()
         {
           
             PonudaVM model = new PonudaVM();
@@ -64,67 +90,30 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Kategorija = x.TipProizvoda.Naziv,
                 Cijena = x.Cijena,
                 Kolicina = x.Kolicina,
-                Naziv = x.Naziv
+                Naziv = x.Naziv,
+                KolicinaString=x.Kolicina.ToString()
             }).ToList();
-            return View(model);
+            return model.Pica;
         }
-        public ActionResult Uredi(int urediId, string kategorija)
+        public PonudaVM.PonudaInfo GetPice(int id)
         {
-           
-            PonudaUrediVM model;
-            if (kategorija == "Pica")
-            {
-                model = ctx.Proizvodi.Where(x => x.Id == urediId).Select(x => new PonudaUrediVM
-                {
-                    ID = x.Id,
-                    Naziv=x.Naziv,
-                    Kategorija = x.TipProizvoda.Naziv,
-                    Cijena = x.Cijena,
-                    Kolicina = x.Kolicina
 
-                }).SingleOrDefault();
-            }
-            else
+            PonudaVM.PonudaInfo model = new PonudaVM.PonudaInfo();
+            model = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Pica" && x.Id == id).Select(x => new PonudaVM.PonudaInfo
             {
-                return RedirectToAction("UrediJeloIzPonude", "Proizvodi", new { jeloId = urediId });
-            }
-          
-            model.KategorijeLista = new List<SelectListItem>() 
-    { 
-        new SelectListItem { Text = "Pica", Value = "Pica", Selected = false },
-        new SelectListItem { Text = "Jela", Value = "Jela", Selected = true }
-    };
-
-            return View(model);
-        }
-        public ActionResult Snimi(PonudaUrediVM model)
-        {
-            
-            Proizvod p;
-            if (!ModelState.IsValid)
-                return RedirectToAction("PrikaziPonudu");
-            if (model.ID == 0)
-            {
-                p = new Proizvod();
-                ctx.Proizvodi.Add(p);
-              
-
-            }
-            else
-            {
-                p = ctx.Proizvodi.Where(x => x.Id == model.ID).SingleOrDefault();
-            }
-            p.Kolicina = model.Kolicina;
-            p.Naziv = model.Naziv;
-            p.Cijena = model.Cijena;
-            p.TipProizvodaId = model.Kategorija == "Pica" ? 3 : 2;
-            ctx.SaveChanges();
-            return RedirectToAction("PrikaziPonudu");
+                Id = x.Id,
+                Kategorija = x.TipProizvoda.Naziv,
+                Cijena = x.Cijena,
+                Kolicina = x.Kolicina,
+                Naziv = x.Naziv,
+                KolicinaString = x.Kolicina.ToString()
+            }).FirstOrDefault();
+            return model;
         }
 
-        public ActionResult KriticneZalihe()
+        public List<KriticneZalihe> GetKriticneZalihe()
         {
-           
+
             PrikazKriticnihZaliha model = new PrikazKriticnihZaliha();
             model.Kriticne = ctx.Proizvodi.Where(x => x.Kolicina <= x.KriticnaKolicina).Select(x => new PrikazKriticnihZaliha.KriticneZalihe
             {
@@ -135,9 +124,9 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Kategorija = x.TipProizvoda.Naziv
             }).ToList();
 
-            return View(model);
+            return model.Kriticne;
         }
 
-   
+
     }
 }

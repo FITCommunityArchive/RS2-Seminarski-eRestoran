@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace FastFoodDemo
 {
-    public partial class FirstCustomControl : UserControl
+    public partial class UnosProizvoda : UserControl
     {
-        public FirstCustomControl()
+        public UnosProizvoda()
         {
             InitializeComponent();
         }
 
-        
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

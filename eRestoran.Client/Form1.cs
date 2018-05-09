@@ -6,6 +6,9 @@ using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using eRestoran.Data.DAL;
+using System.Linq;
+using System.Net.Http;
 
 namespace FastFoodDemo
 {
@@ -28,6 +31,8 @@ namespace FastFoodDemo
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
             firstCustomControl1.BringToFront();
+            dodajProizvod.Visible = false;
+            vScrollBar1.Visible = false;
             activeControl = firstCustomControl1.Name;
         }
 
@@ -37,6 +42,7 @@ namespace FastFoodDemo
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
             SwitchActiveControls(firstCustomControl1);
+            dodajProizvod.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -46,6 +52,7 @@ namespace FastFoodDemo
             cardsPanel1.DataBind();
             SidePanel.Height = button2.Height;
             SidePanel.Top = button2.Top;
+            dodajProizvod.Visible = true;
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -64,105 +71,38 @@ namespace FastFoodDemo
         #endregion
 
         #region Methods
+        
         private PonudaVM LoadSomeData()
         {
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
-            cards.Add(new PonudaVM.PonudaInfo()
+            HttpClient client = new HttpClient();
+            List<PonudaVM.PonudaInfo> pica;
+            client.BaseAddress = new Uri("http://localhost:49958/");
+            HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPica").Result;
+            if (response.IsSuccessStatusCode)
             {
-                Cijena = 1,
-                Naziv="Naziv",
-                Kategorija="Kategorija",
-                Kolicina=10,
-                KolicinaString="Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+                 pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
+                foreach (var item in pica)
+                {
+                    cards.Add(new PonudaVM.PonudaInfo()
+                    {
+                        Cijena = item.Cijena,
+                        Naziv = "NAZIV - "+item.Naziv,
+                        Kategorija = "KATEGORIJA -"+item.Kategorija,
+                        Kolicina = item.Kolicina,
+                        KolicinaString = item.KolicinaString+" KOM",
+                        urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
 
 
-            });
-            cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "naziv",
-                Kategorija = "kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+                    });
+
+                }
+
+            }
 
 
-            }); cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "naziv",
-                Kategorija = "kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-
-
-            }); cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "naziv",
-                Kategorija = "kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-
-
-            }); cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "naziv",
-                Kategorija = "kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-
-            });
-
-            cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "Naziv",
-                Kategorija = "Kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-
-
-            });
-            cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "Naziv",
-                Kategorija = "Kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-
-
-            });
-            cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "Naziv",
-                Kategorija = "Kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-
-
-            });
-            cards.Add(new PonudaVM.PonudaInfo()
-            {
-                Cijena = 1,
-                Naziv = "Naziv",
-                Kategorija = "Kategorija",
-                Kolicina = 10,
-                KolicinaString = "Deset",
-                urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-
-
-            });
+            
+          
 
             //  cards.Add(new CardViewModel()
             //{
@@ -184,7 +124,9 @@ namespace FastFoodDemo
                 currentActiveControl.Visible = false;
             newActiveControl.Visible = true;
             activeControl = newActiveControl.Name;
-        } 
+        }
         #endregion
+
+       
     }
 }

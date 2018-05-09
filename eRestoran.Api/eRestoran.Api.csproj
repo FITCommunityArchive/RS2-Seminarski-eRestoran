@@ -110,21 +110,37 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\backArrow.jpg" />
     <Content Include="Images\tene.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\JeloController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
     <Compile Include="Controllers\PonudaAdministratorController.cs" />
+    <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VM\DodajJelo.cs" />
+    <Compile Include="VM\JeloJelaStavkeUredi.cs" />
+    <Compile Include="VM\KlijentNaruciVM.cs" />
+    <Compile Include="VM\NarudbaDatum.cs" />
+    <Compile Include="VM\NarudIznos.cs" />
+    <Compile Include="VM\NarudzbaPonuda.cs" />
     <Compile Include="VM\PonudaUrediVM.cs" />
     <Compile Include="VM\PonudaVM.cs" />
     <Compile Include="VM\PrikazKriticnihZaliha.cs" />
+    <Compile Include="VM\ProizvodStavka.cs" />
+    <Compile Include="VM\ReportsNarduzbeVM.cs" />
+    <Compile Include="VM\ReportsNarudzbeDanVM.cs" />
+    <Compile Include="VM\ReportsNarudzbeKorisnika.cs" />
+    <Compile Include="VM\ReportsSveNarudzbeKorisnika .cs" />
+    <Compile Include="VM\ReportsSviKorisniciNarudzbe.cs" />
+    <Compile Include="VM\UrediJelo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

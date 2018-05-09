@@ -50,9 +50,10 @@ namespace FastFoodDemo
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dodajProizvod = new System.Windows.Forms.Button();
             this.cardsPanel1 = new FirstUserControlUsage.CardsPanel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.firstCustomControl1 = new FastFoodDemo.FirstCustomControl();
+            this.firstCustomControl1 = new FastFoodDemo.UnosProizvoda();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.cardsPanel1.SuspendLayout();
@@ -328,6 +329,19 @@ namespace FastFoodDemo
             this.panel3.Size = new System.Drawing.Size(111, 96);
             this.panel3.TabIndex = 2;
             // 
+            // dodajProizvod
+            // 
+            this.dodajProizvod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.dodajProizvod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.dodajProizvod.ForeColor = System.Drawing.Color.White;
+            this.dodajProizvod.Location = new System.Drawing.Point(819, 61);
+            this.dodajProizvod.Name = "dodajProizvod";
+            this.dodajProizvod.Size = new System.Drawing.Size(141, 35);
+            this.dodajProizvod.TabIndex = 7;
+            this.dodajProizvod.Text = "Dodaj proizvod";
+            this.dodajProizvod.UseVisualStyleBackColor = false;
+            this.dodajProizvod.Visible = false;
+            // 
             // cardsPanel1
             // 
             this.cardsPanel1.AutoScroll = true;
@@ -348,6 +362,7 @@ namespace FastFoodDemo
             // 
             // firstCustomControl1
             // 
+            this.firstCustomControl1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.firstCustomControl1.Location = new System.Drawing.Point(209, 156);
             this.firstCustomControl1.Name = "firstCustomControl1";
             this.firstCustomControl1.Size = new System.Drawing.Size(805, 423);
@@ -358,6 +373,7 @@ namespace FastFoodDemo
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 583);
+            this.Controls.Add(this.dodajProizvod);
             this.Controls.Add(this.cardsPanel1);
             this.Controls.Add(this.firstCustomControl1);
             this.Controls.Add(this.button13);
@@ -403,9 +419,10 @@ namespace FastFoodDemo
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private FirstCustomControl firstCustomControl1;
+        private UnosProizvoda firstCustomControl1;
         private CardsPanel cardsPanel1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Button dodajProizvod;
     }
 }
 
