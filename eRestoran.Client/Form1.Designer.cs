@@ -362,10 +362,11 @@ namespace FastFoodDemo
             // 
             // firstCustomControl1
             // 
-            this.firstCustomControl1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.firstCustomControl1.Location = new System.Drawing.Point(209, 156);
+            this.firstCustomControl1.BackColor = System.Drawing.SystemColors.Control;
+            this.firstCustomControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.firstCustomControl1.Location = new System.Drawing.Point(209, 113);
             this.firstCustomControl1.Name = "firstCustomControl1";
-            this.firstCustomControl1.Size = new System.Drawing.Size(805, 423);
+            this.firstCustomControl1.Size = new System.Drawing.Size(797, 466);
             this.firstCustomControl1.TabIndex = 5;
             // 
             // Form1

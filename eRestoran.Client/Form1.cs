@@ -75,7 +75,7 @@ namespace FastFoodDemo
         private PonudaVM LoadSomeData()
         {
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
-            HttpClient client = new HttpClient();
+          HttpClient client = new HttpClient();  
             List<PonudaVM.PonudaInfo> pica;
             client.BaseAddress = new Uri("http://localhost:49958/");
             HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPica").Result;
