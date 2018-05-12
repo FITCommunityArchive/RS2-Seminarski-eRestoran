@@ -434,7 +434,7 @@ namespace FastFoodDemo
         private System.Windows.Forms.Panel panel3;
         private UnosProizvoda firstCustomControl1;
         private UnosProizvoda firstCustomControl2;
-        private CardsPanel cardsPanel1;
+        public CardsPanel cardsPanel1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button dodajProizvod;
     }

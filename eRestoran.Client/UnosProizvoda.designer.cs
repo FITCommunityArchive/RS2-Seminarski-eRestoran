@@ -149,7 +149,6 @@ namespace FastFoodDemo
             this.CijenatextBox.Name = "CijenatextBox";
             this.CijenatextBox.Size = new System.Drawing.Size(196, 20);
             this.CijenatextBox.TabIndex = 9;
-            this.CijenatextBox.TextChanged += new System.EventHandler(this.CijenatextBox_TextChanged_1);
             this.CijenatextBox.Validating += new System.ComponentModel.CancelEventHandler(this.CijenatextBox_Validating);
             // 
             // KolicinatextBox
@@ -158,6 +157,7 @@ namespace FastFoodDemo
             this.KolicinatextBox.Name = "KolicinatextBox";
             this.KolicinatextBox.Size = new System.Drawing.Size(196, 20);
             this.KolicinatextBox.TabIndex = 10;
+            this.KolicinatextBox.Validating += new System.ComponentModel.CancelEventHandler(this.KolicinatextBox_Validating);
             // 
             // SifratextBox
             // 
@@ -165,6 +165,7 @@ namespace FastFoodDemo
             this.SifratextBox.Name = "SifratextBox";
             this.SifratextBox.Size = new System.Drawing.Size(196, 20);
             this.SifratextBox.TabIndex = 11;
+            this.SifratextBox.Validating += new System.ComponentModel.CancelEventHandler(this.SifratextBox_Validating);
             // 
             // KriticnatextBox
             // 

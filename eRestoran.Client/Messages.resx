@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Cijena_decimale" xml:space="preserve">
+    <value>Zaokruzite na 2 decimale!</value>
+  </data>
   <data name="Cijena_req" xml:space="preserve">
     <value>Cijena je obavezna!</value>
   </data>
@@ -125,5 +128,8 @@
   </data>
   <data name="Naziv_req" xml:space="preserve">
     <value>Ime je obavezno!</value>
+  </data>
+  <data name="Univerzalno" xml:space="preserve">
+    <value>Obavezan unos !</value>
   </data>
 </root>

@@ -61,6 +61,15 @@ namespace eRestoran.Client {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zaokruzite na 2 decimale!.
+        /// </summary>
+        internal static string Cijena_decimale {
+            get {
+                return ResourceManager.GetString("Cijena_decimale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cijena je obavezna!.
         /// </summary>
         internal static string Cijena_req {
@@ -84,6 +93,15 @@ namespace eRestoran.Client {
         internal static string Naziv_req {
             get {
                 return ResourceManager.GetString("Naziv_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obavezan unos !.
+        /// </summary>
+        internal static string Univerzalno {
+            get {
+                return ResourceManager.GetString("Univerzalno", resourceCulture);
             }
         }
     }

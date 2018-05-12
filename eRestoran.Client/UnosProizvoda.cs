@@ -11,6 +11,8 @@ using System.Net.Http;
 using eRestoran.Client.Helpers;
 using eRestoran.Data.Models;
 using eRestoran.Client;
+using FirstUserControlUsage;
+using System.IO;
 
 namespace FastFoodDemo
 {
@@ -19,7 +21,7 @@ namespace FastFoodDemo
         private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/TipSkladistas/GetTipoviSkladista");
         private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
         private WebAPIHelper proizvodiService= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
-
+        private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         private Proizvod proizvod;
 
         public Control activeControl { get; set; }
@@ -115,13 +117,16 @@ namespace FastFoodDemo
                     TipSkladistacomboBox.SelectedValue = 0;
 
                     MenucomboBox.ResetText();
-                    MenucomboBox.SelectedValue = 1;
+                    MenucomboBox.DisplayMember= "Molim vas odaberite !";
 
                     SifratextBox.ResetText();
                     NazivtextBox.ResetText();
                     CijenatextBox.ResetText();
                     KolicinatextBox.ResetText();
                     KriticnatextBox.ResetText();
+                    ((Form1)this.Parent).SwitchActiveControls(activeControl);
+                    ((Form1)this.Parent).cardsPanel1.ViewModel = LoadSomeData();
+                    ((Form1)this.Parent).cardsPanel1.DataBind();
 
                 }
             }
@@ -135,8 +140,51 @@ namespace FastFoodDemo
                 errorProvider.SetError(NazivtextBox, Messages.Naziv_req);
             }
         }
+        private PonudaVM LoadSomeData()
+        {
+            List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
+            HttpClient client = new HttpClient();
+            List<PonudaVM.PonudaInfo> pica;
+            client.BaseAddress = new Uri("http://localhost:49958/");
+            HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPica").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
+                foreach (var item in pica)
+                {
+                    cards.Add(new PonudaVM.PonudaInfo()
+                    {
+                        Cijena = item.Cijena,
+                        Naziv = "NAZIV - " + item.Naziv,
+                        Kategorija = "KATEGORIJA -" + item.Kategorija,
+                        Kolicina = item.Kolicina,
+                        KolicinaString = item.KolicinaString + " KOM",
+                        urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
 
-      
+
+                    });
+
+                }
+
+            }
+
+
+
+
+
+            //  cards.Add(new CardViewModel()
+            //{
+            //    Age = 1,
+            //    Name = "Dan",
+            //Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+            //});
+            PonudaVM VM = new PonudaVM()
+            {
+                Ponuda = cards
+            };
+            return VM;
+        }
+
 
         private void CijenatextBox_Validating(object sender, CancelEventArgs e)
         {
@@ -151,25 +199,45 @@ namespace FastFoodDemo
                     e.Cancel = true;
                     errorProvider.SetError(CijenatextBox, Messages.Cijena_zarez);
                 }
-               
+                if (!System.Text.RegularExpressions.Regex.IsMatch(CijenatextBox.Text, "\\d+(\\.\\d{1,2})?"))
+                {
+                    e.Cancel = true;
+                    errorProvider.SetError(CijenatextBox, Messages.Cijena_decimale);
+                }
 
-            }
+
+                }
         }
         
 
-        private void CijenatextBox_TextChanged_1(object sender, EventArgs e)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(CijenatextBox.Text, "\\d+(\\.\\d{1,2})?"))
-            {
-                MessageBox.Show("Molim vas unesite ispravan format! (zaokružite na 2 decimale)");
-                var err=errorProvider.GetError(CijenatextBox);
-                
-            }
-        }
+       
 
         private void button8_Click(object sender, EventArgs e)
         {
             ((Form1)this.Parent).SwitchActiveControls(activeControl);
+        }
+
+        private void KolicinatextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(KolicinatextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(KolicinatextBox, Messages.Univerzalno);
+            }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(KolicinatextBox.Text, "[0-9]"))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(KolicinatextBox, Messages.Univerzalno);
+            }
+        }
+
+        private void SifratextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(SifratextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(SifratextBox, Messages.Univerzalno);
+            }
         }
     }
 }
