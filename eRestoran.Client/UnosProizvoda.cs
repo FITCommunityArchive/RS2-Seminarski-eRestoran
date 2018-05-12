@@ -13,6 +13,7 @@ using eRestoran.Data.Models;
 using eRestoran.Client;
 using FirstUserControlUsage;
 using System.IO;
+using eRestoran.Api.VM;
 
 namespace FastFoodDemo
 {
@@ -38,8 +39,8 @@ namespace FastFoodDemo
 
         private void UnosProizvoda_Load(object sender, EventArgs e)
         {
-            BindVrsteProizvoda();
-            BindVrstaSkladista();
+            BindVrstaProizvoda();
+            BindVrsteSkladista();
             BindVrstaMenu();
         }
 
@@ -58,13 +59,13 @@ namespace FastFoodDemo
 
         }
 
-        private void BindVrstaSkladista()
+        private void BindVrstaProizvoda()
         {
             HttpResponseMessage responseMessage = vrsteProizvoda.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
-                List<TipProizvoda> lista = responseMessage.Content.ReadAsAsync<List<TipProizvoda>>().Result;
-                lista.Insert(0, new TipProizvoda() { Naziv = "Odaberite vrstu proizvoda", Id = 0 });
+                List<TipProizvodaVM> lista = responseMessage.Content.ReadAsAsync<List<TipProizvodaVM>>().Result;
+                lista.Insert(0, new TipProizvodaVM() { Naziv = "Odaberite vrstu proizvoda", Id = 0 });
                 TipProizvodacomboBox.DataSource = lista;
                 TipProizvodacomboBox.DisplayMember = "Naziv";
                 TipProizvodacomboBox.ValueMember = "Id";
@@ -73,13 +74,13 @@ namespace FastFoodDemo
         }
  
 
-        private void BindVrsteProizvoda()
+        private void BindVrsteSkladista()
         {
             HttpResponseMessage responseMessage = vrsteSkladista.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
-                List<TipSkladista> lista = responseMessage.Content.ReadAsAsync<List<TipSkladista>>().Result;
-                lista.Insert(0, new TipSkladista() { Naziv = "Odaberite vrstu skladišta", Id = 0 });
+                List<TipSkladistaVM> lista = responseMessage.Content.ReadAsAsync<List<TipSkladistaVM>>().Result;
+                lista.Insert(0, new TipSkladistaVM() { Naziv = "Odaberite vrstu skladišta", Id = 0 });
                
                 TipSkladistacomboBox.DataSource = lista;
                 TipSkladistacomboBox.DisplayMember = "Naziv";

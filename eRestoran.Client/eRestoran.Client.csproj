@@ -134,6 +134,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\eRestoran.Api\eRestoran.Api.csproj">
+      <Project>{fda4c710-50d6-459e-a8f1-ac73d26cd1fd}</Project>
+      <Name>eRestoran.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eRestoran.Data\eRestoran.Data.csproj">
       <Project>{c30f9d89-7205-4312-8409-4341ae7b717b}</Project>
       <Name>eRestoran.Data</Name>
