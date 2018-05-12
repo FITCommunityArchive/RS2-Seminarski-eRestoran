@@ -27,7 +27,9 @@ namespace FastFoodDemo
         public Form1()
         {
             InitializeComponent();
+            this.AutoValidate = AutoValidate.Disable;
             cardsPanel1.SendToBack();
+            firstCustomControl2.SendToBack();
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
             firstCustomControl1.BringToFront();
@@ -125,8 +127,15 @@ namespace FastFoodDemo
             newActiveControl.Visible = true;
             activeControl = newActiveControl.Name;
         }
+
         #endregion
 
-       
+        private void dodajProizvod_Click(object sender, EventArgs e)
+        {
+            SidePanel.Height = button2.Height;
+            SidePanel.Top = button2.Top;
+            SwitchActiveControls(firstCustomControl2);
+            dodajProizvod.Visible = false;
+        }
     }
 }

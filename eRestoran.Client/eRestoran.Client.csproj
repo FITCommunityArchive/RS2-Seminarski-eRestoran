@@ -63,6 +63,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CardViewModel.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
     <Compile Include="UnosProizvoda.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +96,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CardsPanel.resx">
       <DependentUpon>CardsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UnosProizvoda.resx">
       <DependentUpon>UnosProizvoda.cs</DependentUpon>

@@ -1,4 +1,6 @@
-﻿namespace FastFoodDemo
+﻿using FirstUserControlUsage;
+
+namespace FastFoodDemo
 {
     partial class UnosProizvoda
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UnosProizvoda));
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,12 +44,13 @@
             this.KolicinatextBox = new System.Windows.Forms.TextBox();
             this.SifratextBox = new System.Windows.Forms.TextBox();
             this.KriticnatextBox = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.unostextbox = new System.Windows.Forms.Label();
             this.TipProizvodacomboBox = new System.Windows.Forms.ComboBox();
             this.TipSkladistacomboBox = new System.Windows.Forms.ComboBox();
             this.MenucomboBox = new System.Windows.Forms.ComboBox();
             this.snimiProizvodbtn = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -136,6 +139,7 @@
             this.NazivtextBox.Name = "NazivtextBox";
             this.NazivtextBox.Size = new System.Drawing.Size(196, 20);
             this.NazivtextBox.TabIndex = 8;
+            this.NazivtextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NazivtextBox_Validating);
             // 
             // CijenatextBox
             // 
@@ -143,6 +147,8 @@
             this.CijenatextBox.Name = "CijenatextBox";
             this.CijenatextBox.Size = new System.Drawing.Size(196, 20);
             this.CijenatextBox.TabIndex = 9;
+            this.CijenatextBox.TextChanged += new System.EventHandler(this.CijenatextBox_TextChanged_1);
+            this.CijenatextBox.Validating += new System.ComponentModel.CancelEventHandler(this.CijenatextBox_Validating);
             // 
             // KolicinatextBox
             // 
@@ -164,22 +170,6 @@
             this.KriticnatextBox.Name = "KriticnatextBox";
             this.KriticnatextBox.Size = new System.Drawing.Size(196, 20);
             this.KriticnatextBox.TabIndex = 13;
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.SystemColors.Control;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(17, 152);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(55, 51);
-            this.button7.TabIndex = 16;
-            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // unostextbox
             // 
@@ -228,6 +218,10 @@
             this.snimiProizvodbtn.UseVisualStyleBackColor = false;
             this.snimiProizvodbtn.Click += new System.EventHandler(this.snimiProizvodbtn_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // UnosProizvoda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,7 +233,6 @@
             this.Controls.Add(this.TipSkladistacomboBox);
             this.Controls.Add(this.TipProizvodacomboBox);
             this.Controls.Add(this.unostextbox);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.KriticnatextBox);
             this.Controls.Add(this.SifratextBox);
             this.Controls.Add(this.KolicinatextBox);
@@ -256,6 +249,7 @@
             this.Name = "UnosProizvoda";
             this.Size = new System.Drawing.Size(794, 447);
             this.Load += new System.EventHandler(this.UnosProizvoda_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,11 +270,11 @@
         private System.Windows.Forms.TextBox KolicinatextBox;
         private System.Windows.Forms.TextBox SifratextBox;
         private System.Windows.Forms.TextBox KriticnatextBox;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label unostextbox;
         private System.Windows.Forms.ComboBox TipProizvodacomboBox;
         private System.Windows.Forms.ComboBox TipSkladistacomboBox;
         private System.Windows.Forms.ComboBox MenucomboBox;
         private System.Windows.Forms.Button snimiProizvodbtn;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using eRestoran.Client.Helpers;
 using eRestoran.Data.Models;
+using eRestoran.Client;
 
 namespace FastFoodDemo
 {
@@ -20,7 +21,7 @@ namespace FastFoodDemo
         private WebAPIHelper proizvodiService= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
 
         private Proizvod proizvod;
-
+        private string activeControl { get; set; }
 
         public UnosProizvoda()
         {
@@ -32,9 +33,11 @@ namespace FastFoodDemo
 
         private void button7_Click(object sender, EventArgs e)
         {
-          
-     
-            }
+
+            
+           
+
+        }
 
         private void UnosProizvoda_Load(object sender, EventArgs e)
         {
@@ -71,6 +74,14 @@ namespace FastFoodDemo
 
             }
         }
+        private void SwitchActiveControls(Control newActiveControl)
+        {
+            var currentActiveControl = Controls.Find(activeControl, false)[0];
+            if (currentActiveControl != null)
+                currentActiveControl.Visible = false;
+            newActiveControl.Visible = true;
+            activeControl = newActiveControl.Name;
+        }
 
         private void BindVrsteProizvoda()
         {
@@ -95,34 +106,77 @@ namespace FastFoodDemo
 
         private void snimiProizvodbtn_Click(object sender, EventArgs e)
         {
-            proizvod.TipProizvodaId = Convert.ToInt32(TipProizvodacomboBox.SelectedValue);
-            proizvod.SkladisteId = Convert.ToInt32(TipSkladistacomboBox.SelectedValue);
-            proizvod.Cijena = Convert.ToDouble(CijenatextBox.Text);
-            proizvod.Kolicina = Convert.ToInt32(KolicinatextBox.Text);
-            proizvod.Sifra = SifratextBox.Text;
-            proizvod.KriticnaKolicina = Convert.ToInt32(KriticnatextBox.Text);
-            proizvod.Menu = MenucomboBox.Text;
-            proizvod.Naziv = NazivtextBox.Text;
+            if (this.ValidateChildren())
+            {
+                proizvod.TipProizvodaId = Convert.ToInt32(TipProizvodacomboBox.SelectedValue);
+                proizvod.SkladisteId = Convert.ToInt32(TipSkladistacomboBox.SelectedValue);
+                proizvod.Cijena = Convert.ToDouble(CijenatextBox.Text);
+                proizvod.Kolicina = Convert.ToInt32(KolicinatextBox.Text);
+                proizvod.Sifra = SifratextBox.Text;
+                proizvod.KriticnaKolicina = Convert.ToInt32(KriticnatextBox.Text);
+                proizvod.Menu = MenucomboBox.Text;
+                proizvod.Naziv = NazivtextBox.Text;
 
-            HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
-            if (responseMessage.IsSuccessStatusCode) {
-                TipProizvodacomboBox.ResetText();
-                TipProizvodacomboBox.SelectedValue = 0;
+                HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    TipProizvodacomboBox.ResetText();
+                    TipProizvodacomboBox.SelectedValue = 0;
 
-                TipSkladistacomboBox.ResetText();
-                TipSkladistacomboBox.SelectedValue = 0;
+                    TipSkladistacomboBox.ResetText();
+                    TipSkladistacomboBox.SelectedValue = 0;
 
-                MenucomboBox.ResetText();
-                MenucomboBox.SelectedValue=0;
+                    MenucomboBox.ResetText();
+                    MenucomboBox.SelectedValue = 1;
 
-                SifratextBox.ResetText();
-                NazivtextBox.ResetText();
-                CijenatextBox.ResetText();
-                KolicinatextBox.ResetText();
-                KriticnatextBox.ResetText();
+                    SifratextBox.ResetText();
+                    NazivtextBox.ResetText();
+                    CijenatextBox.ResetText();
+                    KolicinatextBox.ResetText();
+                    KriticnatextBox.ResetText();
 
+                }
             }
 
+        }
+
+        private void NazivtextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(NazivtextBox.Text)) {
+                e.Cancel = true;
+                errorProvider.SetError(NazivtextBox, Messages.Naziv_req);
+            }
+        }
+
+      
+
+        private void CijenatextBox_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (String.IsNullOrEmpty(CijenatextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(CijenatextBox, Messages.Cijena_req);
+            }
+            else {
+                if (CijenatextBox.Text.Contains(",")) {
+                    e.Cancel = true;
+                    errorProvider.SetError(CijenatextBox, Messages.Cijena_zarez);
+                }
+               
+
+            }
+        }
+        
+
+        private void CijenatextBox_TextChanged_1(object sender, EventArgs e)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(CijenatextBox.Text, "\\d+(\\.\\d{1,2})?"))
+            {
+                MessageBox.Show("Molim vas unesite ispravan format! (zaokružite na 2 decimale)");
+                var err=errorProvider.GetError(CijenatextBox);
+                
+            }
         }
     }
 }
