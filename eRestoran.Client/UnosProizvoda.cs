@@ -21,7 +21,8 @@ namespace FastFoodDemo
         private WebAPIHelper proizvodiService= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
 
         private Proizvod proizvod;
-        private string activeControl { get; set; }
+
+        public Control activeControl { get; set; }
 
         public UnosProizvoda()
         {
@@ -31,13 +32,7 @@ namespace FastFoodDemo
 
      
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-            
-           
-
-        }
+      
 
         private void UnosProizvoda_Load(object sender, EventArgs e)
         {
@@ -74,14 +69,7 @@ namespace FastFoodDemo
 
             }
         }
-        private void SwitchActiveControls(Control newActiveControl)
-        {
-            var currentActiveControl = Controls.Find(activeControl, false)[0];
-            if (currentActiveControl != null)
-                currentActiveControl.Visible = false;
-            newActiveControl.Visible = true;
-            activeControl = newActiveControl.Name;
-        }
+ 
 
         private void BindVrsteProizvoda()
         {
@@ -177,6 +165,11 @@ namespace FastFoodDemo
                 var err=errorProvider.GetError(CijenatextBox);
                 
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ((Form1)this.Parent).SwitchActiveControls(activeControl);
         }
     }
 }

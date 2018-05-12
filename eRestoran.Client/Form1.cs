@@ -119,7 +119,7 @@ namespace FastFoodDemo
             return VM;
         }
 
-        private void SwitchActiveControls(Control newActiveControl)
+        public void SwitchActiveControls(Control newActiveControl)
         {
             var currentActiveControl = Controls.Find(activeControl, false)[0];
             if (currentActiveControl != null)
@@ -134,8 +134,8 @@ namespace FastFoodDemo
         {
             SidePanel.Height = button2.Height;
             SidePanel.Top = button2.Top;
+            firstCustomControl2.activeControl = Controls.Find(activeControl, false)[0];
             SwitchActiveControls(firstCustomControl2);
-            dodajProizvod.Visible = false;
         }
     }
 }
