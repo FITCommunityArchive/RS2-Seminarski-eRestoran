@@ -19,7 +19,7 @@ namespace FastFoodDemo
 {
     public partial class UnosProizvoda : UserControl
     {
-        private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/TipSkladistas/GetTipoviSkladista");
+        private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/Skladiste/GetSkladista");
         private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
         private WebAPIHelper proizvodiService= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
@@ -40,7 +40,7 @@ namespace FastFoodDemo
         private void UnosProizvoda_Load(object sender, EventArgs e)
         {
             BindVrstaProizvoda();
-            BindVrsteSkladista();
+            BindSkladista();
             BindVrstaMenu();
         }
 
@@ -74,16 +74,16 @@ namespace FastFoodDemo
         }
  
 
-        private void BindVrsteSkladista()
+        private void BindSkladista()
         {
             HttpResponseMessage responseMessage = vrsteSkladista.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
-                List<TipSkladistaVM> lista = responseMessage.Content.ReadAsAsync<List<TipSkladistaVM>>().Result;
-                lista.Insert(0, new TipSkladistaVM() { Naziv = "Odaberite vrstu skladišta", Id = 0 });
+                List<SkadisteVM> lista = responseMessage.Content.ReadAsAsync<List<SkadisteVM>>().Result;
+                lista.Insert(0, new SkadisteVM() { Adresa = "Odaberite skladište", Id = 0 });
                
                 TipSkladistacomboBox.DataSource = lista;
-                TipSkladistacomboBox.DisplayMember = "Naziv";
+                TipSkladistacomboBox.DisplayMember = "Adresa";
                 TipSkladistacomboBox.ValueMember = "Id";
 
             }

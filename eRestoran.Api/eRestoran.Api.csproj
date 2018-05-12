@@ -133,6 +133,7 @@
     <Compile Include="Controllers\KorisniciController.cs" />
     <Compile Include="Controllers\PonudaAdministratorController.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
+    <Compile Include="Controllers\SkladisteController.cs" />
     <Compile Include="Controllers\TipProizvodasController.cs" />
     <Compile Include="Controllers\TipSkladistasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -154,6 +155,7 @@
     <Compile Include="VM\ReportsNarudzbeKorisnika.cs" />
     <Compile Include="VM\ReportsSveNarudzbeKorisnika .cs" />
     <Compile Include="VM\ReportsSviKorisniciNarudzbe.cs" />
+    <Compile Include="VM\SkadisteVM.cs" />
     <Compile Include="VM\TipProizvodaVM.cs" />
     <Compile Include="VM\TipSkladistaVM.cs" />
     <Compile Include="VM\UrediJelo.cs" />
