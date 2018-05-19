@@ -88,6 +88,7 @@ namespace FastFoodDemo
                 {
                     cards.Add(new PonudaVM.PonudaInfo()
                     {
+                        Id=item.Id,
                         Cijena = item.Cijena,
                         Naziv = "NAZIV - "+item.Naziv,
                         Kategorija = "KATEGORIJA -"+item.Kategorija,

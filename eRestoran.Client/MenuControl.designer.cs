@@ -70,7 +70,7 @@ namespace FirstUserControlUsage
             this.Naziv.Size = new System.Drawing.Size(200, 20);
             this.Naziv.TabIndex = 1;
             this.Naziv.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Naziv.TextChanged += new System.EventHandler(this.tbName_TextChanged);
+           
             // 
             // Cijena
             // 
@@ -139,7 +139,7 @@ namespace FirstUserControlUsage
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "CardControl";
             this.Size = new System.Drawing.Size(202, 283);
-            this.Load += new System.EventHandler(this.CardControl_Load);
+ 
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

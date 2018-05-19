@@ -14,6 +14,7 @@ using eRestoran.Client;
 using FirstUserControlUsage;
 using System.IO;
 using eRestoran.Api.VM;
+using System.Drawing.Drawing2D;
 
 namespace FastFoodDemo
 {
@@ -22,20 +23,27 @@ namespace FastFoodDemo
         private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/Skladiste/GetSkladista");
         private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
         private WebAPIHelper proizvodiService= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
+        private WebAPIHelper getProizvod= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvod");
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         private Proizvod proizvod;
+        public PonudaVM.PonudaInfo ViewModel { get; set; }
+        Image File;
+        Proizvod p;
 
         public Control activeControl { get; set; }
-
         public UnosProizvoda()
         {
             InitializeComponent();
             proizvod = new Proizvod();
         }
 
-     
+       
 
-      
+
+
+            
+
+
 
         private void UnosProizvoda_Load(object sender, EventArgs e)
         {
@@ -72,7 +80,7 @@ namespace FastFoodDemo
 
             }
         }
- 
+
 
         private void BindSkladista()
         {
@@ -215,7 +223,7 @@ namespace FastFoodDemo
 
         private void button8_Click(object sender, EventArgs e)
         {
-            ((Form1)this.Parent).SwitchActiveControls(activeControl);
+            ((Form1)this.Parent).SwitchActiveControls(ActiveControl.Parent);
         }
 
         private void KolicinatextBox_Validating(object sender, CancelEventArgs e)
@@ -240,5 +248,18 @@ namespace FastFoodDemo
                 errorProvider.SetError(SifratextBox, Messages.Univerzalno);
             }
         }
+
+        private void dodajSlikubutton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog f = new OpenFileDialog();
+            f.Filter = "JPG(*.JPG)|*.jpg";
+            if (f.ShowDialog() == DialogResult.OK) {
+                File = Image.FromFile(f.FileName);
+                ProizvodpictureBox.Image = File;
+                                      
+              }
+        }
+
+       
     }
 }

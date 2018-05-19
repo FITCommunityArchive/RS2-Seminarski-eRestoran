@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
+using static eRestoran.VM.PonudaVM;
 
 namespace eRestoran.Api.Controllers
 {
@@ -25,15 +26,30 @@ namespace eRestoran.Api.Controllers
 
         // GET: api/Proizvodi/5
         [ResponseType(typeof(Proizvod))]
-        public IHttpActionResult GetProizvod(int id)
+        public Proizvod GetProizvod(int id)
         {
             Proizvod proizvod = db.Proizvodi.Find(id);
             if (proizvod == null)
             {
-                return NotFound();
+                return null;
             }
 
-            return Ok(proizvod);
+            return proizvod;
+        }
+        public PonudaInfo GetProizvodVM(int id)
+        {
+            PonudaInfo proizvod = db.Proizvodi.Where(x => x.Id == id).Select(x => new PonudaInfo
+            {
+                Id = id,
+                Naziv = x.Naziv,
+                Kolicina = x.Kolicina,
+                KolicinaString = x.Kolicina.ToString(),
+                Kategorija = x.TipProizvoda.Naziv,
+                Cijena = x.Cijena
+
+            }).FirstOrDefault();
+
+            return proizvod;
         }
 
         // PUT: api/Proizvodi/5

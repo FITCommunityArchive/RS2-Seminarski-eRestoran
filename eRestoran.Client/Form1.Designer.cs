@@ -1,4 +1,5 @@
-﻿using FirstUserControlUsage;
+﻿using eRestoran.Client;
+using FirstUserControlUsage;
 
 namespace FastFoodDemo
 {
@@ -52,6 +53,7 @@ namespace FastFoodDemo
             this.panel3 = new System.Windows.Forms.Panel();
             this.dodajProizvod = new System.Windows.Forms.Button();
             this.firstCustomControl2 = new FastFoodDemo.UnosProizvoda();
+            this.firstCustomControl3 = new UrediProizvod();
             this.cardsPanel1 = new FirstUserControlUsage.CardsPanel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.firstCustomControl1 = new FastFoodDemo.UnosProizvoda();
@@ -346,16 +348,19 @@ namespace FastFoodDemo
             // 
             // firstCustomControl2
             // 
+            this.firstCustomControl2.activeControl = null;
             this.firstCustomControl2.BackColor = System.Drawing.SystemColors.Control;
             this.firstCustomControl2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.firstCustomControl2.Location = new System.Drawing.Point(215, 113);
+            this.firstCustomControl2.Location = new System.Drawing.Point(0, 0);
             this.firstCustomControl2.Name = "firstCustomControl2";
             this.firstCustomControl2.Size = new System.Drawing.Size(791, 447);
             this.firstCustomControl2.TabIndex = 5;
+            this.firstCustomControl2.ViewModel = null;
             // 
             // cardsPanel1
             // 
             this.cardsPanel1.AutoScroll = true;
+            this.cardsPanel1.Controls.Add(this.firstCustomControl2);
             this.cardsPanel1.Controls.Add(this.vScrollBar1);
             this.cardsPanel1.Location = new System.Drawing.Point(215, 113);
             this.cardsPanel1.Name = "cardsPanel1";
@@ -366,26 +371,37 @@ namespace FastFoodDemo
             // vScrollBar1
             // 
             this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(777, 0);
+            this.vScrollBar1.Location = new System.Drawing.Point(791, 0);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 447);
             this.vScrollBar1.TabIndex = 0;
             // 
             // firstCustomControl1
             // 
+            this.firstCustomControl1.activeControl = null;
             this.firstCustomControl1.BackColor = System.Drawing.SystemColors.Control;
             this.firstCustomControl1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.firstCustomControl1.Location = new System.Drawing.Point(218, 113);
             this.firstCustomControl1.Name = "firstCustomControl1";
             this.firstCustomControl1.Size = new System.Drawing.Size(788, 447);
             this.firstCustomControl1.TabIndex = 5;
+            this.firstCustomControl1.ViewModel = null;
             // 
+            // firstCustomControl1
+            // 
+         
+            this.firstCustomControl3.BackColor = System.Drawing.SystemColors.Control;
+            this.firstCustomControl3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.firstCustomControl3.Location = new System.Drawing.Point(218, 113);
+            this.firstCustomControl3.Name = "UrediProizvod";
+            this.firstCustomControl3.Size = new System.Drawing.Size(788, 447);
+            this.firstCustomControl3.TabIndex = 5;
+          
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 583);
-            this.Controls.Add(this.firstCustomControl2);
             this.Controls.Add(this.dodajProizvod);
             this.Controls.Add(this.cardsPanel1);
             this.Controls.Add(this.firstCustomControl1);
@@ -434,9 +450,11 @@ namespace FastFoodDemo
         private System.Windows.Forms.Panel panel3;
         private UnosProizvoda firstCustomControl1;
         private UnosProizvoda firstCustomControl2;
+        private UrediProizvod firstCustomControl3;
         public CardsPanel cardsPanel1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button dodajProizvod;
+        private PonudaVM viewModel;
     }
 }
 
