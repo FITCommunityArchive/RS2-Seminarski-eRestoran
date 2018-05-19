@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BackButton.Designer.cs">
+      <DependentUpon>BackButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,7 +86,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\WebApiHelper.cs" />
+    <Compile Include="Shared\Helpers\WebApiHelper.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -97,6 +103,9 @@
       <DependentUpon>UrediProizvod.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\WebAPIHelper.cs" />
+    <EmbeddedResource Include="BackButton.resx">
+      <DependentUpon>BackButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuControl.resx">
       <DependentUpon>MenuControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +167,11 @@
   <ItemGroup>
     <Content Include="Images\backArrow.jpg" />
     <Content Include="Images\tene.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Shared\Controls\" />
+    <Folder Include="Shared\Dto\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

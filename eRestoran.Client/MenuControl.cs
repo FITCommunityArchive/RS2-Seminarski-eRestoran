@@ -44,9 +44,11 @@ namespace FirstUserControlUsage
         private void button1_Click(object sender, EventArgs e)
         {
             UrediProizvod p = new UrediProizvod(ViewModel);
-            ((Form1)this.ParentForm).Controls.Add(p);
-            ((Form1)this.ParentForm).ActiveControl=p;
-            ((Form1)this.ParentForm).SwitchActiveControls(p);
+           var x =  (this.ParentForm).Controls.Find("cardsPanel1", true).FirstOrDefault();
+            x.Controls.Clear();
+            x.Controls.Add(p);
+            //((Form1)this.ParentForm).activeControl=p.Name;
+            //((Form1)this.ParentForm).SwitchActiveControls(p);
         }
        
     }

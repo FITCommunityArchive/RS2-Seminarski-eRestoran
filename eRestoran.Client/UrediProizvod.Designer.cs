@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UrediProizvod));
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ProizvodpictureBox = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button8 = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.dodajSlikubutton = new System.Windows.Forms.Button();
             this.snimiProizvodbtn = new System.Windows.Forms.Button();
@@ -53,6 +51,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.backButton1 = new eRestoran.Client.BackButton();
             ((System.ComponentModel.ISupportInitialize)(this.ProizvodpictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -79,21 +78,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // button8
-            // 
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(79, 39);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(60, 39);
-            this.button8.TabIndex = 44;
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // errorProvider
             // 
@@ -156,7 +140,6 @@
             this.unostextbox.Size = new System.Drawing.Size(157, 24);
             this.unostextbox.TabIndex = 39;
             this.unostextbox.Text = "Uredi proizvod";
-         
             // 
             // KriticnatextBox
             // 
@@ -256,13 +239,20 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Naziv proizvoda";
             // 
+            // backButton1
+            // 
+            this.backButton1.Location = new System.Drawing.Point(79, 45);
+            this.backButton1.Name = "backButton1";
+            this.backButton1.Size = new System.Drawing.Size(62, 29);
+            this.backButton1.TabIndex = 48;
+            // 
             // UrediProizvod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.backButton1);
             this.Controls.Add(this.ProizvodpictureBox);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.button8);
             this.Controls.Add(this.dodajSlikubutton);
             this.Controls.Add(this.snimiProizvodbtn);
             this.Controls.Add(this.MenucomboBox);
@@ -295,7 +285,6 @@
         private System.Windows.Forms.PictureBox ProizvodpictureBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Button dodajSlikubutton;
         private System.Windows.Forms.Button snimiProizvodbtn;
@@ -314,5 +303,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private BackButton backButton1;
     }
 }

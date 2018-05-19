@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
-using eRestoran.Client.Helpers;
 using eRestoran.Data.Models;
 using eRestoran.Client;
 using FirstUserControlUsage;
 using System.IO;
 using eRestoran.Api.VM;
 using System.Drawing.Drawing2D;
+using eRestoran.Client.Shared.Helpers;
 
 namespace FastFoodDemo
 {
@@ -36,14 +32,6 @@ namespace FastFoodDemo
             InitializeComponent();
             proizvod = new Proizvod();
         }
-
-       
-
-
-
-            
-
-
 
         private void UnosProizvoda_Load(object sender, EventArgs e)
         {
@@ -133,9 +121,6 @@ namespace FastFoodDemo
                     CijenatextBox.ResetText();
                     KolicinatextBox.ResetText();
                     KriticnatextBox.ResetText();
-                    ((Form1)this.Parent).SwitchActiveControls(activeControl);
-                    ((Form1)this.Parent).cardsPanel1.ViewModel = LoadSomeData();
-                    ((Form1)this.Parent).cardsPanel1.DataBind();
 
                 }
             }
@@ -223,7 +208,8 @@ namespace FastFoodDemo
 
         private void button8_Click(object sender, EventArgs e)
         {
-            ((Form1)this.Parent).SwitchActiveControls(ActiveControl.Parent);
+
+            (this.Parent).Controls.Clear();
         }
 
         private void KolicinatextBox_Validating(object sender, CancelEventArgs e)

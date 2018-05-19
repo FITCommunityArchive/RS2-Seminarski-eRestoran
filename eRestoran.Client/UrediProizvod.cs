@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
 
 using eRestoran.Data.Models;
-using eRestoran.Client.Helpers;
 using FirstUserControlUsage;
 using static FastFoodDemo.UnosProizvoda;
 using eRestoran.Api.VM;
+using eRestoran.Client.Shared.Helpers;
 
 namespace eRestoran.Client
 {
@@ -30,32 +24,28 @@ namespace eRestoran.Client
             BindSkladista();
             BindVrstaProizvoda();
         }
-            public UrediProizvod(PonudaVM.PonudaInfo viewModel)
+        public UrediProizvod(PonudaVM.PonudaInfo viewModel)
         {
             InitializeComponent();
             BindVrstaMenu();
             BindSkladista();
             BindVrstaProizvoda();
-                HttpResponseMessage responseMessage = getProizvod.GetResponse(viewModel.Id.ToString());
-                if (responseMessage.IsSuccessStatusCode)
+            HttpResponseMessage responseMessage = getProizvod.GetResponse(viewModel.Id.ToString());
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                p = responseMessage.Content.ReadAsAsync<Proizvod>().Result;
+                if (p != null)
                 {
-                    p = responseMessage.Content.ReadAsAsync<Proizvod>().Result;
-                    if (p != null)
-                    {
 
-                        NazivtextBox.Text = p.Naziv;
-                        TipProizvodacomboBox.SelectedValue = p.TipProizvodaId;
-                        TipSkladistacomboBox.SelectedValue = p.SkladisteId;
-                        MenucomboBox.DisplayMember = p.Menu;
-                        CijenatextBox.Text = p.Cijena.ToString();
-                        KriticnatextBox.Text = p.KriticnaKolicina.ToString();
-                        KolicinatextBox.Text = p.Kolicina.ToString();
-                    }
+                    NazivtextBox.Text = p.Naziv;
+                    TipProizvodacomboBox.SelectedValue = p.TipProizvodaId;
+                    TipSkladistacomboBox.SelectedValue = p.SkladisteId;
+                    MenucomboBox.DisplayMember = p.Menu;
+                    CijenatextBox.Text = p.Cijena.ToString();
+                    KriticnatextBox.Text = p.KriticnaKolicina.ToString();
+                    KolicinatextBox.Text = p.Kolicina.ToString();
                 }
-            
-        
-
-
+            }
         }
         private void BindVrstaMenu()
         {
@@ -68,8 +58,6 @@ namespace eRestoran.Client
             MenucomboBox.DataSource = lista;
             MenucomboBox.DisplayMember = "NazivMenua";
             MenucomboBox.ValueMember = "NazivMenua";
-
-
         }
 
         private void BindVrstaProizvoda()
@@ -82,7 +70,6 @@ namespace eRestoran.Client
                 TipProizvodacomboBox.DataSource = lista;
                 TipProizvodacomboBox.DisplayMember = "Naziv";
                 TipProizvodacomboBox.ValueMember = "Id";
-
             }
         }
 
@@ -98,10 +85,7 @@ namespace eRestoran.Client
                 TipSkladistacomboBox.DataSource = lista;
                 TipSkladistacomboBox.DisplayMember = "Adresa";
                 TipSkladistacomboBox.ValueMember = "Id";
-
             }
-
         }
-
     }
 }
