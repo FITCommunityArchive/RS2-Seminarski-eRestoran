@@ -1,12 +1,7 @@
-﻿using eRestoran.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace eRestoran.Client.Helpers
+namespace eRestoran.Client.Shared.Helpers
 {
     public class WebAPIHelper
     {
@@ -19,15 +14,29 @@ namespace eRestoran.Client.Helpers
             client.BaseAddress = new Uri(uri);
             this.route = route;
         }
+
         public HttpResponseMessage GetResponse()
         {
             return client.GetAsync(route).Result;
         }
+        public HttpResponseMessage DeleteResponse(string parametar)
+        {
+            return client.DeleteAsync(route + "/" + parametar).Result;
+        }
 
-      
+
         public HttpResponseMessage GetResponse(string parametar)
         {
             return client.GetAsync(route + "/" + parametar).Result;
+        }
+
+        public HttpResponseMessage PostResponse(object obj)
+        {
+            return client.PostAsJsonAsync(route, obj).Result;
+        }
+        public HttpResponseMessage PutResponse(int id, object obj)
+        {
+            return client.PutAsJsonAsync(route + "/" + id, obj).Result;
         }
     }
 }

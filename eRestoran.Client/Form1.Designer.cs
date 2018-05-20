@@ -1,4 +1,5 @@
-﻿using FirstUserControlUsage;
+﻿using eRestoran.Client;
+using FirstUserControlUsage;
 
 namespace FastFoodDemo
 {
@@ -50,12 +51,11 @@ namespace FastFoodDemo
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.cardsPanel1 = new FirstUserControlUsage.CardsPanel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.firstCustomControl1 = new FastFoodDemo.FirstCustomControl();
+            this.dodajProizvod = new System.Windows.Forms.Button();
+            this.cardsPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.firstCustomControl3 = new eRestoran.Client.UrediProizvod();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.cardsPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -72,7 +72,7 @@ namespace FastFoodDemo
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(209, 583);
+            this.panel1.Size = new System.Drawing.Size(209, 687);
             this.panel1.TabIndex = 0;
             // 
             // SidePanel
@@ -202,7 +202,7 @@ namespace FastFoodDemo
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(209, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(817, 10);
+            this.panel2.Size = new System.Drawing.Size(871, 10);
             this.panel2.TabIndex = 1;
             // 
             // button10
@@ -213,7 +213,7 @@ namespace FastFoodDemo
             this.button10.ForeColor = System.Drawing.Color.White;
             this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(761, 20);
+            this.button10.Location = new System.Drawing.Point(810, 20);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(36, 34);
             this.button10.TabIndex = 4;
@@ -228,7 +228,7 @@ namespace FastFoodDemo
             this.button11.ForeColor = System.Drawing.Color.White;
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(890, 19);
+            this.button11.Location = new System.Drawing.Point(939, 19);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(32, 35);
             this.button11.TabIndex = 4;
@@ -243,7 +243,7 @@ namespace FastFoodDemo
             this.button12.ForeColor = System.Drawing.Color.White;
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(928, 19);
+            this.button12.Location = new System.Drawing.Point(977, 19);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(32, 35);
             this.button12.TabIndex = 4;
@@ -258,7 +258,7 @@ namespace FastFoodDemo
             this.button13.ForeColor = System.Drawing.Color.White;
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(977, 19);
+            this.button13.Location = new System.Drawing.Point(1026, 19);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(32, 35);
             this.button13.TabIndex = 4;
@@ -274,7 +274,7 @@ namespace FastFoodDemo
             this.button9.ForeColor = System.Drawing.Color.White;
             this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(719, 20);
+            this.button9.Location = new System.Drawing.Point(768, 20);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(36, 34);
             this.button9.TabIndex = 4;
@@ -289,7 +289,7 @@ namespace FastFoodDemo
             this.button8.ForeColor = System.Drawing.Color.White;
             this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(677, 20);
+            this.button8.Location = new System.Drawing.Point(726, 20);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(36, 34);
             this.button8.TabIndex = 4;
@@ -328,38 +328,42 @@ namespace FastFoodDemo
             this.panel3.Size = new System.Drawing.Size(111, 96);
             this.panel3.TabIndex = 2;
             // 
+            // dodajProizvod
+            // 
+            this.dodajProizvod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.dodajProizvod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.dodajProizvod.ForeColor = System.Drawing.Color.White;
+            this.dodajProizvod.Location = new System.Drawing.Point(868, 61);
+            this.dodajProizvod.Name = "dodajProizvod";
+            this.dodajProizvod.Size = new System.Drawing.Size(141, 35);
+            this.dodajProizvod.TabIndex = 7;
+            this.dodajProizvod.Text = "Dodaj proizvod";
+            this.dodajProizvod.UseVisualStyleBackColor = false;
+            this.dodajProizvod.Click += new System.EventHandler(this.dodajProizvod_Click);
+            // 
             // cardsPanel1
             // 
-            this.cardsPanel1.AutoScroll = true;
-            this.cardsPanel1.Controls.Add(this.vScrollBar1);
-            this.cardsPanel1.Location = new System.Drawing.Point(215, 113);
+            this.cardsPanel1.Location = new System.Drawing.Point(243, 133);
             this.cardsPanel1.Name = "cardsPanel1";
-            this.cardsPanel1.Size = new System.Drawing.Size(794, 447);
-            this.cardsPanel1.TabIndex = 6;
-            this.cardsPanel1.ViewModel = null;
+            this.cardsPanel1.Size = new System.Drawing.Size(815, 525);
+            this.cardsPanel1.TabIndex = 8;
             // 
-            // vScrollBar1
+            // firstCustomControl3
             // 
-            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(777, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 447);
-            this.vScrollBar1.TabIndex = 0;
-            // 
-            // firstCustomControl1
-            // 
-            this.firstCustomControl1.Location = new System.Drawing.Point(209, 156);
-            this.firstCustomControl1.Name = "firstCustomControl1";
-            this.firstCustomControl1.Size = new System.Drawing.Size(805, 423);
-            this.firstCustomControl1.TabIndex = 5;
+            this.firstCustomControl3.BackColor = System.Drawing.SystemColors.Control;
+            this.firstCustomControl3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.firstCustomControl3.Location = new System.Drawing.Point(218, 113);
+            this.firstCustomControl3.Name = "firstCustomControl3";
+            this.firstCustomControl3.Size = new System.Drawing.Size(788, 447);
+            this.firstCustomControl3.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 583);
+            this.ClientSize = new System.Drawing.Size(1080, 687);
             this.Controls.Add(this.cardsPanel1);
-            this.Controls.Add(this.firstCustomControl1);
+            this.Controls.Add(this.dodajProizvod);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
@@ -377,11 +381,10 @@ namespace FastFoodDemo
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.cardsPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
-
+         
         #endregion
 
         private System.Windows.Forms.Panel panel1;
@@ -403,9 +406,10 @@ namespace FastFoodDemo
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
-        private FirstCustomControl firstCustomControl1;
-        private CardsPanel cardsPanel1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private UrediProizvod firstCustomControl3;
+        private System.Windows.Forms.Button dodajProizvod;
+        private PonudaVM viewModel;
+        private System.Windows.Forms.FlowLayoutPanel cardsPanel1;
     }
 }
 
