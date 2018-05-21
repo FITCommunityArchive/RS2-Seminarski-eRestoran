@@ -186,5 +186,13 @@ namespace FastFoodDemo
             //firstCustomControl2.activeControl = Controls.Find(activeControl, false)[0];
             //SwitchActiveControls(firstCustomControl2);
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            SidePanel.Height = button2.Height;
+            SidePanel.Top = button2.Top;
+            cardsPanel1.Controls.Clear();
+            cardsPanel1.Controls.Add(new UnosJela());
+        }
     }
 }

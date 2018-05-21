@@ -54,6 +54,7 @@ namespace FastFoodDemo
             this.dodajProizvod = new System.Windows.Forms.Button();
             this.cardsPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.firstCustomControl3 = new eRestoran.Client.UrediProizvod();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -333,7 +334,7 @@ namespace FastFoodDemo
             this.dodajProizvod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.dodajProizvod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.dodajProizvod.ForeColor = System.Drawing.Color.White;
-            this.dodajProizvod.Location = new System.Drawing.Point(868, 61);
+            this.dodajProizvod.Location = new System.Drawing.Point(887, 61);
             this.dodajProizvod.Name = "dodajProizvod";
             this.dodajProizvod.Size = new System.Drawing.Size(141, 35);
             this.dodajProizvod.TabIndex = 7;
@@ -357,11 +358,25 @@ namespace FastFoodDemo
             this.firstCustomControl3.Size = new System.Drawing.Size(788, 447);
             this.firstCustomControl3.TabIndex = 5;
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(717, 61);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(141, 35);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Dodaj jelo";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 687);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.cardsPanel1);
             this.Controls.Add(this.dodajProizvod);
             this.Controls.Add(this.button13);
@@ -410,6 +425,7 @@ namespace FastFoodDemo
         private System.Windows.Forms.Button dodajProizvod;
         private PonudaVM viewModel;
         private System.Windows.Forms.FlowLayoutPanel cardsPanel1;
+        private System.Windows.Forms.Button button7;
     }
 }
 

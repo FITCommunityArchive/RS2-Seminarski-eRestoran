@@ -110,6 +110,7 @@
             // 
             // MenucomboBox
             // 
+            this.MenucomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MenucomboBox.FormattingEnabled = true;
             this.MenucomboBox.Location = new System.Drawing.Point(223, 202);
             this.MenucomboBox.Name = "MenucomboBox";
@@ -119,6 +120,7 @@
             // 
             // TipSkladistacomboBox
             // 
+            this.TipSkladistacomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipSkladistacomboBox.FormattingEnabled = true;
             this.TipSkladistacomboBox.Location = new System.Drawing.Point(223, 296);
             this.TipSkladistacomboBox.Name = "TipSkladistacomboBox";
@@ -128,6 +130,7 @@
             // 
             // TipProizvodacomboBox
             // 
+            this.TipProizvodacomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipProizvodacomboBox.FormattingEnabled = true;
             this.TipProizvodacomboBox.Location = new System.Drawing.Point(223, 264);
             this.TipProizvodacomboBox.Name = "TipProizvodacomboBox";

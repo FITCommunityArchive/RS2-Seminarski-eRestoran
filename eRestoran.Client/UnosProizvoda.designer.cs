@@ -192,6 +192,7 @@ namespace FastFoodDemo
             // 
             // TipProizvodacomboBox
             // 
+            this.TipProizvodacomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipProizvodacomboBox.FormattingEnabled = true;
             this.TipProizvodacomboBox.Location = new System.Drawing.Point(276, 263);
             this.TipProizvodacomboBox.Name = "TipProizvodacomboBox";
@@ -201,6 +202,7 @@ namespace FastFoodDemo
             // 
             // TipSkladistacomboBox
             // 
+            this.TipSkladistacomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TipSkladistacomboBox.FormattingEnabled = true;
             this.TipSkladistacomboBox.Location = new System.Drawing.Point(276, 291);
             this.TipSkladistacomboBox.Name = "TipSkladistacomboBox";
@@ -210,6 +212,7 @@ namespace FastFoodDemo
             // 
             // MenucomboBox
             // 
+            this.MenucomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MenucomboBox.FormattingEnabled = true;
             this.MenucomboBox.Location = new System.Drawing.Point(276, 201);
             this.MenucomboBox.Name = "MenucomboBox";

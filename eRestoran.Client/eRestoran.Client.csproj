@@ -59,6 +59,12 @@
     <Compile Include="BackButton.Designer.cs">
       <DependentUpon>BackButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="DodajstavkuJelu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DodajstavkuJelu.Designer.cs">
+      <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +79,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UnosJela.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnosJela.designer.cs">
+      <DependentUpon>UnosJela.cs</DependentUpon>
     </Compile>
     <Compile Include="UnosProizvoda.cs">
       <SubType>UserControl</SubType>
@@ -106,6 +118,9 @@
     <EmbeddedResource Include="BackButton.resx">
       <DependentUpon>BackButton.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodajstavkuJelu.resx">
+      <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuControl.resx">
       <DependentUpon>MenuControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +130,9 @@
     <EmbeddedResource Include="Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnosJela.resx">
+      <DependentUpon>UnosJela.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UnosProizvoda.resx">
       <DependentUpon>UnosProizvoda.cs</DependentUpon>
