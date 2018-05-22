@@ -65,6 +65,12 @@
     <Compile Include="DodajstavkuJelu.Designer.cs">
       <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
     </Compile>
+    <Compile Include="HomeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HomeControl.Designer.cs">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -79,6 +85,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TipProizvodaCRUD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TipProizvodaCRUD.Designer.cs">
+      <DependentUpon>TipProizvodaCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TipSkladistaCRUD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TipSkladistaCRUD.Designer.cs">
+      <DependentUpon>TipSkladistaCRUD.cs</DependentUpon>
     </Compile>
     <Compile Include="UnosJela.cs">
       <SubType>UserControl</SubType>
@@ -121,6 +139,9 @@
     <EmbeddedResource Include="DodajstavkuJelu.resx">
       <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HomeControl.resx">
+      <DependentUpon>HomeControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuControl.resx">
       <DependentUpon>MenuControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +151,12 @@
     <EmbeddedResource Include="Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TipProizvodaCRUD.resx">
+      <DependentUpon>TipProizvodaCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TipSkladistaCRUD.resx">
+      <DependentUpon>TipSkladistaCRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UnosJela.resx">
       <DependentUpon>UnosJela.cs</DependentUpon>

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Collections;
 using eRestoran.Client.Shared.Helpers;
+using eRestoran.Client;
 
 namespace FastFoodDemo
 {
@@ -69,9 +70,9 @@ namespace FastFoodDemo
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
             cardsPanel1.Controls.Clear();
-            var image = new PictureBox() { ImageLocation = imagesFolderPath + "tene.jpg" };
-            cardsPanel1.Controls.Add(image);
-            AddToControlHistory(image);
+            var kont = new HomeControl();
+            cardsPanel1.Controls.Add(kont);
+            AddToControlHistory(kont);
 
             //menu(menu) -> uredi
             //SwitchActiveControls(firstCustomControl1);
@@ -128,7 +129,7 @@ namespace FastFoodDemo
             HttpClient client = new HttpClient();
             List<PonudaVM.PonudaInfo> pica;
             client.BaseAddress = new Uri("http://localhost:49958/");
-            HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPica").Result;
+            HttpResponseMessage response = client.GetAsync("api/Proizvodi/GetProizvodi").Result;
             if (response.IsSuccessStatusCode)
             {
                 pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
@@ -192,7 +193,15 @@ namespace FastFoodDemo
             SidePanel.Height = button2.Height;
             SidePanel.Top = button2.Top;
             cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(new UnosJela());
+            cardsPanel1.Controls.Add(new TipProizvodaCRUD());
+
+            //cardsPanel1.Controls.Add(new UnosJela());
+        }
+        public void dodajKontrolu(Control kontrola)
+        {
+            cardsPanel1.Controls.Clear();
+            cardsPanel1.Controls.Add(kontrola);
+
         }
     }
 }

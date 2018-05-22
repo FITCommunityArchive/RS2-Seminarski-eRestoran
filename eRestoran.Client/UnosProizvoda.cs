@@ -75,11 +75,11 @@ namespace FastFoodDemo
             HttpResponseMessage responseMessage = vrsteSkladista.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
-                List<SkadisteVM> lista = responseMessage.Content.ReadAsAsync<List<SkadisteVM>>().Result;
-                lista.Insert(0, new SkadisteVM() { Adresa = "Odaberite skladište", Id = 0 });
+                List<SkladisteVM> lista = responseMessage.Content.ReadAsAsync<List<SkladisteVM>>().Result;
+                lista.Insert(0, new SkladisteVM() { Lokacija = "Odaberite skladište", Id = 0,Kvadratura="0" });
                
                 TipSkladistacomboBox.DataSource = lista;
-                TipSkladistacomboBox.DisplayMember = "Adresa";
+                TipSkladistacomboBox.DisplayMember = "Lokacija";
                 TipSkladistacomboBox.ValueMember = "Id";
 
             }

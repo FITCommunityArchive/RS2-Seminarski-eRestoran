@@ -5,7 +5,7 @@ namespace eRestoran.Data.Models
 {
     public enum MjernaJedinica
     {
-        Kilogram,Dekagram,Gram,Litar,Decilitar,Centilitar
+        Kilogram=1,Dekagram,Gram,Litar,Decilitar,Centilitar
     }
 
 

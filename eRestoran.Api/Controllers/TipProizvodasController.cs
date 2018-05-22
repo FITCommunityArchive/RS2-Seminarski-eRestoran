@@ -24,15 +24,21 @@ namespace eRestoran.Api.Controllers
             return db.TipoviProizvoda.Select(x => new TipProizvodaVM
             {
                 Naziv = x.Naziv,
-                Id = x.Id
+                Id = x.Id,
+                mjernaJedinica=x.MjernaJedinica
             }).ToList();
         }
 
         // GET: api/TipProizvodas/5
-        [ResponseType(typeof(TipProizvoda))]
+        [ResponseType(typeof(TipProizvodaVM))]
         public IHttpActionResult GetTipProizvoda(int id)
         {
-            TipProizvoda tipProizvoda = db.TipoviProizvoda.Find(id);
+            TipProizvodaVM tipProizvoda = db.TipoviProizvoda.Where(x=>x.Id==id).Select(x=> new TipProizvodaVM {
+                Naziv=x.Naziv,
+                Id=x.Id,
+                mjernaJedinica=x.MjernaJedinica
+
+            }).FirstOrDefault();
             if (tipProizvoda == null)
             {
                 return NotFound();

@@ -19,20 +19,25 @@ namespace eRestoran.Api.Controllers
         private MyContext db = new MyContext();
 
         // GET: api/Skladiste
-        public List<SkadisteVM> GetSkladista()
+        public List<SkladisteVM> GetSkladista()
         {
-            return db.Skladista.Select(x => new SkadisteVM
+            return db.Skladista.Select(x => new SkladisteVM
             {
-                Adresa = x.Adresa,
+                Lokacija=x.Adresa,
+                Kvadratura=x.Kvadratura,
                 Id = x.Id
             }).ToList();
         }
 
         // GET: api/Skladiste/5
-        [ResponseType(typeof(Skladiste))]
+        [ResponseType(typeof(SkladisteVM))]
         public IHttpActionResult GetSkladiste(int id)
         {
-            Skladiste skladiste = db.Skladista.Find(id);
+            SkladisteVM skladiste = db.Skladista.Where(x=>x.Id==id).Select(x=>new SkladisteVM {
+                Id=x.Id,
+                Kvadratura=x.Kvadratura,
+                Lokacija=x.Adresa
+            }).FirstOrDefault();
             if (skladiste == null)
             {
                 return NotFound();

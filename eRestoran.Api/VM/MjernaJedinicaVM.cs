@@ -5,10 +5,10 @@ using System.Web;
 
 namespace eRestoran.Api.VM
 {
-    public class SkadisteVM
+    public class MjernaJedinicaVM
     {
         public int Id { get; set; }
-        public string Adresa { get; set; }
+        public string Naziv { get; set; }
 
     }
 }

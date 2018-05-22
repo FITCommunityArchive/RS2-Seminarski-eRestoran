@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRestoran.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace eRestoran.Api.VM
     {
         public int Id { get; set; }
         public String Naziv { get; set; }
+        public MjernaJedinica mjernaJedinica { get; set; }
 
     }
 }

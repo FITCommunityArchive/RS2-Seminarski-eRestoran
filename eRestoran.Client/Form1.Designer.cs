@@ -340,6 +340,7 @@ namespace FastFoodDemo
             this.dodajProizvod.TabIndex = 7;
             this.dodajProizvod.Text = "Dodaj proizvod";
             this.dodajProizvod.UseVisualStyleBackColor = false;
+            this.dodajProizvod.Visible = false;
             this.dodajProizvod.Click += new System.EventHandler(this.dodajProizvod_Click);
             // 
             // cardsPanel1
@@ -369,6 +370,7 @@ namespace FastFoodDemo
             this.button7.TabIndex = 9;
             this.button7.Text = "Dodaj jelo";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
@@ -424,7 +426,7 @@ namespace FastFoodDemo
         private UrediProizvod firstCustomControl3;
         private System.Windows.Forms.Button dodajProizvod;
         private PonudaVM viewModel;
-        private System.Windows.Forms.FlowLayoutPanel cardsPanel1;
+        public System.Windows.Forms.FlowLayoutPanel cardsPanel1; // nije riješenje problema
         private System.Windows.Forms.Button button7;
     }
 }
