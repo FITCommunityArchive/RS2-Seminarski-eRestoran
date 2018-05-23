@@ -22,9 +22,9 @@ namespace eRestoran.Data.Models
         public int KriticnaKolicina { get; set; }
         public int TipProizvodaId { get; set; }
         public int SkladisteId { get; set; }
-        
-        
-        
+        public string SlikaUrl { get; set; }
+
+
         public virtual TipProizvoda TipProizvoda { get; set; }
         public virtual Skladiste Skladiste { get; set; }
 
