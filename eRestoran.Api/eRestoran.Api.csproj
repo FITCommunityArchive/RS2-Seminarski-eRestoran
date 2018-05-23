@@ -124,6 +124,8 @@
     <Content Include="Global.asax" />
     <Content Include="Images\add_products.png" />
     <Content Include="Images\backArrow.jpg" />
+    <Content Include="Images\dodajKorisnika.png" />
+    <Content Include="Images\dodaj_klijenta.png" />
     <Content Include="Images\tene.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -132,6 +134,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\JeloController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
+    <Compile Include="Controllers\NalogController.cs" />
     <Compile Include="Controllers\PonudaAdministratorController.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\SkladisteController.cs" />
@@ -144,7 +147,9 @@
     <Compile Include="VM\DodajJelo.cs" />
     <Compile Include="VM\JeloJelaStavkeUredi.cs" />
     <Compile Include="VM\KlijentNaruciVM.cs" />
+    <Compile Include="VM\KlijentVM.cs" />
     <Compile Include="VM\MjernaJedinicaVM.cs" />
+    <Compile Include="VM\NaloziVM.cs" />
     <Compile Include="VM\NarudbaDatum.cs" />
     <Compile Include="VM\NarudIznos.cs" />
     <Compile Include="VM\NarudzbaPonuda.cs" />
@@ -161,6 +166,7 @@
     <Compile Include="VM\SkladisteVM.cs" />
     <Compile Include="VM\TipSkladistaVM.cs" />
     <Compile Include="VM\UrediJelo.cs" />
+    <Compile Include="VM\ZaposlenikVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

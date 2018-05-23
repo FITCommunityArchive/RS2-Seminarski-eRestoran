@@ -59,6 +59,12 @@
     <Compile Include="BackButton.Designer.cs">
       <DependentUpon>BackButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="DodajKlijenta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DodajKlijenta.Designer.cs">
+      <DependentUpon>DodajKlijenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajstavkuJelu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +76,18 @@
     </Compile>
     <Compile Include="HomeControl.Designer.cs">
       <DependentUpon>HomeControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajZaposlenika.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DodajZaposlenika.Designer.cs">
+      <DependentUpon>DodajZaposlenika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KorisnickiNalozi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KorisnickiNalozi.Designer.cs">
+      <DependentUpon>KorisnickiNalozi.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuControl.cs">
       <SubType>UserControl</SubType>
@@ -136,11 +154,20 @@
     <EmbeddedResource Include="BackButton.resx">
       <DependentUpon>BackButton.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodajKlijenta.resx">
+      <DependentUpon>DodajKlijenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DodajstavkuJelu.resx">
       <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeControl.resx">
       <DependentUpon>HomeControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajZaposlenika.resx">
+      <DependentUpon>DodajZaposlenika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KorisnickiNalozi.resx">
+      <DependentUpon>KorisnickiNalozi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuControl.resx">
       <DependentUpon>MenuControl.cs</DependentUpon>
@@ -178,6 +205,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UrediProizvod.resx">
       <DependentUpon>UrediProizvod.cs</DependentUpon>

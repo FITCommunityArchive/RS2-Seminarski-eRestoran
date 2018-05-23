@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.backButton1 = new eRestoran.Client.BackButton();
             this.unostextbox = new System.Windows.Forms.Label();
             this.NazivTipPtextBox = new System.Windows.Forms.TextBox();
             this.MjernaJ = new System.Windows.Forms.Label();
@@ -40,16 +39,10 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.Uredibutton = new System.Windows.Forms.Button();
             this.Izbrisibutton = new System.Windows.Forms.Button();
+            this.backButton1 = new eRestoran.Client.BackButton();
             ((System.ComponentModel.ISupportInitialize)(this.TipoviDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // backButton1
-            // 
-            this.backButton1.Location = new System.Drawing.Point(133, 21);
-            this.backButton1.Name = "backButton1";
-            this.backButton1.Size = new System.Drawing.Size(62, 29);
-            this.backButton1.TabIndex = 32;
             // 
             // unostextbox
             // 
@@ -152,7 +145,14 @@
             this.Izbrisibutton.UseVisualStyleBackColor = false;
             this.Izbrisibutton.Click += new System.EventHandler(this.Izbrisibutton_Click);
             // 
-            // TipProizvodaDodaj
+            // backButton1
+            // 
+            this.backButton1.Location = new System.Drawing.Point(133, 21);
+            this.backButton1.Name = "backButton1";
+            this.backButton1.Size = new System.Drawing.Size(62, 29);
+            this.backButton1.TabIndex = 32;
+            // 
+            // TipProizvodaCRUD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,7 +166,7 @@
             this.Controls.Add(this.NazivTipPtextBox);
             this.Controls.Add(this.MjernaJ);
             this.Controls.Add(this.NazivTipP);
-            this.Name = "TipProizvodaDodaj";
+            this.Name = "TipProizvodaCRUD";
             this.Size = new System.Drawing.Size(794, 447);
             ((System.ComponentModel.ISupportInitialize)(this.TipoviDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

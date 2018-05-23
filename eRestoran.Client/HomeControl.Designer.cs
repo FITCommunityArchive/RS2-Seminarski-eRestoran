@@ -33,6 +33,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.dodajKorisnikaButton = new System.Windows.Forms.Button();
+            this.getKorisniciButton = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dodajJelobutton
@@ -99,10 +102,61 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // dodajKorisnikaButton
+            // 
+            this.dodajKorisnikaButton.FlatAppearance.BorderSize = 0;
+            this.dodajKorisnikaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dodajKorisnikaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dodajKorisnikaButton.ForeColor = System.Drawing.Color.White;
+            this.dodajKorisnikaButton.Image = ((System.Drawing.Image)(resources.GetObject("dodajKorisnikaButton.Image")));
+            this.dodajKorisnikaButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dodajKorisnikaButton.Location = new System.Drawing.Point(41, 209);
+            this.dodajKorisnikaButton.Name = "dodajKorisnikaButton";
+            this.dodajKorisnikaButton.Size = new System.Drawing.Size(157, 153);
+            this.dodajKorisnikaButton.TabIndex = 9;
+            this.dodajKorisnikaButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.dodajKorisnikaButton.UseVisualStyleBackColor = true;
+            this.dodajKorisnikaButton.Click += new System.EventHandler(this.DodajKorisnikaLayout);
+            // 
+            // getKorisniciButton
+            // 
+            this.getKorisniciButton.FlatAppearance.BorderSize = 0;
+            this.getKorisniciButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.getKorisniciButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getKorisniciButton.ForeColor = System.Drawing.Color.White;
+            this.getKorisniciButton.Image = ((System.Drawing.Image)(resources.GetObject("getKorisniciButton.Image")));
+            this.getKorisniciButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.getKorisniciButton.Location = new System.Drawing.Point(215, 209);
+            this.getKorisniciButton.Name = "getKorisniciButton";
+            this.getKorisniciButton.Size = new System.Drawing.Size(157, 153);
+            this.getKorisniciButton.TabIndex = 10;
+            this.getKorisniciButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.getKorisniciButton.UseVisualStyleBackColor = true;
+            this.getKorisniciButton.Click += new System.EventHandler(this.LoadKorisniciList);
+            // 
+            // button4
+            // 
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(388, 209);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(157, 153);
+            this.button4.TabIndex = 11;
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // HomeControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.getKorisniciButton);
+            this.Controls.Add(this.dodajKorisnikaButton);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -119,5 +173,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button dodajKorisnikaButton;
+        private System.Windows.Forms.Button getKorisniciButton;
+        private System.Windows.Forms.Button button4;
     }
 }

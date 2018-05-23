@@ -65,9 +65,6 @@ namespace eRestoran.Client
             MjernaJcomboBox.DataSource = mjernajedinicalista;
             MjernaJcomboBox.DisplayMember = "Naziv";
             MjernaJcomboBox.ValueMember = "Id";
-
-
-            
         }
 
         private void snimiTipPbtn_Click(object sender, EventArgs e)
@@ -85,7 +82,6 @@ namespace eRestoran.Client
                     {
                         MessageBox.Show("Uspjesno izmjenjen tip proizvoda");
                         BindVrstaProizvoda();
-
                     }
                 }
                 else

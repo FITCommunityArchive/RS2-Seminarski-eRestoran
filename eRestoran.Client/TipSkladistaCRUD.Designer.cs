@@ -31,13 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.SkladistaDataGrid = new System.Windows.Forms.DataGridView();
             this.snimiSklPbtn = new System.Windows.Forms.Button();
-            this.backButton1 = new eRestoran.Client.BackButton();
             this.unostextbox = new System.Windows.Forms.Label();
-            this.NazivTipPtextBox = new System.Windows.Forms.TextBox();
+            this.nazivSkladistaPtextBox = new System.Windows.Forms.TextBox();
             this.NazivTipP = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.Izbrisibutton = new System.Windows.Forms.Button();
             this.Uredibutton = new System.Windows.Forms.Button();
+            this.backButton1 = new eRestoran.Client.BackButton();
             ((System.ComponentModel.ISupportInitialize)(this.SkladistaDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -63,13 +63,7 @@
             this.snimiSklPbtn.TabIndex = 43;
             this.snimiSklPbtn.Text = "Snimi ";
             this.snimiSklPbtn.UseVisualStyleBackColor = false;
-            // 
-            // backButton1
-            // 
-            this.backButton1.Location = new System.Drawing.Point(117, 27);
-            this.backButton1.Name = "backButton1";
-            this.backButton1.Size = new System.Drawing.Size(62, 29);
-            this.backButton1.TabIndex = 42;
+            this.snimiSklPbtn.Click += new System.EventHandler(this.snimiSklPbtn_Click);
             // 
             // unostextbox
             // 
@@ -81,12 +75,13 @@
             this.unostextbox.TabIndex = 41;
             this.unostextbox.Text = "Novi tip skladišta";
             // 
-            // NazivTipPtextBox
+            // nazivSkladistaPtextBox
             // 
-            this.NazivTipPtextBox.Location = new System.Drawing.Point(261, 80);
-            this.NazivTipPtextBox.Name = "NazivTipPtextBox";
-            this.NazivTipPtextBox.Size = new System.Drawing.Size(196, 20);
-            this.NazivTipPtextBox.TabIndex = 40;
+            this.nazivSkladistaPtextBox.Location = new System.Drawing.Point(261, 80);
+            this.nazivSkladistaPtextBox.Name = "nazivSkladistaPtextBox";
+            this.nazivSkladistaPtextBox.Size = new System.Drawing.Size(196, 20);
+            this.nazivSkladistaPtextBox.TabIndex = 40;
+            this.nazivSkladistaPtextBox.Validating += new System.ComponentModel.CancelEventHandler(this.nazivSkladistaPtextBox_Validating);
             // 
             // NazivTipP
             // 
@@ -113,6 +108,7 @@
             this.Izbrisibutton.TabIndex = 47;
             this.Izbrisibutton.Text = "Izbriši";
             this.Izbrisibutton.UseVisualStyleBackColor = false;
+            this.Izbrisibutton.Click += new System.EventHandler(this.Izbrisibutton_Click);
             // 
             // Uredibutton
             // 
@@ -125,6 +121,14 @@
             this.Uredibutton.TabIndex = 46;
             this.Uredibutton.Text = "Uredi";
             this.Uredibutton.UseVisualStyleBackColor = false;
+            this.Uredibutton.Click += new System.EventHandler(this.Uredibutton_Click);
+            // 
+            // backButton1
+            // 
+            this.backButton1.Location = new System.Drawing.Point(117, 27);
+            this.backButton1.Name = "backButton1";
+            this.backButton1.Size = new System.Drawing.Size(62, 29);
+            this.backButton1.TabIndex = 42;
             // 
             // TipSkladistaCRUD
             // 
@@ -134,7 +138,7 @@
             this.Controls.Add(this.snimiSklPbtn);
             this.Controls.Add(this.backButton1);
             this.Controls.Add(this.unostextbox);
-            this.Controls.Add(this.NazivTipPtextBox);
+            this.Controls.Add(this.nazivSkladistaPtextBox);
             this.Controls.Add(this.NazivTipP);
             this.Controls.Add(this.Izbrisibutton);
             this.Controls.Add(this.Uredibutton);
@@ -153,7 +157,7 @@
         private System.Windows.Forms.Button snimiSklPbtn;
         private BackButton backButton1;
         private System.Windows.Forms.Label unostextbox;
-        private System.Windows.Forms.TextBox NazivTipPtextBox;
+        private System.Windows.Forms.TextBox nazivSkladistaPtextBox;
         private System.Windows.Forms.Label NazivTipP;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button Izbrisibutton;

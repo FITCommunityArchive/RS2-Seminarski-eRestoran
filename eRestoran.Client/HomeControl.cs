@@ -37,5 +37,20 @@ namespace eRestoran.Client
         {
             ((Form1)this.ParentForm).dodajKontrolu(new TipSkladistaCRUD());
         }
+
+        private void DodajKorisnikaLayout(object sender, EventArgs e)
+        {
+            ((Form1)this.ParentForm).dodajKontrolu(new DodajZaposlenika());
+        }
+
+        private void LoadKorisniciList(object sender, EventArgs e)
+        {
+            ((Form1)this.ParentForm).dodajKontrolu(new KorisnickiNalozi());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ((Form1)this.ParentForm).dodajKontrolu(new DodajKlijenta());
+        }
     }
 }

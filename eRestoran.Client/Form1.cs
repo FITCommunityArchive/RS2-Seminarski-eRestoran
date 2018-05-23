@@ -143,7 +143,7 @@ namespace FastFoodDemo
                         Kategorija = "KATEGORIJA -" + item.Kategorija,
                         Kolicina = item.Kolicina,
                         KolicinaString = item.KolicinaString + " KOM",
-                        urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+                        urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(120, 100))
                     });
                 }
             }
@@ -203,5 +203,6 @@ namespace FastFoodDemo
             cardsPanel1.Controls.Add(kontrola);
 
         }
+        //korpa viewmodel
     }
 }

@@ -48,6 +48,7 @@ namespace FastFoodDemo
             this.dodajSlikubutton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dodajStavkuLink = new System.Windows.Forms.LinkLabel();
+            this.stavkeLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.backButton1 = new eRestoran.Client.BackButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProizvodpictureBox)).BeginInit();
@@ -100,7 +101,7 @@ namespace FastFoodDemo
             // NazivJelatextBox
             // 
             this.NazivJelatextBox.Location = new System.Drawing.Point(239, 97);
-            this.NazivJelatextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NazivJelatextBox.Margin = new System.Windows.Forms.Padding(4);
             this.NazivJelatextBox.Name = "NazivJelatextBox";
             this.NazivJelatextBox.Size = new System.Drawing.Size(260, 22);
             this.NazivJelatextBox.TabIndex = 8;
@@ -109,7 +110,7 @@ namespace FastFoodDemo
             // CijenaJelatextBox
             // 
             this.CijenaJelatextBox.Location = new System.Drawing.Point(239, 144);
-            this.CijenaJelatextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CijenaJelatextBox.Margin = new System.Windows.Forms.Padding(4);
             this.CijenaJelatextBox.Name = "CijenaJelatextBox";
             this.CijenaJelatextBox.Size = new System.Drawing.Size(260, 22);
             this.CijenaJelatextBox.TabIndex = 9;
@@ -118,7 +119,7 @@ namespace FastFoodDemo
             // SifraJelatextBox
             // 
             this.SifraJelatextBox.Location = new System.Drawing.Point(239, 177);
-            this.SifraJelatextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SifraJelatextBox.Margin = new System.Windows.Forms.Padding(4);
             this.SifraJelatextBox.Name = "SifraJelatextBox";
             this.SifraJelatextBox.Size = new System.Drawing.Size(260, 22);
             this.SifraJelatextBox.TabIndex = 11;
@@ -140,7 +141,7 @@ namespace FastFoodDemo
             this.MenuJelacomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MenuJelacomboBox.FormattingEnabled = true;
             this.MenuJelacomboBox.Location = new System.Drawing.Point(239, 218);
-            this.MenuJelacomboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MenuJelacomboBox.Margin = new System.Windows.Forms.Padding(4);
             this.MenuJelacomboBox.Name = "MenuJelacomboBox";
             this.MenuJelacomboBox.Size = new System.Drawing.Size(260, 24);
             this.MenuJelacomboBox.TabIndex = 20;
@@ -151,8 +152,8 @@ namespace FastFoodDemo
             this.snimiProizvodbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.snimiProizvodbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.snimiProizvodbtn.ForeColor = System.Drawing.Color.White;
-            this.snimiProizvodbtn.Location = new System.Drawing.Point(296, 325);
-            this.snimiProizvodbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.snimiProizvodbtn.Location = new System.Drawing.Point(349, 341);
+            this.snimiProizvodbtn.Margin = new System.Windows.Forms.Padding(4);
             this.snimiProizvodbtn.Name = "snimiProizvodbtn";
             this.snimiProizvodbtn.Size = new System.Drawing.Size(150, 36);
             this.snimiProizvodbtn.TabIndex = 21;
@@ -182,7 +183,7 @@ namespace FastFoodDemo
             // ProizvodpictureBox
             // 
             this.ProizvodpictureBox.Location = new System.Drawing.Point(553, 97);
-            this.ProizvodpictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ProizvodpictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.ProizvodpictureBox.Name = "ProizvodpictureBox";
             this.ProizvodpictureBox.Size = new System.Drawing.Size(162, 140);
             this.ProizvodpictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -195,7 +196,7 @@ namespace FastFoodDemo
             this.dodajSlikubutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.dodajSlikubutton.ForeColor = System.Drawing.Color.White;
             this.dodajSlikubutton.Location = new System.Drawing.Point(572, 265);
-            this.dodajSlikubutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dodajSlikubutton.Margin = new System.Windows.Forms.Padding(4);
             this.dodajSlikubutton.Name = "dodajSlikubutton";
             this.dodajSlikubutton.Size = new System.Drawing.Size(132, 41);
             this.dodajSlikubutton.TabIndex = 25;
@@ -215,6 +216,15 @@ namespace FastFoodDemo
             this.dodajStavkuLink.Text = "Dodaj sastojak";
             this.dodajStavkuLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.dodajStavkuLink_LinkClicked);
             // 
+            // stavkeLayout
+            // 
+            this.stavkeLayout.AutoSize = true;
+            this.stavkeLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.stavkeLayout.Location = new System.Drawing.Point(36, 304);
+            this.stavkeLayout.Name = "stavkeLayout";
+            this.stavkeLayout.Size = new System.Drawing.Size(260, 100);
+            this.stavkeLayout.TabIndex = 28;
+            // 
             // backButton1
             // 
             this.backButton1.Location = new System.Drawing.Point(47, 32);
@@ -230,6 +240,7 @@ namespace FastFoodDemo
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Controls.Add(this.stavkeLayout);
             this.Controls.Add(this.dodajStavkuLink);
             this.Controls.Add(this.backButton1);
             this.Controls.Add(this.dodajSlikubutton);
@@ -246,7 +257,7 @@ namespace FastFoodDemo
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UnosJela";
             this.Size = new System.Drawing.Size(754, 452);
             this.Load += new System.EventHandler(this.UnosProizvoda_Load);
@@ -277,5 +288,6 @@ namespace FastFoodDemo
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private eRestoran.Client.BackButton backButton1;
         private System.Windows.Forms.LinkLabel dodajStavkuLink;
+        private System.Windows.Forms.FlowLayoutPanel stavkeLayout;
     }
 }

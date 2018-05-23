@@ -19,9 +19,9 @@ namespace eRestoran.Api.Controllers
         private MyContext db = new MyContext();
 
         // GET: api/TipSkladistas
-        public List<TipProizvodaVM> GetTipoviSkladista()
+        public List<TipSkladistaVM> GetTipoviSkladista()
         {
-            return db.TipoviSkladista.Select(x => new TipProizvodaVM
+            return db.TipoviSkladista.Select(x => new TipSkladistaVM
             {
                 Naziv=x.Naziv,
                 Id=x.Id
@@ -29,10 +29,11 @@ namespace eRestoran.Api.Controllers
         }
 
         // GET: api/TipSkladistas/5
-        [ResponseType(typeof(TipProizvodaVM))]
+        [ResponseType(typeof(TipSkladistaVM))]
         public IHttpActionResult GetTipSkladista(int id)
         {
-            TipProizvodaVM tipSkladista = db.TipoviSkladista.Where(x=>x.Id==id).Select(x=>new TipProizvodaVM {
+            TipSkladistaVM tipSkladista = db.TipoviSkladista.Where(x=>x.Id==id).Select(x=>new TipSkladistaVM
+            {
                 Naziv=x.Naziv,
                 Id=x.Id
             }).FirstOrDefault();

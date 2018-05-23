@@ -79,7 +79,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProizvodJelo);
             this.Name = "DodajstavkuJelu";
-            this.Size = new System.Drawing.Size(355, 69);
+            this.Size = new System.Drawing.Size(349, 69);
             this.Load += new System.EventHandler(this.DodajstavkuJelu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -22,6 +22,7 @@ namespace FastFoodDemo
         private WebAPIHelper getProizvod= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvod");
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         private Proizvod proizvod;
+        int count = 0;
         public PonudaVM.PonudaInfo ViewModel { get; set; }
         Image File;
         Proizvod p;
@@ -225,12 +226,18 @@ namespace FastFoodDemo
 
         private void dodajStavkuLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
-            var controla = new DodajstavkuJelu();
-            controla.Location=new System.Drawing.Point(this.Width-720, this.Height -210);
-            this.Controls.Add(controla);
-            this.snimiProizvodbtn.Location = new System.Drawing.Point(this.Width - 500, this.Height - 10);
-           
+            if (count == 0)
+            {
+                var controla = new DodajstavkuJelu();
+                stavkeLayout.Controls.Add(controla);
+                var newLocation = snimiProizvodbtn.Location;
+                newLocation.Y += controla.Height;
+                snimiProizvodbtn.Location = newLocation;
+            }
+            else {
+                var controla = new DodajstavkuJelu();
+                stavkeLayout.Controls.Add(controla);
+            }
            
         }
     }

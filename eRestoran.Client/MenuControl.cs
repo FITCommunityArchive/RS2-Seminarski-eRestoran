@@ -31,15 +31,12 @@ namespace FirstUserControlUsage
         public void DataBind()
         {
             SuspendLayout();
-            
-          
             Naziv.Text = ViewModel.Naziv;
             Cijena.Text = ViewModel.Cijena.ToString()+ "KM ";
             Kolicina.Text = ViewModel.KolicinaString;
             pictureBox1.Image = ViewModel.urIPicture;
             ResumeLayout();
         }
-
        
         private void button1_Click(object sender, EventArgs e)
         {

@@ -104,10 +104,10 @@ namespace FirstUserControlUsage
             this.button1.BackColor = System.Drawing.Color.Gray;
             this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(34, 231);
+            this.button1.Location = new System.Drawing.Point(16, 231);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 35);
+            this.button1.Size = new System.Drawing.Size(143, 35);
             this.button1.TabIndex = 6;
             this.button1.Text = "Uredi";
             this.button1.UseVisualStyleBackColor = false;
@@ -118,10 +118,10 @@ namespace FirstUserControlUsage
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(34, 277);
+            this.button2.Location = new System.Drawing.Point(16, 277);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 35);
+            this.button2.Size = new System.Drawing.Size(143, 35);
             this.button2.TabIndex = 7;
             this.button2.Text = "Izbriši";
             this.button2.UseVisualStyleBackColor = false;
