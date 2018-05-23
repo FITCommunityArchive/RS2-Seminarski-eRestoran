@@ -32,6 +32,7 @@
             this.kNalozilabel = new System.Windows.Forms.Label();
             this.Izbrisibutton = new System.Windows.Forms.Button();
             this.Uredibutton = new System.Windows.Forms.Button();
+            this.backButton1 = new eRestoran.Client.BackButton();
             ((System.ComponentModel.ISupportInitialize)(this.kNalozidataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,10 +81,18 @@
             this.Uredibutton.UseVisualStyleBackColor = false;
             this.Uredibutton.Click += new System.EventHandler(this.Uredibutton_Click);
             // 
+            // backButton1
+            // 
+            this.backButton1.Location = new System.Drawing.Point(152, 31);
+            this.backButton1.Name = "backButton1";
+            this.backButton1.Size = new System.Drawing.Size(62, 29);
+            this.backButton1.TabIndex = 40;
+            // 
             // KorisnickiNalozi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.backButton1);
             this.Controls.Add(this.Izbrisibutton);
             this.Controls.Add(this.Uredibutton);
             this.Controls.Add(this.kNalozilabel);
@@ -102,5 +111,6 @@
         private System.Windows.Forms.Label kNalozilabel;
         private System.Windows.Forms.Button Izbrisibutton;
         private System.Windows.Forms.Button Uredibutton;
+        private BackButton backButton1;
     }
 }

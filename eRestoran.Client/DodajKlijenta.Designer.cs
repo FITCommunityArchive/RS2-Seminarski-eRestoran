@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.NaslovLabel = new System.Windows.Forms.Label();
             this.snimiKorbtn = new System.Windows.Forms.Button();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -43,6 +44,8 @@
             this.telefonTextBox = new System.Windows.Forms.TextBox();
             this.telefonLabel = new System.Windows.Forms.Label();
             this.backButton1 = new eRestoran.Client.BackButton();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // NaslovLabel
@@ -74,6 +77,7 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(199, 20);
             this.emailTextBox.TabIndex = 71;
+            this.emailTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailTextBox_Validating);
             // 
             // passwordTextBox
             // 
@@ -82,6 +86,7 @@
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(199, 20);
             this.passwordTextBox.TabIndex = 70;
+            this.passwordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTextBox_Validating);
             // 
             // usernamaTextBox
             // 
@@ -89,6 +94,7 @@
             this.usernamaTextBox.Name = "usernamaTextBox";
             this.usernamaTextBox.Size = new System.Drawing.Size(199, 20);
             this.usernamaTextBox.TabIndex = 69;
+            this.usernamaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.usernamaTextBox_Validating);
             // 
             // prezimeTextBox
             // 
@@ -96,6 +102,7 @@
             this.prezimeTextBox.Name = "prezimeTextBox";
             this.prezimeTextBox.Size = new System.Drawing.Size(199, 20);
             this.prezimeTextBox.TabIndex = 68;
+            this.prezimeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeTextBox_Validating);
             // 
             // imeTextBox
             // 
@@ -103,6 +110,7 @@
             this.imeTextBox.Name = "imeTextBox";
             this.imeTextBox.Size = new System.Drawing.Size(199, 20);
             this.imeTextBox.TabIndex = 67;
+            this.imeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.imeTextBox_Validating);
             // 
             // EmailLabel
             // 
@@ -155,6 +163,7 @@
             this.telefonTextBox.Name = "telefonTextBox";
             this.telefonTextBox.Size = new System.Drawing.Size(199, 20);
             this.telefonTextBox.TabIndex = 78;
+            this.telefonTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.telefonTextBox_Validating);
             // 
             // telefonLabel
             // 
@@ -171,6 +180,10 @@
             this.backButton1.Name = "backButton1";
             this.backButton1.Size = new System.Drawing.Size(62, 29);
             this.backButton1.TabIndex = 76;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // DodajKlijenta
             // 
@@ -193,6 +206,7 @@
             this.Controls.Add(this.ImeLabel);
             this.Name = "DodajKlijenta";
             this.Size = new System.Drawing.Size(706, 459);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,5 +229,6 @@
         private System.Windows.Forms.Label ImeLabel;
         private System.Windows.Forms.TextBox telefonTextBox;
         private System.Windows.Forms.Label telefonLabel;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

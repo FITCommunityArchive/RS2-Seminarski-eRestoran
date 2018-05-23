@@ -106,6 +106,15 @@ namespace eRestoran.Client {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email nije ispravan !.
+        /// </summary>
+        internal static string NeispravanEmail {
+            get {
+                return ResourceManager.GetString("NeispravanEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Obavezan unos !.
         /// </summary>
         internal static string Univerzalno {

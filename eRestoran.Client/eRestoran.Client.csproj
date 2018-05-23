@@ -104,6 +104,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="SkladisteCRUD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkladisteCRUD.Designer.cs">
+      <DependentUpon>SkladisteCRUD.cs</DependentUpon>
+    </Compile>
     <Compile Include="TipProizvodaCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     <EmbeddedResource Include="Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkladisteCRUD.resx">
+      <DependentUpon>SkladisteCRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TipProizvodaCRUD.resx">
       <DependentUpon>TipProizvodaCRUD.cs</DependentUpon>

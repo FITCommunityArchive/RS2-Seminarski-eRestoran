@@ -43,7 +43,7 @@
             this.tipKorisnikaComboBox = new System.Windows.Forms.ComboBox();
             this.snimiKorbtn = new System.Windows.Forms.Button();
             this.NaslovLabel = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.datumZaposlenjaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.adresaTextBox = new System.Windows.Forms.TextBox();
@@ -59,7 +59,7 @@
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.backButton1 = new eRestoran.Client.BackButton();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.plataNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,6 +123,7 @@
             this.imeTextBox.Name = "imeTextBox";
             this.imeTextBox.Size = new System.Drawing.Size(199, 20);
             this.imeTextBox.TabIndex = 7;
+            this.imeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.imeTextBox_Validating);
             // 
             // prezimeTextBox
             // 
@@ -130,6 +131,7 @@
             this.prezimeTextBox.Name = "prezimeTextBox";
             this.prezimeTextBox.Size = new System.Drawing.Size(199, 20);
             this.prezimeTextBox.TabIndex = 8;
+            this.prezimeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeTextBox_Validating);
             // 
             // usernamaTextBox
             // 
@@ -137,6 +139,7 @@
             this.usernamaTextBox.Name = "usernamaTextBox";
             this.usernamaTextBox.Size = new System.Drawing.Size(199, 20);
             this.usernamaTextBox.TabIndex = 9;
+            this.usernamaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.usernamaTextBox_Validating);
             // 
             // emailTextBox
             // 
@@ -144,6 +147,7 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(199, 20);
             this.emailTextBox.TabIndex = 11;
+            this.emailTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailTextBox_Validating);
             // 
             // datumRodjenjaDateTimePicker
             // 
@@ -151,6 +155,7 @@
             this.datumRodjenjaDateTimePicker.Name = "datumRodjenjaDateTimePicker";
             this.datumRodjenjaDateTimePicker.Size = new System.Drawing.Size(199, 20);
             this.datumRodjenjaDateTimePicker.TabIndex = 12;
+            this.datumRodjenjaDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.datumRodjenjaDateTimePicker_Validating);
             // 
             // tipKorisnikaComboBox
             // 
@@ -160,6 +165,7 @@
             this.tipKorisnikaComboBox.Name = "tipKorisnikaComboBox";
             this.tipKorisnikaComboBox.Size = new System.Drawing.Size(199, 21);
             this.tipKorisnikaComboBox.TabIndex = 13;
+            this.tipKorisnikaComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.tipKorisnikaComboBox_Validating);
             // 
             // snimiKorbtn
             // 
@@ -184,9 +190,9 @@
             this.NaslovLabel.TabIndex = 45;
             this.NaslovLabel.Text = "Dodavanje korisnika";
             // 
-            // errorProvider1
+            // errorProvider
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.errorProvider.ContainerControl = this;
             // 
             // datumZaposlenjaDateTimePicker
             // 
@@ -194,6 +200,7 @@
             this.datumZaposlenjaDateTimePicker.Name = "datumZaposlenjaDateTimePicker";
             this.datumZaposlenjaDateTimePicker.Size = new System.Drawing.Size(199, 20);
             this.datumZaposlenjaDateTimePicker.TabIndex = 47;
+            this.datumZaposlenjaDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.datumZaposlenjaDateTimePicker_Validating);
             // 
             // label1
             // 
@@ -210,6 +217,7 @@
             this.adresaTextBox.Name = "adresaTextBox";
             this.adresaTextBox.Size = new System.Drawing.Size(199, 20);
             this.adresaTextBox.TabIndex = 51;
+            this.adresaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.adresaTextBox_Validating);
             // 
             // JMBGTextBox
             // 
@@ -217,6 +225,7 @@
             this.JMBGTextBox.Name = "JMBGTextBox";
             this.JMBGTextBox.Size = new System.Drawing.Size(199, 20);
             this.JMBGTextBox.TabIndex = 50;
+            this.JMBGTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.JMBGTextBox_Validating);
             // 
             // label2
             // 
@@ -262,13 +271,21 @@
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(199, 21);
             this.statusComboBox.TabIndex = 55;
+            this.statusComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.statusComboBox_Validating);
             // 
             // plataNumericUpDown
             // 
+            this.plataNumericUpDown.DecimalPlaces = 2;
             this.plataNumericUpDown.Location = new System.Drawing.Point(564, 202);
+            this.plataNumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.plataNumericUpDown.Name = "plataNumericUpDown";
             this.plataNumericUpDown.Size = new System.Drawing.Size(199, 20);
             this.plataNumericUpDown.TabIndex = 56;
+            this.plataNumericUpDown.Validating += new System.ComponentModel.CancelEventHandler(this.plataNumericUpDown_Validating);
             // 
             // telefonTextBox
             // 
@@ -276,6 +293,7 @@
             this.telefonTextBox.Name = "telefonTextBox";
             this.telefonTextBox.Size = new System.Drawing.Size(199, 20);
             this.telefonTextBox.TabIndex = 58;
+            this.telefonTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.telefonTextBox_Validating);
             // 
             // label6
             // 
@@ -293,6 +311,7 @@
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(199, 20);
             this.passwordTextBox.TabIndex = 10;
+            this.passwordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTextBox_Validating);
             // 
             // PasswordLabel
             // 
@@ -345,7 +364,7 @@
             this.Controls.Add(this.ImeLabel);
             this.Name = "DodajZaposlenika";
             this.Size = new System.Drawing.Size(794, 447);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.plataNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -368,7 +387,7 @@
         private System.Windows.Forms.ComboBox tipKorisnikaComboBox;
         private System.Windows.Forms.Button snimiKorbtn;
         private System.Windows.Forms.Label NaslovLabel;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.DateTimePicker datumZaposlenjaDateTimePicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox statusComboBox;

@@ -25,7 +25,9 @@ namespace eRestoran.Api.Controllers
             {
                 Lokacija=x.Adresa,
                 Kvadratura=x.Kvadratura,
-                Id = x.Id
+                Id = x.Id,
+                TipSkladista=x.Tip.Naziv,
+                TipId=x.TipId
             }).ToList();
         }
 
@@ -36,7 +38,9 @@ namespace eRestoran.Api.Controllers
             SkladisteVM skladiste = db.Skladista.Where(x=>x.Id==id).Select(x=>new SkladisteVM {
                 Id=x.Id,
                 Kvadratura=x.Kvadratura,
-                Lokacija=x.Adresa
+                Lokacija=x.Adresa,
+                TipSkladista = x.Tip.Naziv,
+                TipId = x.TipId
             }).FirstOrDefault();
             if (skladiste == null)
             {

@@ -125,8 +125,11 @@
     <Content Include="Images\add_products.png" />
     <Content Include="Images\backArrow.jpg" />
     <Content Include="Images\dodajKorisnika.png" />
+    <Content Include="Images\dodajZaposlenika.png" />
     <Content Include="Images\dodaj_klijenta.png" />
+    <Content Include="Images\korisnickinalozi.png" />
     <Content Include="Images\tene.jpg" />
+    <Content Include="Images\tipskladista.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

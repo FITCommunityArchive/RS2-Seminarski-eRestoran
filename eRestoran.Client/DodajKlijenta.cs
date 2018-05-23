@@ -65,7 +65,10 @@ namespace eRestoran.Client
 
         private void snimiKorbtn_Click(object sender, EventArgs e)
         {
-            if (model.Id != 0) {
+            if (this.ValidateChildren())
+            {
+                if (model.Id != 0)
+                {
                     model.Email = emailTextBox.Text;
                     model.Ime = imeTextBox.Text;
                     model.Password = passwordTextBox.Text;
@@ -74,50 +77,124 @@ namespace eRestoran.Client
                     model.TipKorisnika = TipKorisnika.Klijent;
                     model.DatumPrijave = DateTime.Now;
                     model.Telefon = telefonTextBox.Text;
-                
-                HttpResponseMessage responseMessage = klijentPutService.PutResponse(model.Id,model);
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Klijent uspjesno uređen!");
-                    ClearForm();
-                    var korisnickinalozi = new KorisnickiNalozi();
-                    ((Form1)Form.ActiveForm).dodajKontrolu(korisnickinalozi);
 
+                    HttpResponseMessage responseMessage = klijentPutService.PutResponse(model.Id, model);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Klijent uspjesno uređen!");
+                        ClearForm();
+                        var korisnickinalozi = new KorisnickiNalozi();
+                        ((Form1)Form.ActiveForm).dodajKontrolu(korisnickinalozi);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Doslo je do greske!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Doslo je do greske!");
+                    model = new Klijent()
+                    {
+                        Email = emailTextBox.Text,
+                        Ime = imeTextBox.Text,
+                        Password = passwordTextBox.Text,
+                        Prezime = prezimeTextBox.Text,
+                        Username = usernamaTextBox.Text,
+                        TipKorisnika = TipKorisnika.Klijent,
+                        DatumPrijave = DateTime.Now,
+                        Telefon = telefonTextBox.Text
+                    };
+                    HttpResponseMessage responseMessage = klijentPostService.PostResponse(model);
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Klijent uspjesno dodan!");
+                        ClearForm();
+                        var korisnickinalozi = new KorisnickiNalozi();
+                        ((Form1)Form.ActiveForm).dodajKontrolu(korisnickinalozi);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Doslo je do greske!");
+                    }
                 }
             }
-            else
-            {
-                model = new Klijent()
-                {
-                    Email = emailTextBox.Text,
-                    Ime = imeTextBox.Text,
-                    Password = passwordTextBox.Text,
-                    Prezime = prezimeTextBox.Text,
-                    Username = usernamaTextBox.Text,
-                    TipKorisnika = TipKorisnika.Klijent,
-                    DatumPrijave = DateTime.Now,
-                    Telefon = telefonTextBox.Text
-                };
-                HttpResponseMessage responseMessage = klijentPostService.PostResponse(model);
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Klijent uspjesno dodan!");
-                    ClearForm();
-                    var korisnickinalozi = new KorisnickiNalozi();
-                    ((Form1)Form.ActiveForm).dodajKontrolu(korisnickinalozi);
-
-                }
-                else
-                {
-                    MessageBox.Show("Doslo je do greske!");
-                }
-            }
-
            
+        }
+
+        private void imeTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(imeTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(imeTextBox, Messages.Univerzalno);
+            }
+        }
+
+        private void prezimeTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(prezimeTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(prezimeTextBox, Messages.Univerzalno);
+            }
+        }
+
+        private void usernamaTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(usernamaTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(usernamaTextBox, Messages.Univerzalno);
+            }
+        }
+
+        private void passwordTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(passwordTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(passwordTextBox, Messages.Univerzalno);
+            }
+
+        }
+
+        private void emailTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(emailTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(emailTextBox, Messages.Univerzalno);
+            }
+            if (!IsValidEmail(emailTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(emailTextBox, Messages.NeispravanEmail);
+            }
+
+
+        }
+
+        private void telefonTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(telefonTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProvider.SetError(telefonTextBox, Messages.Univerzalno);
+            }
+        }
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

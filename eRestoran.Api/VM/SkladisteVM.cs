@@ -10,6 +10,10 @@ namespace eRestoran.Api.VM
         public int Id { get; set; }
         public String Kvadratura { get; set; }
         public String Lokacija { get; set; }
+        public string TipSkladista{ get; set; }
+        public int TipId { get; set; }
+
+
 
     }
 }

@@ -132,6 +132,9 @@
   <data name="NegVrijednost" xml:space="preserve">
     <value>Ne smijete imate negativnu vrijednost.</value>
   </data>
+  <data name="NeispravanEmail" xml:space="preserve">
+    <value>Email nije ispravan !</value>
+  </data>
   <data name="Univerzalno" xml:space="preserve">
     <value>Obavezan unos !</value>
   </data>

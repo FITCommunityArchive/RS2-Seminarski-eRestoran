@@ -52,5 +52,10 @@ namespace eRestoran.Client
         {
             ((Form1)this.ParentForm).dodajKontrolu(new DodajKlijenta());
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ((Form1)this.ParentForm).dodajKontrolu(new SkladisteCRUD());
+        }
     }
 }
