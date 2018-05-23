@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+
+namespace eRestoran.Client
+{
+    public partial class SlikaKontrola : UserControl
+    {
+
+        public Image File { get; set; }
+        private string imagesFolderPath { get; set; }
+
+        public SlikaKontrola()
+        {
+            InitializeComponent();
+        }
+
+        private void dodajSlikubutton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog f = new OpenFileDialog();
+            f.Filter = "JPG(*.JPG)|*.jpg";
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                File = Image.FromFile(f.FileName);
+                imagesFolderPath = f.FileName;
+                ProizvodpictureBox.Image = File;
+            }
+        }
+
+        public string SaveImage()
+        {
+            var imageUrl = imagesFolderPath;
+            ProizvodpictureBox.Image.Save(imageUrl);
+            return imageUrl;
+        }
+    }
+}

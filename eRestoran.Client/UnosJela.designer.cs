@@ -43,15 +43,12 @@ namespace FastFoodDemo
             this.snimiProizvodbtn = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ProizvodpictureBox = new System.Windows.Forms.PictureBox();
-            this.dodajSlikubutton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dodajStavkuLink = new System.Windows.Forms.LinkLabel();
             this.stavkeLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.backButton1 = new eRestoran.Client.BackButton();
+            this.slikaKontrola1 = new eRestoran.Client.SlikaKontrola();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProizvodpictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -169,41 +166,6 @@ namespace FastFoodDemo
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(616, 49);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 19);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Slika";
-            // 
-            // ProizvodpictureBox
-            // 
-            this.ProizvodpictureBox.Location = new System.Drawing.Point(553, 97);
-            this.ProizvodpictureBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ProizvodpictureBox.Name = "ProizvodpictureBox";
-            this.ProizvodpictureBox.Size = new System.Drawing.Size(162, 140);
-            this.ProizvodpictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ProizvodpictureBox.TabIndex = 24;
-            this.ProizvodpictureBox.TabStop = false;
-            // 
-            // dodajSlikubutton
-            // 
-            this.dodajSlikubutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.dodajSlikubutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.dodajSlikubutton.ForeColor = System.Drawing.Color.White;
-            this.dodajSlikubutton.Location = new System.Drawing.Point(572, 265);
-            this.dodajSlikubutton.Margin = new System.Windows.Forms.Padding(4);
-            this.dodajSlikubutton.Name = "dodajSlikubutton";
-            this.dodajSlikubutton.Size = new System.Drawing.Size(132, 41);
-            this.dodajSlikubutton.TabIndex = 25;
-            this.dodajSlikubutton.Text = "Učitaj sliku";
-            this.dodajSlikubutton.UseVisualStyleBackColor = false;
-            this.dodajSlikubutton.Click += new System.EventHandler(this.dodajSlikubutton_Click);
-            // 
             // dodajStavkuLink
             // 
             this.dodajStavkuLink.AutoSize = true;
@@ -233,6 +195,15 @@ namespace FastFoodDemo
             this.backButton1.Size = new System.Drawing.Size(83, 36);
             this.backButton1.TabIndex = 26;
             // 
+            // slikaKontrola1
+            // 
+            this.slikaKontrola1.File = null;
+            this.slikaKontrola1.Location = new System.Drawing.Point(546, 30);
+            this.slikaKontrola1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.slikaKontrola1.Name = "slikaKontrola1";
+            this.slikaKontrola1.Size = new System.Drawing.Size(229, 263);
+            this.slikaKontrola1.TabIndex = 29;
+            // 
             // UnosJela
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -240,12 +211,10 @@ namespace FastFoodDemo
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Controls.Add(this.slikaKontrola1);
             this.Controls.Add(this.stavkeLayout);
             this.Controls.Add(this.dodajStavkuLink);
             this.Controls.Add(this.backButton1);
-            this.Controls.Add(this.dodajSlikubutton);
-            this.Controls.Add(this.ProizvodpictureBox);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.snimiProizvodbtn);
             this.Controls.Add(this.MenuJelacomboBox);
             this.Controls.Add(this.unostextbox);
@@ -259,10 +228,9 @@ namespace FastFoodDemo
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UnosJela";
-            this.Size = new System.Drawing.Size(754, 452);
+            this.Size = new System.Drawing.Size(794, 447);
             this.Load += new System.EventHandler(this.UnosProizvoda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProizvodpictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,13 +249,11 @@ namespace FastFoodDemo
         private System.Windows.Forms.ComboBox MenuJelacomboBox;
         private System.Windows.Forms.Button snimiProizvodbtn;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.Button dodajSlikubutton;
-        private System.Windows.Forms.PictureBox ProizvodpictureBox;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private eRestoran.Client.BackButton backButton1;
         private System.Windows.Forms.LinkLabel dodajStavkuLink;
         private System.Windows.Forms.FlowLayoutPanel stavkeLayout;
+        private eRestoran.Client.SlikaKontrola slikaKontrola1;
     }
 }

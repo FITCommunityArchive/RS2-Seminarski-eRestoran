@@ -66,9 +66,7 @@ namespace FastFoodDemo
 
                 proizvod.Menu = MenuJelacomboBox.SelectedIndex.ToString();
                 proizvod.Naziv = NazivJelatextBox.Text;
-                var imageUrl = imagesFolderPath + openFileDialog1.FileName;
-                ProizvodpictureBox.Image.Save(imageUrl);
-                proizvod.SlikaUrl = imageUrl;
+                proizvod.SlikaUrl = slikaKontrola1.SaveImage();
                 HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -172,17 +170,6 @@ namespace FastFoodDemo
             {
                 e.Cancel = true;
                 errorProvider.SetError(SifraJelatextBox, Messages.Univerzalno);
-            }
-        }
-
-        private void dodajSlikubutton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog f = new OpenFileDialog();
-            f.Filter = "JPG(*.JPG)|*.jpg";
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                File = Image.FromFile(f.FileName);
-                ProizvodpictureBox.Image = File;
             }
         }
 

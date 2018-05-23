@@ -110,6 +110,12 @@
     <Compile Include="SkladisteCRUD.Designer.cs">
       <DependentUpon>SkladisteCRUD.cs</DependentUpon>
     </Compile>
+    <Compile Include="SlikaKontrola.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SlikaKontrola.Designer.cs">
+      <DependentUpon>SlikaKontrola.cs</DependentUpon>
+    </Compile>
     <Compile Include="TipProizvodaCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     <EmbeddedResource Include="SkladisteCRUD.resx">
       <DependentUpon>SkladisteCRUD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SlikaKontrola.resx">
+      <DependentUpon>SlikaKontrola.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TipProizvodaCRUD.resx">
       <DependentUpon>TipProizvodaCRUD.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +258,7 @@
   <ItemGroup>
     <Content Include="Images\backArrow.jpg" />
     <Content Include="Images\tene.jpg" />
+    <Content Include="Images\test.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />
