@@ -15,7 +15,12 @@ namespace eRestoran.Client
     {
 
         public Image File { get; set; }
-        private string imagesFolderPath { get; set; }
+        private string _imagesFolderPath;
+        private string imagesFolderPath
+        {
+            get { return _imagesFolderPath; }
+            set { _imagesFolderPath = Path.GetFullPath("~/../../../Images/") + Guid.NewGuid().ToString().Substring(0, 5) + value; }
+        }
 
         public SlikaKontrola()
         {
@@ -29,7 +34,7 @@ namespace eRestoran.Client
             if (f.ShowDialog() == DialogResult.OK)
             {
                 File = Image.FromFile(f.FileName);
-                imagesFolderPath = f.FileName;
+                imagesFolderPath = f.SafeFileName;
                 ProizvodpictureBox.Image = File;
             }
         }
