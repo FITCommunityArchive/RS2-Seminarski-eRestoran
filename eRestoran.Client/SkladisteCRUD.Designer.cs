@@ -49,6 +49,7 @@
             // SkladistaDataGrid
             // 
             this.SkladistaDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.SkladistaDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.SkladistaDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SkladistaDataGrid.Location = new System.Drawing.Point(74, 244);
             this.SkladistaDataGrid.Name = "SkladistaDataGrid";

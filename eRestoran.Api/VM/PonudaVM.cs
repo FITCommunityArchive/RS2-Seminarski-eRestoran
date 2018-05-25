@@ -17,6 +17,7 @@ namespace eRestoran.VM
             public int Kolicina { get; set; }
             public string KolicinaString { get; set; }
             public int? ProdataKolicina { get; set; }
+            public string imageUrl { get; set; }
         }
         public List<PonudaInfo> Ponuda { get; set; }
         public List<PonudaInfo> Pica { get; set; }

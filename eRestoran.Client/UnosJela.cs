@@ -16,10 +16,10 @@ namespace FastFoodDemo
     {
         private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/Skladiste/GetSkladista");
         private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
-        private WebAPIHelper proizvodiService = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
+        private WebAPIHelper jeloPostService = new WebAPIHelper("http://localhost:49958/", "api/Jelo/PostJelo");
         private WebAPIHelper getProizvod = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvod");
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
-        private Proizvod proizvod;
+        private Jelo jelo;
         int count = 0;
         public PonudaVM.PonudaInfo ViewModel { get; set; }
         Image File;
@@ -29,7 +29,7 @@ namespace FastFoodDemo
         public UnosJela()
         {
             InitializeComponent();
-            proizvod = new Proizvod();
+            jelo = new Jelo();
         }
 
         private void UnosProizvoda_Load(object sender, EventArgs e)
@@ -59,15 +59,13 @@ namespace FastFoodDemo
         private void snimiProizvodbtn_Click(object sender, EventArgs e)
         {
             if (this.ValidateChildren())
-            {
-                proizvod.Cijena = Convert.ToDouble(CijenaJelatextBox.Text);
 
-                proizvod.Sifra = SifraJelatextBox.Text;
-
-                proizvod.Menu = MenuJelacomboBox.SelectedIndex.ToString();
-                proizvod.Naziv = NazivJelatextBox.Text;
-                proizvod.SlikaUrl = slikaKontrola1.SaveImage();
-                HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
+                jelo.Cijena = Convert.ToDouble(CijenaJelatextBox.Text);
+                jelo.Sifra = SifraJelatextBox.Text;
+                jelo.Menu = MenuJelacomboBox.SelectedIndex.ToString();
+                jelo.Naziv = NazivJelatextBox.Text;
+                jelo.SlikaUrl = slikaKontrola1.SaveImage();
+                HttpResponseMessage responseMessage = jeloPostService.PostResponse(jelo);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     MenuJelacomboBox.ResetText();
@@ -80,7 +78,7 @@ namespace FastFoodDemo
                     ((Form1)this.ParentForm).NapraviPanelMenu();
                 }
             }
-        }
+        
 
         private void NazivtextBox_Validating(object sender, CancelEventArgs e)
         {
@@ -109,7 +107,7 @@ namespace FastFoodDemo
                         Kategorija = "KATEGORIJA -" + item.Kategorija,
                         Kolicina = item.Kolicina,
                         KolicinaString = item.KolicinaString + " KOM",
-                        urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+                        imageUrl=item.imageUrl
                     });
                 }
             }
@@ -181,7 +179,9 @@ namespace FastFoodDemo
                 e.Cancel = true;
             }
         }
-
+        public void izbrisiKontroluStavke(Control kontrola) {
+            stavkeLayout.Controls.Remove(kontrola);
+        }
         private void dodajStavkuLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (count == 0)

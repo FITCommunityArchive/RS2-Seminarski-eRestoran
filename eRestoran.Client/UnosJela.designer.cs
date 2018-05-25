@@ -55,7 +55,7 @@ namespace FastFoodDemo
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(44, 102);
+            this.label1.Location = new System.Drawing.Point(104, 94);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 16);
@@ -66,7 +66,7 @@ namespace FastFoodDemo
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(43, 143);
+            this.label2.Location = new System.Drawing.Point(103, 135);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 16);
@@ -77,7 +77,7 @@ namespace FastFoodDemo
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(43, 177);
+            this.label3.Location = new System.Drawing.Point(103, 169);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 16);
@@ -88,7 +88,7 @@ namespace FastFoodDemo
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(43, 218);
+            this.label6.Location = new System.Drawing.Point(103, 210);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 16);
@@ -97,7 +97,7 @@ namespace FastFoodDemo
             // 
             // NazivJelatextBox
             // 
-            this.NazivJelatextBox.Location = new System.Drawing.Point(239, 97);
+            this.NazivJelatextBox.Location = new System.Drawing.Point(244, 94);
             this.NazivJelatextBox.Margin = new System.Windows.Forms.Padding(4);
             this.NazivJelatextBox.Name = "NazivJelatextBox";
             this.NazivJelatextBox.Size = new System.Drawing.Size(260, 22);
@@ -106,7 +106,7 @@ namespace FastFoodDemo
             // 
             // CijenaJelatextBox
             // 
-            this.CijenaJelatextBox.Location = new System.Drawing.Point(239, 144);
+            this.CijenaJelatextBox.Location = new System.Drawing.Point(244, 139);
             this.CijenaJelatextBox.Margin = new System.Windows.Forms.Padding(4);
             this.CijenaJelatextBox.Name = "CijenaJelatextBox";
             this.CijenaJelatextBox.Size = new System.Drawing.Size(260, 22);
@@ -115,7 +115,7 @@ namespace FastFoodDemo
             // 
             // SifraJelatextBox
             // 
-            this.SifraJelatextBox.Location = new System.Drawing.Point(239, 177);
+            this.SifraJelatextBox.Location = new System.Drawing.Point(244, 169);
             this.SifraJelatextBox.Margin = new System.Windows.Forms.Padding(4);
             this.SifraJelatextBox.Name = "SifraJelatextBox";
             this.SifraJelatextBox.Size = new System.Drawing.Size(260, 22);
@@ -126,7 +126,7 @@ namespace FastFoodDemo
             // 
             this.unostextbox.AutoSize = true;
             this.unostextbox.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.unostextbox.Location = new System.Drawing.Point(180, 32);
+            this.unostextbox.Location = new System.Drawing.Point(240, 24);
             this.unostextbox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.unostextbox.Name = "unostextbox";
             this.unostextbox.Size = new System.Drawing.Size(102, 24);
@@ -137,7 +137,7 @@ namespace FastFoodDemo
             // 
             this.MenuJelacomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MenuJelacomboBox.FormattingEnabled = true;
-            this.MenuJelacomboBox.Location = new System.Drawing.Point(239, 218);
+            this.MenuJelacomboBox.Location = new System.Drawing.Point(245, 210);
             this.MenuJelacomboBox.Margin = new System.Windows.Forms.Padding(4);
             this.MenuJelacomboBox.Name = "MenuJelacomboBox";
             this.MenuJelacomboBox.Size = new System.Drawing.Size(260, 24);
@@ -149,7 +149,7 @@ namespace FastFoodDemo
             this.snimiProizvodbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.snimiProizvodbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.snimiProizvodbtn.ForeColor = System.Drawing.Color.White;
-            this.snimiProizvodbtn.Location = new System.Drawing.Point(349, 341);
+            this.snimiProizvodbtn.Location = new System.Drawing.Point(364, 310);
             this.snimiProizvodbtn.Margin = new System.Windows.Forms.Padding(4);
             this.snimiProizvodbtn.Name = "snimiProizvodbtn";
             this.snimiProizvodbtn.Size = new System.Drawing.Size(150, 36);
@@ -169,7 +169,7 @@ namespace FastFoodDemo
             // dodajStavkuLink
             // 
             this.dodajStavkuLink.AutoSize = true;
-            this.dodajStavkuLink.Location = new System.Drawing.Point(400, 277);
+            this.dodajStavkuLink.Location = new System.Drawing.Point(406, 264);
             this.dodajStavkuLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dodajStavkuLink.Name = "dodajStavkuLink";
             this.dodajStavkuLink.Size = new System.Drawing.Size(99, 16);
@@ -182,14 +182,14 @@ namespace FastFoodDemo
             // 
             this.stavkeLayout.AutoSize = true;
             this.stavkeLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.stavkeLayout.Location = new System.Drawing.Point(36, 304);
+            this.stavkeLayout.Location = new System.Drawing.Point(97, 297);
             this.stavkeLayout.Name = "stavkeLayout";
             this.stavkeLayout.Size = new System.Drawing.Size(260, 100);
             this.stavkeLayout.TabIndex = 28;
             // 
             // backButton1
             // 
-            this.backButton1.Location = new System.Drawing.Point(47, 32);
+            this.backButton1.Location = new System.Drawing.Point(107, 24);
             this.backButton1.Margin = new System.Windows.Forms.Padding(4);
             this.backButton1.Name = "backButton1";
             this.backButton1.Size = new System.Drawing.Size(83, 36);
@@ -199,7 +199,7 @@ namespace FastFoodDemo
             // 
             this.slikaKontrola1.File = null;
             this.slikaKontrola1.Location = new System.Drawing.Point(546, 30);
-            this.slikaKontrola1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.slikaKontrola1.Margin = new System.Windows.Forms.Padding(4);
             this.slikaKontrola1.Name = "slikaKontrola1";
             this.slikaKontrola1.Size = new System.Drawing.Size(229, 263);
             this.slikaKontrola1.TabIndex = 29;

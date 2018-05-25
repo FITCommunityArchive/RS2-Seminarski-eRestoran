@@ -22,13 +22,15 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
         {
             MyContext ctx = new MyContext();
             PonudaVM model = new PonudaVM();
-            model.Pica = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Pica").Select(x => new PonudaVM.PonudaInfo
+            //model.Pica = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Pica").Select(x => new PonudaVM.PonudaInfo
+            model.Pica = ctx.Proizvodi.Select(x => new PonudaVM.PonudaInfo
             {
                 Id = x.Id,
                 Kategorija = x.TipProizvoda.Naziv,
                 Cijena = x.Cijena,
                 Kolicina = x.Kolicina,
-                Naziv = x.Naziv
+                Naziv = x.Naziv,
+                imageUrl=x.SlikaUrl
             }).ToList();
             model.Ponuda = ctx.Jelo.Select(x => new PonudaVM.PonudaInfo
             {
@@ -37,6 +39,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 KolicinaString = "N/A",
                 Cijena = x.Cijena,
                 Naziv = x.Naziv,
+                imageUrl=x.SlikaUrl
 
             }).ToList();
 

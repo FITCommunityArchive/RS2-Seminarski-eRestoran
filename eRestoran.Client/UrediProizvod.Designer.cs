@@ -30,11 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.ProizvodpictureBox = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dodajSlikubutton = new System.Windows.Forms.Button();
             this.snimiProizvodbtn = new System.Windows.Forms.Button();
             this.MenucomboBox = new System.Windows.Forms.ComboBox();
             this.TipSkladistacomboBox = new System.Windows.Forms.ComboBox();
@@ -52,28 +49,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backButton1 = new eRestoran.Client.BackButton();
-            ((System.ComponentModel.ISupportInitialize)(this.ProizvodpictureBox)).BeginInit();
+            this.slikaKontrola1 = new eRestoran.Client.SlikaKontrola();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ProizvodpictureBox
-            // 
-            this.ProizvodpictureBox.Location = new System.Drawing.Point(518, 136);
-            this.ProizvodpictureBox.Name = "ProizvodpictureBox";
-            this.ProizvodpictureBox.Size = new System.Drawing.Size(161, 149);
-            this.ProizvodpictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ProizvodpictureBox.TabIndex = 46;
-            this.ProizvodpictureBox.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(579, 98);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 19);
-            this.label9.TabIndex = 45;
-            this.label9.Text = "Slika";
             // 
             // openFileDialog1
             // 
@@ -82,18 +60,6 @@
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // dodajSlikubutton
-            // 
-            this.dodajSlikubutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.dodajSlikubutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.dodajSlikubutton.ForeColor = System.Drawing.Color.White;
-            this.dodajSlikubutton.Location = new System.Drawing.Point(533, 296);
-            this.dodajSlikubutton.Name = "dodajSlikubutton";
-            this.dodajSlikubutton.Size = new System.Drawing.Size(125, 34);
-            this.dodajSlikubutton.TabIndex = 47;
-            this.dodajSlikubutton.Text = "Učitaj sliku";
-            this.dodajSlikubutton.UseVisualStyleBackColor = false;
             // 
             // snimiProizvodbtn
             // 
@@ -257,14 +223,20 @@
             this.backButton1.Size = new System.Drawing.Size(62, 29);
             this.backButton1.TabIndex = 48;
             // 
+            // slikaKontrola1
+            // 
+            this.slikaKontrola1.File = null;
+            this.slikaKontrola1.Location = new System.Drawing.Point(510, 98);
+            this.slikaKontrola1.Name = "slikaKontrola1";
+            this.slikaKontrola1.Size = new System.Drawing.Size(190, 226);
+            this.slikaKontrola1.TabIndex = 49;
+            // 
             // UrediProizvod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.slikaKontrola1);
             this.Controls.Add(this.backButton1);
-            this.Controls.Add(this.ProizvodpictureBox);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.dodajSlikubutton);
             this.Controls.Add(this.snimiProizvodbtn);
             this.Controls.Add(this.MenucomboBox);
             this.Controls.Add(this.TipSkladistacomboBox);
@@ -283,7 +255,6 @@
             this.Controls.Add(this.label1);
             this.Name = "UrediProizvod";
             this.Size = new System.Drawing.Size(754, 452);
-            ((System.ComponentModel.ISupportInitialize)(this.ProizvodpictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -293,11 +264,8 @@
         #endregion
 
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.PictureBox ProizvodpictureBox;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.Button dodajSlikubutton;
         private System.Windows.Forms.Button snimiProizvodbtn;
         private System.Windows.Forms.ComboBox MenucomboBox;
         private System.Windows.Forms.ComboBox TipSkladistacomboBox;
@@ -315,5 +283,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private BackButton backButton1;
+        private SlikaKontrola slikaKontrola1;
     }
 }

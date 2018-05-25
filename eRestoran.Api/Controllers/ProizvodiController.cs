@@ -19,9 +19,18 @@ namespace eRestoran.Api.Controllers
         private MyContext db = new MyContext();
 
         // GET: api/Proizvodi
-        public List<Proizvod> GetProizvodi()
+        public List<PonudaInfo> GetProizvodi()
         {
-            return db.Proizvodi.ToList();
+            return db.Proizvodi.Select(x=> new PonudaInfo {
+                Cijena=x.Cijena,
+                Kolicina=x.Kolicina,
+                KolicinaString=x.Kolicina.ToString(),
+                Kategorija=x.TipProizvoda.Naziv,
+                Naziv=x.Naziv,
+                Id=x.Id,
+                imageUrl=x.SlikaUrl
+
+            }).ToList();
         }
 
         // GET: api/Proizvodi/5
@@ -45,7 +54,9 @@ namespace eRestoran.Api.Controllers
                 Kolicina = x.Kolicina,
                 KolicinaString = x.Kolicina.ToString(),
                 Kategorija = x.TipProizvoda.Naziv,
-                Cijena = x.Cijena
+                Cijena = x.Cijena,
+                imageUrl=x.SlikaUrl
+                
 
             }).FirstOrDefault();
 
@@ -75,6 +86,7 @@ namespace eRestoran.Api.Controllers
               proizvodTrazeni.KriticnaKolicina = proizvod.KriticnaKolicina;
               proizvodTrazeni.Menu = proizvod.Menu;
             proizvodTrazeni.Sifra = proizvod.Sifra;
+            proizvodTrazeni.SlikaUrl = proizvod.SlikaUrl;
           
 
             try

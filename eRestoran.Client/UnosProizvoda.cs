@@ -103,7 +103,7 @@ namespace FastFoodDemo
                 proizvod.KriticnaKolicina = Convert.ToInt32(KriticnatextBox.Text);
                 proizvod.Menu = MenucomboBox.SelectedIndex.ToString();
                 proizvod.Naziv = NazivtextBox.Text;
-
+                proizvod.SlikaUrl = slikaKontrola1.SaveImage();
                 HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -155,7 +155,7 @@ namespace FastFoodDemo
                         Kategorija = "KATEGORIJA -" + item.Kategorija,
                         Kolicina = item.Kolicina,
                         KolicinaString = item.KolicinaString + " KOM",
-                        urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
+                        imageUrl = item.imageUrl
 
 
                     });
@@ -214,10 +214,6 @@ namespace FastFoodDemo
 
             }
         }
-
-
-
-
             private void button8_Click(object sender, EventArgs e)
         {
 
@@ -247,16 +243,16 @@ namespace FastFoodDemo
             }
         }
 
-        private void dodajSlikubutton_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog f = new OpenFileDialog();
-            f.Filter = "JPG(*.JPG)|*.jpg";
-            if (f.ShowDialog() == DialogResult.OK) {
-                File = Image.FromFile(f.FileName);
-                ProizvodpictureBox.Image = File;
+        //private void dodajSlikubutton_Click(object sender, EventArgs e)
+        //{
+        //    OpenFileDialog f = new OpenFileDialog();
+        //    f.Filter = "JPG(*.JPG)|*.jpg";
+        //    if (f.ShowDialog() == DialogResult.OK) {
+        //        File = Image.FromFile(f.FileName);
+        //        ProizvodpictureBox.Image = File;
                                       
-              }
-        }
+        //      }
+        //}
 
         private void TipProizvodacomboBox_Validating(object sender, CancelEventArgs e)
         {

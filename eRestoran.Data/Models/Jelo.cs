@@ -22,6 +22,7 @@ namespace eRestoran.Data.Models
         [Required]
         public string Sifra { get; set; }
         public string Menu { get; set; }
+        public string SlikaUrl { get; set; }
 
         public virtual ICollection<NarudzbaStavke> NarudzbaStavke { get; set; }
         public virtual ICollection<HistorijaCijenaJela> HistorijaCijenaJela { get; set; }

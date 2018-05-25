@@ -24,6 +24,7 @@ namespace FastFoodDemo
         public string activeControl { get; set; }
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         public WebAPIHelper deleteProizvod = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/DeleteProizvod");
+        public WebAPIHelper deleteJelo = new WebAPIHelper("http://localhost:49958/", "api/Jelo/DeleteJelo");
 
 
         public Form1()
@@ -41,15 +42,42 @@ namespace FastFoodDemo
             //activeControl = firstCustomControl1.Name;
         }
         public bool DeleteProizvod(string id) {
+          
             HttpResponseMessage responseMessage = deleteProizvod.DeleteResponse(id);
             if (responseMessage.IsSuccessStatusCode)
             {
+               
                 NapraviPanelMenu();
+
                 return true;
             }
             return false;
 
             }
+        private Image GetCopyImage(string path)
+        {
+            using (Image im = Image.FromFile(path))
+            {
+                Bitmap bm = new Bitmap(im);
+                return bm;
+            }
+        }
+
+
+        public bool DeleteJelo(string id)
+        {
+            
+            HttpResponseMessage responseMessage = deleteJelo.DeleteResponse(id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                
+                NapraviPanelMenu();
+               
+                return true;
+            }
+            return false;
+
+        }
 
         public void AddToControlHistory(Control control)
         {
@@ -129,7 +157,7 @@ namespace FastFoodDemo
             HttpClient client = new HttpClient();
             List<PonudaVM.PonudaInfo> pica;
             client.BaseAddress = new Uri("http://localhost:49958/");
-            HttpResponseMessage response = client.GetAsync("api/Proizvodi/GetProizvodi").Result;
+            HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPonuda").Result;
             if (response.IsSuccessStatusCode)
             {
                 pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
@@ -143,7 +171,7 @@ namespace FastFoodDemo
                         Kategorija = "KATEGORIJA -" + item.Kategorija,
                         Kolicina = item.Kolicina,
                         KolicinaString = item.KolicinaString + " KOM",
-                        urIPicture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(120, 100))
+                        imageUrl = item.imageUrl
                     });
                 }
             }
@@ -201,6 +229,12 @@ namespace FastFoodDemo
         {
             cardsPanel1.Controls.Clear();
             cardsPanel1.Controls.Add(kontrola);
+
+        }
+        public void izbrisiKontrolu(Control kontrola)
+        {
+            cardsPanel1.Controls.Remove(kontrola);
+
 
         }
         //korpa viewmodel

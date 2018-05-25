@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using eRestoran.Client.Shared.Helpers;
 using System.Net.Http;
 using eRestoran.Data.Models;
+using FastFoodDemo;
 
 namespace eRestoran.Client
 {
@@ -39,6 +40,11 @@ namespace eRestoran.Client
                 ProizvodJelo.DisplayMember = "Naziv";
                 ProizvodJelo.ValueMember = "Id";
             }
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+           
         }
     }
 }

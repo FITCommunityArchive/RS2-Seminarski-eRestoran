@@ -50,6 +50,7 @@ namespace eRestoran.Client
                     CijenatextBox.Text = p.Cijena.ToString();
                     KriticnatextBox.Text = p.KriticnaKolicina.ToString();
                     KolicinatextBox.Text = p.Kolicina.ToString();
+                    slikaKontrola1.setImage(p.SlikaUrl);
                 }
                
             }
@@ -108,6 +109,7 @@ namespace eRestoran.Client
                 p.Sifra = p.Sifra;
                 p.Menu = MenucomboBox.SelectedIndex.ToString();
                 p.Naziv = NazivtextBox.Text;
+                p.SlikaUrl = slikaKontrola1.SaveImage();
 
                 HttpResponseMessage responseMessage = putProizvod.PutResponse(p.Id,p);
                 if (responseMessage.IsSuccessStatusCode)

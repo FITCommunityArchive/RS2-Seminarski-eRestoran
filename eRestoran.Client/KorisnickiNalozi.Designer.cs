@@ -39,6 +39,7 @@
             // kNalozidataGridView
             // 
             this.kNalozidataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.kNalozidataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.kNalozidataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.kNalozidataGridView.Location = new System.Drawing.Point(35, 97);
             this.kNalozidataGridView.Name = "kNalozidataGridView";

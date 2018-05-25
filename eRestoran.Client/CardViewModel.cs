@@ -22,7 +22,8 @@ namespace FirstUserControlUsage
             public string Kategorija { get; set; }
             public string Naziv { get; set; }
             public double Cijena { get; set; }
-            public Bitmap urIPicture { get; set; }
+            //public Bitmap urIPicture { get; set; }
+            public string imageUrl { get; set; }
             public int Kolicina { get; set; }
             public string KolicinaString { get; set; }
             public int? ProdataKolicina { get; set; }
