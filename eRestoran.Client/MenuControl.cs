@@ -51,10 +51,10 @@ namespace FirstUserControlUsage
         {
             if (ViewModel.Kategorija.Contains("Jela"))
             {
-                JeloUredi p = new JeloUredi(ViewModel);
-                var x = (this.ParentForm).Controls.Find("cardsPanel1", true).FirstOrDefault();
-               x.Controls.Clear();
-                x.Controls.Add(p);
+                var p = new UnosJela(ViewModel);
+
+                ((Form1)this.ParentForm).DodajKontrolu(p);
+
             }
             else
             {
@@ -79,15 +79,16 @@ namespace FirstUserControlUsage
                         MessageBox.Show("Nismo uspjeli izbrisati proizvod");
                     }
                     //file delete
-                        
+
                 }
-                else {
+                else
+                {
                     if (!((Form1)this.ParentForm).DeleteJelo(ViewModel.Id.ToString()))
                     {
 
                         MessageBox.Show("Nismo uspjeli izbrisati jelo");
                     }
-                   //fileDelete
+                    //fileDelete
                 }
             }
             else
@@ -96,14 +97,14 @@ namespace FirstUserControlUsage
                 return;
             }
         }
-       
+
 
 
         //((Form1)this.ParentForm).activeControl=p.Name;
         //((Form1)this.ParentForm).SwitchActiveControls(p);
     }
 
-    
+
 }
-    
+
 

@@ -8,9 +8,9 @@ namespace eRestoran.Api.VM
     public class ProizvodStavka
     {
         public int ProizvodId { get; set; }
-        public String Naziv { get; set; }
-        public String  Cijena { get; set; }
-        public String TipProizvoda { get; set; }
-
+        public string Naziv { get; set; }
+        public string  Cijena { get; set; }
+        public string TipProizvoda { get; set; }
+        public string Kolicina { get; set; }
     }
 }

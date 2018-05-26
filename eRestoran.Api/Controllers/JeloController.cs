@@ -80,8 +80,31 @@ namespace eRestoran.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Jelo.Add(jelo);
-            db.SaveChanges();
+            var jeloStavke = jelo.JelaStavke.ToList();
+            jeloStavke.ForEach(x => x.JeloId = jelo.Id);
+            if (jelo.Id == 0)
+            {
+                jelo.JelaStavke.Clear();
+
+                db.Jelo.Add(jelo);
+                db.SaveChanges();
+               
+                db.JelaStavke.AddRange(jeloStavke);
+                db.SaveChanges();
+            }
+            else
+            {
+                jelo.JelaStavke = jeloStavke;
+                db.Entry(jelo).State = EntityState.Modified;
+                foreach (var stavka in jelo.JelaStavke)
+                {
+                    db.Entry(stavka).State = EntityState.Modified;
+                }
+                //db.Entry(jelo.JelaStavke).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+           
 
             return CreatedAtRoute("DefaultApi", new { id = jelo.Id }, jelo);
         }

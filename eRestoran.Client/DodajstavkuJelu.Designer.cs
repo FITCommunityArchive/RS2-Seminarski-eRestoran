@@ -40,7 +40,7 @@
             // 
             this.ProizvodJelo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProizvodJelo.FormattingEnabled = true;
-            this.ProizvodJelo.Location = new System.Drawing.Point(149, -1);
+            this.ProizvodJelo.Location = new System.Drawing.Point(109, -1);
             this.ProizvodJelo.Name = "ProizvodJelo";
             this.ProizvodJelo.Size = new System.Drawing.Size(198, 21);
             this.ProizvodJelo.TabIndex = 0;
@@ -67,22 +67,22 @@
             // 
             // KolicinaJelotextBox
             // 
-            this.KolicinaJelotextBox.Location = new System.Drawing.Point(151, 38);
+            this.KolicinaJelotextBox.Location = new System.Drawing.Point(109, 37);
             this.KolicinaJelotextBox.Name = "KolicinaJelotextBox";
-            this.KolicinaJelotextBox.Size = new System.Drawing.Size(196, 20);
+            this.KolicinaJelotextBox.Size = new System.Drawing.Size(198, 20);
             this.KolicinaJelotextBox.TabIndex = 3;
             // 
             // button8
             // 
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button8.ForeColor = System.Drawing.Color.White;
             this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(360, 13);
+            this.button8.Location = new System.Drawing.Point(313, 0);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(36, 34);
+            this.button8.Size = new System.Drawing.Size(40, 42);
             this.button8.TabIndex = 6;
             this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button8.UseVisualStyleBackColor = true;
@@ -98,8 +98,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProizvodJelo);
             this.Name = "DodajstavkuJelu";
-            this.Size = new System.Drawing.Size(399, 69);
-            this.Load += new System.EventHandler(this.DodajstavkuJelu_Load);
+            this.Size = new System.Drawing.Size(355, 69);
             this.ResumeLayout(false);
             this.PerformLayout();
 

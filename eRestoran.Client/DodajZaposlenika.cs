@@ -89,7 +89,7 @@ namespace eRestoran.Client
                     {
                         MessageBox.Show("Korisnik uspjesno uređen!");
                         var korisnickinalozi = new KorisnickiNalozi();
-                        ((Form1)this.ParentForm).dodajKontrolu(korisnickinalozi);
+                        ((Form1)this.ParentForm).DodajKontrolu(korisnickinalozi);
                     }
                     else
                     {
@@ -119,7 +119,7 @@ namespace eRestoran.Client
                     {
                         MessageBox.Show("Korisnik uspjesno dodan!");
                         var korisnickinalozi = new KorisnickiNalozi();
-                        ((Form1)this.ParentForm).dodajKontrolu(korisnickinalozi);
+                        ((Form1)this.ParentForm).DodajKontrolu(korisnickinalozi);
                     }
                     else
                     {

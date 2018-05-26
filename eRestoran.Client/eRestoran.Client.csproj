@@ -83,12 +83,6 @@
     <Compile Include="DodajZaposlenika.Designer.cs">
       <DependentUpon>DodajZaposlenika.cs</DependentUpon>
     </Compile>
-    <Compile Include="JeloUredi.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="JeloUredi.Designer.cs">
-      <DependentUpon>JeloUredi.cs</DependentUpon>
-    </Compile>
     <Compile Include="KorisnickiNalozi.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -184,9 +178,6 @@
     <EmbeddedResource Include="DodajZaposlenika.resx">
       <DependentUpon>DodajZaposlenika.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JeloUredi.resx">
-      <DependentUpon>JeloUredi.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="KorisnickiNalozi.resx">
       <DependentUpon>KorisnickiNalozi.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,6 +263,7 @@
     <Content Include="Images\test.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Display\" />
     <Folder Include="Helpers\" />
     <Folder Include="Shared\Controls\" />
     <Folder Include="Shared\Dto\" />

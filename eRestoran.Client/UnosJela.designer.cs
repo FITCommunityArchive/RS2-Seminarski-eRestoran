@@ -46,8 +46,8 @@ namespace FastFoodDemo
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dodajStavkuLink = new System.Windows.Forms.LinkLabel();
             this.stavkeLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.backButton1 = new eRestoran.Client.BackButton();
             this.slikaKontrola1 = new eRestoran.Client.SlikaKontrola();
+            this.backButton1 = new eRestoran.Client.BackButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +149,7 @@ namespace FastFoodDemo
             this.snimiProizvodbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.snimiProizvodbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.snimiProizvodbtn.ForeColor = System.Drawing.Color.White;
-            this.snimiProizvodbtn.Location = new System.Drawing.Point(364, 310);
+            this.snimiProizvodbtn.Location = new System.Drawing.Point(385, 297);
             this.snimiProizvodbtn.Margin = new System.Windows.Forms.Padding(4);
             this.snimiProizvodbtn.Name = "snimiProizvodbtn";
             this.snimiProizvodbtn.Size = new System.Drawing.Size(150, 36);
@@ -184,16 +184,9 @@ namespace FastFoodDemo
             this.stavkeLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.stavkeLayout.Location = new System.Drawing.Point(97, 297);
             this.stavkeLayout.Name = "stavkeLayout";
-            this.stavkeLayout.Size = new System.Drawing.Size(260, 100);
+            this.stavkeLayout.Size = new System.Drawing.Size(260, 10);
             this.stavkeLayout.TabIndex = 28;
-            // 
-            // backButton1
-            // 
-            this.backButton1.Location = new System.Drawing.Point(107, 24);
-            this.backButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.backButton1.Name = "backButton1";
-            this.backButton1.Size = new System.Drawing.Size(83, 36);
-            this.backButton1.TabIndex = 26;
+            this.stavkeLayout.Resize += new System.EventHandler(this.LayoutResized);
             // 
             // slikaKontrola1
             // 
@@ -204,6 +197,14 @@ namespace FastFoodDemo
             this.slikaKontrola1.Size = new System.Drawing.Size(229, 263);
             this.slikaKontrola1.TabIndex = 29;
             // 
+            // backButton1
+            // 
+            this.backButton1.Location = new System.Drawing.Point(107, 24);
+            this.backButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.backButton1.Name = "backButton1";
+            this.backButton1.Size = new System.Drawing.Size(83, 36);
+            this.backButton1.TabIndex = 26;
+            // 
             // UnosJela
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -211,11 +212,11 @@ namespace FastFoodDemo
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Controls.Add(this.snimiProizvodbtn);
             this.Controls.Add(this.slikaKontrola1);
             this.Controls.Add(this.stavkeLayout);
             this.Controls.Add(this.dodajStavkuLink);
             this.Controls.Add(this.backButton1);
-            this.Controls.Add(this.snimiProizvodbtn);
             this.Controls.Add(this.MenuJelacomboBox);
             this.Controls.Add(this.unostextbox);
             this.Controls.Add(this.SifraJelatextBox);
@@ -229,7 +230,6 @@ namespace FastFoodDemo
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UnosJela";
             this.Size = new System.Drawing.Size(794, 447);
-            this.Load += new System.EventHandler(this.UnosProizvoda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

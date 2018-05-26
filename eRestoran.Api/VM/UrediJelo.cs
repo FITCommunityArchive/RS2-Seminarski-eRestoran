@@ -9,10 +9,11 @@ namespace eRestoran.Api.VM
     public class UrediJelo
     {
         public int JeloId { get; set; }
-        public String Naziv { get; set; }
+        public string Naziv { get; set; }
         public double Cijena { get; set; }
-        public String  Menu { get; set; }
+        public string  Menu { get; set; }
         public List<ProizvodStavka> ListaStavki { get; set; }
-
+        public string Sifra { get; set; }
+        public string SlikaUrl { get; set; }
     }
 }

@@ -20,42 +20,42 @@ namespace eRestoran.Client
 
         private void dodajJelobutton_Click(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new UnosProizvoda());
+            ((Form1)this.ParentForm).DodajKontrolu(new UnosProizvoda());
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new TipProizvodaCRUD());
+            ((Form1)this.ParentForm).DodajKontrolu(new TipProizvodaCRUD());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new UnosJela());
+            ((Form1)this.ParentForm).DodajKontrolu(new UnosJela());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new TipSkladistaCRUD());
+            ((Form1)this.ParentForm).DodajKontrolu(new TipSkladistaCRUD());
         }
 
         private void DodajKorisnikaLayout(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new DodajZaposlenika());
+            ((Form1)this.ParentForm).DodajKontrolu(new DodajZaposlenika());
         }
 
         private void LoadKorisniciList(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new KorisnickiNalozi());
+            ((Form1)this.ParentForm).DodajKontrolu(new KorisnickiNalozi());
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new DodajKlijenta());
+            ((Form1)this.ParentForm).DodajKontrolu(new DodajKlijenta());
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ((Form1)this.ParentForm).dodajKontrolu(new SkladisteCRUD());
+            ((Form1)this.ParentForm).DodajKontrolu(new SkladisteCRUD());
         }
     }
 }

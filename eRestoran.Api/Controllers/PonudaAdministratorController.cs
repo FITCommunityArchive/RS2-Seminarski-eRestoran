@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
+using System.Web.Http.Description;
 using static eRestoran.VM.PrikazKriticnihZaliha;
 
 namespace eRestoran.Areas.ModulAdministracija.Controllers
@@ -17,7 +17,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
     {
         MyContext ctx = new MyContext();
         // GET: PonudaAdministrator
-        
+
         public List<PonudaVM.PonudaInfo> GetPonuda()
         {
             MyContext ctx = new MyContext();
@@ -30,7 +30,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Cijena = x.Cijena,
                 Kolicina = x.Kolicina,
                 Naziv = x.Naziv,
-                imageUrl=x.SlikaUrl
+                imageUrl = x.SlikaUrl
             }).ToList();
             model.Ponuda = ctx.Jelo.Select(x => new PonudaVM.PonudaInfo
             {
@@ -39,7 +39,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 KolicinaString = "N/A",
                 Cijena = x.Cijena,
                 Naziv = x.Naziv,
-                imageUrl=x.SlikaUrl
+                imageUrl = x.SlikaUrl
 
             }).ToList();
 
@@ -48,22 +48,25 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
         }
         public List<PonudaVM.PonudaInfo> GetJela()
         {
-           
+
             PonudaVM model = new PonudaVM();
             model.Jela = ctx.Jelo.Select(x => new PonudaVM.PonudaInfo
             {
                 Id = x.Id,
                 Kategorija = "Jela",
-                KolicinaString="N/A",
+                KolicinaString = "N/A",
                 Cijena = x.Cijena,
                 Naziv = x.Naziv,
 
             }).ToList();
             return model.Jela;
         }
-        public UrediJelo GetJelo(int id)
-        {
 
+        [Route("api/ponuda/getjelo/{id}")]
+        [HttpGet]
+        [ResponseType(typeof(UrediJelo))]
+        public IHttpActionResult GetJelo(int id)
+        {
             UrediJelo model = new UrediJelo();
             model = ctx.JelaStavke.Where(x => x.JeloId == id).Select(x => new UrediJelo
             {
@@ -71,21 +74,24 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Menu = x.Jelo.Menu,
                 Cijena = x.Jelo.Cijena,
                 Naziv = x.Jelo.Naziv,
-                ListaStavki = ctx.JelaStavke.Where(y => y.JeloId == id).Select(y => new ProizvodStavka {
-                   Naziv=y.Proizvod.Naziv,
-                   Cijena=y.Proizvod.Cijena.ToString(),
-                  ProizvodId=y.ProizvodId,
-                  TipProizvoda=y.Proizvod.TipProizvoda.Naziv
-
+                Sifra = x.Jelo.Sifra,
+                SlikaUrl = x.Jelo.SlikaUrl,
+                ListaStavki = ctx.JelaStavke.Where(y => y.JeloId == id).Select(y => new ProizvodStavka
+                {
+                    Naziv = y.Proizvod.Naziv,
+                    Cijena = y.Proizvod.Cijena.ToString(),
+                    ProizvodId = y.ProizvodId,
+                    TipProizvoda = y.Proizvod.TipProizvoda.Naziv,
+                    Kolicina = y.Kolicina.ToString()
                 }).ToList()
 
 
             }).FirstOrDefault();
-            return model;
+            return Ok(model);
         }
         public List<PonudaVM.PonudaInfo> GetPica()
         {
-          
+
             PonudaVM model = new PonudaVM();
             model.Pica = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Pica").Select(x => new PonudaVM.PonudaInfo
             {
@@ -94,7 +100,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Cijena = x.Cijena,
                 Kolicina = x.Kolicina,
                 Naziv = x.Naziv,
-                KolicinaString=x.Kolicina.ToString()
+                KolicinaString = x.Kolicina.ToString()
             }).ToList();
             return model.Pica;
         }

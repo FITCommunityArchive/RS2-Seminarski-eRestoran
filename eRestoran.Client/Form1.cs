@@ -37,6 +37,7 @@ namespace FastFoodDemo
             //SidePanel.Height = button1.Height;
             //SidePanel.Top = button1.Top;
             button1_Click(null, null);
+            
             //dodajProizvod.Visible = false;
             //vScrollBar1.Visible = false;
             //activeControl = firstCustomControl1.Name;
@@ -225,7 +226,7 @@ namespace FastFoodDemo
 
             //cardsPanel1.Controls.Add(new UnosJela());
         }
-        public void dodajKontrolu(Control kontrola)
+        public void DodajKontrolu(Control kontrola)
         {
             cardsPanel1.Controls.Clear();
             cardsPanel1.Controls.Add(kontrola);
@@ -234,8 +235,6 @@ namespace FastFoodDemo
         public void izbrisiKontrolu(Control kontrola)
         {
             cardsPanel1.Controls.Remove(kontrola);
-
-
         }
         //korpa viewmodel
     }

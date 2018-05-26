@@ -4,48 +4,76 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Net.Http;
+using System.Linq;
 using eRestoran.Data.Models;
 using eRestoran.Client;
 using FirstUserControlUsage;
 using System.IO;
 using eRestoran.Client.Shared.Helpers;
+using eRestoran.Client.Properties;
+using eRestoran.Api.VM;
 
 namespace FastFoodDemo
 {
     public partial class UnosJela : UserControl
     {
-        private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/Skladiste/GetSkladista");
-        private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
-        private WebAPIHelper jeloPostService = new WebAPIHelper("http://localhost:49958/", "api/Jelo/PostJelo");
-        private WebAPIHelper getProizvod = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvod");
-        private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
-        private Jelo jelo;
-        int count = 0;
-        public PonudaVM.PonudaInfo ViewModel { get; set; }
-        Image File;
-        Proizvod p;
+        private WebAPIHelper vrsteSkladista = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Skladiste/GetSkladista");
+        private WebAPIHelper vrsteProizvoda = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/GetTipoviProizvoda");
+        private WebAPIHelper jeloPostService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Jelo/PostJelo");
+        private WebAPIHelper getProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/GetProizvod");
+        private WebAPIHelper getJelo = new WebAPIHelper(Resources.apiUrlDevelopment, "api/ponuda/getjelo");
 
+        List<MenuLista> listaMenu;
+        private int jeloId = 0;
+        public PonudaVM.PonudaInfo ViewModel { get; set; }
         public Control activeControl { get; set; }
+
         public UnosJela()
         {
             InitializeComponent();
-            jelo = new Jelo();
+            BindVrstaMenu();
         }
 
-        private void UnosProizvoda_Load(object sender, EventArgs e)
+        public UnosJela(PonudaVM.PonudaInfo viewModel) : this()
         {
-            BindVrstaMenu();
+            HttpResponseMessage responseMessage = getJelo.GetResponse(viewModel.Id.ToString());
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jelo = responseMessage.Content.ReadAsAsync<UrediJelo>().Result;
+                if (jelo != null)
+                {
+                    jeloId = jelo.JeloId;
+                    NazivJelatextBox.Text = jelo.Naziv;
+                    var get = listaMenu[Int32.Parse(jelo.Menu)].NazivMenua;
+                    MenuJelacomboBox.SelectedValue = get;
+                    CijenaJelatextBox.Text = jelo.Cijena.ToString();
+                    SifraJelatextBox.Text = jelo.Sifra;
+                    slikaKontrola1.setImage(jelo.SlikaUrl);
+                    BindStavkeJela(jelo.ListaStavki);
+                }
+            }
+        }
+
+        private void BindStavkeJela(List<ProizvodStavka> stavkeJela)
+        {
+            var kontroleStavki = new DodajstavkuJelu[stavkeJela.Count];
+            for (int i = 0; i < stavkeJela.Count; i++)
+            {
+                kontroleStavki[i] = new DodajstavkuJelu(stavkeJela[i]);
+            }
+            stavkeLayout.Controls.AddRange(kontroleStavki);
         }
 
         private void BindVrstaMenu()
         {
-            List<MenuLista> lista = new List<MenuLista>();
-            lista.Insert(0, new MenuLista() { NazivMenua = "Molim vas odaberite !" });
-            lista.Insert(1, new MenuLista() { NazivMenua = "Dorucak" });
-            lista.Insert(2, new MenuLista() { NazivMenua = "Rucak" });
-            lista.Insert(3, new MenuLista() { NazivMenua = "Vecera" });
-
-            MenuJelacomboBox.DataSource = lista;
+            listaMenu = new List<MenuLista>();
+            listaMenu.Insert(0, new MenuLista() { NazivMenua = "Molim vas odaberite !" });
+            listaMenu.Insert(1, new MenuLista() { NazivMenua = "Dorucak" });
+            listaMenu.Insert(2, new MenuLista() { NazivMenua = "Rucak" });
+            listaMenu.Insert(3, new MenuLista() { NazivMenua = "Vecera" });
+           
+            MenuJelacomboBox.DataSource = listaMenu;
             MenuJelacomboBox.DisplayMember = "NazivMenua";
             MenuJelacomboBox.ValueMember = "NazivMenua";
         }
@@ -53,32 +81,38 @@ namespace FastFoodDemo
         public class MenuLista
         {
             public string NazivMenua { get; set; }
-
         }
 
         private void snimiProizvodbtn_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+            if (!this.ValidateChildren())
+                return;
 
-                jelo.Cijena = Convert.ToDouble(CijenaJelatextBox.Text);
-                jelo.Sifra = SifraJelatextBox.Text;
-                jelo.Menu = MenuJelacomboBox.SelectedIndex.ToString();
-                jelo.Naziv = NazivJelatextBox.Text;
-                jelo.SlikaUrl = slikaKontrola1.SaveImage();
-                HttpResponseMessage responseMessage = jeloPostService.PostResponse(jelo);
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    MenuJelacomboBox.ResetText();
-                    MenuJelacomboBox.DisplayMember = "Molim vas odaberite !";
-
-                    SifraJelatextBox.ResetText();
-                    NazivJelatextBox.ResetText();
-                    CijenaJelatextBox.ResetText();
-                    MessageBox.Show("Uspjesno dodat proizvod");
-                    ((Form1)this.ParentForm).NapraviPanelMenu();
-                }
+            var jelo = new Jelo();
+            jelo.Id = jeloId;
+            jelo.Cijena = Convert.ToDouble(CijenaJelatextBox.Text);
+            jelo.Sifra = SifraJelatextBox.Text;
+            jelo.Menu = MenuJelacomboBox.SelectedIndex.ToString();
+            jelo.Naziv = NazivJelatextBox.Text;
+            jelo.SlikaUrl = slikaKontrola1.SaveImage();
+            var stavkeJela = stavkeLayout.Controls.Cast<DodajstavkuJelu>();
+            foreach (var stavka in stavkeJela)
+            {
+                jelo.JelaStavke.Add(stavka.GetStavka());
             }
-        
+
+            HttpResponseMessage responseMessage = jeloPostService.PostResponse(jelo);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                MenuJelacomboBox.ResetText();
+                MenuJelacomboBox.DisplayMember = "Molim vas odaberite !";
+                SifraJelatextBox.ResetText();
+                NazivJelatextBox.ResetText();
+                CijenaJelatextBox.ResetText();
+                MessageBox.Show("Uspjesno dodat proizvod");
+                ((Form1)this.ParentForm).NapraviPanelMenu();
+            }
+        }
 
         private void NazivtextBox_Validating(object sender, CancelEventArgs e)
         {
@@ -88,6 +122,7 @@ namespace FastFoodDemo
                 errorProvider.SetError(NazivJelatextBox, Messages.Naziv_req);
             }
         }
+
         private PonudaVM LoadSomeData()
         {
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
@@ -107,7 +142,7 @@ namespace FastFoodDemo
                         Kategorija = "KATEGORIJA -" + item.Kategorija,
                         Kolicina = item.Kolicina,
                         KolicinaString = item.KolicinaString + " KOM",
-                        imageUrl=item.imageUrl
+                        imageUrl = item.imageUrl
                     });
                 }
             }
@@ -123,7 +158,6 @@ namespace FastFoodDemo
             };
             return VM;
         }
-
 
         private void CijenatextBox_Validating(object sender, CancelEventArgs e)
         {
@@ -154,7 +188,6 @@ namespace FastFoodDemo
                     CijenaJelatextBox.Focus();
                     errorProvider.SetError(CijenaJelatextBox, Messages.Cijena_decimale);
                 }
-
             }
         }
         private void button8_Click(object sender, EventArgs e)
@@ -179,24 +212,22 @@ namespace FastFoodDemo
                 e.Cancel = true;
             }
         }
-        public void izbrisiKontroluStavke(Control kontrola) {
+        //
+        public void izbrisiKontroluStavke(Control kontrola)
+        {
             stavkeLayout.Controls.Remove(kontrola);
         }
+
+
         private void dodajStavkuLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (count == 0)
-            {
-                var controla = new DodajstavkuJelu();
-                stavkeLayout.Controls.Add(controla);
-                var newLocation = snimiProizvodbtn.Location;
-                newLocation.Y += controla.Height;
-                snimiProizvodbtn.Location = newLocation;
-            }
-            else
-            {
-                var controla = new DodajstavkuJelu();
-                stavkeLayout.Controls.Add(controla);
-            }
+            var controla = new DodajstavkuJelu();
+            stavkeLayout.Controls.Add(controla);
+        }
+
+        private void LayoutResized(object sender, EventArgs e)
+        {
+            snimiProizvodbtn.Top = stavkeLayout.Bottom + 15;
         }
     }
 }

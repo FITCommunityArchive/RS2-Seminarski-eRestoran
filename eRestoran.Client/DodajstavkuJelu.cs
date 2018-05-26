@@ -11,6 +11,7 @@ using eRestoran.Client.Shared.Helpers;
 using System.Net.Http;
 using eRestoran.Data.Models;
 using FastFoodDemo;
+using eRestoran.Api.VM;
 
 namespace eRestoran.Client
 {
@@ -21,13 +22,14 @@ namespace eRestoran.Client
         public DodajstavkuJelu()
         {
             InitializeComponent();
-        }
-
-        private void DodajstavkuJelu_Load(object sender, EventArgs e)
-        {
             BindProizvodi();
         }
 
+        public DodajstavkuJelu(ProizvodStavka stavka) : this()
+        {
+            KolicinaJelotextBox.Text = stavka.Kolicina.ToString();
+            ProizvodJelo.SelectedValue = stavka.ProizvodId;
+        }
         private void BindProizvodi()
         {
             HttpResponseMessage responseMessage = getProizvodi.GetResponse();
@@ -42,9 +44,19 @@ namespace eRestoran.Client
             }
         }
 
+        public JelaStavke GetStavka()
+        {
+            return new JelaStavke()
+            {
+                Kolicina = int.Parse(KolicinaJelotextBox.Text),
+                ProizvodId = (int)ProizvodJelo.SelectedValue
+            };
+        }
+
         private void button8_Click_1(object sender, EventArgs e)
         {
-           
+            this.Parent.Controls.Remove(this);
+
         }
     }
 }

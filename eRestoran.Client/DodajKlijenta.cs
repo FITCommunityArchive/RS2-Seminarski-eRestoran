@@ -84,7 +84,7 @@ namespace eRestoran.Client
                         MessageBox.Show("Klijent uspjesno uređen!");
                         ClearForm();
                         var korisnickinalozi = new KorisnickiNalozi();
-                        ((Form1)Form.ActiveForm).dodajKontrolu(korisnickinalozi);
+                        ((Form1)Form.ActiveForm).DodajKontrolu(korisnickinalozi);
 
                     }
                     else
@@ -111,7 +111,7 @@ namespace eRestoran.Client
                         MessageBox.Show("Klijent uspjesno dodan!");
                         ClearForm();
                         var korisnickinalozi = new KorisnickiNalozi();
-                        ((Form1)Form.ActiveForm).dodajKontrolu(korisnickinalozi);
+                        ((Form1)Form.ActiveForm).DodajKontrolu(korisnickinalozi);
 
                     }
                     else

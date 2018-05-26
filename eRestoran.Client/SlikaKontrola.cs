@@ -38,12 +38,20 @@ namespace eRestoran.Client
                 ProizvodpictureBox.Image = File;
             }
         }
-        public void setImage(string lokacijaSlike) {
-            ProizvodpictureBox.ImageLocation = lokacijaSlike;
+        public void setImage(string lokacijaSlike)
+        {
+            if (!String.IsNullOrWhiteSpace(lokacijaSlike))
+            {
+                ProizvodpictureBox.ImageLocation = lokacijaSlike;
+
+            }
         }
 
         public string SaveImage()
         {
+            if (String.IsNullOrEmpty(imagesFolderPath))
+                return ProizvodpictureBox.ImageLocation;
+
             var imageUrl = imagesFolderPath;
             ProizvodpictureBox.Image.Save(imageUrl);
             return imageUrl;

@@ -38,14 +38,14 @@ namespace eRestoran.Client
                         if (vrstaKorisnika.CompareTo("DA") == 0)
                         {
                             var urediZaposlenika = new DodajZaposlenika(odabraniRed.Cells[4].Value.ToString());
-                            ((Form1)this.ParentForm).dodajKontrolu(new DodajZaposlenika(odabraniRed.Cells[4].Value.ToString()));
+                            ((Form1)this.ParentForm).DodajKontrolu(new DodajZaposlenika(odabraniRed.Cells[4].Value.ToString()));
 
 
                         }
                         else
                         {
                             var urediKlijenta = new DodajKlijenta(odabraniRed.Cells[4].Value.ToString());
-                            ((Form1)Form.ActiveForm).dodajKontrolu(urediKlijenta);
+                            ((Form1)Form.ActiveForm).DodajKontrolu(urediKlijenta);
                         }
                     }
                 }
