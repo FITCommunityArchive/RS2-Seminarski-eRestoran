@@ -81,14 +81,14 @@ namespace eRestoran.Api.Controllers
             }
 
             var jeloStavke = jelo.JelaStavke.ToList();
-            jeloStavke.ForEach(x => x.JeloId = jelo.Id);
+           
             if (jelo.Id == 0)
             {
                 jelo.JelaStavke.Clear();
 
                 db.Jelo.Add(jelo);
                 db.SaveChanges();
-               
+                jeloStavke.ForEach(x => x.JeloId = jelo.Id);
                 db.JelaStavke.AddRange(jeloStavke);
                 db.SaveChanges();
             }
