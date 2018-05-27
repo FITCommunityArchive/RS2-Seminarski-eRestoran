@@ -7,13 +7,13 @@ namespace eRestoran.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SlikaUrl : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SlikaUrl));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805251420470_SlikaUrl"; }
+            get { return "201805272136350_initial"; }
         }
         
         string IMigrationMetadata.Source

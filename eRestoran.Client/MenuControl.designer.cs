@@ -80,6 +80,7 @@ namespace FirstUserControlUsage
             this.Kolicina.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Kolicina.Enabled = false;
             this.Kolicina.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Kolicina.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.Kolicina.Location = new System.Drawing.Point(0, 42);
             this.Kolicina.Margin = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.Kolicina.Multiline = true;

@@ -48,13 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\MyContext.cs" />
-    <Compile Include="Migrations\201805051220185_inicial.cs" />
-    <Compile Include="Migrations\201805051220185_inicial.Designer.cs">
-      <DependentUpon>201805051220185_inicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805251420470_SlikaUrl.cs" />
-    <Compile Include="Migrations\201805251420470_SlikaUrl.Designer.cs">
-      <DependentUpon>201805251420470_SlikaUrl.cs</DependentUpon>
+    <Compile Include="Migrations\201805272136350_initial.cs" />
+    <Compile Include="Migrations\201805272136350_initial.Designer.cs">
+      <DependentUpon>201805272136350_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HistorijaCijenaJela.cs" />
@@ -82,11 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805051220185_inicial.resx">
-      <DependentUpon>201805051220185_inicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805251420470_SlikaUrl.resx">
-      <DependentUpon>201805251420470_SlikaUrl.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805272136350_initial.resx">
+      <DependentUpon>201805272136350_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

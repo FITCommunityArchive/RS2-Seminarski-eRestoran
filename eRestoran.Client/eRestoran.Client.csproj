@@ -89,6 +89,12 @@
     <Compile Include="KorisnickiNalozi.Designer.cs">
       <DependentUpon>KorisnickiNalozi.cs</DependentUpon>
     </Compile>
+    <Compile Include="PonudaItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PonudaItem.designer.cs">
+      <DependentUpon>PonudaItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KorisnickiNalozi.resx">
       <DependentUpon>KorisnickiNalozi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PonudaItem.resx">
+      <DependentUpon>PonudaItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuControl.resx">
       <DependentUpon>MenuControl.cs</DependentUpon>

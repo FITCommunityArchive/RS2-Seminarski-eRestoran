@@ -3,7 +3,7 @@ namespace eRestoran.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class inicial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -29,6 +29,7 @@ namespace eRestoran.Data.Migrations
                         Cijena = c.Double(nullable: false),
                         Sifra = c.String(nullable: false),
                         Menu = c.String(),
+                        SlikaUrl = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -59,6 +60,7 @@ namespace eRestoran.Data.Migrations
                         KriticnaKolicina = c.Int(nullable: false),
                         TipProizvodaId = c.Int(nullable: false),
                         SkladisteId = c.Int(nullable: false),
+                        SlikaUrl = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Skladistes", t => t.SkladisteId, cascadeDelete: true)

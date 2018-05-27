@@ -118,7 +118,15 @@ namespace eRestoran.Api.Controllers
             }
 
             db.Proizvodi.Add(proizvod);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+
+            }
+            catch(Exception e)
+            {
+                var x = e.Message;
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = proizvod.Id }, proizvod);
         }

@@ -24,10 +24,9 @@ namespace FirstUserControlUsage
         {
             InitializeComponent();
         }
-        public CardControl(PonudaVM.PonudaInfo viewModel)
+        public CardControl(PonudaVM.PonudaInfo viewModel) : this()
         {
             ViewModel = viewModel;
-            InitializeComponent();
         }
 
         public void DataBind()

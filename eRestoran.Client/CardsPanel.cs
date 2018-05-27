@@ -45,7 +45,23 @@ namespace FirstUserControlUsage
             ResumeLayout();
         }
 
-        void SetCardControlLayout(CardControl ctl, int atIndex)
+        public void BindPonuda()
+        {
+            SuspendLayout();
+            Controls.Clear();
+
+            for (int i = 0; i < ViewModel.Ponuda.Count; i++)
+            {
+                var newCtl = new PonudaItem(ViewModel.Ponuda[i]);
+                SetCardControlLayout(newCtl, i);
+                Controls.Add(newCtl);
+                newCtl.DataBind();
+               
+            }
+            ResumeLayout();
+        }
+
+        void SetCardControlLayout(UserControl ctl, int atIndex)
         {
             ctl.Width = CardWidth;
             ctl.Height = CardHeight;
@@ -56,7 +72,8 @@ namespace FirstUserControlUsage
             //calc the x index and y index.
             int xPos = (atIndex % columnCount) * CardWidth;
             int yPos = (atIndex / columnCount) * CardHeight;
-
+            if (atIndex % 2 == 1)
+                xPos += 15;
             ctl.Location = new Point(xPos, yPos);
         }
 
