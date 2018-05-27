@@ -12,12 +12,13 @@ using System.Net.Http;
 using eRestoran.Data.Models;
 using FastFoodDemo;
 using eRestoran.Api.VM;
+using eRestoran.Client.Properties;
 
 namespace eRestoran.Client
 {
     public partial class DodajstavkuJelu : UserControl
     {
-        private WebAPIHelper getProizvodi = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvodi");
+        private WebAPIHelper getProizvodi = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/GetProizvodi");
 
         public DodajstavkuJelu()
         {

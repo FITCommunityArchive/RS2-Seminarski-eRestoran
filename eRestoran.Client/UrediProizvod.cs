@@ -41,7 +41,7 @@ namespace eRestoran.Client
                 p = responseMessage.Content.ReadAsAsync<Proizvod>().Result;
                 if (p != null)
                 {
-
+                   
                     NazivtextBox.Text = p.Naziv;
                     TipProizvodacomboBox.SelectedValue = p.TipProizvodaId;
                     TipSkladistacomboBox.SelectedValue = p.SkladisteId;
@@ -114,6 +114,16 @@ namespace eRestoran.Client
                 HttpResponseMessage responseMessage = putProizvod.PutResponse(p.Id,p);
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                    //
+                    ((Form1)this.ParentForm).AddToCartPice(new CartRow
+                    {
+                        Naziv = p.Naziv,
+                        Cijena = p.Cijena,
+                        Kolicina =p.Kolicina,
+                        Id =p.Id
+
+                    });
+                    //
                     TipProizvodacomboBox.ResetText();
                     TipProizvodacomboBox.SelectedValue = 0;
 

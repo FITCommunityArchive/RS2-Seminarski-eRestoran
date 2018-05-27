@@ -107,6 +107,7 @@ namespace FastFoodDemo
                 HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                   
                     TipProizvodacomboBox.ResetText();
                     TipProizvodacomboBox.SelectedValue = 0;
 

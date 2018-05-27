@@ -9,6 +9,10 @@ using System.Net.Http;
 using System.Collections;
 using eRestoran.Client.Shared.Helpers;
 using eRestoran.Client;
+using eRestoran.Client.Properties;
+using eRestoran.Api.VM;
+using eRestoran.Data.Models;
+using System.Linq;
 
 namespace FastFoodDemo
 {
@@ -21,16 +25,21 @@ namespace FastFoodDemo
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
         private LinkedList<Control> controlsHistory { get; set; }
+        private CartIndexVM cart;
         public string activeControl { get; set; }
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
-        public WebAPIHelper deleteProizvod = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/DeleteProizvod");
-        public WebAPIHelper deleteJelo = new WebAPIHelper("http://localhost:49958/", "api/Jelo/DeleteJelo");
+        public WebAPIHelper deleteProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/DeleteProizvod");
+        public WebAPIHelper deleteJelo = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Jelo/DeleteJelo");
 
 
         public Form1()
         {
             controlsHistory = new LinkedList<Control>();
             InitializeComponent();
+            cart = new CartIndexVM();
+            cart.Jela = new List<CartRow>();
+            cart.Pica = new List<CartRow>();
+            cart.TotalPrice = 0;
             this.AutoValidate = AutoValidate.Disable;
             //cardsPanel1.SendToBack();
             //firstCustomControl2.SendToBack();
@@ -41,6 +50,87 @@ namespace FastFoodDemo
             //dodajProizvod.Visible = false;
             //vScrollBar1.Visible = false;
             //activeControl = firstCustomControl1.Name;
+        }
+        public bool AddToCartPice(CartRow cartRow) {
+            CartExists();
+            if (cart.Pica.Where(x => x.Id == cartRow.Id).SingleOrDefault() != null)
+            {
+                cart.Pica.Where(x => x.Id == cartRow.Id).SingleOrDefault().Kolicina += cartRow.Kolicina;
+                cart.Pica.Where(x => x.Id == cartRow.Id).SingleOrDefault().TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
+                cart.TotalPrice += cartRow.Cijena * cartRow.Kolicina;
+                return true;
+            }
+            CartRow pice = new CartRow();
+            pice.Id = cartRow.Id;
+            pice.Kolicina = cartRow.Kolicina;
+            pice.Naziv = cartRow.Naziv;
+            pice.TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
+            cart.Pica.Add(pice);
+            cart.TotalPrice += pice.TotalRowPrice;
+            label4.Text = cart.TotalPrice.ToString() + " KM";
+            return true;
+            //fali dio sa stanjem,da li ima stavke na stanju , treba uraditi poziv prema API
+        }
+        public bool AddToCartJelo(CartRow cartRow) {
+
+            if (cart.Jela.Where(x => x.Id == cartRow.Id).SingleOrDefault() != null)
+            {
+                cart.Jela.Where(x => x.Id == cartRow.Id).SingleOrDefault().Kolicina += cartRow.Kolicina;
+                cart.Jela.Where(x => x.Id == cartRow.Id).SingleOrDefault().TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
+                cart.TotalPrice += cartRow.Cijena * cartRow.Kolicina;
+                return true;
+            }
+            CartRow jelo = new CartRow();
+            jelo.Id = cartRow.Id;
+            jelo.Kolicina = cartRow.Kolicina;
+            jelo.Naziv = cartRow.Naziv;
+            jelo.TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
+            cart.Jela.Add(jelo);
+            cart.TotalPrice += jelo.TotalRowPrice;
+            return true;
+        }
+        public bool RemoveFromCartPice(CartRow cartRow) {
+            if (CartExists() == false)
+            {
+                return false;
+               
+            }
+
+            cart.TotalPrice = cart.TotalPrice - cartRow.Cijena* cartRow.Kolicina;
+            cart.Pica.Remove(cartRow);
+            label4.Text = cart.TotalPrice.ToString() + " KM";
+            //fali dio sa stanjem,da li ima stavke na stanju , treba uraditi poziv prema API
+
+            return true;
+        }
+        public bool RemoveFromCartJelo(CartRow cartRow)
+        {
+            if (CartExists() == false)
+            {
+                return false;
+
+            }
+
+            cart.TotalPrice = cart.TotalPrice - cartRow.Cijena * cartRow.Kolicina;
+            cart.Jela.Remove(cartRow);
+            return true;
+        }
+
+        public bool CartExists()
+        {
+            if (cart != null)
+            {
+                return true;
+            }
+            else
+            {
+                cart = new CartIndexVM();
+                cart.Jela = new List<CartRow>();
+                cart.Pica = new List<CartRow>();
+                cart.TotalPrice = 0;
+                return false;
+            }
+
         }
         public bool DeleteProizvod(string id) {
           

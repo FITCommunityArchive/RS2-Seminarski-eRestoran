@@ -53,8 +53,9 @@ namespace FastFoodDemo
             this.panel3 = new System.Windows.Forms.Panel();
             this.dodajProizvod = new System.Windows.Forms.Button();
             this.cardsPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.firstCustomControl3 = new eRestoran.Client.UrediProizvod();
             this.button7 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -350,15 +351,6 @@ namespace FastFoodDemo
             this.cardsPanel1.Size = new System.Drawing.Size(815, 525);
             this.cardsPanel1.TabIndex = 8;
             // 
-            // firstCustomControl3
-            // 
-            this.firstCustomControl3.BackColor = System.Drawing.SystemColors.Control;
-            this.firstCustomControl3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.firstCustomControl3.Location = new System.Drawing.Point(218, 113);
-            this.firstCustomControl3.Name = "firstCustomControl3";
-            this.firstCustomControl3.Size = new System.Drawing.Size(788, 447);
-            this.firstCustomControl3.TabIndex = 5;
-            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
@@ -373,11 +365,31 @@ namespace FastFoodDemo
             this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(445, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Iznos u korpi";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(530, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "0.00 KM";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 687);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.cardsPanel1);
             this.Controls.Add(this.dodajProizvod);
@@ -399,6 +411,7 @@ namespace FastFoodDemo
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
          
@@ -428,6 +441,8 @@ namespace FastFoodDemo
         private PonudaVM viewModel;
         public System.Windows.Forms.FlowLayoutPanel cardsPanel1; // nije riješenje problema
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
