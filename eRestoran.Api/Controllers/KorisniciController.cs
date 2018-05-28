@@ -35,6 +35,18 @@ namespace eRestoran.Api.Controllers
 
             return Ok(korisnik);
         }
+        [ResponseType(typeof(Korisnik))]
+        [Route("api/korisnici/korisnik/{username}")]
+        public IHttpActionResult GetKorisnikUsername(string username)
+        {
+            Korisnik korisnik = db.Korisnici.Where(x => x.Username == username).FirstOrDefault();
+            if (korisnik == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(korisnik);
+        }
 
         // PUT: api/Korisnici/5
         [ResponseType(typeof(void))]

@@ -30,7 +30,7 @@ namespace FastFoodDemo
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         public WebAPIHelper deleteProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/DeleteProizvod");
         public WebAPIHelper deleteJelo = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Jelo/DeleteJelo");
-
+        private Korisnik trentnoLogovnani; // za konstruktora
 
         public Form1()
         {
@@ -41,6 +41,7 @@ namespace FastFoodDemo
             cart.Pica = new List<CartRow>();
             cart.TotalPrice = 0.00;
             this.AutoValidate = AutoValidate.Disable;
+           
             //cardsPanel1.SendToBack();
             //firstCustomControl2.SendToBack();
             btnHome_Click(btnHome, null);
