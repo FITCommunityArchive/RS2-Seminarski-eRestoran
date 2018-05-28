@@ -30,7 +30,6 @@ namespace eRestoran.Client
         {
             KolicinaJelotextBox.Text = stavka.Kolicina.ToString();
             ProizvodJelo.SelectedValue = stavka.ProizvodId;
-            ProizvodJelo.Enabled = false;
         }
         private void BindProizvodi()
         {

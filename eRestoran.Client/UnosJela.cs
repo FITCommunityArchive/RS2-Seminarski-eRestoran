@@ -96,9 +96,6 @@ namespace FastFoodDemo
             jelo.Naziv = NazivJelatextBox.Text;
             jelo.SlikaUrl = slikaKontrola1.SaveImage();
             var stavkeJela = stavkeLayout.Controls.Cast<DodajstavkuJelu>();
-            
-            // 4 stare 
-            //2
             foreach (var stavka in stavkeJela)
             {
                 jelo.JelaStavke.Add(stavka.GetStavka());

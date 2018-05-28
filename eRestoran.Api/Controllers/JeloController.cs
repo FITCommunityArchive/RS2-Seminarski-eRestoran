@@ -81,10 +81,11 @@ namespace eRestoran.Api.Controllers
             }
 
             var jeloStavke = jelo.JelaStavke.ToList();
-            jelo.JelaStavke.Clear();
-
+           
             if (jelo.Id == 0)
             {
+                jelo.JelaStavke.Clear();
+
                 db.Jelo.Add(jelo);
                 db.SaveChanges();
                 jeloStavke.ForEach(x => x.JeloId = jelo.Id);
@@ -93,27 +94,17 @@ namespace eRestoran.Api.Controllers
             }
             else
             {
-                jeloStavke.ForEach(x => x.JeloId = jelo.Id);
-                var orginalna_lista = db.JelaStavke.Where(x => x.JeloId == jelo.Id).ToList();
-
-                foreach (var stavka in orginalna_lista)
-                {
-                    db.Entry(stavka).State = EntityState.Deleted;
-                }
-
-                db.SaveChanges();
-               
-                db.Entry(jelo).State = EntityState.Modified;
                 jelo.JelaStavke = jeloStavke;
+                db.Entry(jelo).State = EntityState.Modified;
                 foreach (var stavka in jelo.JelaStavke)
                 {
-                    db.Entry(stavka).State = EntityState.Added;
+                    db.Entry(stavka).State = EntityState.Modified;
                 }
-
+                //db.Entry(jelo.JelaStavke).State = EntityState.Modified;
                 db.SaveChanges();
             }
 
-
+           
 
             return CreatedAtRoute("DefaultApi", new { id = jelo.Id }, jelo);
         }
