@@ -2,7 +2,7 @@
 
 namespace FirstUserControlUsage
 {
-    partial class PonudaItem
+    partial class CartItem
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace FirstUserControlUsage
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PonudaItem));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CartItem));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDodajKolicinu = new System.Windows.Forms.Button();
             this.btnSmanjiKolicinu = new System.Windows.Forms.Button();

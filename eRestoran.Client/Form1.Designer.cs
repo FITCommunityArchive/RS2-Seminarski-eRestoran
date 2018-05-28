@@ -39,13 +39,12 @@ namespace FastFoodDemo
             this.button4 = new System.Windows.Forms.Button();
             this.btnPonuda = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnMenu = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,8 +53,8 @@ namespace FastFoodDemo
             this.dodajProizvod = new System.Windows.Forms.Button();
             this.cardsPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button7 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cartButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +68,7 @@ namespace FastFoodDemo
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.btnPonuda);
             this.panel1.Controls.Add(this.button14);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnMenu);
             this.panel1.Controls.Add(this.btnHome);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -165,22 +164,22 @@ namespace FastFoodDemo
             this.button14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button14.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnMenu
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 113);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 54);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "       Menu";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnMenu.FlatAppearance.BorderSize = 0;
+            this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.ForeColor = System.Drawing.Color.White;
+            this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
+            this.btnMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenu.Location = new System.Drawing.Point(12, 113);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(197, 54);
+            this.btnMenu.TabIndex = 4;
+            this.btnMenu.Text = "       Menu";
+            this.btnMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnHome
             // 
@@ -223,21 +222,6 @@ namespace FastFoodDemo
             this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // button11
-            // 
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(939, 19);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(32, 35);
-            this.button11.TabIndex = 4;
-            this.button11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button11.UseVisualStyleBackColor = true;
-            // 
             // button12
             // 
             this.button12.FlatAppearance.BorderSize = 0;
@@ -253,21 +237,21 @@ namespace FastFoodDemo
             this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // btnExit
             // 
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button13.Location = new System.Drawing.Point(1026, 19);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(32, 35);
-            this.button13.TabIndex = 4;
-            this.button13.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(1026, 19);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(32, 35);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.button13_Click);
             // 
             // button9
             // 
@@ -366,23 +350,31 @@ namespace FastFoodDemo
             this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(445, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Iznos u korpi";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(530, 34);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(509, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.Size = new System.Drawing.Size(43, 18);
             this.label4.TabIndex = 11;
-            this.label4.Text = "0.00 KM";
+            this.label4.Text = "0 KM";
+            // 
+            // cartButton
+            // 
+            this.cartButton.FlatAppearance.BorderSize = 0;
+            this.cartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cartButton.ForeColor = System.Drawing.Color.White;
+            this.cartButton.Image = ((System.Drawing.Image)(resources.GetObject("cartButton.Image")));
+            this.cartButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cartButton.Location = new System.Drawing.Point(414, 41);
+            this.cartButton.Name = "cartButton";
+            this.cartButton.Size = new System.Drawing.Size(78, 55);
+            this.cartButton.TabIndex = 4;
+            this.cartButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cartButton.UseVisualStyleBackColor = true;
+            this.cartButton.Click += new System.EventHandler(this.cartButton_Click);
             // 
             // Form1
             // 
@@ -390,13 +382,12 @@ namespace FastFoodDemo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 687);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.cardsPanel1);
             this.Controls.Add(this.dodajProizvod);
-            this.Controls.Add(this.button13);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.cartButton);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -419,7 +410,7 @@ namespace FastFoodDemo
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel SidePanel;
@@ -429,9 +420,8 @@ namespace FastFoodDemo
         private System.Windows.Forms.Button btnPonuda;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label2;
@@ -442,8 +432,8 @@ namespace FastFoodDemo
         private PonudaVM viewModel;
         public System.Windows.Forms.FlowLayoutPanel cardsPanel1; // nije riješenje problema
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button cartButton;
     }
 }
 

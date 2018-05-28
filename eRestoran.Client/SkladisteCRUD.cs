@@ -39,7 +39,7 @@ namespace eRestoran.Client
             if (responseMessage.IsSuccessStatusCode)
             {
                 List<TipSkladistaVM> lista = responseMessage.Content.ReadAsAsync<List<TipSkladistaVM>>().Result;
-                lista.Insert(0, new TipSkladistaVM() { Naziv = "Odaberite vrstu proizvoda", Id = 0 });
+                lista.Insert(0, new TipSkladistaVM() { Naziv = "Odaberite vrstu skladišta", Id = 0 });
                 tipSkladistaComboBox.DataSource = lista;
                 tipSkladistaComboBox.DisplayMember = "Naziv";
                 tipSkladistaComboBox.ValueMember = "Id";
@@ -106,7 +106,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = putSkladistaService.PutResponse(skladiste.Id, skladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno izmjenjen tip proizvoda");
+                        MessageBox.Show("Uspjesno izmjenjeno skladište");
                         BindSkladista();
                     }
                 }
@@ -115,7 +115,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = postSkladistaService.PostResponse(skladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno dodat tip proizvoda");
+                        MessageBox.Show("Uspjesno dodato skladište");
                         BindSkladista();
 
                     }

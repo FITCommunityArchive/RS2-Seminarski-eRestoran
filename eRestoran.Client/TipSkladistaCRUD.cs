@@ -45,7 +45,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = putSkladistaService.PutResponse(tipskladiste.Id, tipskladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno izmjenjen tip proizvoda");
+                        MessageBox.Show("Uspjesno izmjenjen tip skladišta");
                         BindVrstaSkladista();
                     }
                 }
@@ -54,7 +54,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = postSkladistaService.PostResponse(tipskladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno dodat tip proizvoda");
+                        MessageBox.Show("Uspjesno dodat tip skladišta");
                         BindVrstaSkladista();
 
                     }

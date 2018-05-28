@@ -114,16 +114,7 @@ namespace eRestoran.Client
                 HttpResponseMessage responseMessage = putProizvod.PutResponse(p.Id,p);
                 if (responseMessage.IsSuccessStatusCode)
                 {
-                    //
-                    ((Form1)this.ParentForm).AddToCartPice(new CartRow
-                    {
-                        Naziv = p.Naziv,
-                        Cijena = p.Cijena,
-                        Kolicina =p.Kolicina,
-                        Id =p.Id
-
-                    });
-                    //
+                    
                     TipProizvodacomboBox.ResetText();
                     TipProizvodacomboBox.SelectedValue = 0;
 
@@ -137,7 +128,10 @@ namespace eRestoran.Client
                     CijenatextBox.ResetText();
                     KolicinatextBox.ResetText();
                     KriticnatextBox.ResetText();
-                    ((Form1)ParentForm).NapraviPanelMenu();
+                    MessageBox.Show("Uspjesno uređen proizvod");
+                    var panel = ((Form1)ParentForm).NapraviPanelMenu(); 
+                    panel.DataBind();
+                   
 
                     //treba ocistiti history, jer je ostao history od proslog menua, (ako si uredio stavku naravno)
 

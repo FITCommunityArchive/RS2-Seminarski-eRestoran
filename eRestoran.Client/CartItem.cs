@@ -14,20 +14,24 @@ using eRestoran.Api.VM;
 
 namespace FirstUserControlUsage
 {
-    public partial class PonudaItem : UserControl
+    public partial class CartItem : UserControl
     {
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
-        public PonudaVM.PonudaInfo ViewModel { get; set; }
+        public CartRow ViewModel { get; set; }
         private int kolicina;
 
-        public PonudaItem()
+        public CartItem()
         {
             InitializeComponent();
+          
         }
 
-        public PonudaItem(PonudaVM.PonudaInfo viewModel) : this()
+        public CartItem(CartRow viewModel) : this()
         {
             ViewModel = viewModel;
+        }
+        public void ClearCartFrom0() {
+            ((Form1)this.ParentForm).RefreshCart();
         }
 
         public void DataBind()
@@ -35,12 +39,14 @@ namespace FirstUserControlUsage
             SuspendLayout();
             txtNaziv.Text = ViewModel.Naziv;
             txtCijena.Text = ViewModel.Cijena.ToString() + "KM ";
-            kolicina = ((Form1)this.ParentForm).CartRowExists(ViewModel.Id);
+            //kolicina = ((Form1)this.ParentForm).CartRowExists(ViewModel.Id);
+            kolicina = ViewModel.Kolicina;
+            txtCijena.Text = ViewModel.Cijena+ "KM ";
             lblKolicina.Text = kolicina.ToString();
 
-            if (ViewModel.imageUrl != null)
+            if (ViewModel.Imageurl != null)
             {
-                pictureBox1.Image = new Bitmap(Image.FromFile(ViewModel.imageUrl), new Size(120, 100));
+                pictureBox1.Image = new Bitmap(Image.FromFile(ViewModel.Imageurl), new Size(120, 100));
             }
             else
             {
@@ -53,7 +59,7 @@ namespace FirstUserControlUsage
         {
             if (!ViewModel.Kategorija.Contains("Jela"))
             {
-                if (ViewModel.Kolicina < kolicina + 1)
+                if (ViewModel.StanjeKolicina < kolicina + 1)
                 {
                     MessageBox.Show("Nema na stanju", "Info");
                     return;
@@ -62,9 +68,8 @@ namespace FirstUserControlUsage
             kolicina += 1;
             lblKolicina.Text = kolicina.ToString();
             DodajUKorpu();
-
-
         }
+       
         public bool DodajUKorpu()
         {
             if (ViewModel.Id != null)
@@ -76,46 +81,18 @@ namespace FirstUserControlUsage
                     Kolicina = kolicina,
                     Id = ViewModel.Id ?? 0,
                     Kategorija = ViewModel.Kategorija,
-                    StanjeKolicina=ViewModel.Kolicina,
-                    Imageurl = ViewModel.imageUrl
+                    Imageurl = ViewModel.Imageurl
                 };
                 if (ViewModel.Kategorija == "Jela")
                 {
-                    
+
                     ((Form1)this.ParentForm).AddToCartJelo(stavkaKorpe);
                     return true;
 
                 }
                 else
                 {
-                   ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
-                    return true;
-                }
-            }
-            return false;
-        }
-        public bool OduzmiIzKorpe()
-        {
-            if (ViewModel.Id != null)
-            {
-                var stavkaKorpe = new CartRow
-                {
-                    Naziv = ViewModel.Naziv,
-                    Cijena = ViewModel.Cijena,
-                    Kolicina = kolicina,
-                    Id = ViewModel.Id ?? 0,
-                    Kategorija = ViewModel.Kategorija,
-                    Imageurl = ViewModel.imageUrl
-                };
-                if (ViewModel.Kategorija == "Jelo")
-                {
-                    ((Form1)this.ParentForm).RemoveFromCartJelo(stavkaKorpe);
-                    return true;
-
-                }
-                else
-                {
-                    ((Form1)this.ParentForm).RemoveFromCartPice(stavkaKorpe);
+                    ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
                     return true;
                 }
             }
@@ -125,33 +102,20 @@ namespace FirstUserControlUsage
         {
             if (kolicina > 0)
             {
-               
                 kolicina -= 1;
-               
             }
             lblKolicina.Text = kolicina.ToString();
             DodajUKorpu();
-
         }
-
 
         private void btnDodajStavku_Click(object sender, EventArgs e)
         {
-
+           
         }
 
-        //private void lblKolicina_TextChanged(object sender, EventArgs e)
-
-        //{
-        //    if (kolicina != 0)
-        //    {
-        //        DodajUKorpu();
-        //    }
-
-        //    return;
-        //}
+       
     }
-
+   
 
 
 }

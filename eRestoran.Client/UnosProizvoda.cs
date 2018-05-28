@@ -123,7 +123,8 @@ namespace FastFoodDemo
                     KolicinatextBox.ResetText();
                     KriticnatextBox.ResetText();
                     MessageBox.Show("Uspjesno dodat proizvod");
-                    ((Form1)this.ParentForm).NapraviPanelMenu();
+                    var panel = ((Form1)ParentForm).NapraviPanelMenu();
+                    panel.DataBind();
 
                 }
             }
