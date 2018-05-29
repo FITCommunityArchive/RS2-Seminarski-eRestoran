@@ -428,6 +428,13 @@ namespace FastFoodDemo
             SetSideMenuPosition((Control)sender);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cardsPanel1.Controls.Clear();
+            cardsPanel1.Controls.Add(new RezervacijeControl());
+            SetSideMenuPosition((Control)sender);
+        }
+
 
         //korpa viewmodel
     }

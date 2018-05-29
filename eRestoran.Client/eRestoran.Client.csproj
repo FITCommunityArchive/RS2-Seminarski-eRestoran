@@ -116,6 +116,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="RezervacijeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RezervacijeControl.Designer.cs">
+      <DependentUpon>RezervacijeControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladisteCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -209,6 +215,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RezervacijeControl.resx">
+      <DependentUpon>RezervacijeControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SkladisteCRUD.resx">
       <DependentUpon>SkladisteCRUD.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,8 +292,10 @@
     <Content Include="Images\icons8-close-window-30.png" />
     <Content Include="Images\icons8-close-window-50.png" />
     <Content Include="Images\if_shop-01_186387.png" />
+    <Content Include="Images\ncemo_jebate.jpg" />
     <Content Include="Images\tene.jpg" />
     <Content Include="Images\test.jpg" />
+    <Content Include="Images\TWalsh__close1-512.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Display\" />

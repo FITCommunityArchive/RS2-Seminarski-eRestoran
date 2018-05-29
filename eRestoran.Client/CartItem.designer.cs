@@ -42,6 +42,7 @@ namespace FirstUserControlUsage
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.Location = new System.Drawing.Point(0, 60);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
@@ -76,20 +77,19 @@ namespace FirstUserControlUsage
             // lblKolicina
             // 
             this.lblKolicina.AutoSize = true;
-            this.lblKolicina.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblKolicina.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblKolicina.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblKolicina.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblKolicina.Location = new System.Drawing.Point(80, 208);
             this.lblKolicina.Name = "lblKolicina";
-            this.lblKolicina.Size = new System.Drawing.Size(22, 25);
+            this.lblKolicina.Size = new System.Drawing.Size(24, 25);
             this.lblKolicina.TabIndex = 10;
             this.lblKolicina.Text = "1";
-           
             // 
             // txtNaziv
             // 
-            this.txtNaziv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(67)))), ((int)(((byte)(69)))));
+            this.txtNaziv.BackColor = System.Drawing.SystemColors.Control;
             this.txtNaziv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtNaziv.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNaziv.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtNaziv.Location = new System.Drawing.Point(0, 0);
             this.txtNaziv.MaximumSize = new System.Drawing.Size(180, 64);
             this.txtNaziv.Name = "txtNaziv";
@@ -101,7 +101,7 @@ namespace FirstUserControlUsage
             // txtCijena
             // 
             this.txtCijena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtCijena.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtCijena.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtCijena.Location = new System.Drawing.Point(0, 240);
             this.txtCijena.MaximumSize = new System.Drawing.Size(180, 64);
             this.txtCijena.Name = "txtCijena";
@@ -110,11 +110,12 @@ namespace FirstUserControlUsage
             this.txtCijena.Text = "label1";
             this.txtCijena.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // PonudaItem
+            // CartItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(67)))), ((int)(((byte)(69)))));
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.txtNaziv);
             this.Controls.Add(this.lblKolicina);
@@ -123,8 +124,8 @@ namespace FirstUserControlUsage
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "PonudaItem";
-            this.Size = new System.Drawing.Size(181, 282);
+            this.Name = "CartItem";
+            this.Size = new System.Drawing.Size(179, 280);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

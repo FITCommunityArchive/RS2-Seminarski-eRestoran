@@ -141,6 +141,7 @@
     <Compile Include="Controllers\PonudaAdministratorController.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\SkladisteController.cs" />
+    <Compile Include="Controllers\StoloviController.cs" />
     <Compile Include="Controllers\TipProizvodasController.cs" />
     <Compile Include="Controllers\TipSkladistasController.cs" />
     <Compile Include="Global.asax.cs">

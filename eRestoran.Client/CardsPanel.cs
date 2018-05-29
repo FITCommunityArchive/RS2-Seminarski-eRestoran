@@ -98,8 +98,8 @@ namespace FirstUserControlUsage
             //calc the x index and y index.
             int xPos = (atIndex % columnCount) * CardWidth;
             int yPos = (atIndex / columnCount) * CardHeight;
-            if (atIndex % 2 == 1)
-                xPos += 15;
+            //if (atIndex % 2 == 1)
+            //    xPos += 15;
             ctl.Location = new Point(xPos, yPos);
         }
 
