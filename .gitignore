@@ -243,3 +243,4 @@ ModelManifest.xml
 
 eRestoran.Client/Images
 eRestoran.Api/Web.config
+eRestoran.Data/app.config
