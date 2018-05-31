@@ -167,6 +167,7 @@
     <Compile Include="VM\ReportsNarudzbeKorisnika.cs" />
     <Compile Include="VM\ReportsSveNarudzbeKorisnika .cs" />
     <Compile Include="VM\ReportsSviKorisniciNarudzbe.cs" />
+    <Compile Include="VM\StoloviRezervacijaVM.cs" />
     <Compile Include="VM\TipProizvodaVM.cs" />
     <Compile Include="VM\SkladisteVM.cs" />
     <Compile Include="VM\TipSkladistaVM.cs" />

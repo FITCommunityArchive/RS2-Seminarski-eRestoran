@@ -22,26 +22,67 @@ namespace eRestoran.Api.Controllers
             return Ok(model);
         }
 
-        public void ProvjeriRezervacije()
+        [HttpGet]
+        [Route("api/get/osvjezistolove")]
+        public IHttpActionResult ProvjeriRezervacije()
         {
-
-            //bool dt = (DateTime.Now - DateTime.Now.Subtract(new TimeSpan(0, 15, 0))).Hours == 0 && ((DateTime.Now - DateTime.Now.Subtract(new TimeSpan(0, 15, 0))).Minutes <= 15) && (DateTime.Now - DateTime.Now.Subtract(new TimeSpan(0, 15, 0))).Minutes >= -15;
-
-            List<int> rezervisaniStolovi =
+            var rezervisaniStolovi =
                 ctx.Rezervacija.Where(x => (x.datumVrijemeOd.Day == DateTime.Now.Day && x.datumVrijemeOd.Month == DateTime.Now.Month && x.datumVrijemeOd.Year == DateTime.Now.Year)
                 && (((DateTime.Now.Hour - x.datumVrijemeOd.Hour) == 0) &&
-                ((DateTime.Now.Minute - x.datumVrijemeOd.Minute) <= 15 && (DateTime.Now.Minute - x.datumVrijemeOd.Minute) >= -30)))
-                .Select(x => x.StoId).ToList();
-            if (rezervisaniStolovi.Count != 0)
+                ((DateTime.Now.Minute - x.datumVrijemeOd.Minute) <= 15 && (DateTime.Now.Minute - x.datumVrijemeOd.Minute) >= -30))).ToList()
+               .Select(x => new StoloviRezervacijaVM()
+               {
+                   StoId = x.StoId,
+                   IsSlobodan = false,
+                   RedniBrojStola = x.Sto.RedniBroj,
+                   RezervacijaId = x.Id,
+                   DatumOd = x.datumVrijemeOd
+               })
+               .ToList();
+
+            foreach (var x in rezervisaniStolovi)
             {
-                foreach (int x in rezervisaniStolovi)
-                {
-                    Sto sto = ctx.Stolovi.Where(y => y.Id == x).SingleOrDefault();
-                    sto.IsSlobodan = false;
-                    ctx.SaveChanges();
-                }
+                Sto sto = ctx.Stolovi.Where(y => y.Id == x.StoId).SingleOrDefault();
+                sto.IsSlobodan = false;
+                Rezervacija rezervacija = ctx.Rezervacija.Where(y => y.Id == x.RezervacijaId).FirstOrDefault();
+                ctx.Rezervacija.Remove(rezervacija);
+                ctx.SaveChanges();
             }
-            return;
+            var slobodniStolovi = ctx.Rezervacija.ToList().Where(x => !rezervisaniStolovi.Any(y => y.StoId == x.Id)).ToList();
+            foreach (var x in slobodniStolovi)
+            {
+                Sto sto = ctx.Stolovi.Where(y => y.Id == x.StoId).SingleOrDefault();
+                sto.IsSlobodan = true;
+                ctx.Rezervacija.Remove(x);
+                ctx.SaveChanges();
+            }
+
+
+            return Ok();
+        }
+
+
+        [ResponseType(typeof(List<Sto>))]
+        [HttpPost]
+        [Route("api/post/rezervacijestolova")]
+        public IHttpActionResult RezervacijeStolova([FromBody] DateTime datum)
+        {
+            var rezervisaniStolovi =
+               ctx.Rezervacija
+               .Where(x => (x.datumVrijemeOd.Day == datum.Day && x.datumVrijemeOd.Month == datum.Month && x.datumVrijemeOd.Year == datum.Year)
+               && (((datum.Hour - x.datumVrijemeOd.Hour) == 0) &&
+               ((datum.Minute - x.datumVrijemeOd.Minute) <= 15 && (datum.Minute - x.datumVrijemeOd.Minute) >= -30)))
+               .ToList()
+               .Select(x => new Sto()
+               {
+                   Id = x.StoId,
+                   IsSlobodan = false,
+                   RedniBroj = x.Sto.RedniBroj
+               })
+               .ToList();
+            var slobodniStolovi = ctx.Stolovi.ToList().Where(x => !rezervisaniStolovi.Any(y => y.Id == x.Id)).ToList();
+
+            return Ok(slobodniStolovi.Union(rezervisaniStolovi));
         }
 
         [HttpPost]
@@ -80,41 +121,27 @@ namespace eRestoran.Api.Controllers
             List<Sto> model = ctx.Stolovi.ToList();
             return Ok(model);
         }
-        //    public ActionResult Rezervisi(int stoId, DateTime datumOd)
-        //    {
-        //        if (Autentifikacija.klijentSesija == null)
-        //        {
-        //            return RedirectToAction("Index", "Account", new { area = "" });
 
-        //        }
-        //        if (Autentifikacija.klijentSesija != null)
-        //        {
-        //            if (Autentifikacija.klijentSesija.TipKorisnika == TipKorisnika.Klijent)
-        //            {
-        //                if (ModelState.IsValid)
-        //                {
-        //                    int sto = stoId;
-        //                    DateTime datum = datumOd;
-        //                    Rezervacija rezervacija = new Rezervacija();
-        //                    rezervacija.datumVrijemeOd = datumOd;
-        //                    rezervacija.StoId = stoId;
-        //                    rezervacija.datumVrijemeDo = datumOd.AddHours(1);
-        //                    rezervacija.KlijentId = Autentifikacija.klijentSesija.Id;
-        //                    ctx.Rezervacija.Add(rezervacija);
-        //                    ctx.SaveChanges();
-        //                    return RedirectToAction("Index", "Home", new { poruka = "Uspjesna rezervacija!" });
-        //                }
+        [HttpPost]
+        [Route("api/post/rezervisi/{stoId}")]
+        public IHttpActionResult Rezervisi(int stoId, [FromBody] DateTime datumOd)
+        {
+            if (ModelState.IsValid)
+            {
+                int sto = stoId;
+                DateTime datum = datumOd;
+                Rezervacija rezervacija = new Rezervacija();
+                rezervacija.datumVrijemeOd = datumOd;
+                rezervacija.StoId = ctx.Stolovi.FirstOrDefault(x => x.RedniBroj == sto).Id;
+                rezervacija.datumVrijemeDo = datumOd.AddHours(2);
+                rezervacija.KlijentId = ctx.Klijenti.First().Id; // PROMJENITI
+                ctx.Rezervacija.Add(rezervacija);
+                ctx.SaveChanges();
+                return Ok();
+            }
+            return BadRequest();
 
-
-        //            }
-
-
-        //        }
-
-        //        return RedirectToAction("Index", "Account", new { area = "" });
-
-
-        //    }
+        }
         //}
     }
 }

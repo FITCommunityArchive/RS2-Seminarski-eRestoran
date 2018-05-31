@@ -1,6 +1,6 @@
 ﻿namespace eRestoran.Client
 {
-    partial class RezervacijeControl
+    partial class Stolovi
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RezervacijeControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Stolovi));
             this.btnSto2 = new System.Windows.Forms.Button();
             this.btnSto3 = new System.Windows.Forms.Button();
             this.btnSto7 = new System.Windows.Forms.Button();
@@ -150,7 +150,7 @@
             this.btnSto1.Text = "1";
             this.btnSto1.UseVisualStyleBackColor = false;
             // 
-            // RezervacijeControl
+            // Stolovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -167,7 +167,7 @@
             this.Controls.Add(this.btnSto2);
             this.Controls.Add(this.btnSto1);
             this.DoubleBuffered = true;
-            this.Name = "RezervacijeControl";
+            this.Name = "Stolovi";
             this.Size = new System.Drawing.Size(753, 476);
             this.ResumeLayout(false);
 

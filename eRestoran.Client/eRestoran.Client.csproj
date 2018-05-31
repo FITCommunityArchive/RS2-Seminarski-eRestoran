@@ -116,11 +116,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
-    <Compile Include="RezervacijeControl.cs">
+    <Compile Include="RezervacijaStola.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RezervacijeControl.Designer.cs">
-      <DependentUpon>RezervacijeControl.cs</DependentUpon>
+    <Compile Include="RezervacijaStola.Designer.cs">
+      <DependentUpon>RezervacijaStola.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stolovi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Stolovi.Designer.cs">
+      <DependentUpon>Stolovi.cs</DependentUpon>
     </Compile>
     <Compile Include="SkladisteCRUD.cs">
       <SubType>UserControl</SubType>
@@ -215,8 +221,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RezervacijeControl.resx">
-      <DependentUpon>RezervacijeControl.cs</DependentUpon>
+    <EmbeddedResource Include="RezervacijaStola.resx">
+      <DependentUpon>RezervacijaStola.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stolovi.resx">
+      <DependentUpon>Stolovi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SkladisteCRUD.resx">
       <DependentUpon>SkladisteCRUD.cs</DependentUpon>

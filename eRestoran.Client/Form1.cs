@@ -41,7 +41,7 @@ namespace FastFoodDemo
             cart.Pica = new List<CartRow>();
             cart.TotalPrice = 0.00;
             this.AutoValidate = AutoValidate.Disable;
-           
+
             //cardsPanel1.SendToBack();
             //firstCustomControl2.SendToBack();
             btnHome_Click(btnHome, null);
@@ -180,7 +180,7 @@ namespace FastFoodDemo
         public List<CartRow> GetCartItems()
         {
             List<CartRow> SveStavkeKorpe = new List<CartRow>();
-            SveStavkeKorpe.AddRange(cart.Jela.Where(x=>x.Kolicina>0));
+            SveStavkeKorpe.AddRange(cart.Jela.Where(x => x.Kolicina > 0));
             SveStavkeKorpe.AddRange(cart.Pica.Where(x => x.Kolicina > 0));
             return SveStavkeKorpe;
 
@@ -248,7 +248,7 @@ namespace FastFoodDemo
         }
         #region Events
 
-        
+
         public CardsPanel NapraviPanelMenu()
         {
             var ponuda = GetPonuda();
@@ -431,11 +431,15 @@ namespace FastFoodDemo
         private void button4_Click(object sender, EventArgs e)
         {
             cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(new RezervacijeControl());
+            cardsPanel1.Controls.Add(new Stolovi());
             SetSideMenuPosition((Control)sender);
         }
 
-
+        private void btnRezervacije_Click(object sender, EventArgs e)
+        {
+            DodajKontrolu(new RezervacijaStola());
+            SetSideMenuPosition((Control)sender);
+        }
         //korpa viewmodel
     }
 }

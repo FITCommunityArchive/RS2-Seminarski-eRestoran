@@ -29,14 +29,18 @@ namespace eRestoran.Client.Shared.Helpers
         {
             return client.GetAsync(route + "/" + parametar).Result;
         }
-        public HttpResponseMessage GetResponse(string parametar1,string parametar2)
+        public HttpResponseMessage GetResponse(string parametar1, string parametar2)
         {
-            return client.GetAsync(route + "/" + parametar1+"/"+parametar2).Result;
+            return client.GetAsync(route + "/" + parametar1 + "/" + parametar2).Result;
         }
 
         public HttpResponseMessage PostResponse(object obj)
         {
             return client.PostAsJsonAsync(route, obj).Result;
+        }
+        public HttpResponseMessage PostWithParametar(int id, object obj)
+        {
+            return client.PostAsJsonAsync(route + "/" + id, obj).Result;
         }
         public HttpResponseMessage PutResponse(int id, object obj)
         {
