@@ -53,6 +53,12 @@ namespace eRestoran.Client
 
         public void ProvjeriRezervacije()
         {
+           
+                BindControlsAndData(true);
+            
+        }
+        public void RezervacijeCheck()
+        {
             var response = getRezervacijeStolova.PostResponse(DatumRezervacije.ToString("o"));
             if (response.IsSuccessStatusCode)
             {
@@ -64,7 +70,11 @@ namespace eRestoran.Client
 
         private void BindControlsAndData(bool isRezervacija)
         {
-            getOsvjeziStolove.GetResponse();
+            var response = getRezervacijeStolova.PostResponse(DatumRezervacije.ToString("o"));
+            if (response.IsSuccessStatusCode)
+            {
+                stolovi = response.Content.ReadAsAsync<List<Sto>>().Result;
+            }
 
             foreach (var sto in stolovi)
             {
@@ -95,19 +105,9 @@ namespace eRestoran.Client
                     var odabraniSto = stolovi.FirstOrDefault(x => x.RedniBroj == brojStola);
                     if (DatumRezervacije != DateTime.MinValue) // uvijek razlicito
                     {
-                        var response = postRezervisiSto.PostWithParametar(brojStola, DatumRezervacije.ToString("o"));
-                        if (response.IsSuccessStatusCode)
-                        {
-                            btn.BackColor = zauzetiStoColor;
-                            MessageBox.Show("ok proslo");
-                        }
-                    }
-                    else
-                    {
                         if (odabraniSto.IsSlobodan)
                         {
-                            
-                            var response = postOznaciSto.PostResponse(brojStola);
+                            var response = postRezervisiSto.PostWithParametar(brojStola, DatumRezervacije.ToString("o"));
                             if (response.IsSuccessStatusCode)
                             {
                                 btn.BackColor = zauzetiStoColor;
@@ -125,8 +125,9 @@ namespace eRestoran.Client
                         }
                         odabraniSto.IsSlobodan = !odabraniSto.IsSlobodan;
                     }
+
                 }
-                getOsvjeziStolove.GetResponse();
+                BindControlsAndData(true);
             }
         }
     }

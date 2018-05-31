@@ -7,8 +7,11 @@ namespace eRestoran.Client
     {
         public RezervacijaStola()
         {
+           
             InitializeComponent();
             ctrlStolovi.DatumRezervacije = DateTime.Now;
+            ctrlStolovi.ProvjeriRezervacije();
+
         }
 
         private void datumRezervacije_ValueChanged(object sender, EventArgs e)
