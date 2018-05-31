@@ -67,12 +67,12 @@ namespace eRestoran.Api.Controllers
         [ResponseType(typeof(List<Sto>))]
         [HttpPost]
         [Route("api/post/rezervacijestolova")]
-        public IHttpActionResult RezervacijeStolova([FromBody] DateTime datum)
+        public IHttpActionResult RezervacijeStolova([FromBody] DateTime datum)//6:00  5:45
         {
             var rezervisaniStolovi =
                ctx.Rezervacija
                .Where(x => (x.datumVrijemeOd.Day == datum.Day && x.datumVrijemeOd.Month == datum.Month && x.datumVrijemeOd.Year == datum.Year)
-               && (((datum.Hour - x.datumVrijemeOd.Hour) == 0) &&
+               && (((datum.Hour - x.datumVrijemeOd.Hour) <= 2) &&
                ((datum.Minute - x.datumVrijemeOd.Minute) <= 15 && (datum.Minute - x.datumVrijemeOd.Minute) >= -30)))
                .ToList()
                .Select(x => new Sto()
@@ -89,7 +89,7 @@ namespace eRestoran.Api.Controllers
                      IsSlobodan = true,
                      RedniBroj = x.RedniBroj
                  })
-               .ToList(); ;
+               .ToList(); 
 
             return Ok(slobodniStolovi.Union(rezervisaniStolovi));
         }
