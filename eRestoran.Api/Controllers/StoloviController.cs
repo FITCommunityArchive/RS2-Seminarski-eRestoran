@@ -27,7 +27,7 @@ namespace eRestoran.Api.Controllers
         public IHttpActionResult ProvjeriRezervacije()
         {
             var rezervisaniStolovi =
-                ctx.Rezervacija.Where(x => (x.datumVrijemeOd.Day == DateTime.Now.Day && x.datumVrijemeOd.Month == DateTime.Now.Month && x.datumVrijemeOd.Year == DateTime.Now.Year)
+                ctx.Rezervacija.Where(x => !x.IsDeleted && (x.datumVrijemeOd.Day == DateTime.Now.Day && x.datumVrijemeOd.Month == DateTime.Now.Month && x.datumVrijemeOd.Year == DateTime.Now.Year)
                 && (((DateTime.Now.Hour - x.datumVrijemeOd.Hour) == 0) &&
                 ((DateTime.Now.Minute - x.datumVrijemeOd.Minute) <= 15 && (DateTime.Now.Minute - x.datumVrijemeOd.Minute) >= -30))).ToList()
                .Select(x => new StoloviRezervacijaVM()
@@ -51,15 +51,10 @@ namespace eRestoran.Api.Controllers
             {
                 Sto sto = ctx.Stolovi.Where(y => y.Id == x.StoId).SingleOrDefault();
                 ctx.Entry(sto).Entity.IsSlobodan = true;
-               var rez= ctx.Rezervacija.Where(y=>y.Id==x.Id).FirstOrDefault();
+                var rez = ctx.Rezervacija.Where(y => y.Id == x.Id).FirstOrDefault();
                 ctx.Rezervacija.Remove(rez);
                 ctx.SaveChanges();
             }
-
-           
-           
-           
-
             return Ok();
         }
 
@@ -67,29 +62,33 @@ namespace eRestoran.Api.Controllers
         [ResponseType(typeof(List<Sto>))]
         [HttpPost]
         [Route("api/post/rezervacijestolova")]
-        public IHttpActionResult RezervacijeStolova([FromBody] DateTime datum)//6:00  5:45
+        public IHttpActionResult RezervacijeStolova([FromBody] DateTime datum)//6:00  5:14
         {
             var rezervisaniStolovi =
                ctx.Rezervacija
-               .Where(x => (x.datumVrijemeOd.Day == datum.Day && x.datumVrijemeOd.Month == datum.Month && x.datumVrijemeOd.Year == datum.Year)
+               .Where(x => !x.IsDeleted && (x.datumVrijemeOd.Day == datum.Day && x.datumVrijemeOd.Month == datum.Month && x.datumVrijemeOd.Year == datum.Year)
                && (((datum.Hour - x.datumVrijemeOd.Hour) <= 2) &&
                ((datum.Minute - x.datumVrijemeOd.Minute) <= 15 && (datum.Minute - x.datumVrijemeOd.Minute) >= -30)))
                .ToList()
-               .Select(x => new Sto()
-               {
-                   Id = x.StoId,
-                   IsSlobodan = false,
-                   RedniBroj = x.Sto.RedniBroj
-               })
+                .Select(x => new StoloviRezervacijaVM()
+                {
+                    StoId = x.StoId,
+                    IsSlobodan = false,
+                    RedniBrojStola = x.Sto.RedniBroj,
+                    RezervacijaId = x.Id,
+                    DatumOd = x.datumVrijemeOd
+                })
                .ToList();
-            var slobodniStolovi = ctx.Stolovi.ToList().Where(x => !rezervisaniStolovi.Any(y => y.Id == x.Id)).ToList()
-                 .Select(x => new Sto()
-                 {
-                     Id =x.Id,
-                     IsSlobodan = true,
-                     RedniBroj = x.RedniBroj
-                 })
-               .ToList(); 
+            var slobodniStolovi = ctx.Stolovi.ToList().Where(x => !rezervisaniStolovi.Any(y => y.StoId == x.Id)).ToList()
+                .Select(x => new StoloviRezervacijaVM()
+                {
+                    StoId = x.Id,
+                    IsSlobodan = true,
+                    RedniBrojStola = x.RedniBroj,
+                    RezervacijaId = x.Id,
+                    DatumOd = DateTime.MinValue
+                })
+               .ToList();
 
             return Ok(slobodniStolovi.Union(rezervisaniStolovi));
         }
@@ -144,7 +143,7 @@ namespace eRestoran.Api.Controllers
                 rezervacija.StoId = ctx.Stolovi.FirstOrDefault(x => x.RedniBroj == sto).Id;
                 rezervacija.datumVrijemeDo = datumOd.AddHours(2);
                 rezervacija.KlijentId = ctx.Klijenti.First().Id;
-                var rezervisaniSto =ctx.Stolovi.Where(x => x.Id == rezervacija.StoId).FirstOrDefault();
+                var rezervisaniSto = ctx.Stolovi.Where(x => x.Id == rezervacija.StoId).FirstOrDefault();
                 ctx.Entry(rezervisaniSto).Entity.IsSlobodan = false;
                 ctx.Rezervacija.Add(rezervacija);
                 ctx.SaveChanges();
@@ -153,6 +152,25 @@ namespace eRestoran.Api.Controllers
             return BadRequest();
 
         }
+
+        [HttpPost]
+        [Route("api/post/izbrisirezervaciju")]
+        public IHttpActionResult IzbrisiRezervaciju([FromBody] int id)
+        {
+            if (ModelState.IsValid)
+            {
+                var rezervacija = ctx.Rezervacija.FirstOrDefault(x => x.Id == id);
+                if(rezervacija != null)
+                {
+                    rezervacija.IsDeleted = true;
+                    ctx.SaveChanges();
+                    return Ok();
+                }
+            }
+            return BadRequest();
+        }
+
+
         //}
     }
 }

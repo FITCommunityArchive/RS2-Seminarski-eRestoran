@@ -1,11 +1,6 @@
 ﻿using eRestoran.Api.VM;
-using FastFoodDemo;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstUserControlUsage
@@ -30,7 +25,6 @@ namespace FirstUserControlUsage
         public CardsPanel(List<CartRow> viewModel)
         {
             ViewModelKorpa = new List<CartRow>(viewModel);
-
         }
 
 
@@ -65,7 +59,6 @@ namespace FirstUserControlUsage
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);
                 newCtl.DataBind();
-               
             }
             ResumeLayout();
         }
@@ -80,7 +73,6 @@ namespace FirstUserControlUsage
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);
                 newCtl.DataBind();
-
             }
             ResumeLayout();
         }

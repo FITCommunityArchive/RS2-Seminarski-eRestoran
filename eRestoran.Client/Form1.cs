@@ -268,7 +268,9 @@ namespace FastFoodDemo
             var ponuda = GetCartItems();
             var panel = new CardsPanel();
             panel.ViewModelKorpa = ponuda;
-            panel.Size = cardsPanel1.Size;
+            var panelSize = cardsPanel1.Size;
+            panelSize.Height -= 10;
+            panel.Size = panelSize;
 
             panel.AutoScroll = true;
             cardsPanel1.Controls.Clear();
@@ -385,6 +387,7 @@ namespace FastFoodDemo
 
         private void SetSideMenuPosition(Control control)
         {
+            SidePanel.Visible = true;
             SidePanel.Height = control.Height;
             SidePanel.Top = control.Top;
         }
@@ -406,7 +409,7 @@ namespace FastFoodDemo
         {
             var panel = NapraviPanelKorpa();
             panel.BindKorpa();
-
+            SidePanel.Visible = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
