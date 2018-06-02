@@ -31,15 +31,16 @@ namespace FastFoodDemo
         public WebAPIHelper deleteProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/DeleteProizvod");
         public WebAPIHelper deleteJelo = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Jelo/DeleteJelo");
         private Korisnik trentnoLogovnani; // za konstruktora
+        public List<CartIndexVM> Korpe { get; set; }
+        public int TrenutnoStoId { get; set; }
+
 
         public Form1()
         {
             controlsHistory = new LinkedList<Control>();
             InitializeComponent();
-            cart = new CartIndexVM();
-            cart.Jela = new List<CartRow>();
-            cart.Pica = new List<CartRow>();
-            cart.TotalPrice = 0.00;
+            Korpe = new List<CartIndexVM>();
+
             this.AutoValidate = AutoValidate.Disable;
 
             //cardsPanel1.SendToBack();
@@ -52,6 +53,7 @@ namespace FastFoodDemo
         }
         public void RefreshCart()
         {
+
             cart.Pica.ForEach(x =>
             {
                 if (x.Kolicina == 0)
@@ -63,14 +65,16 @@ namespace FastFoodDemo
         public bool AddToCartPice(CartRow cartRow)
         {
             CartExists();
-            if (cart.Pica.Where(x => x.Id == cartRow.Id).SingleOrDefault() != null)
+
+            var korpa = Korpe.FirstOrDefault(x => x.StoId == TrenutnoStoId);
+            if (korpa.Pica.Where(x => x.Id == cartRow.Id).SingleOrDefault() != null)
             {
-                var staraKolicina = cart.Pica.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina;
-                cart.Pica.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina = cartRow.Kolicina;
-                cart.Pica.SingleOrDefault(x => x.Id == cartRow.Id).TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
-                cart.TotalPrice += cartRow.Cijena * cartRow.Kolicina;
-                cart.TotalPrice -= cartRow.Cijena * staraKolicina;
-                label4.Text = Math.Round(cart.TotalPrice, 2).ToString() + " KM";
+                var staraKolicina = korpa.Pica.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina;
+                korpa.Pica.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina = cartRow.Kolicina;
+                korpa.Pica.SingleOrDefault(x => x.Id == cartRow.Id).TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
+                korpa.TotalPrice += cartRow.Cijena * cartRow.Kolicina;
+                korpa.TotalPrice -= cartRow.Cijena * staraKolicina;
+                label4.Text = Math.Round(korpa.TotalPrice, 2).ToString() + " KM";
                 return true;
             }
             CartRow pice = new CartRow();
@@ -79,26 +83,27 @@ namespace FastFoodDemo
             pice.Naziv = cartRow.Naziv;
             pice.Cijena = cartRow.Cijena;
             pice.TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
-            cart.Pica.Add(pice);
+            korpa.Pica.Add(pice);
             pice.Kategorija = cartRow.Kategorija;
             pice.StanjeKolicina = cartRow.StanjeKolicina;
             pice.Imageurl = cartRow.Imageurl;
-            cart.TotalPrice += pice.TotalRowPrice;
-            label4.Text = Math.Round(cart.TotalPrice, 2).ToString() + " KM";
+            korpa.TotalPrice += pice.TotalRowPrice;
+            label4.Text = Math.Round(korpa.TotalPrice, 2).ToString() + " KM";
             return true;
             //fali dio sa stanjem,da li ima stavke na stanju , treba uraditi poziv prema API
         }
         public bool AddToCartJelo(CartRow cartRow)
         {
-
-            if (cart.Jela.Where(x => x.Id == cartRow.Id).SingleOrDefault() != null)
+            CartExists();
+            var korpa = Korpe.FirstOrDefault(x => x.StoId == TrenutnoStoId);
+            if (korpa.Jela.Where(x => x.Id == cartRow.Id).SingleOrDefault() != null)
             {
-                var staraKolicina = cart.Jela.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina;
-                cart.Jela.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina = cartRow.Kolicina;
-                cart.Jela.SingleOrDefault(x => x.Id == cartRow.Id).TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
-                cart.TotalPrice += cartRow.Cijena * cartRow.Kolicina;
-                cart.TotalPrice -= cartRow.Cijena * staraKolicina;
-                label4.Text = Math.Round(cart.TotalPrice, 2).ToString() + " KM";
+                var staraKolicina = korpa.Jela.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina;
+                korpa.Jela.SingleOrDefault(x => x.Id == cartRow.Id).Kolicina = cartRow.Kolicina;
+                korpa.Jela.SingleOrDefault(x => x.Id == cartRow.Id).TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
+                korpa.TotalPrice += cartRow.Cijena * cartRow.Kolicina;
+                korpa.TotalPrice -= cartRow.Cijena * staraKolicina;
+                label4.Text = Math.Round(korpa.TotalPrice, 2).ToString() + " KM";
                 return true;
 
             }
@@ -111,9 +116,9 @@ namespace FastFoodDemo
             jelo.Cijena = cartRow.Cijena;
             jelo.StanjeKolicina = 0;
             jelo.TotalRowPrice = cartRow.Cijena * cartRow.Kolicina;
-            cart.Jela.Add(jelo);
-            cart.TotalPrice += jelo.TotalRowPrice;
-            label4.Text = Math.Round(cart.TotalPrice, 2).ToString() + " KM";
+            korpa.Jela.Add(jelo);
+            korpa.TotalPrice += jelo.TotalRowPrice;
+            label4.Text = Math.Round(korpa.TotalPrice, 2).ToString() + " KM";
             return true;
         }
         public bool RemoveFromCartPice(CartRow cartRow)
@@ -123,22 +128,22 @@ namespace FastFoodDemo
                 return false;
 
             }
+            var korpa = Korpe.FirstOrDefault(x => x.StoId == TrenutnoStoId);
+            korpa.TotalPrice = cart.TotalPrice - cartRow.Cijena * cartRow.Kolicina;
 
-            cart.TotalPrice = cart.TotalPrice - cartRow.Cijena * cartRow.Kolicina;
-
-            cart.Pica.Remove(cartRow);
-            label4.Text = Math.Round(cart.TotalPrice, 2).ToString() + " KM";
+            korpa.Pica.Remove(cartRow);
+            label4.Text = Math.Round(korpa.TotalPrice, 2).ToString() + " KM";
             //fali dio sa stanjem,da li ima stavke na stanju , treba uraditi poziv prema API
 
             return true;
         }
         public bool RemoveFromCartJelo(CartRow cartRow)
         {
-            if (CartExists() == false)
-            {
-                return false;
+            //if (CartExists() == false)
+            //{
+            //    return false;
 
-            }
+            //}
 
             cart.TotalPrice = cart.TotalPrice - cartRow.Cijena * cartRow.Kolicina;
             // cart.TotalPrice = cart.TotalPrice - cartRow.Cijena * cartRow.Kolicina;
@@ -149,300 +154,325 @@ namespace FastFoodDemo
         }
         public int CartRowExists(int? id)
         {
-            if (cart.Pica.SingleOrDefault(x => x.Id == id) != null)
+            CartExists();
+            var korpa = Korpe.FirstOrDefault(x => x.StoId == TrenutnoStoId);
+            if (korpa != null)
             {
-                return cart.Pica.SingleOrDefault(x => x.Id == id).Kolicina;
-            }
-            if (cart.Jela.SingleOrDefault(x => x.Id == id) != null)
-            {
-                return cart.Jela.SingleOrDefault(x => x.Id == id).Kolicina;
+                if (korpa.Pica.SingleOrDefault(x => x.Id == id) != null)
+                {
+                    return korpa.Pica.SingleOrDefault(x => x.Id == id).Kolicina;
+                }
+                if (korpa.Jela.SingleOrDefault(x => x.Id == id) != null)
+                {
+                    return korpa.Jela.SingleOrDefault(x => x.Id == id).Kolicina;
+                }
             }
             return 0;
         }
         public bool CartExists()
         {
-            if (cart != null)
+            if (Korpe.FirstOrDefault(x => x.StoId == TrenutnoStoId) != null)
             {
+                double ukupno = GetTotalPrice();
+                label4.Text = ukupno.ToString();
                 return true;
             }
             else
             {
-                cart = new CartIndexVM();
-                cart.Jela = new List<CartRow>();
-                cart.Pica = new List<CartRow>();
-                cart.TotalPrice = 0;
+                var korpa = new CartIndexVM();
+                korpa.StoId = TrenutnoStoId;
+                korpa.Jela = new List<CartRow>();
+                korpa.Pica=new List<CartRow>();
+                korpa.TotalPrice = 0.0;
+                Korpe.Add(korpa);
+                label4.Text ="0";
+                
                 return false;
-            }
-
-        }
-        //cart
-
-        public List<CartRow> GetCartItems()
-        {
-            List<CartRow> SveStavkeKorpe = new List<CartRow>();
-            SveStavkeKorpe.AddRange(cart.Jela.Where(x => x.Kolicina > 0));
-            SveStavkeKorpe.AddRange(cart.Pica.Where(x => x.Kolicina > 0));
-            return SveStavkeKorpe;
-
-        }
-        public double GetTotalPrice()
-        {
-            return cart.TotalPrice;
         }
 
-        //
-        public bool DeleteProizvod(string id)
+    }
+    //cart
+
+    public List<CartRow> GetCartItems()
+    {
+        List<CartRow> SveStavkeKorpe = new List<CartRow>();
+        var korpa = Korpe.FirstOrDefault(x => x.StoId == TrenutnoStoId);
+        SveStavkeKorpe.AddRange(korpa.Jela.Where(x => x.Kolicina > 0));
+        SveStavkeKorpe.AddRange(korpa.Pica.Where(x => x.Kolicina > 0));
+        return SveStavkeKorpe;
+
+    }
+    public double GetTotalPrice()
+    {
+        var korpa = Korpe.FirstOrDefault(x => x.StoId == TrenutnoStoId);
+        return korpa.TotalPrice;
+    }
+
+    //
+    public bool DeleteProizvod(string id)
+    {
+
+        HttpResponseMessage responseMessage = deleteProizvod.DeleteResponse(id);
+        if (responseMessage.IsSuccessStatusCode)
         {
 
-            HttpResponseMessage responseMessage = deleteProizvod.DeleteResponse(id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-
-                var panel = NapraviPanelMenu();
-                panel.DataBind();
-
-
-
-                return true;
-            }
-            return false;
-
-        }
-        private Image GetCopyImage(string path)
-        {
-            using (Image im = Image.FromFile(path))
-            {
-                Bitmap bm = new Bitmap(im);
-                return bm;
-            }
-        }
-
-
-        public bool DeleteJelo(string id)
-        {
-
-            HttpResponseMessage responseMessage = deleteJelo.DeleteResponse(id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-
-                NapraviPanelMenu();
-
-                return true;
-            }
-            return false;
-
-        }
-
-        public void AddToControlHistory(Control control)
-        {
-            controlsHistory.AddLast(control);
-        }
-        public void GoBack()
-        {
-            if (controlsHistory.Count > 5)
-            {
-                controlsHistory.RemoveFirst();
-            }
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(controlsHistory.Last.Value);
-        }
-        #region Events
-
-
-        public CardsPanel NapraviPanelMenu()
-        {
-            var ponuda = GetPonuda();
-            var panel = new CardsPanel();
-            panel.ViewModel = ponuda;
-            panel.Size = cardsPanel1.Size;
-
-            panel.AutoScroll = true;
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(panel);
-            AddToControlHistory(panel);
-
-            return panel;
-        }
-        public CardsPanel NapraviPanelKorpa()
-        {
-            var ponuda = GetCartItems();
-            var panel = new CardsPanel();
-            panel.ViewModelKorpa = ponuda;
-            var panelSize = cardsPanel1.Size;
-            panelSize.Height -= 10;
-            panel.Size = panelSize;
-
-            panel.AutoScroll = true;
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(panel);
-            AddToControlHistory(panel);
-
-            return panel;
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Da li želite zatvoriti aplikaciju . Jeste li sigurni?", "Zatvori aplikaciju", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
-
-        }
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-        #endregion
-
-        #region Methods
-
-        private PonudaVM GetPonuda()
-        {
-            List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
-            HttpClient client = new HttpClient();
-            List<PonudaVM.PonudaInfo> pica;
-            client.BaseAddress = new Uri("http://localhost:49958/");
-            HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPonuda").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
-                foreach (var item in pica)
-                {
-                    cards.Add(new PonudaVM.PonudaInfo()
-                    {
-                        Id = item.Id,
-                        Cijena = item.Cijena,
-                        Naziv = "NAZIV - " + item.Naziv,
-                        Kategorija = item.Kategorija,
-                        Kolicina = item.Kolicina,
-                        KolicinaString = item.KolicinaString + " KOM",
-                        imageUrl = item.imageUrl
-                    });
-                }
-            }
-
-            PonudaVM VM = new PonudaVM()
-            {
-                Ponuda = cards
-            };
-
-            return VM;
-        }
-
-        public void SwitchActiveControls(Control newActiveControl)
-        {
-            var currentActiveControl = Controls.Find(activeControl, false)[0];
-            if (currentActiveControl != null)
-                currentActiveControl.Visible = false;
-            newActiveControl.Visible = true;
-            activeControl = newActiveControl.Name;
-        }
-
-        #endregion
-
-        private void dodajProizvod_Click(object sender, EventArgs e)
-        {
-            // Treba li ovo ??
-            //SidePanel.Height = button2.Height;
-            //SidePanel.Top = button2.Top;
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(new UnosProizvoda());
-            //firstCustomControl2.activeControl = Controls.Find(activeControl, false)[0];
-            //SwitchActiveControls(firstCustomControl2);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(new TipProizvodaCRUD());
-            SetSideMenuPosition((Control)sender);
-            //cardsPanel1.Controls.Add(new UnosJela());
-        }
-        public void DodajKontrolu(Control kontrola)
-        {
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(kontrola);
-
-        }
-        public void izbrisiKontrolu(Control kontrola)
-        {
-            cardsPanel1.Controls.Remove(kontrola);
-        }
-
-        private void btnPonuda_Click(object sender, EventArgs e)
-        {
-            var panel = NapraviPanelMenu();
-            panel.BindPonuda();
-            SetSideMenuPosition((Control)sender);
-        }
-
-        private void SetSideMenuPosition(Control control)
-        {
-            SidePanel.Visible = true;
-            SidePanel.Height = control.Height;
-            SidePanel.Top = control.Top;
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            cardsPanel1.Controls.Clear();
-            var kont = new HomeControl();
-            cardsPanel1.Controls.Add(kont);
-            AddToControlHistory(kont);
-            SetSideMenuPosition((Control)sender);
-
-            //menu(menu) -> uredi
-            //SwitchActiveControls(firstCustomControl1);
-            //dodajProizvod.Visible = false;
-        }
-
-        private void cartButton_Click(object sender, EventArgs e)
-        {
-            var panel = NapraviPanelKorpa();
-            panel.BindKorpa();
-            SidePanel.Visible = false;
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Da li želite zatvoriti aplikaciju . Jeste li sigurni?", "Zatvori aplikaciju", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
             var panel = NapraviPanelMenu();
             panel.DataBind();
-            SetSideMenuPosition((Control)sender);
-        }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(new Stolovi());
-            SetSideMenuPosition((Control)sender);
-        }
 
-        private void btnRezervacije_Click(object sender, EventArgs e)
-        {
-            DodajKontrolu(new RezervacijaStola());
-            SetSideMenuPosition((Control)sender);
+
+            return true;
         }
-        //korpa viewmodel
+        return false;
+
     }
+    private Image GetCopyImage(string path)
+    {
+        using (Image im = Image.FromFile(path))
+        {
+            Bitmap bm = new Bitmap(im);
+            return bm;
+        }
+    }
+
+
+    public bool DeleteJelo(string id)
+    {
+
+        HttpResponseMessage responseMessage = deleteJelo.DeleteResponse(id);
+        if (responseMessage.IsSuccessStatusCode)
+        {
+
+            NapraviPanelMenu();
+
+            return true;
+        }
+        return false;
+
+    }
+
+    public void AddToControlHistory(Control control)
+    {
+        controlsHistory.AddLast(control);
+    }
+    public void GoBack()
+    {
+        if (controlsHistory.Count > 5)
+        {
+            controlsHistory.RemoveFirst();
+        }
+        cardsPanel1.Controls.Clear();
+        cardsPanel1.Controls.Add(controlsHistory.Last.Value);
+    }
+    #region Events
+
+
+    public CardsPanel NapraviPanelMenu()
+    {
+        var ponuda = GetPonuda();
+        var panel = new CardsPanel();
+        panel.ViewModel = ponuda;
+        panel.StoIdKorpa = TrenutnoStoId;
+        panel.Size = cardsPanel1.Size;
+
+        panel.AutoScroll = true;
+        cardsPanel1.Controls.Clear();
+        cardsPanel1.Controls.Add(panel);
+        AddToControlHistory(panel);
+
+        return panel;
+    }
+    public CardsPanel NapraviPanelKorpa()
+    {
+        var ponuda = GetCartItems();
+        var panel = new CardsPanel();
+        panel.ViewModelKorpa = ponuda;
+        panel.StoIdKorpa = TrenutnoStoId;
+        var panelSize = cardsPanel1.Size;
+        panelSize.Height -= 10;
+        panel.Size = panelSize;
+
+        panel.AutoScroll = true;
+        cardsPanel1.Controls.Clear();
+        cardsPanel1.Controls.Add(panel);
+        AddToControlHistory(panel);
+
+        return panel;
+    }
+
+    private void button13_Click(object sender, EventArgs e)
+    {
+        if (MessageBox.Show("Da li želite zatvoriti aplikaciju . Jeste li sigurni?", "Zatvori aplikaciju", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
+            this.Close();
+        }
+        else
+        {
+            return;
+        }
+
+    }
+
+    private void Form1_MouseDown(object sender, MouseEventArgs e)
+    {
+        if (e.Button == MouseButtons.Left)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
+    }
+    #endregion
+
+    #region Methods
+
+    private PonudaVM GetPonuda()
+    {
+        List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
+        HttpClient client = new HttpClient();
+        List<PonudaVM.PonudaInfo> pica;
+        client.BaseAddress = new Uri("http://localhost:49958/");
+        HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPonuda").Result;
+        if (response.IsSuccessStatusCode)
+        {
+            pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
+            foreach (var item in pica)
+            {
+                cards.Add(new PonudaVM.PonudaInfo()
+                {
+                    Id = item.Id,
+                    Cijena = item.Cijena,
+                    Naziv = "NAZIV - " + item.Naziv,
+                    Kategorija = item.Kategorija,
+                    Kolicina = item.Kolicina,
+                    KolicinaString = item.KolicinaString + " KOM",
+                    imageUrl = item.imageUrl
+                });
+            }
+        }
+
+        PonudaVM VM = new PonudaVM()
+        {
+            Ponuda = cards
+        };
+
+        return VM;
+    }
+
+    public void SwitchActiveControls(Control newActiveControl)
+    {
+        var currentActiveControl = Controls.Find(activeControl, false)[0];
+        if (currentActiveControl != null)
+            currentActiveControl.Visible = false;
+        newActiveControl.Visible = true;
+        activeControl = newActiveControl.Name;
+    }
+
+    #endregion
+
+    private void dodajProizvod_Click(object sender, EventArgs e)
+    {
+        // Treba li ovo ??
+        //SidePanel.Height = button2.Height;
+        //SidePanel.Top = button2.Top;
+        cardsPanel1.Controls.Clear();
+        cardsPanel1.Controls.Add(new UnosProizvoda());
+        //firstCustomControl2.activeControl = Controls.Find(activeControl, false)[0];
+        //SwitchActiveControls(firstCustomControl2);
+    }
+
+    private void button7_Click(object sender, EventArgs e)
+    {
+        cardsPanel1.Controls.Clear();
+        cardsPanel1.Controls.Add(new TipProizvodaCRUD());
+        SetSideMenuPosition((Control)sender);
+        //cardsPanel1.Controls.Add(new UnosJela());
+    }
+    public void DodajKontrolu(Control kontrola)
+    {
+        cardsPanel1.Controls.Clear();
+        cardsPanel1.Controls.Add(kontrola);
+
+    }
+    public void izbrisiKontrolu(Control kontrola)
+    {
+        cardsPanel1.Controls.Remove(kontrola);
+    }
+    public void OtvoriPonudu(int stoId)
+    {
+        TrenutnoStoId = stoId;
+        var panel = NapraviPanelMenu();
+        panel.BindPonuda();
+    }
+    public void OtvoriKorpu()
+    {
+        var panel = NapraviPanelKorpa();
+        panel.BindKorpa();
+    }
+
+    private void btnPonuda_Click(object sender, EventArgs e)
+    {
+        var panel = NapraviPanelMenu();
+        panel.BindPonuda();
+        SetSideMenuPosition((Control)sender);
+    }
+
+    private void SetSideMenuPosition(Control control)
+    {
+        SidePanel.Visible = true;
+        SidePanel.Height = control.Height;
+        SidePanel.Top = control.Top;
+    }
+
+    private void btnHome_Click(object sender, EventArgs e)
+    {
+        cardsPanel1.Controls.Clear();
+        var kont = new HomeControl();
+        cardsPanel1.Controls.Add(kont);
+        AddToControlHistory(kont);
+        SetSideMenuPosition((Control)sender);
+
+        //menu(menu) -> uredi
+        //SwitchActiveControls(firstCustomControl1);
+        //dodajProizvod.Visible = false;
+    }
+
+    private void cartButton_Click(object sender, EventArgs e)
+    {
+        OtvoriKorpu();
+        SidePanel.Visible = false;
+    }
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        if (MessageBox.Show("Da li želite zatvoriti aplikaciju . Jeste li sigurni?", "Zatvori aplikaciju", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
+            this.Close();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    private void btnMenu_Click(object sender, EventArgs e)
+    {
+        var panel = NapraviPanelMenu();
+        panel.DataBind();
+        SetSideMenuPosition((Control)sender);
+    }
+
+    private void button4_Click(object sender, EventArgs e)
+    {
+        cardsPanel1.Controls.Clear();
+        cardsPanel1.Controls.Add(new Stolovi());
+        SetSideMenuPosition((Control)sender);
+    }
+
+    private void btnRezervacije_Click(object sender, EventArgs e)
+    {
+        DodajKontrolu(new RezervacijaStola());
+        SetSideMenuPosition((Control)sender);
+    }
+    //korpa viewmodel
+}
 }

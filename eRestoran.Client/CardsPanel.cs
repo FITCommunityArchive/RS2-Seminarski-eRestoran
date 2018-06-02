@@ -13,6 +13,8 @@ namespace FirstUserControlUsage
 
         public PonudaVM ViewModel { get; set; }
         public List<CartRow> ViewModelKorpa { get; set; }
+        public int StoIdKorpa { get; set; }
+
 
         public CardsPanel()
         {
@@ -56,6 +58,7 @@ namespace FirstUserControlUsage
             for (int i = 0; i < ViewModel.Ponuda.Count; i++)
             {
                 var newCtl = new PonudaItem(ViewModel.Ponuda[i]);
+                newCtl.Stoid = StoIdKorpa;
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);
                 newCtl.DataBind();
@@ -69,7 +72,7 @@ namespace FirstUserControlUsage
 
             for (int i = 0; i < ViewModelKorpa.Count; i++)
             {
-                var newCtl = new CartItem(ViewModelKorpa[i]);
+                var newCtl = new CartItem(ViewModelKorpa[i],StoIdKorpa);
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);
                 newCtl.DataBind();

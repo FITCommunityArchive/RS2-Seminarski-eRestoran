@@ -19,6 +19,8 @@ namespace FirstUserControlUsage
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         public CartRow ViewModel { get; set; }
         private int kolicina;
+        public int StoId { get; set; }
+
 
         public CartItem()
         {
@@ -26,9 +28,10 @@ namespace FirstUserControlUsage
           
         }
 
-        public CartItem(CartRow viewModel) : this()
+        public CartItem(CartRow viewModel,int stoId) : this()
         {
             ViewModel = viewModel;
+            this.StoId = stoId;
         }
         public void ClearCartFrom0() {
             ((Form1)this.ParentForm).RefreshCart();
@@ -85,13 +88,14 @@ namespace FirstUserControlUsage
                 };
                 if (ViewModel.Kategorija == "Jela")
                 {
-
+                    ((Form1)this.ParentForm).TrenutnoStoId = StoId;
                     ((Form1)this.ParentForm).AddToCartJelo(stavkaKorpe);
                     return true;
 
                 }
                 else
                 {
+                    ((Form1)this.ParentForm).TrenutnoStoId = StoId;
                     ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
                     return true;
                 }

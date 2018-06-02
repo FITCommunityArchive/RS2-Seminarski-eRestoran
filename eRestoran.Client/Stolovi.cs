@@ -8,6 +8,7 @@ using eRestoran.Client.Properties;
 using System.Net.Http;
 using eRestoran.Data.Models;
 using eRestoran.Api.VM;
+using FastFoodDemo;
 
 namespace eRestoran.Client
 {
@@ -93,12 +94,13 @@ namespace eRestoran.Client
                         }
                         else
                         {
-                            var response = postIzbrisiRezervaciju.PostResponse(odabraniSto.RezervacijaId);
-                            if (response.IsSuccessStatusCode)
-                            {
-                                btn.BackColor = Color.Transparent;
-                                MessageBox.Show("ok proslo");
-                            }
+                            ((Form1)this.ParentForm).OtvoriPonudu(brojStola);
+                            //var response = postIzbrisiRezervaciju.PostResponse(odabraniSto.RezervacijaId);
+                            //if (response.IsSuccessStatusCode)
+                            //{
+                            //    btn.BackColor = Color.Transparent;
+                            //    MessageBox.Show("ok proslo");
+                            //}
                         }
                         odabraniSto.IsSlobodan = !odabraniSto.IsSlobodan;
                     }

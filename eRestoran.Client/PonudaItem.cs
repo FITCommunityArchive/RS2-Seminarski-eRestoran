@@ -19,6 +19,7 @@ namespace FirstUserControlUsage
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         public PonudaVM.PonudaInfo ViewModel { get; set; }
         private int kolicina;
+        public int Stoid { get; set; }
 
         public PonudaItem()
         {
@@ -81,14 +82,16 @@ namespace FirstUserControlUsage
                 };
                 if (ViewModel.Kategorija == "Jela")
                 {
-                    
+                    ((Form1)this.ParentForm).TrenutnoStoId = Stoid;
                     ((Form1)this.ParentForm).AddToCartJelo(stavkaKorpe);
                     return true;
 
                 }
                 else
                 {
-                   ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
+                    ((Form1)this.ParentForm).TrenutnoStoId = Stoid;
+
+                    ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
                     return true;
                 }
             }

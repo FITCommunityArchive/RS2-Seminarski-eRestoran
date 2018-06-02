@@ -11,6 +11,8 @@ namespace eRestoran.Api.VM
         public List<CartRow> Jela { get; set; }
         public List<CartRow> Pica { get; set; }
         public double TotalPrice { get; set; }
+        public int StoId { get; set; }
+
 
     }
     public class CartRow
