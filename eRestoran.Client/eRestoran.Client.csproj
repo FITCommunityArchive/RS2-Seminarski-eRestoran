@@ -59,6 +59,12 @@
     <Compile Include="BackButton.Designer.cs">
       <DependentUpon>BackButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="DigitalClock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DigitalClock.Designer.cs">
+      <DependentUpon>DigitalClock.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajKlijenta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     <Compile Include="Util\WebAPIHelper.cs" />
     <EmbeddedResource Include="BackButton.resx">
       <DependentUpon>BackButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DigitalClock.resx">
+      <DependentUpon>DigitalClock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajKlijenta.resx">
       <DependentUpon>DodajKlijenta.cs</DependentUpon>

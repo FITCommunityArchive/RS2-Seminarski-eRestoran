@@ -395,7 +395,9 @@ namespace FastFoodDemo
         private void btnHome_Click(object sender, EventArgs e)
         {
             cardsPanel1.Controls.Clear();
-            var kont = new HomeControl();
+            // var kont = new HomeControl();
+            var kont = new DigitalClock();
+
             cardsPanel1.Controls.Add(kont);
             AddToControlHistory(kont);
             SetSideMenuPosition((Control)sender);
