@@ -138,6 +138,7 @@
     <Compile Include="Controllers\JeloController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
     <Compile Include="Controllers\NalogController.cs" />
+    <Compile Include="Controllers\NarudzbaController.cs" />
     <Compile Include="Controllers\PonudaAdministratorController.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\SkladisteController.cs" />

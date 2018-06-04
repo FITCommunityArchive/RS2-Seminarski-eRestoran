@@ -50,9 +50,7 @@ namespace FastFoodDemo
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dodajProizvod = new System.Windows.Forms.Button();
             this.cardsPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button7 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cartButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -317,20 +315,6 @@ namespace FastFoodDemo
             this.panel3.Size = new System.Drawing.Size(111, 96);
             this.panel3.TabIndex = 2;
             // 
-            // dodajProizvod
-            // 
-            this.dodajProizvod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.dodajProizvod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.dodajProizvod.ForeColor = System.Drawing.Color.White;
-            this.dodajProizvod.Location = new System.Drawing.Point(887, 61);
-            this.dodajProizvod.Name = "dodajProizvod";
-            this.dodajProizvod.Size = new System.Drawing.Size(141, 35);
-            this.dodajProizvod.TabIndex = 7;
-            this.dodajProizvod.Text = "Dodaj proizvod";
-            this.dodajProizvod.UseVisualStyleBackColor = false;
-            this.dodajProizvod.Visible = false;
-            this.dodajProizvod.Click += new System.EventHandler(this.dodajProizvod_Click);
-            // 
             // cardsPanel1
             // 
             this.cardsPanel1.Location = new System.Drawing.Point(243, 133);
@@ -338,25 +322,11 @@ namespace FastFoodDemo
             this.cardsPanel1.Size = new System.Drawing.Size(815, 525);
             this.cardsPanel1.TabIndex = 8;
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(717, 61);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(141, 35);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "Dodaj jelo";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Visible = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(509, 59);
+            this.label4.Location = new System.Drawing.Point(498, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 18);
             this.label4.TabIndex = 11;
@@ -384,9 +354,7 @@ namespace FastFoodDemo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 687);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.cardsPanel1);
-            this.Controls.Add(this.dodajProizvod);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.cartButton);
@@ -430,10 +398,8 @@ namespace FastFoodDemo
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private UrediProizvod firstCustomControl3;
-        private System.Windows.Forms.Button dodajProizvod;
         private PonudaVM viewModel;
         public System.Windows.Forms.FlowLayoutPanel cardsPanel1; // nije riješenje problema
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button cartButton;
     }
