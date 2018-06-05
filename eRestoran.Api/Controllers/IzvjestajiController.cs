@@ -5,13 +5,45 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace eRestoran.Api.Controllers
 {
     public class IzvjestajiController : ApiController
     {
         MyContext ctx = new MyContext();
-        public IHttpActionResult GetSveNarudzbeKorisnici() {
+        public List<KorisnikInfo> GetSveNarudzbeKorisnici()
+        {
+
+
+
+            ReportsSviKorisniciNarudzbe model = new ReportsSviKorisniciNarudzbe();
+            model.Klijenti = ctx.Klijenti.Select(x => new KorisnikInfo
+            {
+                Ime = x.Ime + " " + x.Prezime,
+                Id = x.Id,
+                BrojNarudzbi = ctx.Racuni.Where(y => y.KlijentId == x.Id).Count(),
+                Iznos = ctx.Racuni.Where(y => y.KlijentId == x.Id).Count() != 0 ? ctx.Racuni.Where(y => y.KlijentId == x.Id).Sum(y => y.Iznos) : 0
+
+            }).ToList();
+
+            model.Zaposlenici = ctx.Zaposlenici.Select(x => new KorisnikInfo
+            {
+                Ime = x.Ime + " " + x.Prezime,
+                Id = x.Id,
+                BrojNarudzbi = ctx.Racuni.Where(y => y.ZaposlenikId == x.Id).Count(),
+                Iznos = ctx.Racuni.Where(y => y.ZaposlenikId == x.Id).Count() != 0 ? ctx.Racuni.Where(y => y.ZaposlenikId == x.Id).Sum(y => y.Iznos) : 0
+            }).ToList();
+            var klijenti = model.Klijenti.Where(x => x.BrojNarudzbi != 0).ToList();
+            var zaposlenici = model.Zaposlenici.Where(x => x.BrojNarudzbi != 0).ToList();
+
+            klijenti.AddRange(zaposlenici);
+            return klijenti;
+
+
+        }
+        public ReportsSviKorisniciNarudzbe GetSveNarudzbeKorisnici2()
+        {
 
             ReportsSviKorisniciNarudzbe model = new ReportsSviKorisniciNarudzbe();
             model.Klijenti = ctx.Klijenti.Select(x => new KorisnikInfo
@@ -33,7 +65,7 @@ namespace eRestoran.Api.Controllers
             model.Klijenti = model.Klijenti.Where(x => x.BrojNarudzbi != 0).ToList();
             model.Zaposlenici = model.Zaposlenici.Where(x => x.BrojNarudzbi != 0).ToList();
 
-            return Ok();
+            return model;
 
         }
         public IHttpActionResult SveNarudzbeZaposlenik(int Id)
@@ -96,7 +128,11 @@ namespace eRestoran.Api.Controllers
 
             return Ok(model);
         }
-        public IHttpActionResult PoDatumu(DateTime datum)
+
+        [ResponseType(typeof(List<NarudbaDatum.NarudzbaRow>))]
+        [HttpPost]
+        [Route("api/izvjestaji/getbydate")]
+        public IHttpActionResult PoDatumu([FromBody]DateTime datum)
         {
             NarudbaDatum model = new NarudbaDatum();
 
@@ -106,17 +142,21 @@ namespace eRestoran.Api.Controllers
                      Datum = x.NarudzbaRacun.DatumIzdavanja,
                      NarudzbaId = x.Id,
                      Iznos = x.NarudzbaRacun.Iznos,
+                     KlijentId = x.NarudzbaRacun.KlijentId,
                      KlijentIme = x.NarudzbaRacun.Klijent.Ime + " " + x.NarudzbaRacun.Klijent.Prezime,
-                     KlijentId = x.NarudzbaRacun.KlijentId
+
                  }).ToList();
 
 
-            return Ok(model);
+            return Ok(model.Narudzbe);
         }
+        [ResponseType(typeof(List<NarudbaDatum.NarudzbaRow>))]
+        [HttpPost]
+        [Route("api/izvjestaji/getbykategorija")]
         public IHttpActionResult PonudaNarudzbe(int Id, string Kategorija)
         {
             NarudzbaPonuda model = new NarudzbaPonuda();
-            if (Kategorija == "Pica")
+            if (Kategorija != "Jela")
             {
                 model.ROWW = ctx.NarudzbaStavke.Where(i => i.ProizvodId == Id).Select(x => new NarudzbaPonuda.ROW
                 {
@@ -147,20 +187,24 @@ namespace eRestoran.Api.Controllers
 
             return Ok(model);
         }
-        public IHttpActionResult Index()
+        [ResponseType(typeof(RacunVM))]
+        [HttpPost]
+        [Route("api/izvjestaji/danasnjazarada")]
+        public IHttpActionResult Index([FromBody]DateTime date)
         {
-            
+
             RacunVM racuni = new RacunVM();
-            var ruleDate = Convert.ToDateTime(DateTime.Now).Date;
-            racuni.DanasnjaZarada = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == ruleDate.Year
-                                   && j.DatumIzdavanja.Month == ruleDate.Month
-                                   && j.DatumIzdavanja.Day == ruleDate.Day).GroupBy(o => new
+
+
+            racuni.DanasnjaZarada = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == date.Year
+                                   && j.DatumIzdavanja.Month == date.Month
+                                   && j.DatumIzdavanja.Day == date.Day).GroupBy(o => new
                                    {
                                        Day = o.DatumIzdavanja.Day,
                                        DatumIzdavanja = o.DatumIzdavanja,
-                                       Iznos = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == ruleDate.Year
-                                     && j.DatumIzdavanja.Month == ruleDate.Month
-                                     && j.DatumIzdavanja.Day == ruleDate.Day).Sum(y => y.Iznos)
+                                       Iznos = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == date.Year
+                                     && j.DatumIzdavanja.Month == date.Month
+                                     && j.DatumIzdavanja.Day == date.Day).Sum(y => y.Iznos)
                                    }).Select(x => new RacunVM.RacunRow
                                    {
                                        DatumIzdavanja = x.Key.DatumIzdavanja,
@@ -177,9 +221,27 @@ namespace eRestoran.Api.Controllers
                     Dan = DateTime.Now.Day,
                 };
             }
+            racuni.Zarade = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == date.Year
+                                     && j.DatumIzdavanja.Month == date.Month
+                                     && j.DatumIzdavanja.Day == date.Day).GroupBy(o => new
+                                     {
+                                         Day = o.DatumIzdavanja.Day,
+                                         DatumIzdavanja = o.DatumIzdavanja,
+                                         Iznos = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == date.Year
+                                       && j.DatumIzdavanja.Month == date.Month
+                                       && j.DatumIzdavanja.Day == date.Day).Sum(y => y.Iznos)
+                                     }).Select(x => new RacunVM.RacunRow
+                                     {
+                                         DatumIzdavanja = x.Key.DatumIzdavanja,
+                                         Iznos = x.Key.Iznos,
+                                         Dan = x.Key.Day,
+                                         BrojNarudzbi = ctx.Racuni.Count(j => j.DatumIzdavanja.Year == date.Year
+                                      && j.DatumIzdavanja.Month == date.Month
+                                      && j.DatumIzdavanja.Day == date.Day)
+                                     }).ToList();
 
 
-
+           
 
             return Ok(racuni);
         }

@@ -451,6 +451,14 @@ namespace FastFoodDemo
             DodajKontrolu(new RezervacijaStola());
             SetSideMenuPosition((Control)sender);
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var kont = new Izvjestaji();
+            DodajKontrolu(kont);
+            AddToControlHistory(kont);
+            SetSideMenuPosition((Control)sender);
+        }
         //korpa viewmodel
     }
 }

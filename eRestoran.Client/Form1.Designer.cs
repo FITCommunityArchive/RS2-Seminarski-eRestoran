@@ -106,6 +106,7 @@ namespace FastFoodDemo
             this.button6.Text = "       Izvještaji";
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnRezervacije
             // 
