@@ -109,10 +109,10 @@
             // 
             this.TipoviDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TipoviDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.TipoviDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TipoviDataGrid.Location = new System.Drawing.Point(90, 214);
             this.TipoviDataGrid.Name = "TipoviDataGrid";
             this.TipoviDataGrid.ReadOnly = true;
+            this.TipoviDataGrid.RowTemplate.Height = 30;
             this.TipoviDataGrid.Size = new System.Drawing.Size(537, 200);
             this.TipoviDataGrid.TabIndex = 35;
             // 

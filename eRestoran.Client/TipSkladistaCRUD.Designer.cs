@@ -46,10 +46,11 @@
             // 
             this.SkladistaDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.SkladistaDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.SkladistaDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SkladistaDataGrid.ColumnHeadersHeight = 22;
             this.SkladistaDataGrid.Location = new System.Drawing.Point(74, 220);
             this.SkladistaDataGrid.Name = "SkladistaDataGrid";
             this.SkladistaDataGrid.ReadOnly = true;
+            this.SkladistaDataGrid.RowTemplate.Height = 30;
             this.SkladistaDataGrid.Size = new System.Drawing.Size(537, 200);
             this.SkladistaDataGrid.TabIndex = 45;
             // 

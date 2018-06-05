@@ -65,9 +65,10 @@
             // 
             this.dateIzvjestajidataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dateIzvjestajidataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dateIzvjestajidataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dateIzvjestajidataGrid.ColumnHeadersHeight = 22;
             this.dateIzvjestajidataGrid.Location = new System.Drawing.Point(61, 117);
             this.dateIzvjestajidataGrid.Name = "dateIzvjestajidataGrid";
+            this.dateIzvjestajidataGrid.RowTemplate.Height = 30;
             this.dateIzvjestajidataGrid.Size = new System.Drawing.Size(621, 289);
             this.dateIzvjestajidataGrid.TabIndex = 22;
             // 

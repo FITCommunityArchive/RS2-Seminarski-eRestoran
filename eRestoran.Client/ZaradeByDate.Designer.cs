@@ -58,9 +58,10 @@
             // 
             this.dnevneByDatedataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dnevneByDatedataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dnevneByDatedataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dnevneByDatedataGridView.ColumnHeadersHeight = 22;
             this.dnevneByDatedataGridView.Location = new System.Drawing.Point(61, 104);
             this.dnevneByDatedataGridView.Name = "dnevneByDatedataGridView";
+            this.dnevneByDatedataGridView.RowTemplate.Height = 30;
             this.dnevneByDatedataGridView.Size = new System.Drawing.Size(621, 289);
             this.dnevneByDatedataGridView.TabIndex = 22;
             // 

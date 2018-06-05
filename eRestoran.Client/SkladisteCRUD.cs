@@ -130,6 +130,7 @@ namespace eRestoran.Client
             HttpResponseMessage responseMessage = getSkladistaService.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
+                StyleDataGrid();
                 List<SkladisteVM> lista = responseMessage.Content.ReadAsAsync<List<SkladisteVM>>().Result;
                 SkladistaDataGrid.DataSource = lista;
                 SkladistaDataGrid.Columns[0].Visible = false;
@@ -141,6 +142,19 @@ namespace eRestoran.Client
             adresaSkladistaTextBox.ResetText();
             kvadraturaTextBox.ResetText();
             tipSkladistaComboBox.SelectedValue=0;
+        }
+        private void StyleDataGrid()
+        {
+            SkladistaDataGrid.BorderStyle = BorderStyle.None;
+            SkladistaDataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            SkladistaDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            SkladistaDataGrid.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            SkladistaDataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            SkladistaDataGrid.BackgroundColor = Color.White;
+            SkladistaDataGrid.EnableHeadersVisualStyles = false;
+            SkladistaDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            SkladistaDataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            SkladistaDataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void Uredibutton_Click(object sender, EventArgs e)

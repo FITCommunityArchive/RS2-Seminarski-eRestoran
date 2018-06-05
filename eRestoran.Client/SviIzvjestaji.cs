@@ -32,6 +32,7 @@ namespace eRestoran.Client
             if (responseMessage.IsSuccessStatusCode)
 
             {
+                StyleDataGrid();
                 izvjestaji = responseMessage.Content.ReadAsAsync<List<KorisnikInfo>>().Result;
                 izvjestajiDataGrid.DataSource = izvjestaji;
                 izvjestajiDataGrid.Columns[0].Visible = false;
@@ -39,6 +40,22 @@ namespace eRestoran.Client
             }
         }
 
+        private void StyleDataGrid()
+        {
+            izvjestajiDataGrid.BorderStyle = BorderStyle.None; 
+            //izvjestajiDataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(178, 8, 55);
+            izvjestajiDataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+
+            izvjestajiDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            izvjestajiDataGrid.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            izvjestajiDataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            izvjestajiDataGrid.BackgroundColor = Color.White;
+            izvjestajiDataGrid.EnableHeadersVisualStyles = false;
+            izvjestajiDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            izvjestajiDataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            izvjestajiDataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+        }
         DataTable MakeDataTable()
         {
 

@@ -34,12 +34,28 @@ namespace eRestoran.Client
             if (responseMessage.IsSuccessStatusCode)
 
             {
+                StyleDataGrid();
                 izvjestaji = responseMessage.Content.ReadAsAsync<List<NarudbaDatum.NarudzbaRow>>().Result;
                 dateIzvjestajidataGrid.DataSource = izvjestaji;
                 dateIzvjestajidataGrid.Columns[0].Visible = false;
                 dateIzvjestajidataGrid.Columns[4].Visible = false;
 
             }
+        }
+
+        private void StyleDataGrid()
+        {
+            dateIzvjestajidataGrid.BorderStyle = BorderStyle.None;
+            dateIzvjestajidataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            dateIzvjestajidataGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dateIzvjestajidataGrid.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            dateIzvjestajidataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dateIzvjestajidataGrid.BackgroundColor = Color.White;
+
+            dateIzvjestajidataGrid.EnableHeadersVisualStyles = false;
+            dateIzvjestajidataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dateIzvjestajidataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dateIzvjestajidataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void datumChanged(object sender, EventArgs e)

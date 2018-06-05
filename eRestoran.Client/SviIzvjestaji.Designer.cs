@@ -40,9 +40,10 @@
             // 
             this.izvjestajiDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.izvjestajiDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.izvjestajiDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.izvjestajiDataGrid.ColumnHeadersHeight = 22;
             this.izvjestajiDataGrid.Location = new System.Drawing.Point(66, 115);
             this.izvjestajiDataGrid.Name = "izvjestajiDataGrid";
+            this.izvjestajiDataGrid.RowTemplate.Height = 30;
             this.izvjestajiDataGrid.Size = new System.Drawing.Size(621, 289);
             this.izvjestajiDataGrid.TabIndex = 0;
             // 

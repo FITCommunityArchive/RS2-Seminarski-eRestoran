@@ -29,11 +29,26 @@ namespace eRestoran.Client
             HttpResponseMessage responseMessage = ZaradeGet.PostResponse(datumIzvjestaj.Value.ToString("o"));
             if (responseMessage.IsSuccessStatusCode)
             {
+                StyleDataGrid();
                 var zarada = responseMessage.Content.ReadAsAsync<RacunVM>().Result;
                 dnevneByDatedataGridView.DataSource = zarada.Zarade;
                 dnevneByDatedataGridView.Columns[3].Visible = false;
 
             }
+        }
+
+        private void StyleDataGrid()
+        {
+           dnevneByDatedataGridView.BorderStyle = BorderStyle.None;
+           dnevneByDatedataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+           dnevneByDatedataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+           dnevneByDatedataGridView.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+           dnevneByDatedataGridView.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            dnevneByDatedataGridView.BackgroundColor = Color.White;
+           dnevneByDatedataGridView.EnableHeadersVisualStyles = false;
+           dnevneByDatedataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+           dnevneByDatedataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            dnevneByDatedataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void datumChanged(object sender, EventArgs e)
