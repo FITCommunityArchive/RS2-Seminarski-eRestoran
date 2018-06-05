@@ -69,10 +69,10 @@
             // unostextbox
             // 
             this.unostextbox.AutoSize = true;
-            this.unostextbox.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unostextbox.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.unostextbox.Location = new System.Drawing.Point(217, 27);
             this.unostextbox.Name = "unostextbox";
-            this.unostextbox.Size = new System.Drawing.Size(182, 24);
+            this.unostextbox.Size = new System.Drawing.Size(211, 29);
             this.unostextbox.TabIndex = 41;
             this.unostextbox.Text = "Novi tip skladišta";
             // 
@@ -80,17 +80,17 @@
             // 
             this.nazivSkladistaPtextBox.Location = new System.Drawing.Point(261, 80);
             this.nazivSkladistaPtextBox.Name = "nazivSkladistaPtextBox";
-            this.nazivSkladistaPtextBox.Size = new System.Drawing.Size(196, 20);
+            this.nazivSkladistaPtextBox.Size = new System.Drawing.Size(220, 20);
             this.nazivSkladistaPtextBox.TabIndex = 40;
             this.nazivSkladistaPtextBox.Validating += new System.ComponentModel.CancelEventHandler(this.nazivSkladistaPtextBox_Validating);
             // 
             // NazivTipP
             // 
             this.NazivTipP.AutoSize = true;
-            this.NazivTipP.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.NazivTipP.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.NazivTipP.Location = new System.Drawing.Point(115, 84);
             this.NazivTipP.Name = "NazivTipP";
-            this.NazivTipP.Size = new System.Drawing.Size(102, 16);
+            this.NazivTipP.Size = new System.Drawing.Size(114, 18);
             this.NazivTipP.TabIndex = 38;
             this.NazivTipP.Text = "Naziv skladišta";
             // 
@@ -105,7 +105,7 @@
             this.Izbrisibutton.ForeColor = System.Drawing.Color.White;
             this.Izbrisibutton.Location = new System.Drawing.Point(648, 268);
             this.Izbrisibutton.Name = "Izbrisibutton";
-            this.Izbrisibutton.Size = new System.Drawing.Size(72, 35);
+            this.Izbrisibutton.Size = new System.Drawing.Size(100, 35);
             this.Izbrisibutton.TabIndex = 47;
             this.Izbrisibutton.Text = "Izbriši";
             this.Izbrisibutton.UseVisualStyleBackColor = false;
@@ -118,7 +118,7 @@
             this.Uredibutton.ForeColor = System.Drawing.Color.White;
             this.Uredibutton.Location = new System.Drawing.Point(648, 220);
             this.Uredibutton.Name = "Uredibutton";
-            this.Uredibutton.Size = new System.Drawing.Size(72, 35);
+            this.Uredibutton.Size = new System.Drawing.Size(100, 35);
             this.Uredibutton.TabIndex = 46;
             this.Uredibutton.Text = "Uredi";
             this.Uredibutton.UseVisualStyleBackColor = false;

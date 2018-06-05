@@ -9,7 +9,7 @@ namespace FirstUserControlUsage
     {
         const int CardWidth = 180;
         private Panel panel1;
-        const int CardHeight = 340;
+        const int CardHeight = 305;
 
         public PonudaVM ViewModel { get; set; }
         public List<CartRow> ViewModelKorpa { get; set; }

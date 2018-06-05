@@ -66,94 +66,100 @@
             // ImeLabel
             // 
             this.ImeLabel.AutoSize = true;
-            this.ImeLabel.Location = new System.Drawing.Point(100, 84);
+            this.ImeLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.ImeLabel.Location = new System.Drawing.Point(57, 84);
             this.ImeLabel.Name = "ImeLabel";
-            this.ImeLabel.Size = new System.Drawing.Size(24, 13);
+            this.ImeLabel.Size = new System.Drawing.Size(33, 18);
             this.ImeLabel.TabIndex = 0;
             this.ImeLabel.Text = "Ime";
             // 
             // PrezimeLabel
             // 
             this.PrezimeLabel.AutoSize = true;
-            this.PrezimeLabel.Location = new System.Drawing.Point(100, 123);
+            this.PrezimeLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.PrezimeLabel.Location = new System.Drawing.Point(57, 125);
             this.PrezimeLabel.Name = "PrezimeLabel";
-            this.PrezimeLabel.Size = new System.Drawing.Size(44, 13);
+            this.PrezimeLabel.Size = new System.Drawing.Size(66, 18);
             this.PrezimeLabel.TabIndex = 1;
             this.PrezimeLabel.Text = "Prezime";
             // 
             // UsernameLabel
             // 
             this.UsernameLabel.AutoSize = true;
-            this.UsernameLabel.Location = new System.Drawing.Point(100, 166);
+            this.UsernameLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.UsernameLabel.Location = new System.Drawing.Point(57, 167);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(55, 13);
+            this.UsernameLabel.Size = new System.Drawing.Size(80, 18);
             this.UsernameLabel.TabIndex = 2;
             this.UsernameLabel.Text = "Username";
             // 
             // DatumRodjenjaLabel
             // 
             this.DatumRodjenjaLabel.AutoSize = true;
-            this.DatumRodjenjaLabel.Location = new System.Drawing.Point(100, 234);
+            this.DatumRodjenjaLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.DatumRodjenjaLabel.Location = new System.Drawing.Point(57, 241);
             this.DatumRodjenjaLabel.Name = "DatumRodjenjaLabel";
-            this.DatumRodjenjaLabel.Size = new System.Drawing.Size(77, 13);
+            this.DatumRodjenjaLabel.Size = new System.Drawing.Size(111, 18);
             this.DatumRodjenjaLabel.TabIndex = 4;
             this.DatumRodjenjaLabel.Text = "Datum rođenja";
             // 
             // TipKorisnikaLabel
             // 
             this.TipKorisnikaLabel.AutoSize = true;
-            this.TipKorisnikaLabel.Location = new System.Drawing.Point(100, 267);
+            this.TipKorisnikaLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.TipKorisnikaLabel.Location = new System.Drawing.Point(57, 281);
             this.TipKorisnikaLabel.Name = "TipKorisnikaLabel";
-            this.TipKorisnikaLabel.Size = new System.Drawing.Size(67, 13);
+            this.TipKorisnikaLabel.Size = new System.Drawing.Size(99, 18);
             this.TipKorisnikaLabel.TabIndex = 5;
             this.TipKorisnikaLabel.Text = "Tip korisnika";
             // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(100, 304);
+            this.EmailLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.EmailLabel.Location = new System.Drawing.Point(57, 320);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(32, 13);
+            this.EmailLabel.Size = new System.Drawing.Size(46, 18);
             this.EmailLabel.TabIndex = 6;
             this.EmailLabel.Text = "Email";
             // 
             // imeTextBox
             // 
-            this.imeTextBox.Location = new System.Drawing.Point(220, 81);
+            this.imeTextBox.Location = new System.Drawing.Point(174, 84);
             this.imeTextBox.Name = "imeTextBox";
-            this.imeTextBox.Size = new System.Drawing.Size(199, 20);
+            this.imeTextBox.Size = new System.Drawing.Size(220, 20);
             this.imeTextBox.TabIndex = 7;
             this.imeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.imeTextBox_Validating);
             // 
             // prezimeTextBox
             // 
-            this.prezimeTextBox.Location = new System.Drawing.Point(220, 120);
+            this.prezimeTextBox.Location = new System.Drawing.Point(174, 126);
             this.prezimeTextBox.Name = "prezimeTextBox";
-            this.prezimeTextBox.Size = new System.Drawing.Size(199, 20);
+            this.prezimeTextBox.Size = new System.Drawing.Size(220, 20);
             this.prezimeTextBox.TabIndex = 8;
             this.prezimeTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeTextBox_Validating);
             // 
             // usernamaTextBox
             // 
-            this.usernamaTextBox.Location = new System.Drawing.Point(220, 166);
+            this.usernamaTextBox.Location = new System.Drawing.Point(174, 165);
             this.usernamaTextBox.Name = "usernamaTextBox";
-            this.usernamaTextBox.Size = new System.Drawing.Size(199, 20);
+            this.usernamaTextBox.Size = new System.Drawing.Size(220, 20);
             this.usernamaTextBox.TabIndex = 9;
             this.usernamaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.usernamaTextBox_Validating);
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(220, 301);
+            this.emailTextBox.Location = new System.Drawing.Point(174, 318);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(199, 20);
+            this.emailTextBox.Size = new System.Drawing.Size(220, 20);
             this.emailTextBox.TabIndex = 11;
             this.emailTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailTextBox_Validating);
             // 
             // datumRodjenjaDateTimePicker
             // 
-            this.datumRodjenjaDateTimePicker.Location = new System.Drawing.Point(220, 238);
+            this.datumRodjenjaDateTimePicker.Location = new System.Drawing.Point(174, 238);
             this.datumRodjenjaDateTimePicker.Name = "datumRodjenjaDateTimePicker";
-            this.datumRodjenjaDateTimePicker.Size = new System.Drawing.Size(199, 20);
+            this.datumRodjenjaDateTimePicker.Size = new System.Drawing.Size(220, 20);
             this.datumRodjenjaDateTimePicker.TabIndex = 12;
             this.datumRodjenjaDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.datumRodjenjaDateTimePicker_Validating);
             // 
@@ -161,9 +167,9 @@
             // 
             this.tipKorisnikaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipKorisnikaComboBox.FormattingEnabled = true;
-            this.tipKorisnikaComboBox.Location = new System.Drawing.Point(220, 267);
+            this.tipKorisnikaComboBox.Location = new System.Drawing.Point(174, 278);
             this.tipKorisnikaComboBox.Name = "tipKorisnikaComboBox";
-            this.tipKorisnikaComboBox.Size = new System.Drawing.Size(199, 21);
+            this.tipKorisnikaComboBox.Size = new System.Drawing.Size(220, 21);
             this.tipKorisnikaComboBox.TabIndex = 13;
             this.tipKorisnikaComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.tipKorisnikaComboBox_Validating);
             // 
@@ -172,7 +178,7 @@
             this.snimiKorbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.snimiKorbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.snimiKorbtn.ForeColor = System.Drawing.Color.White;
-            this.snimiKorbtn.Location = new System.Drawing.Point(243, 361);
+            this.snimiKorbtn.Location = new System.Drawing.Point(309, 375);
             this.snimiKorbtn.Name = "snimiKorbtn";
             this.snimiKorbtn.Size = new System.Drawing.Size(141, 35);
             this.snimiKorbtn.TabIndex = 44;
@@ -183,10 +189,10 @@
             // NaslovLabel
             // 
             this.NaslovLabel.AutoSize = true;
-            this.NaslovLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.NaslovLabel.Location = new System.Drawing.Point(205, 16);
+            this.NaslovLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.NaslovLabel.Location = new System.Drawing.Point(215, 16);
             this.NaslovLabel.Name = "NaslovLabel";
-            this.NaslovLabel.Size = new System.Drawing.Size(197, 24);
+            this.NaslovLabel.Size = new System.Drawing.Size(249, 29);
             this.NaslovLabel.TabIndex = 45;
             this.NaslovLabel.Text = "Dodavanje korisnika";
             // 
@@ -196,70 +202,75 @@
             // 
             // datumZaposlenjaDateTimePicker
             // 
-            this.datumZaposlenjaDateTimePicker.Location = new System.Drawing.Point(564, 81);
+            this.datumZaposlenjaDateTimePicker.Location = new System.Drawing.Point(553, 81);
             this.datumZaposlenjaDateTimePicker.Name = "datumZaposlenjaDateTimePicker";
-            this.datumZaposlenjaDateTimePicker.Size = new System.Drawing.Size(199, 20);
+            this.datumZaposlenjaDateTimePicker.Size = new System.Drawing.Size(220, 20);
             this.datumZaposlenjaDateTimePicker.TabIndex = 47;
             this.datumZaposlenjaDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.datumZaposlenjaDateTimePicker_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(444, 81);
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(414, 84);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.Size = new System.Drawing.Size(133, 18);
             this.label1.TabIndex = 46;
             this.label1.Text = "Datum zaposlenja";
             // 
             // adresaTextBox
             // 
-            this.adresaTextBox.Location = new System.Drawing.Point(564, 162);
+            this.adresaTextBox.Location = new System.Drawing.Point(553, 162);
             this.adresaTextBox.Name = "adresaTextBox";
-            this.adresaTextBox.Size = new System.Drawing.Size(199, 20);
+            this.adresaTextBox.Size = new System.Drawing.Size(220, 20);
             this.adresaTextBox.TabIndex = 51;
             this.adresaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.adresaTextBox_Validating);
             // 
             // JMBGTextBox
             // 
-            this.JMBGTextBox.Location = new System.Drawing.Point(564, 123);
+            this.JMBGTextBox.Location = new System.Drawing.Point(553, 123);
             this.JMBGTextBox.Name = "JMBGTextBox";
-            this.JMBGTextBox.Size = new System.Drawing.Size(199, 20);
+            this.JMBGTextBox.Size = new System.Drawing.Size(220, 20);
             this.JMBGTextBox.TabIndex = 50;
             this.JMBGTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.JMBGTextBox_Validating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(444, 165);
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(414, 165);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(57, 18);
             this.label2.TabIndex = 49;
             this.label2.Text = "Adresa";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(444, 126);
+            this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(414, 128);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.Size = new System.Drawing.Size(52, 18);
             this.label3.TabIndex = 48;
             this.label3.Text = "JBMG";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(444, 241);
+            this.label4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(414, 241);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.Size = new System.Drawing.Size(53, 18);
             this.label4.TabIndex = 53;
             this.label4.Text = "Status";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(444, 202);
+            this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(414, 201);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.Size = new System.Drawing.Size(43, 18);
             this.label5.TabIndex = 52;
             this.label5.Text = "Plata";
             // 
@@ -267,64 +278,66 @@
             // 
             this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Location = new System.Drawing.Point(564, 241);
+            this.statusComboBox.Location = new System.Drawing.Point(553, 241);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(199, 21);
+            this.statusComboBox.Size = new System.Drawing.Size(220, 21);
             this.statusComboBox.TabIndex = 55;
             this.statusComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.statusComboBox_Validating);
             // 
             // plataNumericUpDown
             // 
             this.plataNumericUpDown.DecimalPlaces = 2;
-            this.plataNumericUpDown.Location = new System.Drawing.Point(564, 202);
+            this.plataNumericUpDown.Location = new System.Drawing.Point(553, 202);
             this.plataNumericUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.plataNumericUpDown.Name = "plataNumericUpDown";
-            this.plataNumericUpDown.Size = new System.Drawing.Size(199, 20);
+            this.plataNumericUpDown.Size = new System.Drawing.Size(220, 20);
             this.plataNumericUpDown.TabIndex = 56;
             this.plataNumericUpDown.Validating += new System.ComponentModel.CancelEventHandler(this.plataNumericUpDown_Validating);
             // 
             // telefonTextBox
             // 
-            this.telefonTextBox.Location = new System.Drawing.Point(564, 281);
+            this.telefonTextBox.Location = new System.Drawing.Point(553, 281);
             this.telefonTextBox.Name = "telefonTextBox";
-            this.telefonTextBox.Size = new System.Drawing.Size(199, 20);
+            this.telefonTextBox.Size = new System.Drawing.Size(220, 20);
             this.telefonTextBox.TabIndex = 58;
             this.telefonTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.telefonTextBox_Validating);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(444, 284);
+            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(414, 281);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.Size = new System.Drawing.Size(62, 18);
             this.label6.TabIndex = 57;
             this.label6.Text = "Telefon";
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(220, 202);
+            this.passwordTextBox.Location = new System.Drawing.Point(174, 204);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
-            this.passwordTextBox.Size = new System.Drawing.Size(199, 20);
+            this.passwordTextBox.Size = new System.Drawing.Size(220, 20);
             this.passwordTextBox.TabIndex = 10;
             this.passwordTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTextBox_Validating);
             // 
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(100, 202);
+            this.PasswordLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.PasswordLabel.Location = new System.Drawing.Point(57, 202);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(53, 13);
+            this.PasswordLabel.Size = new System.Drawing.Size(77, 18);
             this.PasswordLabel.TabIndex = 3;
             this.PasswordLabel.Text = "Password";
             // 
             // backButton1
             // 
-            this.backButton1.Location = new System.Drawing.Point(103, 16);
+            this.backButton1.Location = new System.Drawing.Point(114, 16);
             this.backButton1.Name = "backButton1";
             this.backButton1.Size = new System.Drawing.Size(62, 29);
             this.backButton1.TabIndex = 59;

@@ -33,6 +33,7 @@ namespace FastFoodDemo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.digitalClock1 = new eRestoran.Client.DigitalClock();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.btnRezervacije = new System.Windows.Forms.Button();
@@ -42,17 +43,15 @@ namespace FastFoodDemo
             this.btnMenu = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cardsPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.cartButton = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.btnOdaberiSto = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +59,7 @@ namespace FastFoodDemo
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
+            this.panel1.Controls.Add(this.digitalClock1);
             this.panel1.Controls.Add(this.SidePanel);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.btnRezervacije);
@@ -74,10 +74,19 @@ namespace FastFoodDemo
             this.panel1.Size = new System.Drawing.Size(209, 687);
             this.panel1.TabIndex = 0;
             // 
+            // digitalClock1
+            // 
+            this.digitalClock1.BackColor = System.Drawing.Color.Transparent;
+            this.digitalClock1.ForeColor = System.Drawing.Color.White;
+            this.digitalClock1.Location = new System.Drawing.Point(32, 12);
+            this.digitalClock1.Name = "digitalClock1";
+            this.digitalClock1.Size = new System.Drawing.Size(149, 77);
+            this.digitalClock1.TabIndex = 12;
+            // 
             // SidePanel
             // 
             this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.SidePanel.Location = new System.Drawing.Point(1, 61);
+            this.SidePanel.Location = new System.Drawing.Point(1, 97);
             this.SidePanel.Name = "SidePanel";
             this.SidePanel.Size = new System.Drawing.Size(10, 54);
             this.SidePanel.TabIndex = 4;
@@ -90,11 +99,11 @@ namespace FastFoodDemo
             this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(12, 329);
+            this.button6.Location = new System.Drawing.Point(12, 395);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(197, 54);
             this.button6.TabIndex = 4;
-            this.button6.Text = "       Reports";
+            this.button6.Text = "       Izvještaji";
             this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button6.UseVisualStyleBackColor = true;
             // 
@@ -106,7 +115,7 @@ namespace FastFoodDemo
             this.btnRezervacije.ForeColor = System.Drawing.Color.White;
             this.btnRezervacije.Image = ((System.Drawing.Image)(resources.GetObject("btnRezervacije.Image")));
             this.btnRezervacije.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRezervacije.Location = new System.Drawing.Point(12, 275);
+            this.btnRezervacije.Location = new System.Drawing.Point(12, 205);
             this.btnRezervacije.Name = "btnRezervacije";
             this.btnRezervacije.Size = new System.Drawing.Size(197, 54);
             this.btnRezervacije.TabIndex = 4;
@@ -123,11 +132,11 @@ namespace FastFoodDemo
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(12, 221);
+            this.button4.Location = new System.Drawing.Point(12, 265);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(197, 54);
             this.button4.TabIndex = 4;
-            this.button4.Text = "       Users";
+            this.button4.Text = "       Korisnički nalozi";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -140,11 +149,11 @@ namespace FastFoodDemo
             this.btnPonuda.ForeColor = System.Drawing.Color.White;
             this.btnPonuda.Image = ((System.Drawing.Image)(resources.GetObject("btnPonuda.Image")));
             this.btnPonuda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPonuda.Location = new System.Drawing.Point(12, 167);
+            this.btnPonuda.Location = new System.Drawing.Point(12, 155);
             this.btnPonuda.Name = "btnPonuda";
             this.btnPonuda.Size = new System.Drawing.Size(197, 54);
             this.btnPonuda.TabIndex = 4;
-            this.btnPonuda.Text = "       Ponuda";
+            this.btnPonuda.Text = "       Menu";
             this.btnPonuda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPonuda.UseVisualStyleBackColor = true;
             this.btnPonuda.Click += new System.EventHandler(this.btnPonuda_Click);
@@ -156,7 +165,7 @@ namespace FastFoodDemo
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button14.ForeColor = System.Drawing.Color.White;
             this.button14.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button14.Location = new System.Drawing.Point(3, 546);
+            this.button14.Location = new System.Drawing.Point(3, 592);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(36, 34);
             this.button14.TabIndex = 4;
@@ -172,11 +181,11 @@ namespace FastFoodDemo
             this.btnMenu.ForeColor = System.Drawing.Color.White;
             this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
             this.btnMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenu.Location = new System.Drawing.Point(12, 113);
+            this.btnMenu.Location = new System.Drawing.Point(12, 335);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(197, 54);
             this.btnMenu.TabIndex = 4;
-            this.btnMenu.Text = "       Menu";
+            this.btnMenu.Text = "       Ponuda";
             this.btnMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMenu.UseVisualStyleBackColor = true;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
@@ -189,7 +198,7 @@ namespace FastFoodDemo
             this.btnHome.ForeColor = System.Drawing.Color.White;
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(12, 59);
+            this.btnHome.Location = new System.Drawing.Point(12, 95);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(197, 54);
             this.btnHome.TabIndex = 4;
@@ -207,36 +216,6 @@ namespace FastFoodDemo
             this.panel2.Size = new System.Drawing.Size(871, 10);
             this.panel2.TabIndex = 1;
             // 
-            // button10
-            // 
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(810, 20);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(36, 34);
-            this.button10.TabIndex = 4;
-            this.button10.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
-            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button12.Location = new System.Drawing.Point(977, 19);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(32, 35);
-            this.button12.TabIndex = 4;
-            this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button12.UseVisualStyleBackColor = true;
-            // 
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
@@ -253,36 +232,6 @@ namespace FastFoodDemo
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button13_Click);
             // 
-            // button9
-            // 
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(768, 20);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(36, 34);
-            this.button9.TabIndex = 4;
-            this.button9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(726, 20);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(36, 34);
-            this.button8.TabIndex = 4;
-            this.button8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button8.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -297,11 +246,11 @@ namespace FastFoodDemo
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(25, 61);
+            this.label3.Location = new System.Drawing.Point(21, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.Size = new System.Drawing.Size(74, 17);
             this.label3.TabIndex = 3;
             this.label3.Text = "eRestoran";
             // 
@@ -310,6 +259,7 @@ namespace FastFoodDemo
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
+            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel3.Location = new System.Drawing.Point(243, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(111, 96);
@@ -325,42 +275,74 @@ namespace FastFoodDemo
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(498, 61);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.Location = new System.Drawing.Point(426, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 18);
+            this.label4.Size = new System.Drawing.Size(47, 18);
             this.label4.TabIndex = 11;
             this.label4.Text = "0 KM";
             // 
             // cartButton
             // 
+            this.cartButton.BackColor = System.Drawing.Color.Transparent;
             this.cartButton.FlatAppearance.BorderSize = 0;
             this.cartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cartButton.ForeColor = System.Drawing.Color.White;
             this.cartButton.Image = ((System.Drawing.Image)(resources.GetObject("cartButton.Image")));
             this.cartButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cartButton.Location = new System.Drawing.Point(414, 41);
+            this.cartButton.Location = new System.Drawing.Point(357, 12);
             this.cartButton.Name = "cartButton";
-            this.cartButton.Size = new System.Drawing.Size(78, 55);
+            this.cartButton.Size = new System.Drawing.Size(63, 55);
             this.cartButton.TabIndex = 4;
             this.cartButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cartButton.UseVisualStyleBackColor = true;
+            this.cartButton.UseVisualStyleBackColor = false;
             this.cartButton.Click += new System.EventHandler(this.cartButton_Click);
+            // 
+            // button12
+            // 
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
+            this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button12.Location = new System.Drawing.Point(977, 19);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(32, 35);
+            this.button12.TabIndex = 4;
+            this.button12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // btnOdaberiSto
+            // 
+            this.btnOdaberiSto.BackColor = System.Drawing.SystemColors.Control;
+            this.btnOdaberiSto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOdaberiSto.Font = new System.Drawing.Font("Segoe UI Semibold", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnOdaberiSto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.btnOdaberiSto.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOdaberiSto.Location = new System.Drawing.Point(372, 66);
+            this.btnOdaberiSto.Name = "btnOdaberiSto";
+            this.btnOdaberiSto.Size = new System.Drawing.Size(101, 30);
+            this.btnOdaberiSto.TabIndex = 12;
+            this.btnOdaberiSto.Text = "ODABERI STO";
+            this.btnOdaberiSto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnOdaberiSto.UseVisualStyleBackColor = false;
+            this.btnOdaberiSto.Visible = false;
+            this.btnOdaberiSto.Click += new System.EventHandler(this.btnRezervacije_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 687);
+            this.Controls.Add(this.btnOdaberiSto);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cardsPanel1);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.cartButton);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -389,11 +371,7 @@ namespace FastFoodDemo
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnPonuda;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
@@ -402,6 +380,9 @@ namespace FastFoodDemo
         public System.Windows.Forms.FlowLayoutPanel cardsPanel1; // nije riješenje problema
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button cartButton;
+        private DigitalClock digitalClock1;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnOdaberiSto;
     }
 }
 

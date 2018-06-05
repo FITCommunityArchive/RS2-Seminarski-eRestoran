@@ -47,10 +47,10 @@
             // unostextbox
             // 
             this.unostextbox.AutoSize = true;
-            this.unostextbox.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unostextbox.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.unostextbox.Location = new System.Drawing.Point(233, 21);
             this.unostextbox.Name = "unostextbox";
-            this.unostextbox.Size = new System.Drawing.Size(193, 24);
+            this.unostextbox.Size = new System.Drawing.Size(223, 29);
             this.unostextbox.TabIndex = 31;
             this.unostextbox.Text = "Novi tip proizvoda";
             // 
@@ -58,27 +58,27 @@
             // 
             this.NazivTipPtextBox.Location = new System.Drawing.Point(277, 74);
             this.NazivTipPtextBox.Name = "NazivTipPtextBox";
-            this.NazivTipPtextBox.Size = new System.Drawing.Size(196, 20);
+            this.NazivTipPtextBox.Size = new System.Drawing.Size(220, 20);
             this.NazivTipPtextBox.TabIndex = 29;
             this.NazivTipPtextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NazivTipPtextBox_Validating);
             // 
             // MjernaJ
             // 
             this.MjernaJ.AutoSize = true;
-            this.MjernaJ.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.MjernaJ.Location = new System.Drawing.Point(130, 111);
+            this.MjernaJ.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.MjernaJ.Location = new System.Drawing.Point(118, 108);
             this.MjernaJ.Name = "MjernaJ";
-            this.MjernaJ.Size = new System.Drawing.Size(111, 16);
+            this.MjernaJ.Size = new System.Drawing.Size(120, 18);
             this.MjernaJ.TabIndex = 28;
             this.MjernaJ.Text = "Mjerna jedinica ";
             // 
             // NazivTipP
             // 
             this.NazivTipP.AutoSize = true;
-            this.NazivTipP.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.NazivTipP.Location = new System.Drawing.Point(131, 78);
+            this.NazivTipP.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.NazivTipP.Location = new System.Drawing.Point(118, 76);
             this.NazivTipP.Name = "NazivTipP";
-            this.NazivTipP.Size = new System.Drawing.Size(138, 16);
+            this.NazivTipP.Size = new System.Drawing.Size(153, 18);
             this.NazivTipP.TabIndex = 27;
             this.NazivTipP.Text = "Naziv tipa proizvoda";
             // 
@@ -87,7 +87,7 @@
             this.snimiTipPbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.snimiTipPbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.snimiTipPbtn.ForeColor = System.Drawing.Color.White;
-            this.snimiTipPbtn.Location = new System.Drawing.Point(298, 146);
+            this.snimiTipPbtn.Location = new System.Drawing.Point(315, 152);
             this.snimiTipPbtn.Name = "snimiTipPbtn";
             this.snimiTipPbtn.Size = new System.Drawing.Size(141, 35);
             this.snimiTipPbtn.TabIndex = 33;
@@ -99,9 +99,9 @@
             // 
             this.MjernaJcomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MjernaJcomboBox.FormattingEnabled = true;
-            this.MjernaJcomboBox.Location = new System.Drawing.Point(277, 105);
+            this.MjernaJcomboBox.Location = new System.Drawing.Point(277, 108);
             this.MjernaJcomboBox.Name = "MjernaJcomboBox";
-            this.MjernaJcomboBox.Size = new System.Drawing.Size(196, 21);
+            this.MjernaJcomboBox.Size = new System.Drawing.Size(220, 21);
             this.MjernaJcomboBox.TabIndex = 34;
             this.MjernaJcomboBox.Validating += new System.ComponentModel.CancelEventHandler(this.MjernaJcomboBox_Validating);
             // 
@@ -127,7 +127,7 @@
             this.Uredibutton.ForeColor = System.Drawing.Color.White;
             this.Uredibutton.Location = new System.Drawing.Point(664, 214);
             this.Uredibutton.Name = "Uredibutton";
-            this.Uredibutton.Size = new System.Drawing.Size(72, 35);
+            this.Uredibutton.Size = new System.Drawing.Size(100, 35);
             this.Uredibutton.TabIndex = 36;
             this.Uredibutton.Text = "Uredi";
             this.Uredibutton.UseVisualStyleBackColor = false;
@@ -140,7 +140,7 @@
             this.Izbrisibutton.ForeColor = System.Drawing.Color.White;
             this.Izbrisibutton.Location = new System.Drawing.Point(664, 262);
             this.Izbrisibutton.Name = "Izbrisibutton";
-            this.Izbrisibutton.Size = new System.Drawing.Size(72, 35);
+            this.Izbrisibutton.Size = new System.Drawing.Size(100, 35);
             this.Izbrisibutton.TabIndex = 37;
             this.Izbrisibutton.Text = "Izbriši";
             this.Izbrisibutton.UseVisualStyleBackColor = false;
@@ -148,7 +148,7 @@
             // 
             // backButton1
             // 
-            this.backButton1.Location = new System.Drawing.Point(133, 21);
+            this.backButton1.Location = new System.Drawing.Point(112, 21);
             this.backButton1.Name = "backButton1";
             this.backButton1.Size = new System.Drawing.Size(62, 29);
             this.backButton1.TabIndex = 32;

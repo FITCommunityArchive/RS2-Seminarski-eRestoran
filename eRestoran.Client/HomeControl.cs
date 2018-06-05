@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FastFoodDemo;
+using eRestoran.Client.Helpers;
 
 namespace eRestoran.Client
 {
     public partial class HomeControl : UserControl
     {
+        private Image btnHover = ImagesHelper.GetImage("addBtnHover.png");
+        private Image btn = ImagesHelper.GetImage("addBtn.png");
         public HomeControl()
         {
             InitializeComponent();

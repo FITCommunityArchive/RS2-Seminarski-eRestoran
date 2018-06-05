@@ -33,7 +33,6 @@ namespace eRestoran.Client
             //get current time
             int hh = DateTime.Now.Hour;
             int mm = DateTime.Now.Minute;
-            int ss = DateTime.Now.Second;
 
             //time
             string time = "";
@@ -57,19 +56,12 @@ namespace eRestoran.Client
             {
                 time += mm;
             }
-            time += ":";
 
-            if (ss < 10)
-            {
-                time += "0" + ss;
-            }
-            else
-            {
-                time += ss;
-            }
+        
 
             //update label
             label1.Text = time;
+            datumLabel.Text = DateTime.Now.Day + "." + DateTime.Now.Month + "." + DateTime.Now.Year;
         }
     }
 }

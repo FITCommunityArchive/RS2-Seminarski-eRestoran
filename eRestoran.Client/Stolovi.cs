@@ -8,6 +8,7 @@ using eRestoran.Client.Properties;
 using System.Net.Http;
 using eRestoran.Data.Models;
 using eRestoran.Api.VM;
+using FastFoodDemo;
 
 namespace eRestoran.Client
 {
@@ -20,9 +21,10 @@ namespace eRestoran.Client
         public WebAPIHelper postRezervisiSto = new WebAPIHelper(Resources.apiUrlDevelopment, "api/post/rezervisi");
         public WebAPIHelper getOsvjeziStolove = new WebAPIHelper(Resources.apiUrlDevelopment, "api/get/osvjezistolove");
         public WebAPIHelper postIzbrisiRezervaciju = new WebAPIHelper(Resources.apiUrlDevelopment, "api/post/izbrisirezervaciju");
+        public WebAPIHelper postCheckout = new WebAPIHelper(Resources.apiUrlDevelopment, "api/checkout");
 
 
-        
+
         private Color zauzetiStoColor = Color.FromArgb(60, 255, 1, 1);
         List<StoloviRezervacijaVM> stolovi { get; set; }
         public DateTime DatumRezervacije = DateTime.Now;
@@ -88,6 +90,8 @@ namespace eRestoran.Client
                             if (response.IsSuccessStatusCode)
                             {
                                 btn.BackColor = zauzetiStoColor;
+                                var response2 = postCheckout.PostWithParametar(brojStola, ((Form1)this.ParentForm).GetCartForCheckout());
+                                if(response2.IsSuccessStatusCode)
                                 MessageBox.Show("ok proslo");
                             }
                         }

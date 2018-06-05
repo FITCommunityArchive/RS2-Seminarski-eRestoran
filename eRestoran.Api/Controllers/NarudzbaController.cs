@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using eRestoran.Api.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 
@@ -15,105 +16,126 @@ namespace eRestoran.Api.Controllers
 {
     public class NarudzbaController : ApiController
     {
-        private MyContext db = new MyContext();
+        private MyContext ctx = new MyContext();
 
         // GET: api/Narudzba
-        public IQueryable<Narudzba> GetNarudzbe()
+        [HttpPost]
+        [Route("api/checkout/{stoId}")]
+        public IHttpActionResult Checkout(int? stoId, [FromBody]CartIndexVM cart)
         {
-            return db.Narudzbe;
-        }
 
-        // GET: api/Narudzba/5
-        [ResponseType(typeof(Narudzba))]
-        public IHttpActionResult GetNarudzba(int id)
-        {
-            Narudzba narudzba = db.Narudzbe.Find(id);
-            if (narudzba == null)
+            if (cart.Jela.Count == 0 && cart.Pica.Count == 0)
             {
-                return NotFound();
+
+                //return RedirectToAction("Index", "Cart");
+
             }
 
-            return Ok(narudzba);
-        }
+            //if (Autentifikacija.klijentSesija == null)
+            //{
+            //    TempData["notAuthenticated"] = "Please sign in";
+            //    return RedirectToAction("Login", "Account");
+            //}
+            Narudzba narudzba = new Narudzba();
+            int zaposlenikId = 0;
+            int klijentId = 0;
+            if (stoId != null) { narudzba.StoId = (int)stoId; }
+            ctx.Narudzbe.Add(narudzba);
+            ctx.SaveChanges();
+            //if (Autentifikacija.klijentSesija != null)
+            //{
+            //    if (Autentifikacija.klijentSesija.TipKorisnika == TipKorisnika.Konobar)
+            //    {
+            //        zaposlenikId = Autentifikacija.klijentSesija.Id;
+            //        narudzba.ZaposlenikId = zaposlenikId;
+            //        narudzba.Sifra = "Z" + zaposlenikId + "N" + narudzba.Id;
 
-        // PUT: api/Narudzba/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutNarudzba(int id, Narudzba narudzba)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //    }
+            //    if (Autentifikacija.klijentSesija.TipKorisnika == TipKorisnika.Klijent)
+            //    {
+            //        klijentId = Autentifikacija.klijentSesija.Id;
+            //        narudzba.KlijentId = klijentId;
+            //        narudzba.Sifra = "K" + klijentId + "N" + narudzba.Id;
 
-            if (id != narudzba.Id)
+            //    }
+            //}
+            //else
+            //{
+            //    narudzba.Sifra = "K" + klijentId + "N" + narudzba.Id;
+            //}
+            narudzba.Sifra = Guid.NewGuid().ToString();
+            narudzba.StatusJela = statusNarudzbe.U_Pripremi;
+            narudzba.StatusPica = statusNarudzbe.U_Pripremi;
+            ctx.SaveChanges();
+            List<NarudzbaStavke> narudzbaStavke = new List<NarudzbaStavke>();
+            double racunTotal = 0;
+            if (cart.Jela.Count != 0)
             {
-                return BadRequest();
-            }
-
-            db.Entry(narudzba).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NarudzbaExists(id))
+                narudzbaStavke = cart.Jela.Select(x => new NarudzbaStavke
                 {
-                    return NotFound();
-                }
-                else
+                    NarudzbaId = narudzba.Id,
+                    JeloId = x.Id,
+                    Kolicina = x.Kolicina
+                }).ToList();
+
+                foreach (var x in cart.Jela)
                 {
-                    throw;
+                    racunTotal += ctx.Jelo.Where(y => y.Id == x.Id).SingleOrDefault().Cijena * x.Kolicina;
+                    List<JelaStavke> proizvodi = ctx.JelaStavke.Where(y => y.JeloId == x.Id).ToList();
+                    foreach (var stavka in proizvodi)
+                    {
+                        ctx.Proizvodi.Where(y => y.Id == stavka.ProizvodId).SingleOrDefault().Kolicina -= stavka.Kolicina * x.Kolicina;
+                        ctx.SaveChanges();
+                    }
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Narudzba
-        [ResponseType(typeof(Narudzba))]
-        public IHttpActionResult PostNarudzba(Narudzba narudzba)
-        {
-            if (!ModelState.IsValid)
+            if (cart.Pica.Count != 0)
             {
-                return BadRequest(ModelState);
+                narudzbaStavke.AddRange(cart.Pica.Select(x => new NarudzbaStavke
+                {
+                    NarudzbaId = narudzba.Id,
+                    ProizvodId = x.Id,
+                    Kolicina = x.Kolicina
+                }).ToList());
+                foreach (var x in cart.Pica)
+                {
+                    racunTotal += ctx.Proizvodi.Where(y => y.Id == x.Id).SingleOrDefault().Cijena * x.Kolicina;
+                    ctx.Proizvodi.Where(y => y.Id == x.Id).SingleOrDefault().Kolicina -= x.Kolicina;
+                    ctx.SaveChanges();
+                }
             }
-
-            db.Narudzbe.Add(narudzba);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = narudzba.Id }, narudzba);
-        }
-
-        // DELETE: api/Narudzba/5
-        [ResponseType(typeof(Narudzba))]
-        public IHttpActionResult DeleteNarudzba(int id)
-        {
-            Narudzba narudzba = db.Narudzbe.Find(id);
-            if (narudzba == null)
-            {
-                return NotFound();
-            }
-
-            db.Narudzbe.Remove(narudzba);
-            db.SaveChanges();
-
-            return Ok(narudzba);
+            ctx.NarudzbaStavke.AddRange(narudzbaStavke);
+            ctx.SaveChanges();
+            NarudzbaRacun racun = new NarudzbaRacun();
+            racun.DatumIzdavanja = DateTime.Now;
+            racun.Sifra = narudzba.Sifra;
+            //if (Autentifikacija.klijentSesija != null)
+            //{
+            //    if (Autentifikacija.klijentSesija.TipKorisnika == TipKorisnika.Konobar)
+            //    {
+            //        racun.ZaposlenikId = Autentifikacija.klijentSesija.Id;
+            //    }
+            //    if (Autentifikacija.klijentSesija.TipKorisnika == TipKorisnika.Klijent)
+            //    {
+            //        racun.KlijentId = Autentifikacija.klijentSesija.Id;
+            //    }
+            //}
+            racun.Iznos = racunTotal;
+            racun.Id = narudzba.Id;
+            ctx.Racuni.Add(racun);
+            ctx.SaveChanges();
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                ctx.Dispose();
             }
             base.Dispose(disposing);
         }
 
-        private bool NarudzbaExists(int id)
-        {
-            return db.Narudzbe.Count(e => e.Id == id) > 0;
-        }
+
     }
 }

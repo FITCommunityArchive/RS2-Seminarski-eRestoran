@@ -30,9 +30,6 @@ namespace FirstUserControlUsage
         {
             ViewModel = viewModel;
         }
-        public void ClearCartFrom0() {
-            ((Form1)this.ParentForm).RefreshCart();
-        }
 
         public void DataBind()
         {

@@ -62,7 +62,7 @@
             this.snimiSklPbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.snimiSklPbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.snimiSklPbtn.ForeColor = System.Drawing.Color.White;
-            this.snimiSklPbtn.Location = new System.Drawing.Point(283, 185);
+            this.snimiSklPbtn.Location = new System.Drawing.Point(297, 185);
             this.snimiSklPbtn.Name = "snimiSklPbtn";
             this.snimiSklPbtn.Size = new System.Drawing.Size(141, 35);
             this.snimiSklPbtn.TabIndex = 52;
@@ -80,28 +80,28 @@
             // unostextbox
             // 
             this.unostextbox.AutoSize = true;
-            this.unostextbox.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.unostextbox.Location = new System.Drawing.Point(217, 27);
+            this.unostextbox.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.unostextbox.Location = new System.Drawing.Point(256, 27);
             this.unostextbox.Name = "unostextbox";
-            this.unostextbox.Size = new System.Drawing.Size(159, 24);
+            this.unostextbox.Size = new System.Drawing.Size(182, 29);
             this.unostextbox.TabIndex = 50;
             this.unostextbox.Text = "Novo skladište";
             // 
             // adresaSkladistaTextBox
             // 
-            this.adresaSkladistaTextBox.Location = new System.Drawing.Point(261, 80);
+            this.adresaSkladistaTextBox.Location = new System.Drawing.Point(271, 82);
             this.adresaSkladistaTextBox.Name = "adresaSkladistaTextBox";
-            this.adresaSkladistaTextBox.Size = new System.Drawing.Size(196, 20);
+            this.adresaSkladistaTextBox.Size = new System.Drawing.Size(220, 20);
             this.adresaSkladistaTextBox.TabIndex = 49;
             this.adresaSkladistaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.adresaSkladistaTextBox_Validating);
             // 
             // NazivTipP
             // 
             this.NazivTipP.AutoSize = true;
-            this.NazivTipP.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.NazivTipP.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.NazivTipP.Location = new System.Drawing.Point(115, 84);
             this.NazivTipP.Name = "NazivTipP";
-            this.NazivTipP.Size = new System.Drawing.Size(111, 16);
+            this.NazivTipP.Size = new System.Drawing.Size(123, 18);
             this.NazivTipP.TabIndex = 48;
             this.NazivTipP.Text = "Adresa skladišta";
             // 
@@ -112,7 +112,7 @@
             this.Izbrisibutton.ForeColor = System.Drawing.Color.White;
             this.Izbrisibutton.Location = new System.Drawing.Point(648, 296);
             this.Izbrisibutton.Name = "Izbrisibutton";
-            this.Izbrisibutton.Size = new System.Drawing.Size(72, 35);
+            this.Izbrisibutton.Size = new System.Drawing.Size(100, 35);
             this.Izbrisibutton.TabIndex = 55;
             this.Izbrisibutton.Text = "Izbriši";
             this.Izbrisibutton.UseVisualStyleBackColor = false;
@@ -125,7 +125,7 @@
             this.Uredibutton.ForeColor = System.Drawing.Color.White;
             this.Uredibutton.Location = new System.Drawing.Point(648, 244);
             this.Uredibutton.Name = "Uredibutton";
-            this.Uredibutton.Size = new System.Drawing.Size(72, 35);
+            this.Uredibutton.Size = new System.Drawing.Size(100, 35);
             this.Uredibutton.TabIndex = 54;
             this.Uredibutton.Text = "Uredi";
             this.Uredibutton.UseVisualStyleBackColor = false;
@@ -133,29 +133,29 @@
             // 
             // kvadraturaTextBox
             // 
-            this.kvadraturaTextBox.Location = new System.Drawing.Point(260, 112);
+            this.kvadraturaTextBox.Location = new System.Drawing.Point(271, 114);
             this.kvadraturaTextBox.Name = "kvadraturaTextBox";
-            this.kvadraturaTextBox.Size = new System.Drawing.Size(196, 20);
+            this.kvadraturaTextBox.Size = new System.Drawing.Size(220, 20);
             this.kvadraturaTextBox.TabIndex = 57;
             this.kvadraturaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.kvadraturaTextBox_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(114, 116);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 16);
+            this.label1.Size = new System.Drawing.Size(153, 18);
             this.label1.TabIndex = 56;
             this.label1.Text = "Kvadratura skladišta";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(114, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 16);
+            this.label2.Size = new System.Drawing.Size(97, 18);
             this.label2.TabIndex = 58;
             this.label2.Text = "Tip skladišta";
             // 
@@ -163,9 +163,9 @@
             // 
             this.tipSkladistaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipSkladistaComboBox.FormattingEnabled = true;
-            this.tipSkladistaComboBox.Location = new System.Drawing.Point(261, 145);
+            this.tipSkladistaComboBox.Location = new System.Drawing.Point(271, 148);
             this.tipSkladistaComboBox.Name = "tipSkladistaComboBox";
-            this.tipSkladistaComboBox.Size = new System.Drawing.Size(195, 21);
+            this.tipSkladistaComboBox.Size = new System.Drawing.Size(220, 21);
             this.tipSkladistaComboBox.TabIndex = 59;
             this.tipSkladistaComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.tipSkladistaComboBox_Validating);
             // 

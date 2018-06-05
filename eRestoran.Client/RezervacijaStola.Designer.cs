@@ -35,13 +35,16 @@
             // 
             // datumRezervacije
             // 
-            this.datumRezervacije.Location = new System.Drawing.Point(526, 14);
+            this.datumRezervacije.AccessibleRole = System.Windows.Forms.AccessibleRole.Table;
+            this.datumRezervacije.CustomFormat = "dd/MM/yyyy";
+            this.datumRezervacije.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.datumRezervacije.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datumRezervacije.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.datumRezervacije.Location = new System.Drawing.Point(527, 3);
             this.datumRezervacije.MinDate = new System.DateTime(2018, 5, 30, 21, 28, 12, 884);
             this.datumRezervacije.Name = "datumRezervacije";
-            this.datumRezervacije.Size = new System.Drawing.Size(200, 20);
+            this.datumRezervacije.Size = new System.Drawing.Size(200, 26);
             this.datumRezervacije.TabIndex = 0;
-            this.datumRezervacije.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datumRezervacije.CustomFormat = "dd/MM/yyyy hh:mm";
             this.datumRezervacije.ValueChanged += new System.EventHandler(this.datumRezervacije_ValueChanged);
             // 
             // ctrlStolovi
@@ -49,7 +52,6 @@
             this.ctrlStolovi.BackColor = System.Drawing.Color.Transparent;
             this.ctrlStolovi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ctrlStolovi.BackgroundImage")));
             this.ctrlStolovi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ctrlStolovi.DatumRezervacije = new System.DateTime(((long)(0)));
             this.ctrlStolovi.Location = new System.Drawing.Point(0, 40);
             this.ctrlStolovi.Name = "ctrlStolovi";
             this.ctrlStolovi.Size = new System.Drawing.Size(758, 479);

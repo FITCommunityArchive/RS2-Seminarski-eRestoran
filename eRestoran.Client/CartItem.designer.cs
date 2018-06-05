@@ -88,8 +88,8 @@ namespace FirstUserControlUsage
             // txtNaziv
             // 
             this.txtNaziv.BackColor = System.Drawing.SystemColors.Control;
-            this.txtNaziv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtNaziv.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtNaziv.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtNaziv.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtNaziv.Location = new System.Drawing.Point(0, 0);
             this.txtNaziv.MaximumSize = new System.Drawing.Size(180, 64);
             this.txtNaziv.Name = "txtNaziv";
@@ -100,8 +100,8 @@ namespace FirstUserControlUsage
             // 
             // txtCijena
             // 
-            this.txtCijena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtCijena.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtCijena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txtCijena.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.txtCijena.Location = new System.Drawing.Point(0, 240);
             this.txtCijena.MaximumSize = new System.Drawing.Size(180, 64);
             this.txtCijena.Name = "txtCijena";

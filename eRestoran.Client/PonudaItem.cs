@@ -94,33 +94,7 @@ namespace FirstUserControlUsage
             }
             return false;
         }
-        public bool OduzmiIzKorpe()
-        {
-            if (ViewModel.Id != null)
-            {
-                var stavkaKorpe = new CartRow
-                {
-                    Naziv = ViewModel.Naziv,
-                    Cijena = ViewModel.Cijena,
-                    Kolicina = kolicina,
-                    Id = ViewModel.Id ?? 0,
-                    Kategorija = ViewModel.Kategorija,
-                    Imageurl = ViewModel.imageUrl
-                };
-                if (ViewModel.Kategorija == "Jelo")
-                {
-                    ((Form1)this.ParentForm).RemoveFromCartJelo(stavkaKorpe);
-                    return true;
-
-                }
-                else
-                {
-                    ((Form1)this.ParentForm).RemoveFromCartPice(stavkaKorpe);
-                    return true;
-                }
-            }
-            return false;
-        }
+       
         private void btnSmanjiKolicinu_Click(object sender, EventArgs e)
         {
             if (kolicina > 0)

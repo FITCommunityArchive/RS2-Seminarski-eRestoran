@@ -46,7 +46,7 @@ namespace FirstUserControlUsage
             this.Naziv.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Naziv.Enabled = false;
             this.Naziv.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Naziv.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.Naziv.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Naziv.Location = new System.Drawing.Point(1, 2);
             this.Naziv.Margin = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.Naziv.Multiline = true;
@@ -63,7 +63,7 @@ namespace FirstUserControlUsage
             this.Cijena.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Cijena.Enabled = false;
             this.Cijena.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Cijena.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.Cijena.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Cijena.Location = new System.Drawing.Point(1, 22);
             this.Cijena.Margin = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.Cijena.Multiline = true;
@@ -80,7 +80,7 @@ namespace FirstUserControlUsage
             this.Kolicina.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Kolicina.Enabled = false;
             this.Kolicina.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Kolicina.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Kolicina.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Kolicina.Location = new System.Drawing.Point(0, 42);
             this.Kolicina.Margin = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.Kolicina.Multiline = true;
@@ -92,7 +92,7 @@ namespace FirstUserControlUsage
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 81);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 62);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(179, 132);
@@ -105,7 +105,7 @@ namespace FirstUserControlUsage
             this.button1.BackColor = System.Drawing.Color.Gray;
             this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(16, 231);
+            this.button1.Location = new System.Drawing.Point(16, 213);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 35);
@@ -119,7 +119,7 @@ namespace FirstUserControlUsage
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
-            this.button2.Location = new System.Drawing.Point(16, 277);
+            this.button2.Location = new System.Drawing.Point(16, 257);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(143, 35);
@@ -132,6 +132,7 @@ namespace FirstUserControlUsage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Naziv);
@@ -141,7 +142,7 @@ namespace FirstUserControlUsage
             this.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "CardControl";
-            this.Size = new System.Drawing.Size(180, 340);
+            this.Size = new System.Drawing.Size(178, 303);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
