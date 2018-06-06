@@ -1,105 +1,47 @@
-﻿using System;
+﻿using eRestoran.Api.VM;
+using eRestoran.Client.Properties;
+using eRestoran.Client.Shared.Helpers;
+using eRestoran.Data.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Windows.Forms;
 
-namespace ggg
+namespace eRestoran.Client
 {
-    class Login
+    public partial class Login : Form
     {
-        //decalre properties
-        public string Username { get; set; }
-        public string Userpassword { get; set; }
+        public WebAPIHelper postLogin = new WebAPIHelper(Resources.apiUrlDevelopment, "api/korisnici/login");
+        public WebAPIHelper get = new WebAPIHelper(Resources.apiUrlDevelopment, "api/get/stolovi");
 
-        //intialise 
-        public Login(string user, string pass)
-        {
-            this.Username = user;
-            this.Userpassword = pass;
-        }
-        //validate string
-        private bool StringValidator(string input)
-        {
-            string pattern = "[^a-zA-Z]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        //validate integer
-        private bool IntegerValidator(string input)
-        {
-            string pattern = "[^0-9]";
-            if (Regex.IsMatch(input, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        //clear user inputs
-        private void ClearTexts(string user, string pass)
-        {
-            user = String.Empty;
-            pass = String.Empty;
-        }
-        //method to check if elegible to be logged in
-        internal bool IsLoggedIn(string user, string pass)
-        {
-            //check user name empty
-            if (string.IsNullOrEmpty(user))
-            {
-                MessageBox.Show("Enter the user name!");
-                return false;
 
-            }
-            //check user name is valid type
-            else if (StringValidator(user) == true)
+        public Login()
+        {
+            InitializeComponent();
+        }
+
+
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var auth = new AuthVM()
             {
-                MessageBox.Show("Enter only text here");
-                ClearTexts(user, pass);
-                return false;
-            }
-            //check user name is correct
-            else
+                Email = txtEmail.Text,
+                Password = txtPassword.Text
+            };
+            var resp = postLogin.PostResponse(auth);
+            if (resp.IsSuccessStatusCode)
             {
-                if (Username != user)
+                var verifikovaniKorisnik = resp.Content.ReadAsAsync<VerifikovanKorisnikVM>().Result;
+                get.client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", verifikovaniKorisnik.Token);
+                var resp2 = get.GetResponse();
+                if (resp2.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("User name is incorrect!");
-                    ClearTexts(user, pass);
-                    return false;
-                }
-                //check password is empty
-                else
-                {
-                    if (string.IsNullOrEmpty(pass))
-                    {
-                        MessageBox.Show("Enter the passowrd!");
-                        return false;
-                    }
-                    //check password is valid
-                   
-                    //check password is correct
-                    else if (Userpassword != pass)
-                    {
-                        MessageBox.Show("Password or Username are incorrect");
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
+                    var stolovi = resp2.Content.ReadAsAsync<List<Sto>>().Result;
                 }
             }
+
         }
     }
 }

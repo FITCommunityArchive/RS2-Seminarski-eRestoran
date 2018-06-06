@@ -1,4 +1,5 @@
-﻿using eRestoran.Api.VM;
+﻿using eRestoran.Api.Filter;
+using eRestoran.Api.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Http.Description;
 
 namespace eRestoran.Api.Controllers
 {
+    [JwtAuthentication]
     public class StoloviController : ApiController
     {
         MyContext ctx = new MyContext();

@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
+using eRestoran.Api.VM;
+using eRestoran.Api.Helper;
 
 namespace eRestoran.Api.Controllers
 {
@@ -112,6 +114,46 @@ namespace eRestoran.Api.Controllers
             db.SaveChanges();
 
             return Ok(korisnik);
+        }
+
+        [ResponseType(typeof(string))]
+        [Route("api/korisnici/login")]
+        [HttpPost]
+        [AllowAnonymous]
+        public IHttpActionResult Login([FromBody] AuthVM auth)
+        {
+            var zz = db.TipoviSkladista.ToList();
+            var ad = db.Zaposlenici.ToList();
+            var ad312 = db.Zaposlenici.FirstOrDefault();
+            var korisnik = GetUser(auth.Email, auth.Password);
+
+            if (korisnik != null)
+            {
+                var token = JwtManager.GenerateToken(korisnik);
+                return Ok(new VerifikovanKorisnikVM()
+                {
+                    Id = korisnik.Id,
+                    ImePrezime = korisnik.Ime + " " + korisnik.Prezime,
+                    Token = token
+                });
+            }
+
+            return StatusCode(HttpStatusCode.Unauthorized);
+        }
+
+        private Korisnik GetUser(string email, string password)
+        {
+            try
+            {
+                var xxx = db.Korisnici.ToList();
+                var x3 = db.Korisnici.FirstOrDefault(x => x.Email == email && x.Password == password);
+                return x3;
+            }
+            catch (Exception e)
+            {
+                var x2 = e.Message;
+            }
+            return null;
         }
 
         protected override void Dispose(bool disposing)
