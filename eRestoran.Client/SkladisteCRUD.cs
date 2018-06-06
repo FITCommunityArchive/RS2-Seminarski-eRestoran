@@ -39,7 +39,7 @@ namespace eRestoran.Client
             if (responseMessage.IsSuccessStatusCode)
             {
                 List<TipSkladistaVM> lista = responseMessage.Content.ReadAsAsync<List<TipSkladistaVM>>().Result;
-                lista.Insert(0, new TipSkladistaVM() { Naziv = "Odaberite vrstu proizvoda", Id = 0 });
+                lista.Insert(0, new TipSkladistaVM() { Naziv = "Odaberite vrstu skladišta", Id = 0 });
                 tipSkladistaComboBox.DataSource = lista;
                 tipSkladistaComboBox.DisplayMember = "Naziv";
                 tipSkladistaComboBox.ValueMember = "Id";
@@ -106,7 +106,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = putSkladistaService.PutResponse(skladiste.Id, skladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno izmjenjen tip proizvoda");
+                        MessageBox.Show("Uspjesno izmjenjeno skladište");
                         BindSkladista();
                     }
                 }
@@ -115,7 +115,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = postSkladistaService.PostResponse(skladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno dodat tip proizvoda");
+                        MessageBox.Show("Uspjesno dodato skladište");
                         BindSkladista();
 
                     }
@@ -130,6 +130,7 @@ namespace eRestoran.Client
             HttpResponseMessage responseMessage = getSkladistaService.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
+                StyleDataGrid();
                 List<SkladisteVM> lista = responseMessage.Content.ReadAsAsync<List<SkladisteVM>>().Result;
                 SkladistaDataGrid.DataSource = lista;
                 SkladistaDataGrid.Columns[0].Visible = false;
@@ -141,6 +142,19 @@ namespace eRestoran.Client
             adresaSkladistaTextBox.ResetText();
             kvadraturaTextBox.ResetText();
             tipSkladistaComboBox.SelectedValue=0;
+        }
+        private void StyleDataGrid()
+        {
+            SkladistaDataGrid.BorderStyle = BorderStyle.None;
+            SkladistaDataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            SkladistaDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            SkladistaDataGrid.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            SkladistaDataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            SkladistaDataGrid.BackgroundColor = Color.White;
+            SkladistaDataGrid.EnableHeadersVisualStyles = false;
+            SkladistaDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            SkladistaDataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            SkladistaDataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void Uredibutton_Click(object sender, EventArgs e)

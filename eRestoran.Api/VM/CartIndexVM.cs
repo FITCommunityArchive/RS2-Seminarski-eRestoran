@@ -15,10 +15,13 @@ namespace eRestoran.Api.VM
     }
     public class CartRow
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Naziv { get; set; }
         public double  Cijena { get; set; }
         public double TotalRowPrice { get; set; }
+        public string Imageurl { get; set; }
+        public string Kategorija { get; set; }
+        public int StanjeKolicina { get; set; }
         public int Kolicina { get; set; }
     }
 }

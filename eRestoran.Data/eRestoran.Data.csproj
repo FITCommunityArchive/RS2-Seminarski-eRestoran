@@ -48,9 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\MyContext.cs" />
-    <Compile Include="Migrations\201805272136350_initial.cs" />
-    <Compile Include="Migrations\201805272136350_initial.Designer.cs">
-      <DependentUpon>201805272136350_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201805312120501_Dodan IsDeleted to rezervacije.cs" />
+    <Compile Include="Migrations\201805312120501_Dodan IsDeleted to rezervacije.Designer.cs">
+      <DependentUpon>201805312120501_Dodan IsDeleted to rezervacije.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HistorijaCijenaJela.cs" />
@@ -78,8 +78,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805272136350_initial.resx">
-      <DependentUpon>201805272136350_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805312120501_Dodan IsDeleted to rezervacije.resx">
+      <DependentUpon>201805312120501_Dodan IsDeleted to rezervacije.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

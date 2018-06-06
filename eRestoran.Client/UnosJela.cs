@@ -112,8 +112,9 @@ namespace FastFoodDemo
                 SifraJelatextBox.ResetText();
                 NazivJelatextBox.ResetText();
                 CijenaJelatextBox.ResetText();
-                MessageBox.Show("Uspjesno dodat proizvod");
-                ((Form1)this.ParentForm).NapraviPanelMenu();
+                MessageBox.Show("Uspjesno ");
+                var panel = ((Form1)ParentForm).NapraviPanelMenu();
+                panel.DataBind();
             }
         }
 
@@ -126,41 +127,7 @@ namespace FastFoodDemo
             }
         }
 
-        private PonudaVM LoadSomeData()
-        {
-            List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
-            HttpClient client = new HttpClient();
-            List<PonudaVM.PonudaInfo> pica;
-            client.BaseAddress = new Uri("http://localhost:49958/");
-            HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPica").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
-                foreach (var item in pica)
-                {
-                    cards.Add(new PonudaVM.PonudaInfo()
-                    {
-                        Cijena = item.Cijena,
-                        Naziv = "NAZIV - " + item.Naziv,
-                        Kategorija = "KATEGORIJA -" + item.Kategorija,
-                        Kolicina = item.Kolicina,
-                        KolicinaString = item.KolicinaString + " KOM",
-                        imageUrl = item.imageUrl
-                    });
-                }
-            }
-            //  cards.Add(new CardViewModel()
-            //{
-            //    Age = 1,
-            //    Name = "Dan",
-            //Picture = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(100, 100))
-            //});
-            PonudaVM VM = new PonudaVM()
-            {
-                Ponuda = cards
-            };
-            return VM;
-        }
+     
 
         private void CijenatextBox_Validating(object sender, CancelEventArgs e)
         {

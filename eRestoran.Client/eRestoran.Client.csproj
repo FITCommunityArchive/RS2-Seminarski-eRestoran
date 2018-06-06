@@ -33,6 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -59,6 +62,12 @@
     <Compile Include="BackButton.Designer.cs">
       <DependentUpon>BackButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="DigitalClock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DigitalClock.Designer.cs">
+      <DependentUpon>DigitalClock.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajKlijenta.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +80,7 @@
     <Compile Include="DodajstavkuJelu.Designer.cs">
       <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImagesHelper.cs" />
     <Compile Include="HomeControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,11 +93,29 @@
     <Compile Include="DodajZaposlenika.Designer.cs">
       <DependentUpon>DodajZaposlenika.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izvjestaji.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji.Designer.cs">
+      <DependentUpon>Izvjestaji.cs</DependentUpon>
+    </Compile>
     <Compile Include="KorisnickiNalozi.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="KorisnickiNalozi.Designer.cs">
       <DependentUpon>KorisnickiNalozi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CartItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CartItem.designer.cs">
+      <DependentUpon>CartItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NarudzbeByDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NarudzbeByDate.Designer.cs">
+      <DependentUpon>NarudzbeByDate.cs</DependentUpon>
     </Compile>
     <Compile Include="PonudaItem.cs">
       <SubType>UserControl</SubType>
@@ -110,6 +138,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="RezervacijaStola.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RezervacijaStola.Designer.cs">
+      <DependentUpon>RezervacijaStola.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Helpers\PdfHelper.cs" />
+    <Compile Include="Stolovi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Stolovi.Designer.cs">
+      <DependentUpon>Stolovi.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladisteCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,6 +162,12 @@
     </Compile>
     <Compile Include="SlikaKontrola.Designer.cs">
       <DependentUpon>SlikaKontrola.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SviIzvjestaji.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SviIzvjestaji.Designer.cs">
+      <DependentUpon>SviIzvjestaji.cs</DependentUpon>
     </Compile>
     <Compile Include="TipProizvodaCRUD.cs">
       <SubType>UserControl</SubType>
@@ -169,8 +216,17 @@
       <DependentUpon>UrediProizvod.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\WebAPIHelper.cs" />
+    <Compile Include="ZaradeByDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ZaradeByDate.Designer.cs">
+      <DependentUpon>ZaradeByDate.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BackButton.resx">
       <DependentUpon>BackButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DigitalClock.resx">
+      <DependentUpon>DigitalClock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajKlijenta.resx">
       <DependentUpon>DodajKlijenta.cs</DependentUpon>
@@ -184,8 +240,17 @@
     <EmbeddedResource Include="DodajZaposlenika.resx">
       <DependentUpon>DodajZaposlenika.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji.resx">
+      <DependentUpon>Izvjestaji.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KorisnickiNalozi.resx">
       <DependentUpon>KorisnickiNalozi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CartItem.resx">
+      <DependentUpon>CartItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NarudzbeByDate.resx">
+      <DependentUpon>NarudzbeByDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PonudaItem.resx">
       <DependentUpon>PonudaItem.cs</DependentUpon>
@@ -200,11 +265,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RezervacijaStola.resx">
+      <DependentUpon>RezervacijaStola.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stolovi.resx">
+      <DependentUpon>Stolovi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SkladisteCRUD.resx">
       <DependentUpon>SkladisteCRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SlikaKontrola.resx">
       <DependentUpon>SlikaKontrola.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SviIzvjestaji.resx">
+      <DependentUpon>SviIzvjestaji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TipProizvodaCRUD.resx">
       <DependentUpon>TipProizvodaCRUD.cs</DependentUpon>
@@ -220,6 +294,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -237,6 +312,9 @@
     <EmbeddedResource Include="UrediProizvod.resx">
       <DependentUpon>UrediProizvod.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ZaradeByDate.resx">
+      <DependentUpon>ZaradeByDate.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -249,7 +327,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eRestoran.Api\eRestoran.Api.csproj">
@@ -265,15 +345,22 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\add_user.png" />
     <Content Include="Images\backArrow.jpg" />
+    <Content Include="Images\cart-icon.png" />
+    <Content Include="Images\cart.png" />
+    <Content Include="Images\icon-48.png" />
+    <Content Include="Images\icon-64.png" />
     <Content Include="Images\icons8-close-window-30.png" />
     <Content Include="Images\icons8-close-window-50.png" />
+    <Content Include="Images\if_shop-01_186387.png" />
+    <Content Include="Images\ncemo_jebate.jpg" />
     <Content Include="Images\tene.jpg" />
     <Content Include="Images\test.jpg" />
+    <Content Include="Images\TWalsh__close1-512.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Display\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Shared\Controls\" />
     <Folder Include="Shared\Dto\" />
   </ItemGroup>

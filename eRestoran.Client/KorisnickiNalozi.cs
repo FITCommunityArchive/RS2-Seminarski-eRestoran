@@ -6,6 +6,7 @@ using eRestoran.Api.VM;
 using System.Collections.Generic;
 using System;
 using FastFoodDemo;
+using System.Drawing;
 
 namespace eRestoran.Client
 {
@@ -121,7 +122,20 @@ namespace eRestoran.Client
                    
 
                 }
-            
+
+        }
+        private void StyleDataGrid()
+        {
+            kNalozidataGridView.BorderStyle = BorderStyle.None;
+            kNalozidataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            kNalozidataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            kNalozidataGridView.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            kNalozidataGridView.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            kNalozidataGridView.BackgroundColor = Color.White;
+            kNalozidataGridView.EnableHeadersVisualStyles = false;
+            kNalozidataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            kNalozidataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            kNalozidataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void BindNalozi()
@@ -129,7 +143,7 @@ namespace eRestoran.Client
             HttpResponseMessage responseMessage = getKorisniciService.GetResponse();
             if (responseMessage.StatusCode == System.Net.HttpStatusCode.OK)
             {
-
+                StyleDataGrid();
                 kNalozidataGridView.DataSource = responseMessage.Content.ReadAsAsync<List<NaloziVM.NalogsRow>>().Result;
                 kNalozidataGridView.Columns[4].Visible = false;
             }

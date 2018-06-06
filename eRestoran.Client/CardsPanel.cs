@@ -1,9 +1,6 @@
-﻿using System;
+﻿using eRestoran.Api.VM;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstUserControlUsage
@@ -12,9 +9,10 @@ namespace FirstUserControlUsage
     {
         const int CardWidth = 180;
         private Panel panel1;
-        const int CardHeight = 340;
+        const int CardHeight = 305;
 
         public PonudaVM ViewModel { get; set; }
+        public List<CartRow> ViewModelKorpa { get; set; }
 
         public CardsPanel()
         {
@@ -24,6 +22,11 @@ namespace FirstUserControlUsage
             ViewModel = viewModel;
            
         }
+        public CardsPanel(List<CartRow> viewModel)
+        {
+            ViewModelKorpa = new List<CartRow>(viewModel);
+        }
+
 
         private void Cards_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
@@ -56,10 +59,25 @@ namespace FirstUserControlUsage
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);
                 newCtl.DataBind();
-               
             }
             ResumeLayout();
         }
+        public void BindKorpa()
+        {
+            SuspendLayout();
+            Controls.Clear();
+
+            for (int i = 0; i < ViewModelKorpa.Count; i++)
+            {
+                var newCtl = new CartItem(ViewModelKorpa[i]);
+                SetCardControlLayout(newCtl, i);
+                Controls.Add(newCtl);
+                newCtl.DataBind();
+            }
+            ResumeLayout();
+        }
+
+
 
         void SetCardControlLayout(UserControl ctl, int atIndex)
         {
@@ -72,8 +90,8 @@ namespace FirstUserControlUsage
             //calc the x index and y index.
             int xPos = (atIndex % columnCount) * CardWidth;
             int yPos = (atIndex / columnCount) * CardHeight;
-            if (atIndex % 2 == 1)
-                xPos += 15;
+            //if (atIndex % 2 == 1)
+            //    xPos += 15;
             ctl.Location = new Point(xPos, yPos);
         }
 

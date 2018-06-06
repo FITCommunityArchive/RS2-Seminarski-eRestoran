@@ -1,4 +1,8 @@
 ﻿
+using eRestoran.Client.Properties;
+using eRestoran.Client.Shared.Helpers;
+using eRestoran.Data.Models;
+using FastFoodDemo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,62 +10,73 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace ggg
 {
     public partial class MainForm : Form
     {
-        //public WebAPIHelper helper = new WebAPIHelper("http://localhost:51107/", "api/korisnici");
+        public WebAPIHelper getUser = new WebAPIHelper(Resources.apiUrlDevelopment, "api/korisnici/korisnik");
+
         public MainForm()
         {
             InitializeComponent();
-           
+
         }
         //Enter code here for your version of username and userpassword
-       
-        
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             //define local variables from the user inputs
-            //HttpResponseMessage response = helper.GetResponse(nametxtbox.Text);
 
             //define local variables from the user inputs
             string user = nametxtbox.Text;
             string pass = pwdtxtbox.Text;
             //check if eligible to be logged in
+            HttpResponseMessage responseMessage = getUser.GetResponse(user);
 
 
-            //if (response.IsSuccessStatusCode)
-            //{
-            //Korisniks k = response.Content.ReadAsAsync<Korisniks>().Result;
-            //Login login = new Login(nametxtbox.Text, k.Password);
-            Login login = new Login("admin", "admin");
-            if (login.IsLoggedIn(user, pass))
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                Korisnik k = responseMessage.Content.ReadAsAsync<Korisnik>().Result;
+                if (k.Password.Equals(pass))
                 {
-                    MessageBox.Show("You are logged in successfully");
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    Login login = new Login(user, pass);
+                    if (login.IsLoggedIn(user, pass))
+                    {
+                        MessageBox.Show("You are logged in successfully");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                        Form1 glavnaForma = new Form1();
+                    }
+                    else
+                    {
+                        //show default login error message
+                        MessageBox.Show("Login Error!");
+                    }
                 }
                 else
                 {
-                    //show default login error message
-                    MessageBox.Show("Login Error!");
+                    MessageBox.Show("Nepostojeci username !");
+
                 }
+            }
+
+
 
             //}
-            //else
-            //{
+            else
+            {
 
-            //    MessageBox.Show("Error code is " + response.StatusCode + "   Reason - " + response.ReasonPhrase);
-            //}
+                MessageBox.Show("Neispravni podaci za login !");
+            }
         }
 
-      
 
-       
+
+
     }
 }

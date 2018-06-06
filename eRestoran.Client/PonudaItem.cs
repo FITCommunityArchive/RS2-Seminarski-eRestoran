@@ -51,53 +51,81 @@ namespace FirstUserControlUsage
 
         private void btnDodajKolicinu_Click(object sender, EventArgs e)
         {
-            if (ViewModel.Kolicina < kolicina + 1)
+            if (!ViewModel.Kategorija.Contains("Jela"))
             {
-                MessageBox.Show("Nema na stanju", "Info");
-                return;
+                if (ViewModel.Kolicina < kolicina + 1)
+                {
+                    MessageBox.Show("Nema na stanju", "Info");
+                    return;
+                }
             }
             kolicina += 1;
             lblKolicina.Text = kolicina.ToString();
-        }
+            DodajUKorpu();
 
-        private void btnSmanjiKolicinu_Click(object sender, EventArgs e)
-        {
-            if (kolicina > 0)
-            {
-                kolicina -= 1;
-            }
-            lblKolicina.Text = kolicina.ToString();
-        }
 
-        private void btnDodajStavku_Click(object sender, EventArgs e)
-        {
-           
         }
-
-        private void lblKolicina_TextChanged(object sender, EventArgs e)
+        public bool DodajUKorpu()
         {
             if (ViewModel.Id != null)
             {
-                
                 var stavkaKorpe = new CartRow
                 {
                     Naziv = ViewModel.Naziv,
                     Cijena = ViewModel.Cijena,
                     Kolicina = kolicina,
                     Id = ViewModel.Id ?? 0,
+                    Kategorija = ViewModel.Kategorija,
+                    StanjeKolicina=ViewModel.Kolicina,
+                    Imageurl = ViewModel.imageUrl
                 };
-                if (ViewModel.Kategorija == "Jelo")
+                if (ViewModel.Kategorija == "Jela")
                 {
+                    
                     ((Form1)this.ParentForm).AddToCartJelo(stavkaKorpe);
+                    return true;
+
                 }
                 else
                 {
-                    ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
+                   ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
+                    return true;
                 }
             }
-            return;
+            return false;
         }
+       
+        private void btnSmanjiKolicinu_Click(object sender, EventArgs e)
+        {
+            if (kolicina > 0)
+            {
+               
+                kolicina -= 1;
+               
+            }
+            lblKolicina.Text = kolicina.ToString();
+            DodajUKorpu();
+
+        }
+
+
+        private void btnDodajStavku_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void lblKolicina_TextChanged(object sender, EventArgs e)
+
+        //{
+        //    if (kolicina != 0)
+        //    {
+        //        DodajUKorpu();
+        //    }
+
+        //    return;
+        //}
     }
+
 
 
 }

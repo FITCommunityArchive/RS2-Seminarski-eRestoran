@@ -40,19 +40,20 @@
             // 
             this.kNalozidataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.kNalozidataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.kNalozidataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.kNalozidataGridView.ColumnHeadersHeight = 22;
             this.kNalozidataGridView.Location = new System.Drawing.Point(35, 97);
             this.kNalozidataGridView.Name = "kNalozidataGridView";
+            this.kNalozidataGridView.RowTemplate.Height = 30;
             this.kNalozidataGridView.Size = new System.Drawing.Size(539, 325);
             this.kNalozidataGridView.TabIndex = 0;
             // 
             // kNalozilabel
             // 
             this.kNalozilabel.AutoSize = true;
-            this.kNalozilabel.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.kNalozilabel.Location = new System.Drawing.Point(247, 31);
+            this.kNalozilabel.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.kNalozilabel.Location = new System.Drawing.Point(199, 31);
             this.kNalozilabel.Name = "kNalozilabel";
-            this.kNalozilabel.Size = new System.Drawing.Size(164, 22);
+            this.kNalozilabel.Size = new System.Drawing.Size(205, 29);
             this.kNalozilabel.TabIndex = 1;
             this.kNalozilabel.Text = "Korisnički nalozi";
             // 
@@ -61,9 +62,9 @@
             this.Izbrisibutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.Izbrisibutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.Izbrisibutton.ForeColor = System.Drawing.Color.White;
-            this.Izbrisibutton.Location = new System.Drawing.Point(605, 153);
+            this.Izbrisibutton.Location = new System.Drawing.Point(589, 153);
             this.Izbrisibutton.Name = "Izbrisibutton";
-            this.Izbrisibutton.Size = new System.Drawing.Size(72, 35);
+            this.Izbrisibutton.Size = new System.Drawing.Size(100, 35);
             this.Izbrisibutton.TabIndex = 39;
             this.Izbrisibutton.Text = "Izbriši";
             this.Izbrisibutton.UseVisualStyleBackColor = false;
@@ -74,9 +75,9 @@
             this.Uredibutton.BackColor = System.Drawing.Color.Silver;
             this.Uredibutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.Uredibutton.ForeColor = System.Drawing.Color.White;
-            this.Uredibutton.Location = new System.Drawing.Point(605, 97);
+            this.Uredibutton.Location = new System.Drawing.Point(589, 97);
             this.Uredibutton.Name = "Uredibutton";
-            this.Uredibutton.Size = new System.Drawing.Size(72, 35);
+            this.Uredibutton.Size = new System.Drawing.Size(100, 35);
             this.Uredibutton.TabIndex = 38;
             this.Uredibutton.Text = "Uredi";
             this.Uredibutton.UseVisualStyleBackColor = false;
@@ -84,7 +85,7 @@
             // 
             // backButton1
             // 
-            this.backButton1.Location = new System.Drawing.Point(152, 31);
+            this.backButton1.Location = new System.Drawing.Point(110, 31);
             this.backButton1.Name = "backButton1";
             this.backButton1.Size = new System.Drawing.Size(62, 29);
             this.backButton1.TabIndex = 40;

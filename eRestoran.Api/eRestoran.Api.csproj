@@ -135,12 +135,15 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\IzvjestajiController.cs" />
     <Compile Include="Controllers\JeloController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
     <Compile Include="Controllers\NalogController.cs" />
+    <Compile Include="Controllers\NarudzbaController.cs" />
     <Compile Include="Controllers\PonudaAdministratorController.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
     <Compile Include="Controllers\SkladisteController.cs" />
+    <Compile Include="Controllers\StoloviController.cs" />
     <Compile Include="Controllers\TipProizvodasController.cs" />
     <Compile Include="Controllers\TipSkladistasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -161,11 +164,13 @@
     <Compile Include="VM\PonudaVM.cs" />
     <Compile Include="VM\PrikazKriticnihZaliha.cs" />
     <Compile Include="VM\ProizvodStavka.cs" />
+    <Compile Include="VM\RacunVM.cs" />
     <Compile Include="VM\ReportsNarduzbeVM.cs" />
     <Compile Include="VM\ReportsNarudzbeDanVM.cs" />
     <Compile Include="VM\ReportsNarudzbeKorisnika.cs" />
     <Compile Include="VM\ReportsSveNarudzbeKorisnika .cs" />
     <Compile Include="VM\ReportsSviKorisniciNarudzbe.cs" />
+    <Compile Include="VM\StoloviRezervacijaVM.cs" />
     <Compile Include="VM\TipProizvodaVM.cs" />
     <Compile Include="VM\SkladisteVM.cs" />
     <Compile Include="VM\TipSkladistaVM.cs" />

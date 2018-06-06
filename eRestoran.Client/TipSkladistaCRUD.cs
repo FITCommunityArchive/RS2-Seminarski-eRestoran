@@ -45,7 +45,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = putSkladistaService.PutResponse(tipskladiste.Id, tipskladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno izmjenjen tip proizvoda");
+                        MessageBox.Show("Uspjesno izmjenjen tip skladišta");
                         BindVrstaSkladista();
                     }
                 }
@@ -54,7 +54,7 @@ namespace eRestoran.Client
                     HttpResponseMessage responseMessage = postSkladistaService.PostResponse(tipskladiste);
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Uspjesno dodat tip proizvoda");
+                        MessageBox.Show("Uspjesno dodat tip skladišta");
                         BindVrstaSkladista();
 
                     }
@@ -70,6 +70,7 @@ namespace eRestoran.Client
             HttpResponseMessage responseMessage = getSkladistaService.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
+                StyleDataGrid();
                 List<TipSkladistaVM> lista = responseMessage.Content.ReadAsAsync<List<TipSkladistaVM>>().Result;
                 SkladistaDataGrid.DataSource = lista;
                 SkladistaDataGrid.Columns[0].Visible = false;
@@ -78,6 +79,19 @@ namespace eRestoran.Client
 
             }
             nazivSkladistaPtextBox.ResetText();
+        }
+        private void StyleDataGrid()
+        {
+            SkladistaDataGrid.BorderStyle = BorderStyle.None;
+            SkladistaDataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            SkladistaDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            SkladistaDataGrid.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            SkladistaDataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            SkladistaDataGrid.BackgroundColor = Color.White;
+            SkladistaDataGrid.EnableHeadersVisualStyles = false;
+            SkladistaDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            SkladistaDataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            SkladistaDataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
         private void Uredibutton_Click(object sender, EventArgs e)

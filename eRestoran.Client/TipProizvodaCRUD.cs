@@ -49,6 +49,19 @@ namespace eRestoran.Client
             MjernaJcomboBox.SelectedValue = (int)selected.mjernaJedinica;
             NazivTipPtextBox.Text = selected.Naziv;
         }
+        private void StyleDataGrid()
+        {
+            TipoviDataGrid.BorderStyle = BorderStyle.None;
+            TipoviDataGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+            TipoviDataGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TipoviDataGrid.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+            TipoviDataGrid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+            TipoviDataGrid.BackgroundColor = Color.White;
+            TipoviDataGrid.EnableHeadersVisualStyles = false;
+            TipoviDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            TipoviDataGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            TipoviDataGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
 
         private void BindMjerneJedinice()
         {
@@ -103,6 +116,7 @@ namespace eRestoran.Client
             HttpResponseMessage responseMessage = tipoviGetService.GetResponse();
             if (responseMessage.IsSuccessStatusCode)
             {
+                StyleDataGrid();
                 List<TipProizvodaVM> lista = responseMessage.Content.ReadAsAsync<List<TipProizvodaVM>>().Result;
                 TipoviDataGrid.DataSource = lista;
                 TipoviDataGrid.Columns[0].Visible = false;
