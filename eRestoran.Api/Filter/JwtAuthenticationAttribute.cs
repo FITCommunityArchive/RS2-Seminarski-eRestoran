@@ -1,4 +1,5 @@
 ﻿using eRestoran.Api.Helper;
+using eRestoran.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -13,6 +14,16 @@ namespace eRestoran.Api.Filter
     {
         public string Realm { get; set; }
         public bool AllowMultiple => false;
+        private string AuthTipKorisnika;
+
+        public JwtAuthenticationAttribute()
+        {
+        }
+
+        public JwtAuthenticationAttribute(TipKorisnika tipKorisnika)
+        {
+            AuthTipKorisnika = tipKorisnika.ToString();
+        }
 
         public async Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
@@ -38,11 +49,9 @@ namespace eRestoran.Api.Filter
                 context.Principal = principal;
         }
 
-
-
-        private static bool ValidateToken(string token, out string username)
+        private static bool ValidateToken(string token, string tipKorisnika, out string korisnikId)
         {
-            username = null;
+            korisnikId = null;
 
             var simplePrinciple = JwtManager.GetPrincipal(token);
             var identity = simplePrinciple?.Identity as ClaimsIdentity;
@@ -53,11 +62,21 @@ namespace eRestoran.Api.Filter
             if (!identity.IsAuthenticated)
                 return false;
 
-            var usernameClaim = identity.FindFirst("userId");
+            var korisnikIdClaim = identity.FindFirst("korisnikId");
             // AjdinSheki gdje se ovo napuni
-            username = usernameClaim?.Value;
+            korisnikId = korisnikIdClaim?.Value;
 
-            if (string.IsNullOrEmpty(username))
+            if (!String.IsNullOrWhiteSpace(tipKorisnika))
+            {
+                var tipKorisnikaClaim = identity.FindFirst("tipKorisnika");
+                var tokenTipKorisnika = tipKorisnikaClaim?.Value;
+                if(tokenTipKorisnika != tipKorisnika)
+                {
+                    return false;
+                }
+            }
+
+            if (string.IsNullOrEmpty(korisnikId))
                 return false;
 
             // More validate to check whether username exists in system
@@ -69,7 +88,7 @@ namespace eRestoran.Api.Filter
         {
             string username;
 
-            if (ValidateToken(token, out username))
+            if (ValidateToken(token, AuthTipKorisnika, out username))
             {
                 // based on username to get more information from database in order to build local identity
                 var claims = new List<Claim>

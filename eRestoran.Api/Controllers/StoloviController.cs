@@ -26,6 +26,7 @@ namespace eRestoran.Api.Controllers
 
         [HttpGet]
         [Route("api/get/osvjezistolove")]
+        [JwtAuthentication(TipKorisnika.Konobar)]
         public IHttpActionResult ProvjeriRezervacije()
         {
             var rezervisaniStolovi =

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FastFoodDemo;
+using System;
 using System.Windows.Forms;
 
 namespace eRestoran.Client
@@ -13,7 +14,8 @@ namespace eRestoran.Client
         {
             //Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
         }
     }
 }

@@ -2,6 +2,7 @@
 using eRestoran.Client.Properties;
 using eRestoran.Client.Shared.Helpers;
 using eRestoran.Data.Models;
+using FastFoodDemo;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -13,15 +14,11 @@ namespace eRestoran.Client
     public partial class Login : Form
     {
         public WebAPIHelper postLogin = new WebAPIHelper(Resources.apiUrlDevelopment, "api/korisnici/login");
-        public WebAPIHelper get = new WebAPIHelper(Resources.apiUrlDevelopment, "api/get/stolovi");
-
-
+        
         public Login()
         {
             InitializeComponent();
         }
-
-
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -34,12 +31,9 @@ namespace eRestoran.Client
             if (resp.IsSuccessStatusCode)
             {
                 var verifikovaniKorisnik = resp.Content.ReadAsAsync<VerifikovanKorisnikVM>().Result;
-                get.client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", verifikovaniKorisnik.Token);
-                var resp2 = get.GetResponse();
-                if (resp2.IsSuccessStatusCode)
-                {
-                    var stolovi = resp2.Content.ReadAsAsync<List<Sto>>().Result;
-                }
+                this.Hide();
+                var form1 = new Form1(verifikovaniKorisnik);
+                form1.ShowDialog();
             }
 
         }

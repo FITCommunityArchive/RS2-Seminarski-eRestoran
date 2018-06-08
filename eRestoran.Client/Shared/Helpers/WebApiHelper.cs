@@ -1,5 +1,7 @@
-﻿using System;
+﻿using eRestoran.Client.Properties;
+using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace eRestoran.Client.Shared.Helpers
 {
@@ -23,7 +25,11 @@ namespace eRestoran.Client.Shared.Helpers
         {
             return client.DeleteAsync(route + "/" + parametar).Result;
         }
+        public void AddBearerToken(string token)
+        {
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+        }
 
         public HttpResponseMessage GetResponse(string parametar)
         {

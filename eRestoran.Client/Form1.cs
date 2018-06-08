@@ -30,9 +30,10 @@ namespace FastFoodDemo
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         public WebAPIHelper deleteProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/DeleteProizvod");
         public WebAPIHelper deleteJelo = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Jelo/DeleteJelo");
-        private Korisnik trentnoLogovnani; // za konstruktora
+        public VerifikovanKorisnikVM VerifikovaniKorisnik; // za konstruktora
 
-        public Form1()
+
+        public Form1(VerifikovanKorisnikVM korisnik)
         {
             controlsHistory = new LinkedList<Control>();
             InitializeComponent();

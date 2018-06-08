@@ -15,7 +15,7 @@ namespace eRestoran.Api.Helper
         /// </summary>
         private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
-        public static string GenerateToken(Korisnik user, int expireMinutes = 1440)
+        public static string GenerateToken(Korisnik korisnik, int expireMinutes = 1440)
         {
             var symmetricKey = Convert.FromBase64String(Secret);
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -25,9 +25,9 @@ namespace eRestoran.Api.Helper
             {
                 Subject = new ClaimsIdentity(new[]
                         {
-                            new Claim("userId", user.Id.ToString()),
+                            new Claim("korisnikId", korisnik.Id.ToString()),
+                            new Claim("tipKorisnika", korisnik.TipKorisnika.ToString())
                         }),
-                
 
                 Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
                 

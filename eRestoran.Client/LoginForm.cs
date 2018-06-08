@@ -1,82 +1,68 @@
-﻿
-using eRestoran.Client.Properties;
-using eRestoran.Client.Shared.Helpers;
-using eRestoran.Data.Models;
-using FastFoodDemo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-
+﻿using System;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using eRestoran.Api.VM;
+using eRestoran.Client.Shared.Helpers;
+using System.Net.Http;
+using eRestoran.Client.Properties;
 
-namespace ggg
+namespace FastFoodDemo
 {
-    public partial class MainForm : Form
+    public partial class LoginForm : Form
     {
-        public WebAPIHelper getUser = new WebAPIHelper(Resources.apiUrlDevelopment, "api/korisnici/korisnik");
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
 
-        public MainForm()
+        public WebAPIHelper postLogin = new WebAPIHelper(Resources.apiUrlDevelopment, "api/korisnici/login");
+
+        public LoginForm()
         {
             InitializeComponent();
-
         }
-        //Enter code here for your version of username and userpassword
 
+        #region Events
 
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            //define local variables from the user inputs
-
-            //define local variables from the user inputs
-            string user = nametxtbox.Text;
-            string pass = pwdtxtbox.Text;
-            //check if eligible to be logged in
-            HttpResponseMessage responseMessage = getUser.GetResponse(user);
-
-
-            if (responseMessage.IsSuccessStatusCode)
+            var auth = new AuthVM()
             {
-                Korisnik k = responseMessage.Content.ReadAsAsync<Korisnik>().Result;
-                if (k.Password.Equals(pass))
-                {
-                    Login login = new Login(user, pass);
-                    if (login.IsLoggedIn(user, pass))
-                    {
-                        MessageBox.Show("You are logged in successfully");
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                        Form1 glavnaForma = new Form1();
-                    }
-                    else
-                    {
-                        //show default login error message
-                        MessageBox.Show("Login Error!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Nepostojeci username !");
-
-                }
+                Email = txtEmail.Text,
+                Password = txtPassword.Text
+            };
+            var resp = postLogin.PostResponse(auth);
+            if (resp.IsSuccessStatusCode)
+            {
+                var verifikovaniKorisnik = resp.Content.ReadAsAsync<VerifikovanKorisnikVM>().Result;
+                this.Hide();
+                var form1 = new Form1(verifikovaniKorisnik);
+                form1.ShowDialog();
             }
+        }
 
-
-
-            //}
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Da li želite zatvoriti aplikaciju . Jeste li sigurni?", "Zatvori aplikaciju", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
             else
             {
-
-                MessageBox.Show("Neispravni podaci za login !");
+                return;
             }
         }
 
-
-
-
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        #endregion
     }
 }
