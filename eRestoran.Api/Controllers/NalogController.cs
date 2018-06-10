@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
+using eRestoran.Api.Helper;
 using eRestoran.Api.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
@@ -112,6 +113,7 @@ namespace eRestoran.Api.Controllers
             {
                 return BadRequest();
             }
+            zaposlenik.Password = CryptoHelper.GetMd5Hash(zaposlenik.Password);
             zaposlenik.DatumPrijave = DateTime.Now;
             ctx.Entry(zaposlenik).State = EntityState.Modified;
 
@@ -147,6 +149,7 @@ namespace eRestoran.Api.Controllers
                 return BadRequest();
             }
             klijent.DatumPrijave = DateTime.Now;
+            klijent.Password = CryptoHelper.GetMd5Hash(klijent.Password);
             ctx.Entry(klijent).State = EntityState.Modified;
 
             try
@@ -179,6 +182,7 @@ namespace eRestoran.Api.Controllers
 
             model.DatumPrijave = DateTime.Now;
             Korisnik k = model;
+            k.Password = CryptoHelper.GetMd5Hash(k.Password);
             ctx.Korisnici.Add(k);
 
             ctx.Zaposlenici.Add(model);
@@ -197,6 +201,7 @@ namespace eRestoran.Api.Controllers
 
             model.DatumPrijave = DateTime.Now;
             Korisnik k = model;
+            k.Password = CryptoHelper.GetMd5Hash(k.Password);
             ctx.Korisnici.Add(k);
 
             ctx.Korisnici.Add(model);

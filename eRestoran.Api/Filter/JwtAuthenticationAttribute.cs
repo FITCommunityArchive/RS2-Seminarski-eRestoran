@@ -1,7 +1,10 @@
 ﻿using eRestoran.Api.Helper;
+using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading;
@@ -49,6 +52,24 @@ namespace eRestoran.Api.Filter
                 context.Principal = principal;
         }
 
+        public static Korisnik GetKorisnik(AuthenticationHeaderValue authorization)
+        {
+            var token = authorization.Parameter;
+            var simplePrinciple = JwtManager.GetPrincipal(token);
+
+            var identity = simplePrinciple?.Identity as ClaimsIdentity;
+            var korisnikIdClaim = identity.FindFirst("korisnikId");
+            var korisnikIdValue = korisnikIdClaim?.Value;
+
+            using (var ctx = new MyContext())
+            {
+                if (int.TryParse(korisnikIdValue, out var korisnikId))
+                    return ctx.Korisnici.FirstOrDefault(x => x.Id == korisnikId);
+            }
+
+            return null;
+        }
+
         private static bool ValidateToken(string token, string tipKorisnika, out string korisnikId)
         {
             korisnikId = null;
@@ -63,7 +84,6 @@ namespace eRestoran.Api.Filter
                 return false;
 
             var korisnikIdClaim = identity.FindFirst("korisnikId");
-            // AjdinSheki gdje se ovo napuni
             korisnikId = korisnikIdClaim?.Value;
 
             if (!String.IsNullOrWhiteSpace(tipKorisnika))
@@ -86,14 +106,14 @@ namespace eRestoran.Api.Filter
 
         protected Task<IPrincipal> AuthenticateJwtToken(string token)
         {
-            string username;
+            string korisnikId;
 
-            if (ValidateToken(token, AuthTipKorisnika, out username))
+            if (ValidateToken(token, AuthTipKorisnika, out korisnikId))
             {
                 // based on username to get more information from database in order to build local identity
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, username)
+                    new Claim(ClaimTypes.Name, korisnikId)
                     // Add more claims if needed: Roles, ...
                 };
 

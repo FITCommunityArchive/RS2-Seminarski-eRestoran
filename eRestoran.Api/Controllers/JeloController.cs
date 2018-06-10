@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using eRestoran.Api.Filter;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 
 namespace eRestoran.Api.Controllers
 {
+    [JwtAuthentication(TipKorisnika.Admin)]
     public class JeloController : ApiController
     {
         private MyContext db = new MyContext();

@@ -1,6 +1,8 @@
-﻿using eRestoran.Api.VM;
+﻿using eRestoran.Api.Filter;
+using eRestoran.Api.VM;
 using eRestoran.Areas.ModulAdministracija.Models;
 using eRestoran.Data.DAL;
+using eRestoran.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +11,13 @@ using System.Web.Http.Description;
 
 namespace eRestoran.Api.Controllers
 {
+    [JwtAuthentication(TipKorisnika.Admin)]
     public class IzvjestajiController : ApiController
     {
         MyContext ctx = new MyContext();
+
         public List<KorisnikInfo> GetSveNarudzbeKorisnici()
         {
-
-
-
             ReportsSviKorisniciNarudzbe model = new ReportsSviKorisniciNarudzbe();
             model.Klijenti = ctx.Klijenti.Select(x => new KorisnikInfo
             {
@@ -39,9 +40,8 @@ namespace eRestoran.Api.Controllers
 
             klijenti.AddRange(zaposlenici);
             return klijenti;
-
-
         }
+
         public ReportsSviKorisniciNarudzbe GetSveNarudzbeKorisnici2()
         {
 
@@ -66,11 +66,10 @@ namespace eRestoran.Api.Controllers
             model.Zaposlenici = model.Zaposlenici.Where(x => x.BrojNarudzbi != 0).ToList();
 
             return model;
-
         }
+
         public IHttpActionResult SveNarudzbeZaposlenik(int Id)
         {
-
             ReportsSveNarudzbeKorisnika model = new ReportsSveNarudzbeKorisnika();
             model.Ime = ctx.Korisnici.Where(x => x.Id == Id).Select(x => x.Ime + " " + x.Prezime).SingleOrDefault();
             model.Narudzbe = new List<ReportsSveNarudzbeKorisnikaRow>();
@@ -79,7 +78,11 @@ namespace eRestoran.Api.Controllers
                 .Select(x => new ReportsSveNarudzbeKorisnikaRow
                 {
                     NarudzbaId = x.Id,
-                    Datum = ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Day + "." + ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Month + "." + ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Year + " | " + ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Hour + ":" + ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Minute,
+                    Datum = ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Day + "." +
+                    ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Month + "." +
+                    ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Year + " | " +
+                    ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Hour + ":" +
+                    ctx.Racuni.Where(y => y.Id == x.Id).FirstOrDefault().DatumIzdavanja.Minute,
                     UkupnaKolicina = ctx.NarudzbaStavke.Where(y => y.NarudzbaId == x.Id).Count(),
                     UkupniIznos = x.Iznos
                 }).ToList();
@@ -91,12 +94,17 @@ namespace eRestoran.Api.Controllers
                     NazivProizvoda = x.JeloId != null ? x.Jelo.Naziv : x.Proizvod.Naziv,
                     KolicinaProizvoda = x.Kolicina,
                     IznosProizvoda = x.Kolicina * (x.JeloId != null ? x.Jelo.Cijena : x.Proizvod.Cijena),
-                    VrijemeNarudzbe = ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Day + "." + ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Month + "." + ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Year + " | " + ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Hour + ":" + ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Minute
+                    VrijemeNarudzbe = ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Day + "." +
+                    ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Month + "." +
+                    ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Year + " | " +
+                    ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Hour + ":" +
+                    ctx.Racuni.Where(y => y.Id == x.NarudzbaId).FirstOrDefault().DatumIzdavanja.Minute
                 }).ToList();
             }
 
             return Ok(model);
         }
+
         public IHttpActionResult NarudzbeKlijent(int Id, string datum)
         {
             ReportsNarudzbeKorisnika model = new ReportsNarudzbeKorisnika();
@@ -150,6 +158,7 @@ namespace eRestoran.Api.Controllers
 
             return Ok(model.Narudzbe);
         }
+
         [ResponseType(typeof(List<NarudbaDatum.NarudzbaRow>))]
         [HttpPost]
         [Route("api/izvjestaji/getbykategorija")]
@@ -187,14 +196,13 @@ namespace eRestoran.Api.Controllers
 
             return Ok(model);
         }
+
         [ResponseType(typeof(RacunVM))]
         [HttpPost]
         [Route("api/izvjestaji/danasnjazarada")]
         public IHttpActionResult Index([FromBody]DateTime date)
         {
-
             RacunVM racuni = new RacunVM();
-
 
             racuni.DanasnjaZarada = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == date.Year
                                    && j.DatumIzdavanja.Month == date.Month
@@ -221,6 +229,7 @@ namespace eRestoran.Api.Controllers
                     Dan = DateTime.Now.Day,
                 };
             }
+
             racuni.Zarade = ctx.Racuni.Where(j => j.DatumIzdavanja.Year == date.Year
                                      && j.DatumIzdavanja.Month == date.Month
                                      && j.DatumIzdavanja.Day == date.Day).GroupBy(o => new
@@ -240,11 +249,7 @@ namespace eRestoran.Api.Controllers
                                       && j.DatumIzdavanja.Day == date.Day)
                                      }).ToList();
 
-
-           
-
             return Ok(racuni);
         }
-
     }
 }

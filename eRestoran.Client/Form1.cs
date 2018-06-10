@@ -42,7 +42,7 @@ namespace FastFoodDemo
             cart.Pica = new List<CartRow>();
             cart.TotalPrice = 0.00;
             this.AutoValidate = AutoValidate.Disable;
-
+            VerifikovaniKorisnik = korisnik;
             //cardsPanel1.SendToBack();
             //firstCustomControl2.SendToBack();
             btnHome_Click(btnHome, null);

@@ -105,6 +105,7 @@ namespace FastFoodDemo
             // 
             this.txtPassword.Location = new System.Drawing.Point(136, 148);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(199, 20);
             this.txtPassword.TabIndex = 6;
             // 

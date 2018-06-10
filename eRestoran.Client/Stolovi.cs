@@ -90,6 +90,7 @@ namespace eRestoran.Client
                             if (response.IsSuccessStatusCode)
                             {
                                 btn.BackColor = zauzetiStoColor;
+                                postCheckout.AddBearerToken(((Form1)this.ParentForm).VerifikovaniKorisnik.Token);
                                 var response2 = postCheckout.PostWithParametar(brojStola, ((Form1)this.ParentForm).GetCartForCheckout());
                                 if(response2.IsSuccessStatusCode)
                                 MessageBox.Show("ok proslo");

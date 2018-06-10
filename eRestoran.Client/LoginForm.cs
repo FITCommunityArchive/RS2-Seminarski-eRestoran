@@ -22,6 +22,7 @@ namespace FastFoodDemo
         public LoginForm()
         {
             InitializeComponent();
+            this.ActiveControl = txtEmail;
         }
 
         #region Events
@@ -40,6 +41,10 @@ namespace FastFoodDemo
                 this.Hide();
                 var form1 = new Form1(verifikovaniKorisnik);
                 form1.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Pogrešna šifra ili username.");
             }
         }
 

@@ -1,5 +1,4 @@
-﻿using eRestoran.Api.Filter;
-using eRestoran.Api.VM;
+﻿using eRestoran.Api.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 using System;
@@ -10,7 +9,6 @@ using System.Web.Http.Description;
 
 namespace eRestoran.Api.Controllers
 {
-    [JwtAuthentication]
     public class StoloviController : ApiController
     {
         MyContext ctx = new MyContext();
@@ -26,7 +24,6 @@ namespace eRestoran.Api.Controllers
 
         [HttpGet]
         [Route("api/get/osvjezistolove")]
-        [JwtAuthentication(TipKorisnika.Konobar)]
         public IHttpActionResult ProvjeriRezervacije()
         {
             var rezervisaniStolovi =
@@ -60,7 +57,6 @@ namespace eRestoran.Api.Controllers
             }
             return Ok();
         }
-
 
         [ResponseType(typeof(List<Sto>))]
         [HttpPost]
@@ -172,8 +168,5 @@ namespace eRestoran.Api.Controllers
             }
             return BadRequest();
         }
-
-
-        //}
     }
 }

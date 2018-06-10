@@ -5,7 +5,6 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using eRestoran.Data.DAL;
@@ -26,17 +25,13 @@ namespace eRestoran.Api.Controllers
         }
 
         // GET: api/Korisnici/5
-        [ResponseType(typeof(Korisnik))]
-        public IHttpActionResult GetKorisnik(int id)
+        public Korisnik GetKorisnik(int id)
         {
             Korisnik korisnik = db.Korisnici.Find(id);
-            if (korisnik == null)
-            {
-                return NotFound();
-            }
 
-            return Ok(korisnik);
+            return korisnik;
         }
+
         [ResponseType(typeof(Korisnik))]
         [Route("api/korisnici/korisnik/{username}")]
         public IHttpActionResult GetKorisnikUsername(string username)
@@ -125,7 +120,7 @@ namespace eRestoran.Api.Controllers
             var zz = db.TipoviSkladista.ToList();
             var ad = db.Zaposlenici.ToList();
             var ad312 = db.Zaposlenici.FirstOrDefault();
-            var korisnik = GetUser(auth.Email, auth.Password);
+            var korisnik = GetUser(auth.Email, CryptoHelper.GetMd5Hash(auth.Password));
 
             if (korisnik != null)
             {
@@ -145,13 +140,11 @@ namespace eRestoran.Api.Controllers
         {
             try
             {
-                var xxx = db.Korisnici.ToList();
-                var x3 = db.Korisnici.FirstOrDefault(x => x.Email == email && x.Password == password);
-                return x3;
+                var korisnik = db.Korisnici.FirstOrDefault(x => x.Email == email && x.Password == password);
+                return korisnik;
             }
             catch (Exception e)
             {
-                var x2 = e.Message;
             }
             return null;
         }
