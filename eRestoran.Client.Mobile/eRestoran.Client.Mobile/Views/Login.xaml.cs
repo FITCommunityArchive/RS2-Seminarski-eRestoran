@@ -1,10 +1,5 @@
 ﻿using eRestoran.Client.Mobile.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,10 +14,10 @@ namespace eRestoran.Client.Mobile.Views
 		{
 			InitializeComponent ();
             loginVM = new LoginVM();
-            MessagingCenter.Subscribe<LoginVM,string>(this, "LoginAlert",(sender,username)=> {
-                DisplayAlert("Title", username, "Oke");
-            });
-            this.BindingContext = loginVM;
+            //MessagingCenter.Subscribe<LoginVM,string>(this, "LoginAlert",(sender,username)=> {
+            //    DisplayAlert("Title", username, "Oke");
+            //});
+            BindingContext = loginVM;
             usernameEntry.Completed += (object sender, EventArgs e) =>
             {
                 passwordEntry.Focus();
@@ -35,10 +30,6 @@ namespace eRestoran.Client.Mobile.Views
             };
 
         }
-       
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
+              
     }
 }

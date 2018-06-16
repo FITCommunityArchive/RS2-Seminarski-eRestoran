@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace eRestoran.Client.Mobile.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Registracija : ContentPage
+	public partial class Izvjestaji : ContentPage
 	{
-		public Registracija()
+		public Izvjestaji ()
 		{
 			InitializeComponent ();
 		}
