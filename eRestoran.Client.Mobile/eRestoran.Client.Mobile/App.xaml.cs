@@ -4,12 +4,13 @@ using Xamarin.Forms;
 using eRestoran.Client.Mobile.Data;
 using Xamarin.Forms.Xaml;
 
+
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eRestoran.Client.Mobile
 {
-   
-	public partial class App : Application
-	{
+  
+    public partial class App : Application
+    {
         static RestService restService;
         public App ()
 		{
