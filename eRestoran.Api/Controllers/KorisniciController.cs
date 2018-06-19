@@ -112,12 +112,19 @@ namespace eRestoran.Api.Controllers
         }
 
         [ResponseType(typeof(string))]
-        [Route("api/korisnici/login")]
+        [Route("api/korisnici/login/")]
         [HttpPost]
         [AllowAnonymous]
         public IHttpActionResult Login([FromBody] AuthVM auth)
         {
-            var zz = db.TipoviSkladista.ToList();
+            try
+            {
+                var zz = db.TipoviSkladista.ToList();
+            }
+            catch(Exception e)
+            {
+                var m = e;
+            }
             var ad = db.Zaposlenici.ToList();
             var ad312 = db.Zaposlenici.FirstOrDefault();
             var korisnik = GetUser(auth.Email, CryptoHelper.GetMd5Hash(auth.Password));

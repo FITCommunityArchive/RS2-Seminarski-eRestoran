@@ -1,20 +1,18 @@
-using eRestoran.Client.Mobile.Views;
-using System;
+﻿using System;
 using Xamarin.Forms;
-using eRestoran.Client.Mobile.Data;
+using eRestoran.Client.Mobile.Views;
 using Xamarin.Forms.Xaml;
-
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eRestoran.Client.Mobile
 {
-  
-    public partial class App : Application
-    {
-        static RestService restService;
-        public App ()
+	public partial class App : Application
+	{
+		
+		public App ()
 		{
 			InitializeComponent();
+
 
 			MainPage = new Registracija();
 		}
@@ -33,19 +31,5 @@ namespace eRestoran.Client.Mobile
 		{
 			// Handle when your app resumes
 		}
-        public static RestService RestService
-        {
-
-            get
-            {
-                if (restService == null)
-                {
-                    restService = new RestService();
-                }
-                return restService;
-
-            }
-        } 
-                
-    }
+	}
 }

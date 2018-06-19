@@ -1,17 +1,71 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eRestoran.Client.Mobile.Views.Login">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="eRestoran.Client.Mobile.Views.Login">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ff3467</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="StartAndExpand">
-            <Label Text="Login"></Label>
-            <Label Text="Username" Margin="20 0 0 0" FontSize="Medium"></Label>
-            <Entry x:Name="usernameEntry" Placeholder="Username ..." Text="{Binding Username}"></Entry>
-            <Label Text="Password" Margin="20 0 0 0" FontSize="Medium"></Label>
-            <Entry x:Name="passwordEntry" Placeholder="Password ..." Text="{Binding Password}"></Entry>
-            <Button Text="Login" Command="{Binding SubmitCommand}"></Button>
+        <ScrollView>
+            <StackLayout Spacing="5" >
+
+                <Label HeightRequest="80"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="LOGIN" 
+                          BackgroundColor="{StaticResource primary}"
+                          TextColor="White" 
+                          FontSize="25" 
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
+
+                <StackLayout Orientation="Horizontal" Padding="15,10,0,0" Margin="0,0,15,0" >
+                    <Label HeightRequest="40" Text="Username" VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Username">
+
+                    </Entry>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40"  Text="Password " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40"
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Password">
+
+                    </Entry>
+                </StackLayout>
 
 
-        </StackLayout>
+
+                <Button Margin="10,0,10,0" 
+                         HeightRequest="40" 
+                         TextColor="White" 
+                         Text="Login"  
+                         BackgroundColor="{StaticResource primary}"
+                         HorizontalOptions="FillAndExpand"/>
+                <Label Text="Nemate account ?" 
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource primary}"/>
+                <Button Margin="10,0,10,0" 
+                         HeightRequest="40" 
+                         TextColor="White" 
+                         Text="Registrujte se !" 
+                         BackgroundColor="Gray"
+                         HorizontalOptions="FillAndExpand"/>
+
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

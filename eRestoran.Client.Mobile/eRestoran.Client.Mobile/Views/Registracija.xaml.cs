@@ -12,7 +12,7 @@ namespace eRestoran.Client.Mobile.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Registracija : ContentPage
 	{
-		public Registracija()
+		public Registracija ()
 		{
 			InitializeComponent ();
 		}

@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="cdd95eb3-2567-4f82-9b3a-e102388565b2"
-    Publisher="CN=0f70b300-f353-4614-9672-fdeb81aaacd4"
+    Name="324dfe43-eebb-4b4d-ad16-246f0ef7ae1d"
+    Publisher="CN=699f95d8-8aad-4a92-bbc6-fcc2145fa33e"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>eRestoran.Client.Mobile.UWP</DisplayName>
-    <PublisherDisplayName>0f70b300-f353-4614-9672-fdeb81aaacd4</PublisherDisplayName>
+    <PublisherDisplayName>699f95d8-8aad-4a92-bbc6-fcc2145fa33e</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

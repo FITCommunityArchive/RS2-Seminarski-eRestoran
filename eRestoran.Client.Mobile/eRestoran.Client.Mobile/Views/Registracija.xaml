@@ -1,50 +1,113 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="eRestoran.Client.Mobile.Views.Registracija">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ff3467</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="5" >
+                <Label HeightRequest="110"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="REGISTRACIJA KORISNIKA" 
+                          BackgroundColor="{StaticResource primary}"
+                          TextColor="White" 
+                          FontSize="25" 
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
 
-    <StackLayout VerticalOptions="CenterAndExpand" Padding="30" HorizontalOptions="Center">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Ime " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
 
-            <Label Text ="Registracija@eProdaja" FontSize="25" Grid.ColumnSpan="2" HorizontalTextAlignment="Center"></Label>
+                    </Label>
 
-            <Label Text ="Ime:" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" FontSize = "18"></Label>
-            <Entry x:Name="imeInput" Grid.Row="1" Grid.Column="1" ></Entry>
-            <Label Text ="Prezime:" Grid.Row="2" VerticalTextAlignment="Center" Grid.Column="0" FontSize = "18"></Label>
-            <Entry x:Name="prezimeInput" Grid.Row="2" Grid.Column="1" ></Entry>
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Ime">
 
-            <Label Text ="Email:" Grid.Row="3" VerticalTextAlignment="Center" Grid.Column="0" FontSize = "18"></Label>
-            <Entry x:Name="emailInput" Grid.Row="3" Grid.Column="1" ></Entry>
+                    </Entry>
+                </StackLayout>
+                <!--ime-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Prezime " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
 
-            <Label Text ="Username:" Grid.Row="4" VerticalTextAlignment="Center" Grid.Column="0" FontSize = "18"></Label>
-            <Entry x:Name="usernameInput" Grid.Row="4" Grid.Column="1" ></Entry>
+                    </Label>
 
-            <Label Text ="Nova lozinka:" Grid.Row="5" VerticalTextAlignment="Center" Grid.Column="0" FontSize = "18"></Label>
-            <Entry x:Name="lozinkaInput" Grid.Row="5" Grid.Column="1" IsPassword="true" ></Entry>
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Prezime">
 
-            <Label Text ="Potvrdi lozinku:" Grid.Row="5" VerticalTextAlignment="Center" Grid.Column="0" FontSize = "18"></Label>
-            <Entry x:Name="potvrdaLozinkaInput" Grid.Row="5" Grid.Column="1" IsPassword="true" ></Entry>
+                    </Entry>
+                </StackLayout>
+                <!--emails-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Email " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
 
+                    </Label>
 
-            <Button x:Name="registracijaButton" Text="Snimi" Grid.Row="6" Grid.Column="1"  
-                     BackgroundColor="#13818d" TextColor="White" HorizontalOptions="End"></Button>
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Email">
 
-        </Grid>
+                    </Entry>
+                </StackLayout>
+                <!--Username-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Username " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
 
-    </StackLayout>
+                    </Label>
 
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Username">
+
+                    </Entry>
+                </StackLayout>
+                <!--lozinka-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Nova lozinka " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Nova lozinka">
+
+                    </Entry>
+                </StackLayout>
+                <!--lozinka2-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Potvrdi lozinku " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Potvrdi lozinku">
+
+                    </Entry>
+                </StackLayout>
+
+                <Button Margin="10,10,10,0" 
+                         HeightRequest="40" 
+                         TextColor="White" 
+                         Text="Snimi"  
+                         BackgroundColor="Gray"
+                         HorizontalOptions="FillAndExpand"/>
+
+                <Label Margin="0,0,0,20" Text="Imam account " VerticalOptions="EndAndExpand"
+                        HorizontalOptions="Center" 
+                        TextColor="{StaticResource primary}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
