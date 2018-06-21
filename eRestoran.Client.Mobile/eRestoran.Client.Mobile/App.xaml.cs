@@ -14,7 +14,7 @@ namespace eRestoran.Client.Mobile
 			InitializeComponent();
 
 
-			MainPage = new Registracija();
+			MainPage = new Tabovi();
 		}
 
 		protected override void OnStart ()

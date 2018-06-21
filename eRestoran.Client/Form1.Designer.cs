@@ -35,9 +35,9 @@ namespace FastFoodDemo
             this.panel1 = new System.Windows.Forms.Panel();
             this.digitalClock1 = new eRestoran.Client.DigitalClock();
             this.SidePanel = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnIzvjestaji = new System.Windows.Forms.Button();
             this.btnRezervacije = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnNalozi = new System.Windows.Forms.Button();
             this.btnPonuda = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
@@ -61,9 +61,9 @@ namespace FastFoodDemo
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
             this.panel1.Controls.Add(this.digitalClock1);
             this.panel1.Controls.Add(this.SidePanel);
-            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.btnIzvjestaji);
             this.panel1.Controls.Add(this.btnRezervacije);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnNalozi);
             this.panel1.Controls.Add(this.btnPonuda);
             this.panel1.Controls.Add(this.button14);
             this.panel1.Controls.Add(this.btnMenu);
@@ -91,22 +91,23 @@ namespace FastFoodDemo
             this.SidePanel.Size = new System.Drawing.Size(10, 54);
             this.SidePanel.TabIndex = 4;
             // 
-            // button6
+            // btnIzvjestaji
             // 
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(12, 395);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(197, 54);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "       Izvještaji";
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnIzvjestaji.FlatAppearance.BorderSize = 0;
+            this.btnIzvjestaji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIzvjestaji.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIzvjestaji.ForeColor = System.Drawing.Color.White;
+            this.btnIzvjestaji.Image = ((System.Drawing.Image)(resources.GetObject("btnIzvjestaji.Image")));
+            this.btnIzvjestaji.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIzvjestaji.Location = new System.Drawing.Point(12, 385);
+            this.btnIzvjestaji.Name = "btnIzvjestaji";
+            this.btnIzvjestaji.Size = new System.Drawing.Size(194, 54);
+            this.btnIzvjestaji.TabIndex = 4;
+            this.btnIzvjestaji.Text = "       Izvještaji";
+            this.btnIzvjestaji.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIzvjestaji.UseVisualStyleBackColor = true;
+            this.btnIzvjestaji.Visible = false;
+            this.btnIzvjestaji.Click += new System.EventHandler(this.button6_Click);
             // 
             // btnRezervacije
             // 
@@ -125,22 +126,23 @@ namespace FastFoodDemo
             this.btnRezervacije.UseVisualStyleBackColor = true;
             this.btnRezervacije.Click += new System.EventHandler(this.btnRezervacije_Click);
             // 
-            // button4
+            // btnNalozi
             // 
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(12, 265);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(197, 54);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "       Korisnički nalozi";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnNalozi.FlatAppearance.BorderSize = 0;
+            this.btnNalozi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNalozi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNalozi.ForeColor = System.Drawing.Color.White;
+            this.btnNalozi.Image = ((System.Drawing.Image)(resources.GetObject("btnNalozi.Image")));
+            this.btnNalozi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNalozi.Location = new System.Drawing.Point(12, 325);
+            this.btnNalozi.Name = "btnNalozi";
+            this.btnNalozi.Size = new System.Drawing.Size(197, 54);
+            this.btnNalozi.TabIndex = 4;
+            this.btnNalozi.Text = "       Korisnički nalozi";
+            this.btnNalozi.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNalozi.UseVisualStyleBackColor = true;
+            this.btnNalozi.Visible = false;
+            this.btnNalozi.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnPonuda
             // 
@@ -182,13 +184,14 @@ namespace FastFoodDemo
             this.btnMenu.ForeColor = System.Drawing.Color.White;
             this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
             this.btnMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenu.Location = new System.Drawing.Point(12, 335);
+            this.btnMenu.Location = new System.Drawing.Point(12, 265);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(197, 54);
             this.btnMenu.TabIndex = 4;
-            this.btnMenu.Text = "       Ponuda";
+            this.btnMenu.Text = "       Uredi ponudu";
             this.btnMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Visible = false;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnHome
@@ -367,9 +370,9 @@ namespace FastFoodDemo
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel SidePanel;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnIzvjestaji;
         private System.Windows.Forms.Button btnRezervacije;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnNalozi;
         private System.Windows.Forms.Button btnPonuda;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnExit;

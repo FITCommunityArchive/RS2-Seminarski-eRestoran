@@ -117,16 +117,6 @@ namespace eRestoran.Api.Controllers
         [AllowAnonymous]
         public IHttpActionResult Login([FromBody] AuthVM auth)
         {
-            try
-            {
-                var zz = db.TipoviSkladista.ToList();
-            }
-            catch(Exception e)
-            {
-                var m = e;
-            }
-            var ad = db.Zaposlenici.ToList();
-            var ad312 = db.Zaposlenici.FirstOrDefault();
             var korisnik = GetUser(auth.Email, CryptoHelper.GetMd5Hash(auth.Password));
 
             if (korisnik != null)
@@ -136,7 +126,8 @@ namespace eRestoran.Api.Controllers
                 {
                     Id = korisnik.Id,
                     ImePrezime = korisnik.Ime + " " + korisnik.Prezime,
-                    Token = token
+                    Token = token,
+                    TipKorisnika = korisnik.TipKorisnika
                 });
             }
 

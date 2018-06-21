@@ -16,7 +16,10 @@ namespace eRestoran.Client.Mobile.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            Android.Support.V7.Widget.Toolbar toolbar = this.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            if (toolbar != null)
+                toolbar.SetTitle(Resource.String.search_menu_title);
+                SetSupportActionBar(toolbar);
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);

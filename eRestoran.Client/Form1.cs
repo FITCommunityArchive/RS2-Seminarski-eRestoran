@@ -37,6 +37,7 @@ namespace FastFoodDemo
         {
             controlsHistory = new LinkedList<Control>();
             InitializeComponent();
+            SetupLayoutForUser();
             cart = new CartIndexVM();
             cart.Jela = new List<CartRow>();
             cart.Pica = new List<CartRow>();
@@ -50,6 +51,17 @@ namespace FastFoodDemo
             //dodajProizvod.Visible = false;
             //vScrollBar1.Visible = false;
             //activeControl = firstCustomControl1.Name;
+        }
+
+        private void SetupLayoutForUser()
+        {
+            if (VerifikovaniKorisnik.TipKorisnika == TipKorisnika.Admin)
+            {
+                btnMenu.Visible = true;
+                btnNalozi.Visible = true;
+                btnPonuda.Visible = true;
+            }
+                
         }
 
         public bool AddToCartPice(CartRow cartRow)

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eRestoran.Client.Mobile.Views.Ponuda">
+  <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <!--<Image Source="{Binding image}" />-->
+                            <Label Text="{Binding Naziv}"
+                                TextColor="#f35e20"  />
+                            <Label Text="{Binding Kategorija}"
+                                TextColor="#f35e20" />
+                            
+                                <Label Text="{Binding Cijena}"
+                                TextColor="#f35e20" />
+                            <Label Text="{Binding Kolicina}"
+                                TextColor="#f35e20"  />
+                            <!--<Label Text="{Binding subtitle}"-->
+                                <!--HorizontalOptions="EndAndExpand"-->
+                                <!--TextColor="#503026" />-->
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

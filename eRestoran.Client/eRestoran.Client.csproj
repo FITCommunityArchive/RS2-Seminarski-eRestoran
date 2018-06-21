@@ -368,6 +368,8 @@
   <ItemGroup>
     <Content Include="Images\add_user.png" />
     <Content Include="Images\backArrow.jpg" />
+    <Content Include="Images\btnMenu.png" />
+    <Content Include="Images\btnNalozi.png" />
     <Content Include="Images\cart-icon.png" />
     <Content Include="Images\cart.png" />
     <Content Include="Images\icon-48.png" />
