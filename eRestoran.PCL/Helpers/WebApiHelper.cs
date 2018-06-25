@@ -46,9 +46,17 @@ namespace eRestoran.PCL.Helpers
       
         public async Task<HttpResponseMessage> PostResponse(object obj)
         {
-            var serializedObj = JsonConvert.SerializeObject(obj);
-            var x =await client.PostAsync(route, new StringContent(serializedObj, Encoding.UTF8, "application/json"));
-            return x;
+            try
+            {
+                var serializedObj = JsonConvert.SerializeObject(obj);
+                var x = await client.PostAsync(route, new StringContent(serializedObj, Encoding.UTF8, "application/json"));
+                return x;
+            }
+            catch (Exception e)
+            {
+                var x = e.Message;
+                return null;
+            }
         }
         public async Task<T> PostResponse<T>(string url, FormUrlEncodedContent content) where T : class
         {

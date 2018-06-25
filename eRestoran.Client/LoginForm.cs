@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using eRestoran.Api.VM;
 using eRestoran.Client.Shared.Helpers;
 using System.Net.Http;
 using eRestoran.Client.Properties;
+using eRestoran.PCL.VM;
 
 namespace FastFoodDemo
 {

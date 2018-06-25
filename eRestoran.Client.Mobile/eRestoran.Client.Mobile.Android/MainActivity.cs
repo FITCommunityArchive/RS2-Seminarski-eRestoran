@@ -22,9 +22,17 @@ namespace eRestoran.Client.Mobile.Droid
                 SetSupportActionBar(toolbar);
             base.OnCreate(bundle);
 
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+         
+        }
     }
+  
+    
 }
 

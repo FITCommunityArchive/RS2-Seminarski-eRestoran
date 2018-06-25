@@ -1,5 +1,5 @@
 ﻿
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 using eRestoran.VM;

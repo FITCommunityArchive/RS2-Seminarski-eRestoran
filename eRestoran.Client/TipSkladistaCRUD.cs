@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Net.Http;
 using eRestoran.Client.Shared.Helpers;
 using eRestoran.Client.Properties;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using eRestoran.Data.Models;
 
 namespace eRestoran.Client

@@ -9,8 +9,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
-using eRestoran.Api.VM;
 using eRestoran.Api.Helper;
+using eRestoran.PCL.VM;
 
 namespace eRestoran.Api.Controllers
 {

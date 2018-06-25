@@ -6,7 +6,7 @@ using System.Net.Http;
 using eRestoran.Data.Models;
 using FirstUserControlUsage;
 using static FastFoodDemo.UnosProizvoda;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using eRestoran.Client.Shared.Helpers;
 using FastFoodDemo;
 

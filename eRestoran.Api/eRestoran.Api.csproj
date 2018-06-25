@@ -73,6 +73,7 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
@@ -99,7 +100,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
@@ -171,34 +171,6 @@
     <Compile Include="Helper\CryptoHelper.cs" />
     <Compile Include="Helper\JwtManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VM\AuthVM.cs" />
-    <Compile Include="VM\CartIndexVM.cs" />
-    <Compile Include="VM\DodajJelo.cs" />
-    <Compile Include="VM\JeloJelaStavkeUredi.cs" />
-    <Compile Include="VM\KlijentNaruciVM.cs" />
-    <Compile Include="VM\KlijentVM.cs" />
-    <Compile Include="VM\MjernaJedinicaVM.cs" />
-    <Compile Include="VM\NaloziVM.cs" />
-    <Compile Include="VM\NarudbaDatum.cs" />
-    <Compile Include="VM\NarudIznos.cs" />
-    <Compile Include="VM\NarudzbaPonuda.cs" />
-    <Compile Include="VM\PonudaUrediVM.cs" />
-    <Compile Include="VM\PonudaVM.cs" />
-    <Compile Include="VM\PrikazKriticnihZaliha.cs" />
-    <Compile Include="VM\ProizvodStavka.cs" />
-    <Compile Include="VM\RacunVM.cs" />
-    <Compile Include="VM\ReportsNarduzbeVM.cs" />
-    <Compile Include="VM\ReportsNarudzbeDanVM.cs" />
-    <Compile Include="VM\ReportsNarudzbeKorisnika.cs" />
-    <Compile Include="VM\ReportsSveNarudzbeKorisnika .cs" />
-    <Compile Include="VM\ReportsSviKorisniciNarudzbe.cs" />
-    <Compile Include="VM\StoloviRezervacijaVM.cs" />
-    <Compile Include="VM\TipProizvodaVM.cs" />
-    <Compile Include="VM\SkladisteVM.cs" />
-    <Compile Include="VM\TipSkladistaVM.cs" />
-    <Compile Include="VM\UrediJelo.cs" />
-    <Compile Include="VM\VerifikovanKorisnikVM.cs" />
-    <Compile Include="VM\ZaposlenikVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -214,11 +186,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="VM\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eRestoran.Data\eRestoran.Data.csproj">
       <Project>{c30f9d89-7205-4312-8409-4341ae7b717b}</Project>
       <Name>eRestoran.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eRestoran.PCL\eRestoran.PCL.csproj">
+      <Project>{86680277-d8d8-4d68-be36-50a68e3a01f7}</Project>
+      <Name>eRestoran.PCL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

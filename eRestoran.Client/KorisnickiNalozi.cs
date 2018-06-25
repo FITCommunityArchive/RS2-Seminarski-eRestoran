@@ -2,7 +2,7 @@
 using eRestoran.Client.Shared.Helpers;
 using eRestoran.Client.Properties;
 using System.Net.Http;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using System.Collections.Generic;
 using System;
 using FastFoodDemo;

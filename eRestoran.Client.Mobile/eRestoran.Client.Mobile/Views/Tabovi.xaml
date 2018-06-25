@@ -5,20 +5,16 @@
             x:Class="eRestoran.Client.Mobile.Views.Tabovi">
     <TabbedPage.Children>
         <NavigationPage Title="Ponuda">
-           
             <x:Arguments>
                 <views:Login />
             </x:Arguments>
         </NavigationPage>
-
         <NavigationPage Title="Izvještaji">
-           
             <x:Arguments>
                 <views:Registracija />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage Title="Nalozi">
-        
             <x:Arguments>
                 <views:Ponuda />
             </x:Arguments>

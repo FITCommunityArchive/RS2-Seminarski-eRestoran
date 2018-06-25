@@ -8,7 +8,7 @@ using eRestoran.Data.Models;
 using eRestoran.Client;
 using FirstUserControlUsage;
 using System.IO;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using System.Drawing.Drawing2D;
 using eRestoran.Client.Shared.Helpers;
 

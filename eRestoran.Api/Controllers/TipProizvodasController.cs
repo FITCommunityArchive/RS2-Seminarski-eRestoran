@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 

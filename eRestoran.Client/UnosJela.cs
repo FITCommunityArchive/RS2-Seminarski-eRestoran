@@ -11,7 +11,7 @@ using FirstUserControlUsage;
 using System.IO;
 using eRestoran.Client.Shared.Helpers;
 using eRestoran.Client.Properties;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 
 namespace FastFoodDemo
 {

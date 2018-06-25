@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using FastFoodDemo;
 using eRestoran.Client;
 using System.IO;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 
 namespace FirstUserControlUsage
 {

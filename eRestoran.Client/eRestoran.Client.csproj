@@ -361,6 +361,10 @@
       <Project>{c30f9d89-7205-4312-8409-4341ae7b717b}</Project>
       <Name>eRestoran.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\eRestoran.PCL\eRestoran.PCL.csproj">
+      <Project>{86680277-D8D8-4D68-BE36-50A68E3A01F7}</Project>
+      <Name>eRestoran.PCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

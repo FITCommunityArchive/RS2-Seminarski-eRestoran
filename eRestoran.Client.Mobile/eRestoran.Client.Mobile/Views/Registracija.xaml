@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="5" >
-                <Label HeightRequest="110"  
+                <Label HeightRequest="80"  
                           HorizontalOptions="FillAndExpand" 
                           Text="REGISTRACIJA KORISNIKA" 
                           BackgroundColor="{StaticResource primary}"
@@ -105,7 +105,7 @@
                          HorizontalOptions="FillAndExpand"/>
 
                 <Label Margin="0,0,0,20" Text="Imam account " VerticalOptions="EndAndExpand"
-                        HorizontalOptions="Center" 
+                        HorizontalOptions="Center" x:Name="lblLogin"
                         TextColor="{StaticResource primary}"/>
             </StackLayout>
         </ScrollView>

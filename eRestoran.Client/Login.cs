@@ -1,4 +1,4 @@
-﻿using eRestoran.Api.VM;
+﻿using eRestoran.PCL.VM;
 using eRestoran.Client.Properties;
 using eRestoran.Client.Shared.Helpers;
 using eRestoran.Data.Models;

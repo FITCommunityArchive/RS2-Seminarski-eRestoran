@@ -14,7 +14,16 @@ namespace eRestoran.Client.Mobile.Views
 	{
 		public Registracija ()
 		{
-			InitializeComponent ();
-		}
-	}
+            InitializeComponent();
+            lblLogin.GestureRecognizers.Add(new TapGestureRecognizer
+            {
+                Command = new Command(() => NavigateToLogin())
+            });
+            NavigationPage.SetHasNavigationBar(this, false);
+        }
+        async void NavigateToLogin() {
+            await Navigation.PushAsync(new Login());
+        }
+
+    }
 }

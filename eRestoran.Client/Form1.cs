@@ -10,9 +10,9 @@ using System.Collections;
 using eRestoran.Client.Shared.Helpers;
 using eRestoran.Client;
 using eRestoran.Client.Properties;
-using eRestoran.Api.VM;
 using eRestoran.Data.Models;
 using System.Linq;
+using eRestoran.PCL.VM;
 
 namespace FastFoodDemo
 {

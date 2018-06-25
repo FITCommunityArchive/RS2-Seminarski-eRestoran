@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eRestoran.Api.VM
+namespace eRestoran.PCL.VM
 {
     public class AuthVM
     {

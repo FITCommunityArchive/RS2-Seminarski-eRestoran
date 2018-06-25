@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace eRestoran.Api.VM
+namespace eRestoran.PCL.VM
 {
     public class NaloziVM
     {

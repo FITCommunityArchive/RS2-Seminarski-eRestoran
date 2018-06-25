@@ -4,9 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Web.Http;
 using eRestoran.Api.Filter;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
+using eRestoran.PCL.VM;
 
 namespace eRestoran.Api.Controllers
 {

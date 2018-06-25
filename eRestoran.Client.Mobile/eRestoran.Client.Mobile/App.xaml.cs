@@ -12,9 +12,7 @@ namespace eRestoran.Client.Mobile
 		public App ()
 		{
 			InitializeComponent();
-
-
-			MainPage = new Tabovi();
+            MainPage = new Login();
 		}
 
 		protected override void OnStart ()

@@ -15,6 +15,6 @@ namespace eRestoran.Client.Mobile.Views
 		public Tabovi ()
 		{
 			InitializeComponent ();
-		}
-	}
+        }
+    }
 }

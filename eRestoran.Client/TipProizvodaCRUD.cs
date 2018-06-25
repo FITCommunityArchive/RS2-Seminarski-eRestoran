@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eRestoran.Client.Shared.Helpers;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using System.Net.Http;
 using eRestoran.Data.Models;
 

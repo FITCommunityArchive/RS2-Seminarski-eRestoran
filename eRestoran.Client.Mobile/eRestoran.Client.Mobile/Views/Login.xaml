@@ -28,7 +28,7 @@
 
                     <Entry HeightRequest="40" 
                                   HorizontalOptions="FillAndExpand"
-                                 Placeholder="Username">
+                                 Placeholder="Username" x:Name="entryEmail">
 
                     </Entry>
                 </StackLayout>
@@ -41,19 +41,18 @@
 
                     <Entry HeightRequest="40"
                                   HorizontalOptions="FillAndExpand"
-                                 Placeholder="Password">
+                                 Placeholder="Password" x:Name="entryPassword">
 
                     </Entry>
                 </StackLayout>
-
-
 
                 <Button Margin="10,0,10,0" 
                          HeightRequest="40" 
                          TextColor="White" 
                          Text="Login"  
                          BackgroundColor="{StaticResource primary}"
-                         HorizontalOptions="FillAndExpand"/>
+                         HorizontalOptions="FillAndExpand"
+                        x:Name="btnLogin" />
                 <Label Text="Nemate account ?" 
                         HorizontalOptions="Center" 
                         TextColor="{StaticResource primary}"/>
@@ -62,7 +61,8 @@
                          TextColor="White" 
                          Text="Registrujte se !" 
                          BackgroundColor="Gray"
-                         HorizontalOptions="FillAndExpand"/>
+                         HorizontalOptions="FillAndExpand"
+                         x:Name="btnRegister" />
 
 
             </StackLayout>

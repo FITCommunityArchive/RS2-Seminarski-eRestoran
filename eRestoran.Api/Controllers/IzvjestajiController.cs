@@ -1,5 +1,5 @@
 ﻿using eRestoran.Api.Filter;
-using eRestoran.Api.VM;
+using eRestoran.PCL.VM;
 using eRestoran.Areas.ModulAdministracija.Models;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
