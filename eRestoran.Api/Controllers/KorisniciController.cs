@@ -21,7 +21,15 @@ namespace eRestoran.Api.Controllers
         // GET: api/Korisnici
         public List<Korisnik> GetKorisnici()
         {
-            return db.Korisnici.ToList();
+            try
+            {
+                return db.Korisnici.ToList();
+            }
+            catch (Exception e)
+            {
+                var xx = e.Message;
+                return null;
+            }
         }
 
         // GET: api/Korisnici/5

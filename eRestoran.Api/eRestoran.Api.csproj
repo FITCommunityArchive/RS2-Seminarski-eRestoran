@@ -175,6 +175,8 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\eRestoranApi20180630075519 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\eRestoranApi20180630082851 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
