@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="eRestoran.Client.Mobile.Views.DodavanjeNaloga">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ff3467</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="5" >
+                <Label HeightRequest="80"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="Dodavanje naloga"
+                          TextColor="White" 
+                          FontSize="25" 
+                          BackgroundColor="{StaticResource primary}"
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
+
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Ime " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Ime">
+
+                    </Entry>
+                </StackLayout>
+                <!--ime-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Prezime " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Prezime">
+
+                    </Entry>
+                </StackLayout>
+                <!--emails-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Email " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Email">
+
+                    </Entry>
+                </StackLayout>
+                <!--Username-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Username " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Username">
+
+                    </Entry>
+                </StackLayout>
+                <!--lozinka-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Nova lozinka " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Nova lozinka">
+
+                    </Entry>
+                </StackLayout>
+                <!--lozinka2-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Potvrdi lozinku " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Potvrdi lozinku">
+
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Status" VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+                    <Picker VerticalOptions="CenterAndExpand" SelectedIndex="1" HeightRequest="40">
+                        <Picker.Items>
+                            <x:String>Aktivan</x:String>
+                            <x:String>Neaktivan</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Uloga" VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Picker VerticalOptions="CenterAndExpand" SelectedIndex="3" HeightRequest="40">
+                        <Picker.Items>
+                            <x:String>Admin</x:String>
+                            <x:String>Menadzer</x:String>
+                            <x:String>Klijent</x:String>
+                            <x:String>Konobar</x:String>
+                            <x:String>Kuhar</x:String>
+                            <x:String>Sanker</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+                <Button Margin="10,10,10,0" 
+                         HeightRequest="40" 
+                         TextColor="White" 
+                         Text="Snimi"  
+                         BackgroundColor="Gray"
+                         HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
