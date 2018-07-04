@@ -6,11 +6,21 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Plugin.FileUploader" Version="1.4.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\eRestoran.Data\eRestoran.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="DodajProizvod.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RezervisiSto.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

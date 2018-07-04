@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using eRestoran.Client.Mobile.Views;
 using Xamarin.Forms.Xaml;
+using eRestoran.Client.Mobile.Navigation;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eRestoran.Client.Mobile
@@ -12,7 +13,7 @@ namespace eRestoran.Client.Mobile
 		public App ()
 		{
 			InitializeComponent();
-            MainPage = new Login();
+            MainPage = new MyPage();
 		}
 
 		protected override void OnStart ()

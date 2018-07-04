@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eRestoran.Client.Mobile.Views.Promocija">
+   
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#ff3467</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="5" >
+                <Label HeightRequest="80"  
+                          HorizontalOptions="FillAndExpand" 
+                          Text="Promocija proizvoda" 
+                          BackgroundColor="{StaticResource primary}"
+                          TextColor="White" 
+                          FontSize="25" 
+                          HorizontalTextAlignment="Center"
+                          VerticalTextAlignment="Center"/>
+
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Cijena " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Ime">
+
+                    </Entry>
+                </StackLayout>
+                <!--ime-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Promotivna cijena " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="FillAndExpand"
+                                 Placeholder="Promotivna cijena">
+
+                    </Entry>
+                </StackLayout>
+                <!--emails-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Datum od " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+                    <DatePicker x:Name="StartDatePicker" Format="dd-MM-YYYY" />
+
+                </StackLayout>
+                <!--Username-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Datum do " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <DatePicker x:Name="EndDatePicker" Format="dd-MM-YYYY" />
+
+                </StackLayout>
+               
+                <Button Margin="10,10,10,0" 
+                         HeightRequest="40" 
+                         TextColor="White" 
+                         Text="Snimi"  
+                         BackgroundColor="Gray"
+                         HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>
