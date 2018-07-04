@@ -31,9 +31,7 @@ namespace eRestoran.Client.Mobile.Views
 
         private void ValidateLogin(object sender, EventArgs e)
         {
-            var loginService = new WebAPIHelper("http://192.168.0.16/", "api/korisnici/login/");
-            var test = new WebAPIHelper("https://192.168.0.16/", "api/korisnici/korisnik/mirza/");
-            var response2 = loginService.GetResponse();
+            var loginService = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/korisnici/login/");
             var auth = new AuthVM()
             {
                 Email = entryEmail.Text,
@@ -46,10 +44,9 @@ namespace eRestoran.Client.Mobile.Views
             var response = loginService.PostResponse(auth).Result;
             if (response.IsSuccessStatusCode)
             {
+                var korisnik = WebAPIHelper.GetResponseContent<VerifikovanKorisnikVM>(response);
                 Navigation.PushAsync(new Tabovi());
             }
-
-           
         }
     }
 }
