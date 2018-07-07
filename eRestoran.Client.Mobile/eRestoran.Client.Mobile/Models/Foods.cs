@@ -31,7 +31,7 @@ namespace eRestoran.Client.Mobile.Models
         {
             get
             {
-                return $"teletina.png".Replace(" ", "");
+                return "https://homepages.cae.wisc.edu/~ece533/images/airplane.png"; // radi sa linkovima YEA !
             }
         }
     }
