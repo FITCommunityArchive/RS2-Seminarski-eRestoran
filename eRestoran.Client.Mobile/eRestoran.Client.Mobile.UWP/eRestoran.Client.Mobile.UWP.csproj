@@ -103,6 +103,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\teletina.png" />
     <Content Include="login.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
@@ -135,6 +136,7 @@
     <Content Include="register.png" />
     <Content Include="sto_slobodan.jpg" />
     <Content Include="sto_zauzet.jpg" />
+    <Content Include="teletina.png" />
     <Content Include="xamarin_logo.png" />
     <Content Include="add.png" />
   </ItemGroup>

@@ -29,83 +29,25 @@ namespace eRestoran.Client.Mobile.Data
             }
         }
 
-
         static DataRepository()
         {
             Drivers = new ObservableCollection<Food>
             {
                 new Food
                 {
-                    Name = "Sebastian Vettel",
-                    Team = "Ferrari",
-                    Country = "Germany",
-                    Points = 171,
+                    Ime = "Teletina ispod sača",
+                    Team = "Hrana",
+                    Country = "",
+                    Cijena = "20.50",
                     Podiums = 0,
                     GrandPrixEnetered = 0,
                     WorldChampionships = 4,
-                    HighestRaceFinish = "1 (x45)",
+                    Ocjena = "4.5 ",
                     HighestGridPosition = 1,
                     DateOfBirth = new DateTime(1987,7,3),
                     PlaceOfBirth = "Heppenheim, Germany",
-                    Bio="A tour de force as he swept to four straight world championship crowns and countless Formula One records, Sebastian Vettel’s relentless hunger for victory, as much as his outstanding talent, secure his place as one of the sport’s greats."
-
-                },
-                new Food
-                {
-                    Name = "Lewis Hamilton",
-                    Team = "Mercedes",
-                    Country = "United Kingdom",
-                    Points = 151
-                },
-                new Food
-                {
-                    Name = "Daniel Ricciardo",
-                    Team = "Red Bull Racing",
-                    Country = "Australia",
-                    Points = 107
-                },
-                new Food
-                {
-                    Name = "Kimi Raikkonen",
-                    Team = "Ferrari",
-                    Country = "Finland",
-                    Points = 83
-                },
-                new Food
-                {
-                    Name = "Sergio Perez",
-                    Team = "Force India",
-                    Country = "Mexico",
-                    Points = 45
-                },
-                new Food
-                {
-                    Name = "Max Verstappen",
-                    Team = "Red Bull Racing",
-                    Country = "Netherlands",
-                    Points = 45
-                },
-                new Food
-                {
-                    Name = "Esteban Ocon",
-                    Team = "Force India",
-                    Country = "France",
-                    Points = 39
-                },
-                new Food
-                {
-                    Name = "Carlos Sainz",
-                    Team = "Toro Rosso",
-                    Country = "Spain",
-                    Points = 29
-                },
-                new Food
-                {
-                    Name = "Felipe Massa",
-                    Team = "Williams",
-                    Country = "Brazil",
-                    Points = 22
-                },
+                    Bio="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                }
             };
 
             Races = new ObservableCollection<Race>()

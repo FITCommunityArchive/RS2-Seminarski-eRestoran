@@ -6,14 +6,14 @@ namespace eRestoran.Client.Mobile.Models
 {
     public class Food
     {
-        public string Name { get; set; }
-        public int Points { get; set; }
+        public string Ime { get; set; }
+        public string Cijena { get; set; }
         public string Team { get; set; }
         public string Country { get; set; }
         public int Podiums { get; set; }
         public int GrandPrixEnetered { get; set; }
         public int WorldChampionships { get; set; }
-        public string HighestRaceFinish { get; set; }
+        public string Ocjena { get; set; }
         public int HighestGridPosition { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string PlaceOfBirth { get; set; }
@@ -31,7 +31,7 @@ namespace eRestoran.Client.Mobile.Models
         {
             get
             {
-                return $"{Name}.png".Replace(" ", "");
+                return $"teletina.png".Replace(" ", "");
             }
         }
     }
