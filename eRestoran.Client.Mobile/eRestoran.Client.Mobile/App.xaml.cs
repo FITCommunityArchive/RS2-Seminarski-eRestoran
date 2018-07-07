@@ -4,7 +4,6 @@ using eRestoran.Client.Mobile.Views;
 using Xamarin.Forms.Xaml;
 using eRestoran.Client.Mobile.Navigation;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eRestoran.Client.Mobile
 {
 	public partial class App : Application

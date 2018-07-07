@@ -27,6 +27,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DataRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Foods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Race.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\MyPage.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>MyPage.xaml</DependentUpon>
@@ -85,7 +88,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
   <ItemGroup>
