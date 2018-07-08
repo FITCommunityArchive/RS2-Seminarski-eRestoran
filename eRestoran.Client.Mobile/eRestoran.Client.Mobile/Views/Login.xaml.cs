@@ -41,7 +41,6 @@ namespace eRestoran.Client.Mobile.Views
                 var korisnik = WebAPIHelper.GetResponseContent<VerifikovanKorisnikVM>(response);
                 ApplicationProperties.UserToken = korisnik.Token;
                 var x = new MyPage();
-                x.Master = new MyPageMaster();
                 Application.Current.MainPage = x;
             }
         }
