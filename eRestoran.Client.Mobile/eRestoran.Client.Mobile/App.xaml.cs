@@ -1,10 +1,8 @@
-﻿using System;
+﻿
 using Xamarin.Forms;
-using eRestoran.Client.Mobile.Views;
-using Xamarin.Forms.Xaml;
 using eRestoran.Client.Mobile.Navigation;
+using eRestoran.Client.Mobile.Views;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eRestoran.Client.Mobile
 {
 	public partial class App : Application
@@ -13,10 +11,11 @@ namespace eRestoran.Client.Mobile
 		public App ()
 		{
 			InitializeComponent();
-            MainPage = new MyPage();
-		}
+            MainPage = new ProductDetail(food: Data.DataRepository.Drivers[0]);
 
-		protected override void OnStart ()
+        }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}

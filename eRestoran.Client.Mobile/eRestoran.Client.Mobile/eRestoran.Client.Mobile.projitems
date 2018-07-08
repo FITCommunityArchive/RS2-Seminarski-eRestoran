@@ -27,6 +27,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DataRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Foods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Race.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\MyPage.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>MyPage.xaml</DependentUpon>
@@ -45,6 +48,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Rezervacija.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\DodavanjeNaloga.xaml.cs">
       <DependentUpon>DodavanjeNaloga.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ProductDetail.xaml.cs">
+      <DependentUpon>ProductDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Promocija.xaml.cs">
@@ -85,7 +92,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +119,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\teletina.png" />
     <Content Include="$(MSBuildThisFileDirectory)sto_slobodan.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)sto_zauzet.jpg" />
   </ItemGroup>
@@ -124,6 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Promocija.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ProductDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

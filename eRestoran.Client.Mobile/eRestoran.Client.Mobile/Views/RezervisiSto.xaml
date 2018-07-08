@@ -4,9 +4,14 @@
              x:Class="eRestoran.Client.Mobile.Views.RezervisiSto">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Kliknite da bi ste rezervisali sto !"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                <Label HeightRequest="40" Text="Datum od " VerticalTextAlignment="End"
+                         HorizontalOptions="FillAndExpand">
+
+                </Label>
+                <DatePicker x:Name="StartDatePicker" Format="dd-MM-YYYY" />
+
+            </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
