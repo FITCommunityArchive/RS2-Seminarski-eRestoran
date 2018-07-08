@@ -202,7 +202,7 @@
       <Name>eRestoran.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\eRestoran.PCL\eRestoran.PCL.csproj">
-      <Project>{62a6a331-3512-4ec7-8572-9617af907b3c}</Project>
+      <Project>{445cc50c-8893-4aac-9cf1-d058c29d2f45}</Project>
       <Name>eRestoran.PCL</Name>
     </ProjectReference>
   </ItemGroup>

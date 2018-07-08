@@ -30,8 +30,6 @@ namespace eRestoran.Client.Mobile.Navigation
             {
                 MenuItems = new ObservableCollection<MyPageMenuItem>(new[]
                 {
-                    new MyPageMenuItem { Title = "Login",TargetType=typeof(Login) },
-                    new MyPageMenuItem {  Title = "Register",TargetType=typeof(Registracija) },
                     new MyPageMenuItem {  Title = "Ponuda",TargetType=typeof(Ponuda) },
                     new MyPageMenuItem { Title = "Detalji",TargetType=typeof(Detalji) },
                     new MyPageMenuItem { Title = "Rezervacije",TargetType=typeof(RezervisiSto) },

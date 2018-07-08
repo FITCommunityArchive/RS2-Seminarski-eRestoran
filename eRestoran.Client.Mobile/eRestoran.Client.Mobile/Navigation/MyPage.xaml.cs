@@ -12,6 +12,7 @@ namespace eRestoran.Client.Mobile.Navigation
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
+            
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

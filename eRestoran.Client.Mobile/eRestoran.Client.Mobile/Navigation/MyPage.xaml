@@ -4,14 +4,14 @@
              x:Class="eRestoran.Client.Mobile.Navigation.MyPage"
              xmlns:pages="clr-namespace:eRestoran.Client.Mobile.Views"
             xmlns:nav="clr-namespace:eRestoran.Client.Mobile.Navigation"
-            MasterBehavior="Popover" >
+            MasterBehavior="Popover" Title="Main" >
     <MasterDetailPage.Master>
         <nav:MyPageMaster x:Name="MasterPage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
     <NavigationPage>
       <x:Arguments>
-        <pages:Login />
+        <pages:ProductDetail />
       </x:Arguments>
     </NavigationPage>
   </MasterDetailPage.Detail>

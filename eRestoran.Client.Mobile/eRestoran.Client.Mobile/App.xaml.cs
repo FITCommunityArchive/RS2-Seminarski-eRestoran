@@ -11,8 +11,8 @@ namespace eRestoran.Client.Mobile
 		public App ()
 		{
 			InitializeComponent();
-            MainPage = new ProductDetail(food: Data.DataRepository.Drivers[0]);
-
+            MainPage = new Login();
+            
         }
 
         protected override void OnStart ()

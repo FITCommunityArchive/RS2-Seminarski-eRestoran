@@ -1,11 +1,8 @@
-﻿using eRestoran.PCL.Helpers;
+﻿using eRestoran.Client.Mobile.Helpers;
+using eRestoran.Client.Mobile.Navigation;
+using eRestoran.PCL.Helpers;
 using eRestoran.PCL.VM;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,14 +16,11 @@ namespace eRestoran.Client.Mobile.Views
 			InitializeComponent ();
             btnLogin.Clicked += ValidateLogin;
             btnRegister.Clicked += NavigateToRegister;
-
         }
-
  
         private async void NavigateToRegister(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Registracija());
-
         }
 
         private void ValidateLogin(object sender, EventArgs e)
@@ -45,7 +39,10 @@ namespace eRestoran.Client.Mobile.Views
             if (response.IsSuccessStatusCode)
             {
                 var korisnik = WebAPIHelper.GetResponseContent<VerifikovanKorisnikVM>(response);
-                Navigation.PushAsync(new Tabovi());
+                ApplicationProperties.UserToken = korisnik.Token;
+                var x = new MyPage();
+                x.Master = new MyPageMaster();
+                Application.Current.MainPage = x;
             }
         }
     }
