@@ -18,6 +18,7 @@ namespace eRestoran.PCL.VM
         public string Email { get; set; }
         public TipKorisnika TipKorisnika { get; set; }
         public string Adresa { get; set; }
-        public double Plata { get; set; }
+        public DateTime DatumPrijave { get; set; }
+
     }
 }

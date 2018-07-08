@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eRestoran.Client.Mobile.Helpers;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,7 @@ namespace eRestoran.Client.Mobile.Navigation
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
-            
+            var blabla = ApplicationProperties.UserToken;
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -25,7 +26,7 @@ namespace eRestoran.Client.Mobile.Navigation
             page.Title = item.Title;
 
             Detail = new NavigationPage(page);
-            IsPresented = true;
+            IsPresented = false;
 
             MasterPage.ListView.SelectedItem = null;
         }

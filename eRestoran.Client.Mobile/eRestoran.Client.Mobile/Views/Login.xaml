@@ -45,7 +45,10 @@
 
                     </Entry>
                 </StackLayout>
-
+                <ActivityIndicator
+                           IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="Black" />
                 <Button Margin="10,0,10,0" 
                          HeightRequest="40" 
                          TextColor="White" 

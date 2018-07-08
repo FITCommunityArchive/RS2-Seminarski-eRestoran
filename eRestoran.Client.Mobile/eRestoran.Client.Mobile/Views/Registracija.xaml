@@ -25,7 +25,7 @@
 
                     </Label>
 
-                    <Entry HeightRequest="40" 
+                    <Entry HeightRequest="40"  x:Name="Ime"
                                   HorizontalOptions="FillAndExpand"
                                  Placeholder="Ime">
 
@@ -38,7 +38,7 @@
 
                     </Label>
 
-                    <Entry HeightRequest="40" 
+                    <Entry HeightRequest="40"  x:Name="prezime"
                                   HorizontalOptions="FillAndExpand"
                                  Placeholder="Prezime">
 
@@ -51,7 +51,7 @@
 
                     </Label>
 
-                    <Entry HeightRequest="40" 
+                    <Entry HeightRequest="40"  x:Name="email"
                                   HorizontalOptions="FillAndExpand"
                                  Placeholder="Email">
 
@@ -64,7 +64,7 @@
 
                     </Label>
 
-                    <Entry HeightRequest="40" 
+                    <Entry HeightRequest="40"  x:Name="userName"
                                   HorizontalOptions="FillAndExpand"
                                  Placeholder="Username">
 
@@ -77,7 +77,7 @@
 
                     </Label>
 
-                    <Entry HeightRequest="40" 
+                    <Entry HeightRequest="40"  x:Name="lozinka"
                                   HorizontalOptions="FillAndExpand"
                                  Placeholder="Nova lozinka">
 
@@ -90,7 +90,7 @@
 
                     </Label>
 
-                    <Entry HeightRequest="40" 
+                    <Entry HeightRequest="40" x:Name="potvrdiLozinku"
                                   HorizontalOptions="FillAndExpand"
                                  Placeholder="Potvrdi lozinku">
 
@@ -100,7 +100,8 @@
                 <Button Margin="10,10,10,0" 
                          HeightRequest="40" 
                          TextColor="White" 
-                         Text="Snimi"  
+                         Clicked="RegisterUser"
+                         Text="Registruj se"  
                          BackgroundColor="Gray"
                          HorizontalOptions="FillAndExpand"/>
 

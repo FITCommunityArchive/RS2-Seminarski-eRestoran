@@ -12,8 +12,11 @@ namespace eRestoran.PCL.Helpers
         public HttpClient client { get; set; }
         public string route { get; set; }
 
-        public WebAPIHelper(string uri, string route)
+
+
+        public WebAPIHelper(string route)
         {
+            string uri = "https://erestoranapi20180630082851.azurewebsites.net/";
             client = new HttpClient();
             client.BaseAddress = new Uri(uri);
             this.route = route;
