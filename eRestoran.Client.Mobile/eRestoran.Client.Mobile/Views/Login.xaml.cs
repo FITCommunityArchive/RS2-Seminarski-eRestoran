@@ -28,9 +28,10 @@ namespace eRestoran.Client.Mobile.Views
             btnLogin.Clicked += async (sender, e) => await ValidateLogin();
             btnRegister.Clicked += NavigateToRegister;
         }
-        private async void NavigateToRegister(object sender, EventArgs e)
+        private  void NavigateToRegister(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Registracija());
+            var x = new Registracija();
+            Application.Current.MainPage = x;
         }
 
         private async Task ValidateLogin()

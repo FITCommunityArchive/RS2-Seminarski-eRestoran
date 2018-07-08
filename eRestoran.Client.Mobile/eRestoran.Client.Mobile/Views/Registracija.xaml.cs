@@ -1,11 +1,8 @@
-﻿using eRestoran.Data.Models;
+﻿using eRestoran.Client.Mobile.Navigation;
+using eRestoran.PCL.Helpers;
 using eRestoran.PCL.VM;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,17 +19,51 @@ namespace eRestoran.Client.Mobile.Views
                 Command = new Command(() => NavigateToLogin())
             });
             NavigationPage.SetHasNavigationBar(this, false);
+            btnRegister.Clicked += async (sender, e) => await ValidateRegister();
+
+
+
         }
         async void NavigateToLogin()
         {
-            await Navigation.PushAsync(new Login());
+            var x = new Login();
+            Application.Current.MainPage = x;
         }
 
-        private void RegisterUser(object sender, EventArgs e)
+        private async Task ValidateRegister()
         {
-            var kor = new KlijentVM();
-            kor.
+           await Task.Run(RegisterUser);
+            var x = new MyPage();
+            Application.Current.MainPage = x;
+
         }
+        private async Task<bool> RegisterUser()
+        {
+            var kor = new KlijentVM()
+
+            {
+                Adresa = adresa.Text,
+                Email = email.Text,
+                Ime = ime.Text,
+                Prezime = prezime.Text,
+                Username = userName.Text,
+                Password = password.Text,
+                TipKorisnika = (int)TipKorisnikaVM.Klijent,
+                Telefon = telefon.Text,
+                DatumPrijave = DateTime.Now
+            };
+
+            var registerService = new WebAPIHelper("api/Nalog/PostKlijent");
+
+            var response = await registerService.PostResponse(kor);
+            if (response.IsSuccessStatusCode)
+            {
+
+                return true;
+            }
+            return false;
+        }
+
     }
 
 }

@@ -13,7 +13,7 @@ namespace eRestoran.Client.Mobile.Views
     public partial class Ponuda : ContentPage
     {
         public List<PonudaVM.PonudaInfo> Items { get; set; }
-        WebAPIHelper helper = new WebAPIHelper("http://192.168.0.16/","api/PonudaAdministrator/GetPonuda");
+        WebAPIHelper helper = new WebAPIHelper("api/PonudaAdministrator/GetPonuda");
 
         public Ponuda()
         {

@@ -91,7 +91,7 @@ namespace eRestoran.Api.Controllers
                     Telefon = x.Telefon,
                     Username = x.Username,
                     Id = x.Id,
-                    TipKorisnika = x.TipKorisnika,
+                    TipKorisnika = (int)x.TipKorisnika,
                     Password = x.Password
 
                 }).SingleOrDefault();
