@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -45,6 +39,18 @@ namespace eRestoran.Client
                 ProizvodpictureBox.ImageLocation = lokacijaSlike;
 
             }
+        }
+
+        public byte[] GetData()
+        {
+            return ImageToByteArray(ProizvodpictureBox.Image);
+        }
+
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
         }
 
         public string SaveImage()

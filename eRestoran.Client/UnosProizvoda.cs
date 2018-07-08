@@ -20,6 +20,7 @@ namespace FastFoodDemo
         private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
         private WebAPIHelper proizvodiService= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
         private WebAPIHelper getProizvod= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvod");
+        private WebAPIHelper postImage = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/uploadimage");
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         private Proizvod proizvod;
         public PonudaVM.PonudaInfo ViewModel { get; set; }
@@ -107,8 +108,13 @@ namespace FastFoodDemo
                 HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
                 if (responseMessage.IsSuccessStatusCode)
                 {
-                   
-                    TipProizvodacomboBox.ResetText();
+                    var proizvod = responseMessage.Content.ReadAsAsync<Proizvod>().Result;
+                    HttpResponseMessage responseMessage2 = postImage.PostFile(proizvod.Id, slikaKontrola1.GetData()).Result;
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        var xxx = responseMessage.Content.ReadAsStringAsync().Result;
+                    }
+                        TipProizvodacomboBox.ResetText();
                     TipProizvodacomboBox.SelectedValue = 0;
 
                     TipSkladistacomboBox.ResetText();

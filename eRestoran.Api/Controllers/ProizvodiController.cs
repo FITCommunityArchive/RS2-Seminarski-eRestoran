@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
+using eRestoran.PCL.VM;
 using static eRestoran.VM.PonudaVM;
 
 namespace eRestoran.Api.Controllers
@@ -17,18 +21,20 @@ namespace eRestoran.Api.Controllers
     public class ProizvodiController : ApiController
     {
         private MyContext db = new MyContext();
+        string baseUrl = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.ApplicationPath.TrimEnd('/') + "/";
 
         // GET: api/Proizvodi
         public List<PonudaInfo> GetProizvodi()
         {
-            return db.Proizvodi.Select(x=> new PonudaInfo {
-                Cijena=x.Cijena,
-                Kolicina=x.Kolicina,
-                KolicinaString=x.Kolicina.ToString(),
-                Kategorija=x.TipProizvoda.Naziv,
-                Naziv=x.Naziv,
-                Id=x.Id,
-                imageUrl=x.SlikaUrl
+            return db.Proizvodi.Select(x => new PonudaInfo
+            {
+                Cijena = x.Cijena,
+                Kolicina = x.Kolicina,
+                KolicinaString = x.Kolicina.ToString(),
+                Kategorija = x.TipProizvoda.Naziv,
+                Naziv = x.Naziv,
+                Id = x.Id,
+                imageUrl = baseUrl + x.SlikaUrl
 
             }).ToList();
         }
@@ -55,8 +61,8 @@ namespace eRestoran.Api.Controllers
                 KolicinaString = x.Kolicina.ToString(),
                 Kategorija = x.TipProizvoda.Naziv,
                 Cijena = x.Cijena,
-                imageUrl=x.SlikaUrl
-                
+                imageUrl = baseUrl + x.SlikaUrl
+
 
             }).FirstOrDefault();
 
@@ -78,16 +84,15 @@ namespace eRestoran.Api.Controllers
             }
 
             var proizvodTrazeni = db.Proizvodi.SingleOrDefault(f => f.Id == id);
-              proizvodTrazeni.SkladisteId = proizvod.SkladisteId;
-              proizvodTrazeni.TipProizvodaId = proizvod.TipProizvodaId;
-              proizvodTrazeni.Naziv = proizvod.Naziv;
-              proizvodTrazeni.Cijena = proizvod.Cijena;
-              proizvodTrazeni.Kolicina = proizvod.Kolicina;
-              proizvodTrazeni.KriticnaKolicina = proizvod.KriticnaKolicina;
-              proizvodTrazeni.Menu = proizvod.Menu;
+            proizvodTrazeni.SkladisteId = proizvod.SkladisteId;
+            proizvodTrazeni.TipProizvodaId = proizvod.TipProizvodaId;
+            proizvodTrazeni.Naziv = proizvod.Naziv;
+            proizvodTrazeni.Cijena = proizvod.Cijena;
+            proizvodTrazeni.Kolicina = proizvod.Kolicina;
+            proizvodTrazeni.KriticnaKolicina = proizvod.KriticnaKolicina;
+            proizvodTrazeni.Menu = proizvod.Menu;
             proizvodTrazeni.Sifra = proizvod.Sifra;
             proizvodTrazeni.SlikaUrl = proizvod.SlikaUrl;
-          
 
             try
             {
@@ -123,11 +128,11 @@ namespace eRestoran.Api.Controllers
                 db.SaveChanges();
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 var x = e.Message;
             }
-
+            proizvod.SlikaUrl = baseUrl + proizvod.SlikaUrl;
             return CreatedAtRoute("DefaultApi", new { id = proizvod.Id }, proizvod);
         }
 
@@ -159,6 +164,76 @@ namespace eRestoran.Api.Controllers
         private bool ProizvodExists(int id)
         {
             return db.Proizvodi.Count(e => e.Id == id) > 0;
+        }
+
+        [Route("api/proizvodi/uploadimage/{proizvodId}"), AcceptVerbs("POST")]
+        public async Task<object> Upload(int proizvodId)
+        {
+            if (Request.Content.IsMimeMultipartContent())
+            {
+                var path = "~/images";
+                var task = await FileUpload(path, Request.Content, proizvodId);
+
+                if (task == null)
+                    return BadRequest();
+
+                return Ok(task);
+            }
+            else
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted"));
+            }
+        }
+
+        public async Task<ProizvodSlikaVM> FileUpload(string relativePath, HttpContent content, int proizvodId)
+        {
+            var path = HttpContext.Current.Server.MapPath(relativePath);
+            var streamProvider = new CustomMultipartFileStreamProvider(path);
+            var proizvod = db.Proizvodi.FirstOrDefault(x => x.Id == proizvodId);
+
+            if (proizvod == null)
+            {
+                return null;
+            }
+            var file = await content.ReadAsMultipartAsync(streamProvider).ContinueWith(t =>
+            {
+                if (t.IsFaulted || t.IsCanceled)
+                {
+                    return null;
+                }
+                var info = new FileInfo(streamProvider.FileData[0].LocalFileName);
+                proizvod.SlikaUrl = "images/" + info.Name;
+                //Attachment attachment = new Attachment()
+                //{
+                //    IsDeleted = false,
+                //    CreatedAt = DateTime.Now,
+                //    LastModifiedAt = DateTime.Now,
+                //    Extension = info.Extension,
+                //    Name = info.Name.Replace('.' + info.Extension, ""),
+                //    Url = "uploads/" + info.Name
+                //};
+                db.SaveChanges();
+
+                return new ProizvodSlikaVM()
+                {
+                    ProizvodId = proizvod.Id,
+                    FileName = info.Name,
+                    FileUrl = baseUrl + "images/" + info.Name
+                };
+            });
+            return file;
+        }
+    }
+
+    public class CustomMultipartFileStreamProvider : MultipartFileStreamProvider
+    {
+        public CustomMultipartFileStreamProvider(string path) : base(path)
+        { }
+
+        public override string GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders headers)
+        {
+            var name = !string.IsNullOrWhiteSpace(headers.ContentDisposition.FileName) ? headers.ContentDisposition.FileName : "NoName";
+            return Guid.NewGuid().ToString() + name.Replace("\"", string.Empty);
         }
     }
 }

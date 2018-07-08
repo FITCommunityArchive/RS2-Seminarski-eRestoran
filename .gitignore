@@ -244,3 +244,6 @@ ModelManifest.xml
 eRestoran.Client/Images
 eRestoran.Api/Web.config
 eRestoran.Data/app.config
+/eRestoran.Api/Web - Copy.Release.config
+/eRestoran.Api/Web - Copy.Debug.config
+*.config

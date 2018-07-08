@@ -136,12 +136,6 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\eRestoran.PCL\eRestoran.PCL.csproj">
-      <Project>{86680277-d8d8-4d68-be36-50a68e3a01f7}</Project>
-      <Name>eRestoran.PCL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems" Label="Shared" />
 </Project>

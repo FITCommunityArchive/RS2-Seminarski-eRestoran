@@ -1,7 +1,11 @@
 ﻿using eRestoran.Client.Properties;
 using System;
+using System.Globalization;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace eRestoran.Client.Shared.Helpers
 {
@@ -51,6 +55,22 @@ namespace eRestoran.Client.Shared.Helpers
         public HttpResponseMessage PutResponse(int id, object obj)
         {
             return client.PutAsJsonAsync(route + "/" + id, obj).Result;
+        }
+        public async Task<HttpResponseMessage> PostFile(int proizvodId, byte[] obj)
+        {
+            using (var content =
+                   new MultipartFormDataContent("Upload----" + DateTime.Now.ToString(CultureInfo.InvariantCulture)))
+            {
+                content.Add(new StreamContent(new MemoryStream(obj)), "bilddatei", "upload.jpg");
+
+                using (
+                   var message =
+                     await client.PostAsync(route + "/" + proizvodId, content))
+
+                {
+                    return message;
+                }
+            }
         }
     }
 }
