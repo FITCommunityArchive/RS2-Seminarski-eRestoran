@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-
+using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -29,6 +29,14 @@ namespace eRestoran.Client.Mobile.Views
 
             MyListView.ItemsSource=Items;
         }
+        protected override void OnAppearing()
+        {
+            //ovdje napraviti listu koja sadrzi 2 elementa;
+
+            
+            base.OnAppearing();
+
+        }
 
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -42,8 +50,21 @@ namespace eRestoran.Client.Mobile.Views
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
-      
 
+        private void kategorijaProizvodaPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        //    if (kategorijaProizvodaPicker.SelectedItem != null) {
+
+        //        int vrstaId = (kategorijaProizvodaPicker.SelectedItem as KategorijaProizvoda).VrstaId;
+        //        HttpResponseMessage response = proizvodiService.getResponse("url", "vrstaId");
+        //        if (response.IsSuccessStatusCode) {
+        //            var jsonObject = response.Content.ReadAsStringAsync();
+        //            List<Proizvodi> proizvodis = JsonConvert.DeserializeObject<List<Proizvodi>>(jsonObject.Result);
+        //            kategorijaProizvodaPicker.ItemSource = proizvodis;
+
+        //        }
+        //    }
+        }
     }
 
     public class PonudaVM
