@@ -93,6 +93,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Images\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -120,7 +121,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Images\teletina.png" />
+    <Content Include="$(MSBuildThisFileDirectory)teletina.png" />
     <Content Include="$(MSBuildThisFileDirectory)sto_slobodan.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)sto_zauzet.jpg" />
   </ItemGroup>

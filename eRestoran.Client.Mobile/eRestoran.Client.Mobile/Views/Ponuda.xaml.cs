@@ -25,6 +25,10 @@ namespace eRestoran.Client.Mobile.Views
                 Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
 
             }
+            var listaKategorija = new List<string>();
+            listaKategorija.Add("Pice");
+            listaKategorija.Add("Jela");
+            kategorijaProizvodaPicker.ItemsSource = listaKategorija;
 
 
             MyListView.ItemsSource=Items;
@@ -44,8 +48,9 @@ namespace eRestoran.Client.Mobile.Views
             if (e.Item == null)
                 return;
 
+            var newPage = new ProductDetail(e.Item);
+            await Navigation.PushAsync(newPage);
             await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-           
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

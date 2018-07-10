@@ -11,7 +11,7 @@ namespace eRestoran.Client.Mobile
 		public App ()
 		{
 			InitializeComponent();
-            MainPage = new Login();
+            MainPage = new MyPage();
             
         }
 

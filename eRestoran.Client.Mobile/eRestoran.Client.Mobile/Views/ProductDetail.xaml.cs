@@ -19,11 +19,11 @@ namespace eRestoran.Client.Mobile.Views
 			InitializeComponent ();
             BindingContext = DataRepository.MockDriver;
         }
-        public ProductDetail(Food food)
+        public ProductDetail(Object proizvod)
         {
             InitializeComponent();
             
-            BindingContext = food;
+            BindingContext = proizvod;
 
         }
     }
