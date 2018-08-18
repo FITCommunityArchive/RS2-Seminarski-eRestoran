@@ -104,7 +104,6 @@ namespace FastFoodDemo
                 proizvod.KriticnaKolicina = Convert.ToInt32(KriticnatextBox.Text);
                 proizvod.Menu = MenucomboBox.SelectedIndex.ToString();
                 proizvod.Naziv = NazivtextBox.Text;
-                proizvod.SlikaUrl = slikaKontrola1.SaveImage();
                 HttpResponseMessage responseMessage = proizvodiService.PostResponse(proizvod);
                 if (responseMessage.IsSuccessStatusCode)
                 {

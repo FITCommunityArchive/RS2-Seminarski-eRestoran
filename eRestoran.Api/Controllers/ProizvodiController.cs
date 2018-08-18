@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.IO;
@@ -13,7 +14,6 @@ using System.Web.Http.Description;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 using eRestoran.PCL.VM;
-using Newtonsoft.Json;
 using static eRestoran.VM.PonudaVM;
 
 namespace eRestoran.Api.Controllers
@@ -34,7 +34,7 @@ namespace eRestoran.Api.Controllers
                 Kategorija = x.TipProizvoda.Naziv,
                 Naziv = x.Naziv,
                 Id = x.Id,
-                imageUrl = x.SlikaUrl
+                imageUrl = baseUrl + x.SlikaUrl
 
             }).ToList();
         }
@@ -61,7 +61,7 @@ namespace eRestoran.Api.Controllers
                 KolicinaString = x.Kolicina.ToString(),
                 Kategorija = x.TipProizvoda.Naziv,
                 Cijena = x.Cijena,
-                imageUrl = x.SlikaUrl
+                imageUrl = baseUrl + x.SlikaUrl
 
 
             }).FirstOrDefault();
@@ -117,24 +117,23 @@ namespace eRestoran.Api.Controllers
         [ResponseType(typeof(Proizvod))]
         public IHttpActionResult PostProizvod(Proizvod proizvod)
         {
-            return Ok(Request.Content.ReadAsStringAsync().Result);
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            //db.Proizvodi.Add(proizvod);
-            //try
-            //{
-            //    db.SaveChanges();
+            db.Proizvodi.Add(proizvod);
+            try
+            {
+                db.SaveChanges();
 
-            //}
-            //catch (Exception e)
-            //{
-            //    var x = e.Message;
-            //}
-            //proizvod.SlikaUrl = proizvod.SlikaUrl;
-            //return CreatedAtRoute("DefaultApi", new { id = proizvod.Id }, proizvod);
+            }
+            catch (Exception e)
+            {
+                var x = e.Message;
+            }
+            proizvod.SlikaUrl = baseUrl + proizvod.SlikaUrl;
+            return CreatedAtRoute("DefaultApi", new { id = proizvod.Id }, proizvod);
         }
 
         // DELETE: api/Proizvodi/5
@@ -168,43 +167,22 @@ namespace eRestoran.Api.Controllers
         }
 
         [Route("api/proizvodi/uploadimage/{proizvodId}"), AcceptVerbs("POST")]
-        public IHttpActionResult Upload(int proizvodId)
+        public async Task<object> Upload(int proizvodId)
         {
-
-            try
+            if (Request.Content.IsMimeMultipartContent())
             {
-                var test = this.Request.Content.ReadAsStringAsync().Result;
-                return Ok(test);
+                var path = "~/images";
+                var task = await FileUpload(path, Request.Content, proizvodId);
+
+                if (task == null)
+                    return BadRequest();
+
+                return Ok(task);
             }
-            catch (Exception e)
+            else
             {
-                var tt = JsonConvert.SerializeObject(e);
-                return Ok(e);
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted"));
             }
-            //try
-            //{
-               
-            //    if (Request.Content.IsMimeMultipartContent())
-            //{
-            //        return Ok("test");
-            //        //var path = "/images";
-            //        //var task = await FileUpload(path, Request.Content, proizvodId);
-
-            //        //if (task == null)
-            //        //    return BadRequest();
-
-            //        //return Ok(task);
-                
-            //}
-            //else
-            //{
-            //    throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted"));
-            //}
-            //}
-            //catch (Exception e)
-            //{
-            //    return Ok("greska");
-            //}
         }
 
         public async Task<ProizvodSlikaVM> FileUpload(string relativePath, HttpContent content, int proizvodId)
@@ -212,7 +190,7 @@ namespace eRestoran.Api.Controllers
             var path = HttpContext.Current.Server.MapPath(relativePath);
             var streamProvider = new CustomMultipartFileStreamProvider(path);
             var proizvod = db.Proizvodi.FirstOrDefault(x => x.Id == proizvodId);
-            FileInfo info ;
+
             if (proizvod == null)
             {
                 return null;
@@ -221,15 +199,10 @@ namespace eRestoran.Api.Controllers
             {
                 if (t.IsFaulted || t.IsCanceled)
                 {
-                    return new ProizvodSlikaVM()
-                    {
-                        ProizvodId = 0,
-                        FileName = "NE RADI",
-                        FileUrl = "ss"
-                    };
+                    return null;
                 }
-                 info = new FileInfo(streamProvider.FileData[0].LocalFileName);
-                proizvod.SlikaUrl = "TESTTTTT/";
+                var info = new FileInfo(streamProvider.FileData[0].LocalFileName);
+                proizvod.SlikaUrl = "images/" + info.Name;
                 //Attachment attachment = new Attachment()
                 //{
                 //    IsDeleted = false,
@@ -245,7 +218,7 @@ namespace eRestoran.Api.Controllers
                 {
                     ProizvodId = proizvod.Id,
                     FileName = info.Name,
-                    FileUrl = "images/" + info.Name
+                    FileUrl = baseUrl + "images/" + info.Name
                 };
             });
             return file;
