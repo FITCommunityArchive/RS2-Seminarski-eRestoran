@@ -21,7 +21,7 @@
 
             <!--  Profile Name  -->
             <StackLayout Margin="0,50,0,0" HorizontalOptions="Center">
-                <Label Style="{StaticResource ProfileNameLabel}" Text="{Binding Ime}" />
+                <Label Style="{StaticResource ProfileNameLabel}" Text="{Binding Naziv}" />
                 <Label Margin="0,-5" Style="{StaticResource ProfileTagLabel}" Text="{Binding Team}"/>
             </StackLayout>
 
@@ -38,8 +38,12 @@
                 </StackLayout>
 
                 <StackLayout Grid.Column="1">
-                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Ocjena}" />
-                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Ocjena" />
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Kategorija}" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Kategorija" />
+                </StackLayout>
+                <StackLayout Grid.Column="2">
+                    <Label Style="{StaticResource ProfileNameLabel}" Text="{Binding Kolicina}" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Kolicina" />
                 </StackLayout>
             </Grid>
 

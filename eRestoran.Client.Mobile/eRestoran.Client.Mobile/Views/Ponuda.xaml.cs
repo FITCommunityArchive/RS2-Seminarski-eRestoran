@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-
+using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,9 +25,21 @@ namespace eRestoran.Client.Mobile.Views
                 Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
 
             }
+            var listaKategorija = new List<string>();
+            listaKategorija.Add("Pice");
+            listaKategorija.Add("Jela");
+            kategorijaProizvodaPicker.ItemsSource = listaKategorija;
 
 
             MyListView.ItemsSource=Items;
+        }
+        protected override void OnAppearing()
+        {
+            //ovdje napraviti listu koja sadrzi 2 elementa;
+
+            
+            base.OnAppearing();
+
         }
 
 
@@ -36,14 +48,28 @@ namespace eRestoran.Client.Mobile.Views
             if (e.Item == null)
                 return;
 
+            var newPage = new ProductDetail(e.Item);
+            await Navigation.PushAsync(newPage);
             await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-           
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
-      
 
+        private void kategorijaProizvodaPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        //    if (kategorijaProizvodaPicker.SelectedItem != null) {
+
+        //        int vrstaId = (kategorijaProizvodaPicker.SelectedItem as KategorijaProizvoda).VrstaId;
+        //        HttpResponseMessage response = proizvodiService.getResponse("url", "vrstaId");
+        //        if (response.IsSuccessStatusCode) {
+        //            var jsonObject = response.Content.ReadAsStringAsync();
+        //            List<Proizvodi> proizvodis = JsonConvert.DeserializeObject<List<Proizvodi>>(jsonObject.Result);
+        //            kategorijaProizvodaPicker.ItemSource = proizvodis;
+
+        //        }
+        //    }
+        }
     }
 
     public class PonudaVM

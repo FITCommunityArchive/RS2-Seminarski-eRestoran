@@ -94,6 +94,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Images\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
   <ItemGroup>
