@@ -15,12 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.Client.Mobile.UWP
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "eRestoran.Client.Mobile", "eRestoran.Client.Mobile\eRestoran.Client.Mobile\eRestoran.Client.Mobile.shproj", "{5AFDD8EC-5B9A-489E-BA63-CA302FB7AAF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.PCL", "eRestoran.PCL\eRestoran.PCL.csproj", "{445CC50C-8893-4AAC-9CF1-D058C29D2F45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRestoran.PCL", "eRestoran.PCL\eRestoran.PCL.csproj", "{445CC50C-8893-4AAC-9CF1-D058C29D2F45}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		eRestoran.Client.Mobile\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems*{4a2d1380-255b-40e8-8643-f5582e816bd3}*SharedItemsImports = 4
-		eRestoran.Client.Mobile\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems*{5afdd8ec-5b9a-489e-ba63-ca302fb7aaf8}*SharedItemsImports = 13
 		eRestoran.Client.Mobile\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems*{a1062bac-2547-47d3-8fc8-a8fd1c803f1a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
