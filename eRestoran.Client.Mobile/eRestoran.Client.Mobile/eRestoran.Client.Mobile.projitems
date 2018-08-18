@@ -29,6 +29,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Data\DataRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ApplicationProperties.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\CartHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Foods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Race.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Navigation\MyPage.xaml.cs">
@@ -120,6 +121,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\sto_slobodan.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\sto_zauzet.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Images\teletina.png" />
     <Content Include="$(MSBuildThisFileDirectory)sto_slobodan.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)sto_zauzet.jpg" />

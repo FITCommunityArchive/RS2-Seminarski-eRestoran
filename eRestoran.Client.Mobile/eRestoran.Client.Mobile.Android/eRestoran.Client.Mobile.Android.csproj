@@ -114,6 +114,22 @@
       <Name>eRestoran.PCL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\sto_slobodan.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\sto_zauzet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <AndroidResource Include="Resources\drawable\sto_slobodan.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\sto_zauzet.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
+    <Content Include="sto_slobodan.jpg" />
+    <Content Include="sto_zauzet.jpg" />
+  </ItemGroup>
   <Import Project="..\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

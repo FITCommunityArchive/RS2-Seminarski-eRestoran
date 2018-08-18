@@ -61,7 +61,7 @@ namespace eRestoran.Client.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:49958/.
+        ///   Looks up a localized string similar to https://erestoranapi20180630082851.azurewebsites.net/.
         /// </summary>
         internal static string apiUrlDevelopment {
             get {

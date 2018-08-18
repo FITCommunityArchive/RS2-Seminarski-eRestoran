@@ -63,8 +63,6 @@ namespace eRestoran.Client
 
                 if (!sto.IsSlobodan)
                 {
-                    // Dodati provjeru na kor ulogu
-                    //btnSto.Enabled = false;
                     btnSto.BackColor = zauzetiStoColor;
                 }
                 else

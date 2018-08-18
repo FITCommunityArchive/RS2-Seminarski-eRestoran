@@ -30,8 +30,7 @@ namespace eRestoran.Client.Mobile.Views
         }
         private  void NavigateToRegister(object sender, EventArgs e)
         {
-            var x = new Registracija();
-            Application.Current.MainPage = x;
+            Application.Current.MainPage = new Registracija();
         }
 
         private async Task ValidateLogin()

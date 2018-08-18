@@ -65,7 +65,7 @@ namespace eRestoran.Client.Shared.Helpers
 
                 using (
                    var message =
-                     await client.PostAsync(route + "/" + proizvodId, content))
+                     client.PostAsync(route + "/" + proizvodId, content).Result)
 
                 {
                     return message;

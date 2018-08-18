@@ -5,12 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
-                <Label HeightRequest="40" Text="Datum od " VerticalTextAlignment="End"
-                         HorizontalOptions="FillAndExpand">
-
-                </Label>
-                <DatePicker x:Name="StartDatePicker" Format="dd-MM-YYYY" />
-
+              
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
@@ -21,15 +16,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Image="sto_slobodan.jpg" Grid.Row="0" Grid.Column="0" />
-                <Button Image="sto_slobodan.jpg" Grid.Row="0" Grid.Column="1" />
-                <Button Image="sto_slobodan.jpg" Grid.Row="1" Grid.Column="0" />
-                <Button Image="sto_slobodan.jpg" Grid.Row="1" Grid.Column="1" />
-                <Button Image="sto_slobodan.jpg" Grid.Row="2" Grid.Column="0" />
-                <Button Image="sto_slobodan.jpg" Grid.Row="2" Grid.Column="1" />
-                <Button Image="sto_slobodan.jpg" Grid.Row="3" Grid.Column="0" />
-                <Button Image="sto_slobodan.jpg" Grid.Row="3" Grid.Column="1" />
-                
+                <Button Image="sto_slobodan.jpg" Text="1" BackgroundColor="White" Grid.Row="0" Grid.Column="0" x:Name="btnSto1" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="2" BackgroundColor="White" Grid.Row="0" Grid.Column="1" x:Name="btnSto2" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="3" BackgroundColor="White" Grid.Row="1" Grid.Column="0" x:Name="btnSto3" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="4" BackgroundColor="White" Grid.Row="1" Grid.Column="1" x:Name="btnSto4" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="5" BackgroundColor="White" Grid.Row="2" Grid.Column="0" x:Name="btnSto5" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="6" BackgroundColor="White" Grid.Row="2" Grid.Column="1" x:Name="btnSto6" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="7" BackgroundColor="White" Grid.Row="3" Grid.Column="0" x:Name="btnSto7" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="8" BackgroundColor="White" Grid.Row="3" Grid.Column="1" x:Name="btnSto8" Clicked="BtnSto_Clicked" />
+                <Button Image="sto_slobodan.jpg" Text="9" BackgroundColor="White" Grid.Row="4" Grid.Column="0" x:Name="btnSto9" Clicked="BtnSto_Clicked" />
             </Grid>
         </StackLayout>
         

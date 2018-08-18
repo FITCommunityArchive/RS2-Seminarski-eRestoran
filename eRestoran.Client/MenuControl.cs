@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using FastFoodDemo;
 using eRestoran.Client;
 using System.IO;
+using eRestoran.Client.Properties;
+using System.Net;
 
 namespace FirstUserControlUsage
 {
@@ -37,7 +39,13 @@ namespace FirstUserControlUsage
             Kolicina.Text = ViewModel.KolicinaString;
             if (ViewModel.imageUrl != null)
             {
-                pictureBox1.Image = new Bitmap(Image.FromFile(ViewModel.imageUrl), new Size(120, 100));
+                var sUrl = Resources.apiUrlDevelopment + ViewModel.imageUrl;
+                WebRequest req = WebRequest.Create(sUrl);
+
+                WebResponse res = req.GetResponse();
+
+                Stream imgStream = res.GetResponseStream();
+                pictureBox1.Image = new Bitmap(Image.FromStream(imgStream), new Size(120, 100));
             }
             else
             {

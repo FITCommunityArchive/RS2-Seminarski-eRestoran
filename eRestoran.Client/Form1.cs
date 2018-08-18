@@ -147,17 +147,6 @@ namespace FastFoodDemo
             return 0;
         }
 
-        private void SetBtnOdaberiStoVisibility()
-        {
-            if (cart.TotalPrice > 0)
-            {
-                btnOdaberiSto.Visible = true;
-            }
-            else
-            {
-                btnOdaberiSto.Visible = false;
-            }
-        }
         public bool CartExists()
         {
             if (cart != null)
@@ -193,6 +182,18 @@ namespace FastFoodDemo
             cart.Pica = new List<CartRow>();
             cart.TotalPrice = 0;
             label4.Text = "0";
+        }
+
+        private void SetBtnOdaberiStoVisibility()
+        {
+            if (cart.TotalPrice > 0)
+            {
+                btnOdaberiSto.Visible = true;
+            }
+            else
+            {
+                btnOdaberiSto.Visible = false;
+            }
         }
         //cart
         public bool DeleteProizvod(string id)

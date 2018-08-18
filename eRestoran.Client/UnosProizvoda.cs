@@ -1,26 +1,26 @@
-﻿using System;
+﻿using eRestoran.Client;
+using eRestoran.Client.Properties;
+using eRestoran.Client.Shared.Helpers;
+using eRestoran.Data.Models;
+using eRestoran.PCL.VM;
+using FirstUserControlUsage;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Net.Http;
-using eRestoran.Data.Models;
-using eRestoran.Client;
-using FirstUserControlUsage;
 using System.IO;
-using eRestoran.PCL.VM;
-using System.Drawing.Drawing2D;
-using eRestoran.Client.Shared.Helpers;
+using System.Net.Http;
+using System.Windows.Forms;
 
 namespace FastFoodDemo
 {
     public partial class UnosProizvoda : UserControl
     {
-        private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/Skladiste/GetSkladista");
-        private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
-        private WebAPIHelper proizvodiService= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PostProizvod");
-        private WebAPIHelper getProizvod= new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvod");
-        private WebAPIHelper postImage = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/uploadimage");
+        private WebAPIHelper vrsteSkladista = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Skladiste/GetSkladista");
+        private WebAPIHelper vrsteProizvoda = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/GetTipoviProizvoda");
+        private WebAPIHelper proizvodiService= new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/PostProizvod");
+        private WebAPIHelper getProizvod= new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/GetProizvod");
+        private WebAPIHelper postImage = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/uploadimage");
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         private Proizvod proizvod;
         public PonudaVM.PonudaInfo ViewModel { get; set; }
@@ -109,7 +109,15 @@ namespace FastFoodDemo
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var proizvod = responseMessage.Content.ReadAsAsync<Proizvod>().Result;
-                    HttpResponseMessage responseMessage2 = postImage.PostFile(proizvod.Id, slikaKontrola1.GetData()).Result;
+                    try
+                    {
+                        HttpResponseMessage responseMessage2 = postImage.PostFile(proizvod.Id, slikaKontrola1.GetData()).Result;
+                        var b2b = responseMessage2.Content.ReadAsStringAsync().Result;
+                    }
+                    catch(Exception eee)
+                    {
+                        var xxx = eee.Message;
+                    }
                     if (responseMessage.IsSuccessStatusCode)
                     {
                         var xxx = responseMessage.Content.ReadAsStringAsync().Result;
