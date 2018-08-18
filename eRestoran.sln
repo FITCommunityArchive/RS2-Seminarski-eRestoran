@@ -20,6 +20,7 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		eRestoran.Client.Mobile\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems*{4a2d1380-255b-40e8-8643-f5582e816bd3}*SharedItemsImports = 4
+		eRestoran.Client.Mobile\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems*{5afdd8ec-5b9a-489e-ba63-ca302fb7aaf8}*SharedItemsImports = 13
 		eRestoran.Client.Mobile\eRestoran.Client.Mobile\eRestoran.Client.Mobile.projitems*{a1062bac-2547-47d3-8fc8-a8fd1c803f1a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

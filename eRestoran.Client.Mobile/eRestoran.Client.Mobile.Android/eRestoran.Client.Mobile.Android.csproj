@@ -49,9 +49,6 @@
     <Reference Include="Java.Interop.Tools.Cecil" />
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
-    <Reference Include="System.Configuration">
-      <HintPath>..\..\..\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Configuration.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
