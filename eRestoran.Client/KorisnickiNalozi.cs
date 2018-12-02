@@ -16,13 +16,11 @@ namespace eRestoran.Client
         private WebAPIHelper putKorisniciService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Nalog/PutZaposlenik");
         private WebAPIHelper deleteKorisniciService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Nalog/DeleteZaposlenik");
         private WebAPIHelper deleteKlijentService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Nalog/DeleteKlijent");
-        
 
         public KorisnickiNalozi()
         {
             InitializeComponent();
             BindNalozi();
-           
         }
 
         private void Uredibutton_Click(object sender, System.EventArgs e)
@@ -40,8 +38,6 @@ namespace eRestoran.Client
                         {
                             var urediZaposlenika = new DodajZaposlenika(odabraniRed.Cells[4].Value.ToString());
                             ((Form1)this.ParentForm).DodajKontrolu(new DodajZaposlenika(odabraniRed.Cells[4].Value.ToString()));
-
-
                         }
                         else
                         {
@@ -50,7 +46,6 @@ namespace eRestoran.Client
                         }
                     }
                 }
-               
             }
         }
 
@@ -61,7 +56,7 @@ namespace eRestoran.Client
 
         private void Izbrisibutton_Click(object sender, EventArgs e)
         {
-            if(kNalozidataGridView.SelectedCells[0].RowIndex >= 0)
+            if (kNalozidataGridView.SelectedCells[0].RowIndex >= 0)
             {
                 var odabraniRed = kNalozidataGridView.Rows[kNalozidataGridView.SelectedCells[0].RowIndex];
 
@@ -80,7 +75,8 @@ namespace eRestoran.Client
                         else
                             MessageBox.Show("Nažalost nismo pronašli ovaj zapis !");
                     }
-                    else {
+                    else
+                    {
                         HttpResponseMessage responseMessage = deleteKlijentService.DeleteResponse(kNalozidataGridView.Rows[kNalozidataGridView.SelectedCells[0].RowIndex].Cells[4].Value.ToString());
                         if (responseMessage.IsSuccessStatusCode)
                         {
@@ -107,7 +103,8 @@ namespace eRestoran.Client
                         else
                             MessageBox.Show("Nažalost nismo pronašli ovaj zapis !");
                     }
-                    else {
+                    else
+                    {
                         HttpResponseMessage responseMessage = deleteKlijentService.DeleteResponse(kNalozidataGridView.Rows[kNalozidataGridView.SelectedCells[0].RowIndex].Cells[4].Value.ToString());
                         if (responseMessage.IsSuccessStatusCode)
                         {
@@ -119,10 +116,7 @@ namespace eRestoran.Client
                             MessageBox.Show("Nažalost nismo pronašli ovaj zapis !");
                     }
                 }
-                   
-
-                }
-
+            }
         }
         private void StyleDataGrid()
         {

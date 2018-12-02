@@ -28,7 +28,7 @@ namespace eRestoran.Client.Mobile.Views
             btnLogin.Clicked += async (sender, e) => await ValidateLogin();
             btnRegister.Clicked += NavigateToRegister;
         }
-        private  void NavigateToRegister(object sender, EventArgs e)
+        private void NavigateToRegister(object sender, EventArgs e)
         {
             Application.Current.MainPage = new Registracija();
         }
@@ -36,12 +36,23 @@ namespace eRestoran.Client.Mobile.Views
         private async Task ValidateLogin()
         {
             btnLogin.Text = "Logging in...";
-            ViewModel.IsBusy = true;
-            await Task.Run(PostLogin);
-            // do work son
             var x = new MyPage();
             Application.Current.MainPage = x;
+            ViewModel.IsBusy = true;
+           // var isSuccess = await Task.Run(PostLogin);
+            // do work son
             ViewModel.IsBusy = false;
+
+            //if (isSuccess)
+            //{
+            //    var x = new MyPage();
+            //    Application.Current.MainPage = x;
+            //}
+            //else
+            //{
+            //    btnLogin.Text = "Login";
+            //    await this.DisplayAlert("Info", "Password or email are not valid!", "OK");
+            //}
         }
 
         private async Task<bool> PostLogin()
@@ -52,18 +63,16 @@ namespace eRestoran.Client.Mobile.Views
                 Email = entryEmail.Text,
                 Password = entryPassword.Text
             };
-            if (String.IsNullOrWhiteSpace(auth.Email) || String.IsNullOrWhiteSpace(auth.Password))
-            {
-                this.DisplayAlert("Info", "Password or email are not valid!", "OK");
-            }
+           
             var response = await loginService.PostResponse(auth);
             if (response.IsSuccessStatusCode)
             {
                 var korisnik = WebAPIHelper.GetResponseContent<VerifikovanKorisnikVM>(response);
                 ApplicationProperties.UserToken = korisnik.Token;
-               
+                return true;
             }
-            return true;
+
+            return false;
         }
     }
     public class BaseViewModel : INotifyPropertyChanged

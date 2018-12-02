@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-            x:Class="eRestoran.Client.Mobile.Views.Login">
+             x:Class="eRestoran.Client.Mobile.Views.Login">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="primary">#ff3467</Color>
@@ -28,7 +28,7 @@
 
                     <Entry HeightRequest="40" 
                                   HorizontalOptions="FillAndExpand"
-                                 Placeholder="Username" x:Name="entryEmail">
+                                 Placeholder="Username" x:Name="entryEmail" Keyboard="Keyboard.Email">
 
                     </Entry>
                 </StackLayout>

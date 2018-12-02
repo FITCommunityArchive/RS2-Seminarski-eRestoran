@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 x:Class="eRestoran.Client.Mobile.Views.DodavanjeNaloga">
+             x:Class="eRestoran.Client.Mobile.Views.DodavanjeNaloga">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="primary">#ff3467</Color>
@@ -18,7 +18,7 @@
                           BackgroundColor="{StaticResource primary}"
                           HorizontalTextAlignment="Center"
                           VerticalTextAlignment="Center"/>
-
+                <!--Ime-->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                     <Label HeightRequest="40" Text="Ime " VerticalTextAlignment="Center"
                          HorizontalOptions="FillAndExpand">
@@ -26,12 +26,12 @@
                     </Label>
 
                     <Entry HeightRequest="40" 
-                                  HorizontalOptions="FillAndExpand"
-                                 Placeholder="Ime">
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Ime" x:Name="Ime">
 
                     </Entry>
                 </StackLayout>
-                <!--ime-->
+                <!--Prezime-->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                     <Label HeightRequest="40" Text="Prezime " VerticalTextAlignment="Center"
                          HorizontalOptions="FillAndExpand">
@@ -39,8 +39,48 @@
                     </Label>
 
                     <Entry HeightRequest="40" 
-                                  HorizontalOptions="FillAndExpand"
-                                 Placeholder="Prezime">
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Prezime" x:Name="Prezime" class="error" StyleClass="error">
+
+                    </Entry>
+                </StackLayout>
+                <!-- Jmbg -->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="JMBG" VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="JMBG" x:Name="Jmbg">
+
+                    </Entry>
+                </StackLayout>
+               
+                <!-- Adresa -->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Adresa" VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Adresa" x:Name="Adresa">
+
+                    </Entry>
+                </StackLayout>
+                <!-- Telefon -->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Telefon" VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Telefon" x:Name="Telefon" Keyboard="Keyboard.Telephone">
 
                     </Entry>
                 </StackLayout>
@@ -52,8 +92,21 @@
                     </Label>
 
                     <Entry HeightRequest="40" 
-                                  HorizontalOptions="FillAndExpand"
-                                 Placeholder="Email">
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Email" x:Name="Email" Keyboard="Keyboard.Email">
+
+                    </Entry>
+                </StackLayout>
+                <!--Plata-->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Plata " VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+
+                    <Entry HeightRequest="40" 
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Plata" x:Name="Plata" Keyboard="Keyboard.Numeric">
 
                     </Entry>
                 </StackLayout>
@@ -65,8 +118,8 @@
                     </Label>
 
                     <Entry HeightRequest="40" 
-                                  HorizontalOptions="FillAndExpand"
-                                 Placeholder="Username">
+                                 HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Username" x:Name="Username">
 
                     </Entry>
                 </StackLayout>
@@ -78,35 +131,39 @@
                     </Label>
 
                     <Entry HeightRequest="40" 
-                                  HorizontalOptions="FillAndExpand"
-                                 Placeholder="Nova lozinka">
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Nova lozinka" IsPassword="True" x:Name="NovaLozinka">
 
                     </Entry>
                 </StackLayout>
                 <!--lozinka2-->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                     <Label HeightRequest="40" Text="Potvrdi lozinku " VerticalTextAlignment="Center"
-                         HorizontalOptions="FillAndExpand">
+                         HorizontalOptions="FillAndExpand" >
 
                     </Label>
 
                     <Entry HeightRequest="40" 
-                                  HorizontalOptions="FillAndExpand"
-                                 Placeholder="Potvrdi lozinku">
+                                  HorizontalOptions="EndAndExpand" WidthRequest="125"
+                                 Placeholder="Potvrdi lozinku" IsPassword="True" x:Name="PonovljenaLozinka">
 
                     </Entry>
                 </StackLayout>
+                <!-- Datum Rodjenja -->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
-                    <Label HeightRequest="40" Text="Status" VerticalTextAlignment="Center"
+                    <Label HeightRequest="40" Text="Datum rodjenja" VerticalTextAlignment="Center"
                          HorizontalOptions="FillAndExpand">
 
                     </Label>
-                    <Picker VerticalOptions="CenterAndExpand" SelectedIndex="1" HeightRequest="40">
-                        <Picker.Items>
-                            <x:String>Aktivan</x:String>
-                            <x:String>Neaktivan</x:String>
-                        </Picker.Items>
-                    </Picker>
+                    <DatePicker x:Name="DatumRodjenja" Format="dd-MM-yyyy" MinimumDate="01-01-1918" />
+                </StackLayout>
+                <!-- Datum Zaposlenja -->
+                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Datum zaposlenja" VerticalTextAlignment="Center"
+                         HorizontalOptions="FillAndExpand">
+
+                    </Label>
+                    <DatePicker x:Name="DatumZaposlenja" Format="dd-MM-yyyy" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                     <Label HeightRequest="40" Text="Uloga" VerticalTextAlignment="Center"
@@ -114,7 +171,8 @@
 
                     </Label>
 
-                    <Picker VerticalOptions="CenterAndExpand" SelectedIndex="3" HeightRequest="40">
+                    <Picker VerticalOptions="CenterAndExpand" SelectedIndex="1" HeightRequest="40"
+                            HorizontalOptions="EndAndExpand" WidthRequest="125" x:Name="Uloga" Title="Uloga">
                         <Picker.Items>
                             <x:String>Admin</x:String>
                             <x:String>Menadzer</x:String>
@@ -130,7 +188,7 @@
                          TextColor="White" 
                          Text="Snimi"  
                          BackgroundColor="Gray"
-                         HorizontalOptions="FillAndExpand"></Button>
+                         HorizontalOptions="FillAndExpand" Clicked="SnimiKorisnika"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

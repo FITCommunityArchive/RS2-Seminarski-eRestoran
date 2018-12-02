@@ -106,6 +106,10 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\eRestoran.Data\eRestoran.Data.csproj">
+      <Project>{C30F9D89-7205-4312-8409-4341AE7B717B}</Project>
+      <Name>eRestoran.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\eRestoran.PCL\eRestoran.PCL.csproj">
       <Project>{445cc50c-8893-4aac-9cf1-d058c29d2f45}</Project>
       <Name>eRestoran.PCL</Name>
