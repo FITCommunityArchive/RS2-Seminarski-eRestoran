@@ -32,6 +32,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Naziv = x.Naziv,
                 imageUrl = x.SlikaUrl
             }).ToList();
+
             model.Ponuda = ctx.Jelo.Select(x => new PonudaVM.PonudaInfo
             {
                 Id = x.Id,
@@ -119,6 +120,25 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             }).FirstOrDefault();
             return model;
         }
+
+        //only for testing purpose 
+        public PonudaVM.PonudaInfo GetSometh()
+        {
+            PonudaVM.PonudaInfo model = new PonudaVM.PonudaInfo();
+            model = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Gazirani sokovi").Select(x => new PonudaVM.PonudaInfo
+            {
+                Id = x.Id,
+                Kategorija = x.TipProizvoda.Naziv,
+                Cijena = x.Cijena,
+                Kolicina = x.Kolicina,
+                Naziv = x.Naziv,
+                KolicinaString = x.Kolicina.ToString()
+            }).FirstOrDefault();
+            return model;
+        }
+
+
+        //end testing block
 
         public List<KriticneZalihe> GetKriticneZalihe()
         {

@@ -124,7 +124,7 @@
                 <Button Margin="10,10,10,0" 
                          HeightRequest="40" 
                          TextColor="White" 
-                         Clicked="RegisterUser"
+                         Clicked="RegisterUserEvent"
                          Text="Registruj se"  
                         x:Name="btnRegister"
                          BackgroundColor="Gray"

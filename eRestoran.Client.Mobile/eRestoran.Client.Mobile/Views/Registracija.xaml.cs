@@ -64,6 +64,11 @@ namespace eRestoran.Client.Mobile.Views
             return false;
         }
 
+       async void RegisterUserEvent(object sender, EventArgs e)
+        {
+            await RegisterUser();
+        }
+
     }
 
 }
