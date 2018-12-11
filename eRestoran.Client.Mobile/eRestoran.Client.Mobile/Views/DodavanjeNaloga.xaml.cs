@@ -48,10 +48,10 @@ namespace eRestoran.Client.Mobile.Views
                 Password = NovaLozinka.Text,
                 Plata = double.Parse(Plata.Text),
                 Prezime = Prezime.Text,
-                Status = StatusZaposlenika.Aktivan,
+                Status = StatusZaposlenikaPCL.Aktivan,
                 Telefon = Telefon.Text,
                 Username = Username.Text,
-                TipKorisnika = (TipKorisnika)Uloga.SelectedIndex
+                TipKorisnika = (TipKorisnikaPCL)Uloga.SelectedIndex
             };
 
             var response = korisnikPostService.PostResponse(model);

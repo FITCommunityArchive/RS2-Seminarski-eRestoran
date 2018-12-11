@@ -1,11 +1,11 @@
 ﻿using System;
 namespace eRestoran.PCL.VM
 {
-    public enum TipKorisnika
+    public enum TipKorisnikaPCL
     {
         Admin, Menadzer, Klijent, Konobar, Kuhar, Sanker
     }
-    public enum StatusZaposlenika
+    public enum StatusZaposlenikaPCL
     {
         Aktivan, Godisnji, Otpusten
     }
@@ -16,14 +16,14 @@ namespace eRestoran.PCL.VM
         public string Adresa { get; set; }
         public string Jmbg { get; set; }
         public double Plata { get; set; }
-        public StatusZaposlenika Status { get; set; }
+        public StatusZaposlenikaPCL Status { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Telefon { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime DatumPrijave { get; set; }
-        public TipKorisnika TipKorisnika { get; set; }
+        public TipKorisnikaPCL TipKorisnika { get; set; }
 
         public string Email { get; set; }
     }
