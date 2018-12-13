@@ -92,18 +92,18 @@
             </Style>
 
             <Style x:Key="StatsNumberLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource PrimaryThemeColor}" />
+                <Setter Property="TextColor" Value="#000" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
-                <Setter Property="FontSize" Value="{StaticResource PageHeaderFontSize}" />
+                <Setter Property="FontSize" Value="33" />
             </Style>
 
             <Style x:Key="StatsCaptionLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="TextColor" Value="#03A9F4" />
                 <Setter Property="Margin" Value="0,-5,0,0" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontFamily" Value="{StaticResource LightFontFamily}" />
-                <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
+                <Setter Property="FontSize" Value="25" />
             </Style>
 
             <Style x:Key="ImageHeaderLabel" TargetType="Label">
@@ -124,14 +124,14 @@
                 <Setter Property="Margin" Value="0,0,10,0"/>
             </Style>
 
-            <Style x:Key="DriverCircleImageProfile" TargetType="controls:CircleImage">
+            <Style x:Key="ImageCircle" TargetType="controls:CircleImage">
                 <Setter Property="WidthRequest" Value="100"/>
                 <Setter Property="HeightRequest" Value="100"/>
-                <Setter Property="Aspect" Value="AspectFill"/>
+                <Setter Property="Aspect" Value="Fill"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="BorderColor" Value="White"/>
-                <Setter Property="BorderThickness" Value="5"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
             </Style>
 
 
@@ -149,8 +149,6 @@
                 <Setter Property="FontSize" Value="{StaticResource BodyFontSize}" />
 
             </Style>
-
-
 
             <Style x:Key="TableValueLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource PrimaryThemeColor}"/>

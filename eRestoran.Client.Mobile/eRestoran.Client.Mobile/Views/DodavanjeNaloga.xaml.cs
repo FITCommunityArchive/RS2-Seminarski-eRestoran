@@ -28,6 +28,17 @@ namespace eRestoran.Client.Mobile.Views
                 NovaLozinka,
                 PonovljenaLozinka
             };
+         
+             var listaUloga = new List<string>();
+            listaUloga.Add("Odaberite ulogu");
+            listaUloga.Add("Admin");
+            listaUloga.Add("Menadzer");
+            listaUloga.Add("Klijent");
+            listaUloga.Add("Konobar");
+            listaUloga.Add("Kuhar");
+            listaUloga.Add("Sanker");
+            Uloga.ItemsSource = listaUloga;
+            Uloga.SelectedIndex = 0;
         }
 
         private void SnimiKorisnika(object sender, System.EventArgs e)

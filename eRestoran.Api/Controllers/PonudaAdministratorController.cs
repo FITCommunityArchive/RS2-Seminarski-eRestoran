@@ -58,6 +58,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 KolicinaString = "N/A",
                 Cijena = x.Cijena,
                 Naziv = x.Naziv,
+                imageUrl = x.SlikaUrl
 
             }).ToList();
             return model.Jela;
@@ -83,7 +84,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                     Cijena = y.Proizvod.Cijena.ToString(),
                     ProizvodId = y.ProizvodId,
                     TipProizvoda = y.Proizvod.TipProizvoda.Naziv,
-                    Kolicina = y.Kolicina.ToString()
+                    Kolicina = y.Kolicina.ToString(),
                 }).ToList()
 
 
@@ -121,24 +122,6 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             return model;
         }
 
-        //only for testing purpose 
-        public PonudaVM.PonudaInfo GetSometh()
-        {
-            PonudaVM.PonudaInfo model = new PonudaVM.PonudaInfo();
-            model = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Gazirani sokovi").Select(x => new PonudaVM.PonudaInfo
-            {
-                Id = x.Id,
-                Kategorija = x.TipProizvoda.Naziv,
-                Cijena = x.Cijena,
-                Kolicina = x.Kolicina,
-                Naziv = x.Naziv,
-                KolicinaString = x.Kolicina.ToString()
-            }).FirstOrDefault();
-            return model;
-        }
-
-
-        //end testing block
 
         public List<KriticneZalihe> GetKriticneZalihe()
         {

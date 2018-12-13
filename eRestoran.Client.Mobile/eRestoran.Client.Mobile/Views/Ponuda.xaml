@@ -13,27 +13,27 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <StackLayout Margin="20, 20, 20, 20">
-                                <Image  Source="teletina.png" WidthRequest="120" HeightRequest="120" />
+                            <StackLayout Margin="0,20,0,0">
+                                <Image  Source="{Binding imageUrl, StringFormat='https://erestoranapi20180630082851.azurewebsites.net/{0}'}" WidthRequest="80" HeightRequest="80" />
                             </StackLayout>
                             <StackLayout Margin="0, 15, 0 ,0 ">
-                                <Label  Text="{Binding Naziv}" HorizontalOptions="CenterAndExpand" FontSize="23"
+                                <Label  Text="{Binding Naziv}" HorizontalOptions="CenterAndExpand" FontSize="33"
                                 TextColor="#03A9F4"  />
                             </StackLayout>
 
                             <StackLayout Margin="0, 15, 0, 0 ">
                                 <Label Text="{Binding Kategorija,StringFormat='Kategorija: {0}'} " FontSize="20" HorizontalOptions="CenterAndExpand"
-                                TextColor="#03A9F4" />
+                                TextColor="#000" />
                             </StackLayout>
 
                             <StackLayout Margin="0, 15, 0, 0">
                                 <Label  Text="{Binding Cijena, StringFormat='{}{0:N} KM'}" FontSize="20" HorizontalOptions="CenterAndExpand"
-                                TextColor="#03A9F4" />
+                                TextColor="#000" />
                             </StackLayout>
 
                             <StackLayout Margin="0 ,15 ,0 ,15">
                                 <Label  Text="{Binding Kolicina, StringFormat='Na stanju: {0}'}" FontSize="20" HorizontalOptions="CenterAndExpand"
-                                TextColor="#03A9F4"  />
+                                TextColor="#000"  />
                             </StackLayout>
                         </StackLayout>
 

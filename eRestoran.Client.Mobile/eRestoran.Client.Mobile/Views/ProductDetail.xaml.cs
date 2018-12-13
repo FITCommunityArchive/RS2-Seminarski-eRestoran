@@ -22,7 +22,6 @@ namespace eRestoran.Client.Mobile.Views
         public ProductDetail(Object proizvod)
         {
             InitializeComponent();
-            
             BindingContext = proizvod;
 
         }

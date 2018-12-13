@@ -27,7 +27,6 @@ namespace eRestoran.Client.Mobile.Views
                 Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
 
             }
-            DisplayAlert("Kod", resp.IsSuccessStatusCode.ToString(), "OK");
 
             var listaKategorija = new List<string>();
             listaKategorija.Add("Odaberite kategoriju");
@@ -68,7 +67,7 @@ namespace eRestoran.Client.Mobile.Views
                 switch (kategorijaProizvodaPicker.SelectedIndex){
 
                     case 0:
-                        DisplayAlert("Item Tapped", kategorijaProizvodaPicker.SelectedIndex.ToString(), "OK");
+                        //DisplayAlert("Item Tapped", kategorijaProizvodaPicker.SelectedIndex.ToString(), "OK");
                         var resp = helper.GetResponse();
                         Items.RemoveAll(proizvod => proizvod.Id > 0);
                         if (resp.IsSuccessStatusCode)
@@ -76,7 +75,6 @@ namespace eRestoran.Client.Mobile.Views
                             var content = resp.Content.ReadAsStringAsync().Result;
                             Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
                         }
-                        DisplayAlert("Item Tapped", resp.IsSuccessStatusCode.ToString(), "OK");
                         break;
                     case 1:
                         var resp2 = helperPica.GetResponse();
@@ -86,7 +84,6 @@ namespace eRestoran.Client.Mobile.Views
                             var content = resp2.Content.ReadAsStringAsync().Result;
                             Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
                         }
-                        DisplayAlert("Item Tapped", resp2.IsSuccessStatusCode.ToString(), "OK");
                         break;
 
                     case 2:
@@ -98,7 +95,6 @@ namespace eRestoran.Client.Mobile.Views
                             var content = resp1.Content.ReadAsStringAsync().Result;
                             Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
                         }
-                        DisplayAlert("Item Tapped", resp1.IsSuccessStatusCode.ToString(), "OK");
                         break;
                     
 
