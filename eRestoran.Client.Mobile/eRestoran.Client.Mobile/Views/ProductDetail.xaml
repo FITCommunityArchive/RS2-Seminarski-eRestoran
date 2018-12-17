@@ -38,7 +38,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackLayout Grid.Column="0">
-                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Cijena}" />
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Cijena, StringFormat='{}{0:N} KM'}" />
                     <Label Style="{StaticResource StatsCaptionLabel}" Text="Cijena" />
                 </StackLayout>
 
@@ -47,7 +47,7 @@
                     <Label Style="{StaticResource StatsCaptionLabel}" Text="Kategorija" />
                 </StackLayout>
                 <StackLayout Grid.Column="2">
-                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Kolicina}" />
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Kolicina, StringFormat='{}{0:N} KOM'}" />
                     <Label Style="{StaticResource StatsCaptionLabel}" Text="Kolicina" />
                 </StackLayout>
             </Grid>

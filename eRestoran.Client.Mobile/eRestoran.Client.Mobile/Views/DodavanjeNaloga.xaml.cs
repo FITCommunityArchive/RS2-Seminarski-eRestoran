@@ -2,6 +2,7 @@
 using eRestoran.PCL.VM;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -69,10 +70,49 @@ namespace eRestoran.Client.Mobile.Views
             if (response.Result.IsSuccessStatusCode)
             {
                 this.DisplayAlert("Info", "Uspjesno kreiran nalog!", "OK");
+                ClearForm();
             }
             else
             {
                 this.DisplayAlert("Info", "Zao nam je doslo je do greske. Pokusajte kasnije!", "OK");
+            }
+        }
+
+        private void ClearForm() {
+            Adresa.Text = "";
+            DatumZaposlenja.Date = DateTime.Now;
+            DatumRodjenja.Date = DateTime.Now;
+            Email.Text = "";
+            Ime.Text = "";
+            Jmbg.Text = "";
+            NovaLozinka.Text = "";
+            PonovljenaLozinka.Text = "";
+            Plata.Text = "";
+            Prezime.Text = "";
+            Telefon.Text = "";
+            Username.Text = "";
+            Uloga.SelectedIndex = 0;
+        }
+
+        private bool ValidateEmail(string email) {
+            if (Regex.Match(email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Success)
+            {
+                return true; 
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool ValidateDigits(string digits) {
+            if (Regex.Match(digits, @"^\d+\.?\d*$").Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -89,16 +129,50 @@ namespace eRestoran.Client.Mobile.Views
                 entry.StyleClass = new[] { "" };
             }
 
-            if (Uloga.SelectedItem == null)
+           
+
+            if (!ValidateDigits(Jmbg.Text))
+            {
+                this.DisplayAlert("JMBG", "Molimo unesite samo brojeve", "OK");
+                Jmbg.Focus();
+                return false;
+            }
+
+            if (!ValidateDigits(Telefon.Text))
+            {
+                this.DisplayAlert("Telefon", "Molimo unesite samo brojeve", "OK");
+                Telefon.Focus();
+                return false;
+            }
+
+            if (!ValidateEmail(Email.Text))
+            {
+                this.DisplayAlert("Email", "Niste unijeli pravilan email", "OK");
+                Email.Focus();
+                return false;
+            }
+
+            if (!ValidateDigits(Plata.Text))
+            {
+                this.DisplayAlert("Plata", "Molimo unesite samo brojeve (. - delimitor)", "OK");
+                Plata.Focus();
+                return false;
+            }
+
+
+            if (NovaLozinka.Text != PonovljenaLozinka.Text)
+            {
+                this.DisplayAlert("Lozinka", "Ponovljena lozinka nije ista", "OK");
+                PonovljenaLozinka.Focus();
+                return false;
+            }
+
+            if (Uloga.SelectedIndex == 0)
             {
                 Uloga.Focus();
                 return false;
             }
-            if (NovaLozinka.Text != PonovljenaLozinka.Text)
-            {
-                this.DisplayAlert("Info", "Ponovljena lozinka nije ista", "OK");
-                return false;
-            }
+
             return true;
         }
     }

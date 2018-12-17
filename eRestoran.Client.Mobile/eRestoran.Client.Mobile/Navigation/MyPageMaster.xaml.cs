@@ -35,7 +35,7 @@ namespace eRestoran.Client.Mobile.Navigation
                     new MyPageMenuItem { Title = "Rezervacije",TargetType=typeof(RezervisiSto) },
                     new MyPageMenuItem { Title = "Dodavanje naloga",TargetType=typeof(DodavanjeNaloga) },
                     new MyPageMenuItem { Title = "Promocija ",TargetType=typeof(Promocija) },
-
+                    new MyPageMenuItem { Title = "Odjava ",TargetType=typeof(Login)},
                 });
             }
             

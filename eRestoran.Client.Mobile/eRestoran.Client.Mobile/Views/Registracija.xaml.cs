@@ -2,6 +2,8 @@
 using eRestoran.PCL.Helpers;
 using eRestoran.PCL.VM;
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,6 +13,8 @@ namespace eRestoran.Client.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registracija : ContentPage
     {
+        private List<Entry> entries;
+
         public Registracija()
         {
             InitializeComponent();
@@ -18,6 +22,18 @@ namespace eRestoran.Client.Mobile.Views
             {
                 Command = new Command(() => NavigateToLogin())
             });
+
+            entries = new List<Entry>()
+            {
+                ime,
+                prezime,
+                adresa,
+                email,
+                telefon,
+                userName,
+                password,
+            };
+
             NavigationPage.SetHasNavigationBar(this, false);
             btnRegister.Clicked += async (sender, e) => await ValidateRegister();
 
@@ -32,12 +48,95 @@ namespace eRestoran.Client.Mobile.Views
 
         private async Task ValidateRegister()
         {
-           await Task.Run(RegisterUser);
-            var x = new MyPage();
-            Application.Current.MainPage = x;
+           var isValid = ValidateForm();
+            if (isValid)
+            {
+                ClearForm();
+                await Task.Run(RegisterUser);
+                var x = new MyPage();
+                Application.Current.MainPage = x;
+                await this.DisplayAlert("Login", "Uspjesan login", "OK");
+
+            }
 
         }
-        private async Task<bool> RegisterUser()
+
+        private void ClearForm()
+        {
+            adresa.Text = "";
+            email.Text = "";
+            ime.Text = "";
+            prezime.Text = "";
+            potvrdiPassword.Text = "";
+            password.Text = "";
+            telefon.Text = "";
+            userName.Text = "";
+        }
+
+        private bool ValidateDigits(string digits)
+        {
+            if (Regex.Match(digits, @"^\d+\.?\d*$").Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool ValidateEmail(string email)
+        {
+            if (Regex.Match(email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool ValidateForm()
+        {
+            foreach (var entry in entries)
+            {
+                if (string.IsNullOrWhiteSpace(entry.Text))
+                {
+                    entry.PlaceholderColor = Color.Red;
+                    entry.Focus();
+                    return false;
+                }
+                entry.StyleClass = new[] { "" };
+            }
+
+            if (!ValidateEmail(email.Text))
+            {
+                this.DisplayAlert("Email", "Niste unijeli pravilan email", "OK");
+                email.Focus();
+                return false;
+            }
+
+            if (!ValidateDigits(telefon.Text))
+            {
+                this.DisplayAlert("Telefon", "Molimo unesite samo brojeve", "OK");
+                telefon.Focus();
+                return false;
+            }
+
+          
+
+            if (password.Text != potvrdiPassword.Text)
+            {
+                this.DisplayAlert("Lozinka", "Ponovljena lozinka nije ista", "OK");
+                potvrdiPassword.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+         private async Task<bool> RegisterUser()
         {
             var kor = new KlijentVM()
 

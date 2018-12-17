@@ -103,7 +103,7 @@
 
                     <Entry HeightRequest="40"  x:Name="password"
                                   HorizontalOptions="FillAndExpand"
-                                 Placeholder="Nova lozinka">
+                                 Placeholder="Nova lozinka" IsPassword = "true">
 
                     </Entry>
                 </StackLayout>
@@ -116,7 +116,7 @@
 
                     <Entry HeightRequest="40" x:Name="potvrdiPassword"
                                   HorizontalOptions="FillAndExpand"
-                                 Placeholder="Potvrdi lozinku">
+                                 Placeholder="Potvrdi lozinku" IsPassword = "true">
 
                     </Entry>
                 </StackLayout>

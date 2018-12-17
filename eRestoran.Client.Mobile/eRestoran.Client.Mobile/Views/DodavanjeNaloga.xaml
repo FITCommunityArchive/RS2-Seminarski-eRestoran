@@ -4,7 +4,7 @@
              x:Class="eRestoran.Client.Mobile.Views.DodavanjeNaloga">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="primary">#ff3467</Color>
+            <Color x:Key="primary">#03A9F4</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
