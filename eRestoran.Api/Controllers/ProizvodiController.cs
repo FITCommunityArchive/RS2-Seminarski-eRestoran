@@ -132,7 +132,6 @@ namespace eRestoran.Api.Controllers
             {
                 var x = e.Message;
             }
-            proizvod.SlikaUrl = baseUrl + proizvod.SlikaUrl;
             return CreatedAtRoute("DefaultApi", new { id = proizvod.Id }, proizvod);
         }
 
@@ -166,74 +165,5 @@ namespace eRestoran.Api.Controllers
             return db.Proizvodi.Count(e => e.Id == id) > 0;
         }
 
-        [Route("api/proizvodi/uploadimage/{proizvodId}"), AcceptVerbs("POST")]
-        public async Task<object> Upload(int proizvodId)
-        {
-            if (Request.Content.IsMimeMultipartContent())
-            {
-                var path = "~/images";
-                var task = await FileUpload(path, Request.Content, proizvodId);
-
-                if (task == null)
-                    return BadRequest();
-
-                return Ok(task);
-            }
-            else
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "This request is not properly formatted"));
-            }
-        }
-
-        public async Task<ProizvodSlikaVM> FileUpload(string relativePath, HttpContent content, int proizvodId)
-        {
-            var path = HttpContext.Current.Server.MapPath(relativePath);
-            var streamProvider = new CustomMultipartFileStreamProvider(path);
-            var proizvod = db.Proizvodi.FirstOrDefault(x => x.Id == proizvodId);
-
-            if (proizvod == null)
-            {
-                return null;
-            }
-            var file = await content.ReadAsMultipartAsync(streamProvider).ContinueWith(t =>
-            {
-                if (t.IsFaulted || t.IsCanceled)
-                {
-                    return null;
-                }
-                var info = new FileInfo(streamProvider.FileData[0].LocalFileName);
-                proizvod.SlikaUrl = "images/" + info.Name;
-                //Attachment attachment = new Attachment()
-                //{
-                //    IsDeleted = false,
-                //    CreatedAt = DateTime.Now,
-                //    LastModifiedAt = DateTime.Now,
-                //    Extension = info.Extension,
-                //    Name = info.Name.Replace('.' + info.Extension, ""),
-                //    Url = "uploads/" + info.Name
-                //};
-                db.SaveChanges();
-
-                return new ProizvodSlikaVM()
-                {
-                    ProizvodId = proizvod.Id,
-                    FileName = info.Name,
-                    FileUrl = baseUrl + "images/" + info.Name
-                };
-            });
-            return file;
-        }
-    }
-
-    public class CustomMultipartFileStreamProvider : MultipartFileStreamProvider
-    {
-        public CustomMultipartFileStreamProvider(string path) : base(path)
-        { }
-
-        public override string GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders headers)
-        {
-            var name = !string.IsNullOrWhiteSpace(headers.ContentDisposition.FileName) ? headers.ContentDisposition.FileName : "NoName";
-            return Guid.NewGuid().ToString() + name.Replace("\"", string.Empty);
-        }
-    }
+      }
 }

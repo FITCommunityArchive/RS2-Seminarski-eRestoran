@@ -133,6 +133,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\IzvjestajiController.cs" />
     <Compile Include="Controllers\JeloController.cs" />
     <Compile Include="Controllers\KorisniciController.cs" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Image\" />
     <Folder Include="VM\" />
   </ItemGroup>
   <ItemGroup>

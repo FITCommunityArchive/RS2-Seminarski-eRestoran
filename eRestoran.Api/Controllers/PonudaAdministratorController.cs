@@ -1,12 +1,8 @@
-﻿
+﻿using eRestoran.Data.DAL;
 using eRestoran.PCL.VM;
-using eRestoran.Data.DAL;
-using eRestoran.Data.Models;
 using eRestoran.VM;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using static eRestoran.VM.PrikazKriticnihZaliha;
@@ -22,8 +18,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
         {
             MyContext ctx = new MyContext();
             PonudaVM model = new PonudaVM();
-            //model.Pica = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Pica").Select(x => new PonudaVM.PonudaInfo
-            model.Pica = ctx.Proizvodi.Select(x => new PonudaVM.PonudaInfo
+            model.Pica = ctx.Proizvodi.Where(x => x.TipProizvoda.Naziv == "Pica").Select(x => new PonudaVM.PonudaInfo
             {
                 Id = x.Id,
                 Kategorija = x.TipProizvoda.Naziv,
@@ -47,6 +42,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             model.Ponuda.AddRange(model.Pica);
             return model.Ponuda;
         }
+
         public List<PonudaVM.PonudaInfo> GetJela()
         {
 
@@ -91,6 +87,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             }).FirstOrDefault();
             return Ok(model);
         }
+
         public List<PonudaVM.PonudaInfo> GetPica()
         {
 
@@ -106,6 +103,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             }).ToList();
             return model.Pica;
         }
+
         public PonudaVM.PonudaInfo GetPice(int id)
         {
 
@@ -122,7 +120,6 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             return model;
         }
 
-
         public List<KriticneZalihe> GetKriticneZalihe()
         {
 
@@ -138,7 +135,5 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
 
             return model.Kriticne;
         }
-
-
     }
 }

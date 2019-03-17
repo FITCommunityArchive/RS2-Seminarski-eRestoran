@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
 
@@ -18,9 +19,10 @@ namespace FastFoodDemo
     {
         private WebAPIHelper vrsteSkladista = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Skladiste/GetSkladista");
         private WebAPIHelper vrsteProizvoda = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/GetTipoviProizvoda");
-        private WebAPIHelper proizvodiService= new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/PostProizvod");
-        private WebAPIHelper getProizvod= new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/GetProizvod");
-        private WebAPIHelper postImage = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/uploadimage");
+        private WebAPIHelper proizvodiService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/PostProizvod");
+        private WebAPIHelper getProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/GetProizvod");
+        private WebAPIHelper putProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/PutProizvod");
+        private WebAPIHelper postImage = new WebAPIHelper(Resources.apiUrlDevelopment, "api/image/upload");
         private string imagesFolderPath = Path.GetFullPath("~/../../../Images/");
         private Proizvod proizvod;
         public PonudaVM.PonudaInfo ViewModel { get; set; }
@@ -45,10 +47,10 @@ namespace FastFoodDemo
         {
             List<MenuLista> lista = new List<MenuLista>();
             lista.Insert(0, new MenuLista() { NazivMenua = "Molim vas odaberite !" });
-            lista.Insert(1, new MenuLista() { NazivMenua ="Dorucak"});
+            lista.Insert(1, new MenuLista() { NazivMenua = "Dorucak" });
             lista.Insert(2, new MenuLista() { NazivMenua = "Rucak" });
             lista.Insert(3, new MenuLista() { NazivMenua = "Vecera" });
-           
+
             MenucomboBox.DataSource = lista;
             MenucomboBox.DisplayMember = "NazivMenua";
             MenucomboBox.ValueMember = "NazivMenua";
@@ -77,8 +79,8 @@ namespace FastFoodDemo
             if (responseMessage.IsSuccessStatusCode)
             {
                 List<SkladisteVM> lista = responseMessage.Content.ReadAsAsync<List<SkladisteVM>>().Result;
-                lista.Insert(0, new SkladisteVM() { Lokacija = "Odaberite skladište", Id = 0,Kvadratura="0" });
-               
+                lista.Insert(0, new SkladisteVM() { Lokacija = "Odaberite skladište", Id = 0, Kvadratura = "0" });
+
                 TipSkladistacomboBox.DataSource = lista;
                 TipSkladistacomboBox.DisplayMember = "Lokacija";
                 TipSkladistacomboBox.ValueMember = "Id";
@@ -111,42 +113,40 @@ namespace FastFoodDemo
                     try
                     {
                         HttpResponseMessage responseMessage2 = postImage.PostFile(proizvod.Id, slikaKontrola1.GetData()).Result;
-                        var b2b = responseMessage2.Content.ReadAsStringAsync().Result;
+                        var slikaUrl = responseMessage2.Headers.GetValues("image-url").ElementAt(0);
+                        proizvod.SlikaUrl = slikaUrl;
+                        putProizvod.PutResponse(proizvod.Id, proizvod);
                     }
-                    catch(Exception eee)
+                    catch (Exception eee)
                     {
                         var xxx = eee.Message;
                     }
-                    if (responseMessage.IsSuccessStatusCode)
-                    {
-                        var xxx = responseMessage.Content.ReadAsStringAsync().Result;
-                    }
-                        TipProizvodacomboBox.ResetText();
+
+                    TipProizvodacomboBox.ResetText();
                     TipProizvodacomboBox.SelectedValue = 0;
 
                     TipSkladistacomboBox.ResetText();
                     TipSkladistacomboBox.SelectedValue = 0;
 
                     MenucomboBox.ResetText();
-                    MenucomboBox.DisplayMember= "Molim vas odaberite !";
+                    MenucomboBox.SelectedIndex = 0;
 
+                    slikaKontrola1.ClearImage();
                     SifratextBox.ResetText();
                     NazivtextBox.ResetText();
                     CijenatextBox.ResetText();
                     KolicinatextBox.ResetText();
                     KriticnatextBox.ResetText();
+                    errorProvider.Clear();
                     MessageBox.Show("Uspjesno dodat proizvod");
-                    var panel = ((Form1)ParentForm).NapraviPanelMenu();
-                    panel.DataBind();
-
                 }
             }
-
         }
 
         private void NazivtextBox_Validating(object sender, CancelEventArgs e)
         {
-            if (String.IsNullOrEmpty(NazivtextBox.Text)) {
+            if (String.IsNullOrEmpty(NazivtextBox.Text))
+            {
                 e.Cancel = true;
                 errorProvider.SetError(NazivtextBox, Messages.Naziv_req);
             }
@@ -156,7 +156,7 @@ namespace FastFoodDemo
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
             HttpClient client = new HttpClient();
             List<PonudaVM.PonudaInfo> pica;
-            client.BaseAddress = new Uri("http://localhost:49958/");
+            client.BaseAddress = new Uri("https://erestoranapi20180630082851.azurewebsites.net/");
             HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPica").Result;
             if (response.IsSuccessStatusCode)
             {
@@ -229,7 +229,7 @@ namespace FastFoodDemo
 
             }
         }
-            private void button8_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e)
         {
 
             (this.Parent).Controls.Clear();
@@ -265,7 +265,7 @@ namespace FastFoodDemo
         //    if (f.ShowDialog() == DialogResult.OK) {
         //        File = Image.FromFile(f.FileName);
         //        ProizvodpictureBox.Image = File;
-                                      
+
         //      }
         //}
 
@@ -318,6 +318,6 @@ namespace FastFoodDemo
                 errorProvider.SetError(MenucomboBox, "Odaberite vrstu menua.");
                 e.Cancel = true;
             }
-            }
+        }
     }
 }

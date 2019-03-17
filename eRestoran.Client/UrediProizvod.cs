@@ -15,10 +15,10 @@ namespace eRestoran.Client
     public partial class UrediProizvod : UserControl
     {
         Proizvod p;
-        private WebAPIHelper vrsteSkladista = new WebAPIHelper("http://localhost:49958/", "api/Skladiste/GetSkladista");
-        private WebAPIHelper vrsteProizvoda = new WebAPIHelper("http://localhost:49958/", "api/TipProizvodas/GetTipoviProizvoda");
-        private WebAPIHelper getProizvod = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/GetProizvod");
-        private WebAPIHelper putProizvod = new WebAPIHelper("http://localhost:49958/", "api/Proizvodi/PutProizvod");
+        private WebAPIHelper vrsteSkladista = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/Skladiste/GetSkladista");
+        private WebAPIHelper vrsteProizvoda = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/TipProizvodas/GetTipoviProizvoda");
+        private WebAPIHelper getProizvod = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/Proizvodi/GetProizvod");
+        private WebAPIHelper putProizvod = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/Proizvodi/PutProizvod");
         List<MenuLista> listaMenu;
 
 

@@ -56,7 +56,7 @@ namespace eRestoran.Client.Shared.Helpers
         {
             return client.PutAsJsonAsync(route + "/" + id, obj).Result;
         }
-        public async Task<HttpResponseMessage> PostFile(int proizvodId, byte[] obj)
+        public async Task<HttpResponseMessage> PostFile(int itemId, byte[] obj)
         {
             using (var content =
                    new MultipartFormDataContent("Upload----" + DateTime.Now.ToString(CultureInfo.InvariantCulture)))
@@ -65,7 +65,7 @@ namespace eRestoran.Client.Shared.Helpers
 
                 using (
                    var message =
-                     client.PostAsync(route + "/" + proizvodId, content).Result)
+                     client.PostAsync(route + "/" + itemId, content).Result)
 
                 {
                     return message;

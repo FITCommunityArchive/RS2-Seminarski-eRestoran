@@ -332,7 +332,7 @@ namespace FastFoodDemo
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
             HttpClient client = new HttpClient();
             List<PonudaVM.PonudaInfo> pica;
-            client.BaseAddress = new Uri("http://localhost:49958/");
+            client.BaseAddress = new Uri("https://erestoranapi20180630082851.azurewebsites.net/");
             HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPonuda").Result;
             if (response.IsSuccessStatusCode)
             {

@@ -1,17 +1,15 @@
-﻿using System;
+﻿using eRestoran.Client;
+using eRestoran.Client.Properties;
+using eRestoran.Client.Shared.Helpers;
+using eRestoran.Data.Models;
+using eRestoran.PCL.VM;
+using FirstUserControlUsage;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Net.Http;
 using System.Linq;
-using eRestoran.Data.Models;
-using eRestoran.Client;
-using FirstUserControlUsage;
-using System.IO;
-using eRestoran.Client.Shared.Helpers;
-using eRestoran.Client.Properties;
-using eRestoran.PCL.VM;
+using System.Net.Http;
+using System.Windows.Forms;
 
 namespace FastFoodDemo
 {
@@ -20,7 +18,9 @@ namespace FastFoodDemo
         private WebAPIHelper vrsteSkladista = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Skladiste/GetSkladista");
         private WebAPIHelper vrsteProizvoda = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/GetTipoviProizvoda");
         private WebAPIHelper jeloPostService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Jelo/PostJelo");
+        private WebAPIHelper jeloPutService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Jelo/PutJelo");
         private WebAPIHelper getProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/GetProizvod");
+        private WebAPIHelper postImage = new WebAPIHelper(Resources.apiUrlDevelopment, "api/image/upload");
         private WebAPIHelper getJelo = new WebAPIHelper(Resources.apiUrlDevelopment, "api/ponuda/getjelo");
 
         List<MenuLista> listaMenu;
@@ -72,7 +72,7 @@ namespace FastFoodDemo
             listaMenu.Insert(1, new MenuLista() { NazivMenua = "Dorucak" });
             listaMenu.Insert(2, new MenuLista() { NazivMenua = "Rucak" });
             listaMenu.Insert(3, new MenuLista() { NazivMenua = "Vecera" });
-           
+
             MenuJelacomboBox.DataSource = listaMenu;
             MenuJelacomboBox.DisplayMember = "NazivMenua";
             MenuJelacomboBox.ValueMember = "NazivMenua";
@@ -94,9 +94,8 @@ namespace FastFoodDemo
             jelo.Sifra = SifraJelatextBox.Text;
             jelo.Menu = MenuJelacomboBox.SelectedIndex.ToString();
             jelo.Naziv = NazivJelatextBox.Text;
-            jelo.SlikaUrl = slikaKontrola1.SaveImage();
             var stavkeJela = stavkeLayout.Controls.Cast<DodajstavkuJelu>();
-            
+
             // 4 stare 
             //2
             foreach (var stavka in stavkeJela)
@@ -107,14 +106,28 @@ namespace FastFoodDemo
             HttpResponseMessage responseMessage = jeloPostService.PostResponse(jelo);
             if (responseMessage.IsSuccessStatusCode)
             {
+                var proizvod = responseMessage.Content.ReadAsAsync<Proizvod>().Result;
+                try
+                {
+                    HttpResponseMessage responseMessage2 = postImage.PostFile(proizvod.Id, slikaKontrola1.GetData()).Result;
+                    var slikaUrl = responseMessage2.Headers.GetValues("image-url").ElementAt(0);
+                    proizvod.SlikaUrl = slikaUrl;
+                    jeloPutService.PutResponse(proizvod.Id, proizvod);
+                }
+                catch (Exception eee)
+                {
+                    var xxx = eee.Message;
+                }
+
                 MenuJelacomboBox.ResetText();
-                MenuJelacomboBox.DisplayMember = "Molim vas odaberite !";
+                MenuJelacomboBox.SelectedIndex = 0;
+                slikaKontrola1.ClearImage();
                 SifraJelatextBox.ResetText();
                 NazivJelatextBox.ResetText();
                 CijenaJelatextBox.ResetText();
+                errorProvider.Clear();
+
                 MessageBox.Show("Uspjesno ");
-                var panel = ((Form1)ParentForm).NapraviPanelMenu();
-                panel.DataBind();
             }
         }
 
@@ -127,7 +140,7 @@ namespace FastFoodDemo
             }
         }
 
-     
+
 
         private void CijenatextBox_Validating(object sender, CancelEventArgs e)
         {

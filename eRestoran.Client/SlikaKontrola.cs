@@ -46,6 +46,13 @@ namespace eRestoran.Client
             return ImageToByteArray(ProizvodpictureBox.Image);
         }
 
+        public void ClearImage()
+        {
+            ProizvodpictureBox.ResetText();
+            ProizvodpictureBox.Image = null;
+            ProizvodpictureBox.ImageLocation = string.Empty;
+        }
+
         public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             MemoryStream ms = new MemoryStream();
