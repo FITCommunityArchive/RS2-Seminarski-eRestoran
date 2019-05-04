@@ -21,6 +21,7 @@ namespace eRestoran.Client.Mobile.Views
 			InitializeComponent ();
             staraCijenaRow.IsVisible = false;
             kategorijaRow.IsVisible = false;
+            nazivRow.IsVisible = false;
             btnSearch.Clicked += async (sender, e) => await getStavka(sifra.Text);
 
         }
@@ -37,20 +38,24 @@ namespace eRestoran.Client.Mobile.Views
                 if (item != null) {
                     staraCijena.Text = item.Cijena.ToString() + " KM";
                     kategorija.Text = item.Kategorija;
+                    nazivProizvoda.Text = item.Naziv;
 
                     staraCijenaRow.IsVisible = true;
                     kategorijaRow.IsVisible = true;
+                    nazivRow.IsVisible = true;
                     this.DisplayAlert("Info", "Trazena stavka je pronađena", "OK");
                     return true;
                 }
                 this.DisplayAlert("Info", "Trazena stavka ne postoji", "OK");
                 staraCijenaRow.IsVisible = false;
                 kategorijaRow.IsVisible = false;
+                nazivRow.IsVisible = false;
                 return false;
             }
             else {
                 staraCijenaRow.IsVisible = false;
                 kategorijaRow.IsVisible = false;
+                nazivRow.IsVisible = false;
                 return false;
             }
         }
