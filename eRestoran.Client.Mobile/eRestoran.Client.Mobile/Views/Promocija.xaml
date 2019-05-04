@@ -40,8 +40,18 @@
                 </Entry>
               </StackLayout>
 
-             
-              
+                <StackLayout Orientation="Horizontal" x:Name="nazivRow"  Padding="15,10,0,0" Margin="0,0,15,0">
+                    <Label HeightRequest="40" Text="Naziv proizvoda" VerticalTextAlignment="Center"
+                     HorizontalOptions="FillAndExpand">
+                    </Label>
+
+                    <Entry HeightRequest="40" x:Name="nazivProizvoda"
+                              HorizontalOptions="FillAndExpand" IsEnabled="false" Text="----">
+                    </Entry>
+                </StackLayout>
+
+
+
                 <!--Sifra-->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                     <Label HeightRequest="40" Text="Šifra proizvoda " VerticalTextAlignment="Center"
