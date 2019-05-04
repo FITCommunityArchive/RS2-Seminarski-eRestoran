@@ -21,7 +21,7 @@ namespace eRestoran.Api
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
            
             var sched = new eRestoran.Api.Infrastructure.JobScheduler();
-            sched.start();
+            sched.Start();
 
         }
 
