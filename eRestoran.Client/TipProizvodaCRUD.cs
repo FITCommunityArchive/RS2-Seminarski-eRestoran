@@ -11,6 +11,7 @@ using eRestoran.Client.Shared.Helpers;
 using eRestoran.PCL.VM;
 using System.Net.Http;
 using eRestoran.Data.Models;
+using eRestoran.Client.Properties;
 
 namespace eRestoran.Client
 {
@@ -18,11 +19,11 @@ namespace eRestoran.Client
     {
         //mjerna jedinica -  Kilogram,Dekagram,Gram,Litar,Decilitar,Centilitar
         private TipProizvoda tipProizvoda;
-        private WebAPIHelper tipoviEditService = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/TipProizvodas/PutTipProizvoda");
-        private WebAPIHelper tipoviGetService = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/TipProizvodas/GetTipoviProizvoda"); 
-        private WebAPIHelper tipoviDelService = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/TipProizvodas/DeleteTipProizvoda");
-        private WebAPIHelper tipoviDodajService = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/TipProizvodas/PostTipProizvoda");
-        private WebAPIHelper tipoviGet1Service = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/TipProizvodas/GetTipProizvoda");
+        private WebAPIHelper tipoviEditService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/PutTipProizvoda");
+        private WebAPIHelper tipoviGetService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/GetTipoviProizvoda"); 
+        private WebAPIHelper tipoviDelService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/DeleteTipProizvoda");
+        private WebAPIHelper tipoviDodajService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/PostTipProizvoda");
+        private WebAPIHelper tipoviGet1Service = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/GetTipProizvoda");
         List<MjernaJedinicaVM> mjernajedinicalista;
         public TipProizvodaCRUD()
         {

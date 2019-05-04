@@ -60,5 +60,42 @@ namespace eRestoran.Client
             this.Parent.Controls.Remove(this);
 
         }
+
+        private void KolicinaJelotextBox_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (String.IsNullOrEmpty(KolicinaJelotextBox.Text))
+            {
+                e.Cancel = true;
+                KolicinaJelotextBox.Focus();
+                errorProvider.SetError(KolicinaJelotextBox, Messages.Integer);
+                return;
+            }
+            else
+            {
+                if (!System.Text.RegularExpressions.Regex.IsMatch(KolicinaJelotextBox.Text, "\\d+"))
+                {
+                    e.Cancel = true;
+                    KolicinaJelotextBox.Focus();
+                    errorProvider.SetError(KolicinaJelotextBox, Messages.Integer);
+                    return;
+                }
+            }
+            errorProvider.Clear();
+        }
+
+        private void ProizvodJelo_Validating(object sender, CancelEventArgs e)
+        {
+            if (ProizvodJelo.SelectedIndex == 0)
+            {
+                e.Cancel = true;
+                KolicinaJelotextBox.Focus();
+                errorProvider.SetError(ProizvodJelo, Messages.Univerzalno);
+            }
+            else
+            {
+                errorProvider.Clear();
+            }
+        }
     }
 }

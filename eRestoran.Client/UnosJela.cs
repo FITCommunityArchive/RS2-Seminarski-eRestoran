@@ -88,6 +88,12 @@ namespace FastFoodDemo
             if (!this.ValidateChildren())
                 return;
 
+            if (stavkeLayout.Controls.Count == 0)
+            {
+                MessageBox.Show("Morate unijeti najmanje 1 stavku!");
+                return;
+            }
+
             var jelo = new Jelo();
             jelo.Id = jeloId;
             jelo.Cijena = Convert.ToDouble(CijenaJelatextBox.Text);

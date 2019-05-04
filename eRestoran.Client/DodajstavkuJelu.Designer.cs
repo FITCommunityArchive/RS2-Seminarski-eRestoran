@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DodajstavkuJelu));
             this.ProizvodJelo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.KolicinaJelotextBox = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // ProizvodJelo
@@ -44,6 +47,7 @@
             this.ProizvodJelo.Name = "ProizvodJelo";
             this.ProizvodJelo.Size = new System.Drawing.Size(198, 21);
             this.ProizvodJelo.TabIndex = 0;
+            this.ProizvodJelo.Validating += new System.ComponentModel.CancelEventHandler(this.ProizvodJelo_Validating);
             // 
             // label1
             // 
@@ -71,6 +75,7 @@
             this.KolicinaJelotextBox.Name = "KolicinaJelotextBox";
             this.KolicinaJelotextBox.Size = new System.Drawing.Size(198, 20);
             this.KolicinaJelotextBox.TabIndex = 3;
+            this.KolicinaJelotextBox.Validating += new System.ComponentModel.CancelEventHandler(this.KolicinaJelotextBox_Validating);
             // 
             // button8
             // 
@@ -88,6 +93,10 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // DodajstavkuJelu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,6 +108,7 @@
             this.Controls.Add(this.ProizvodJelo);
             this.Name = "DodajstavkuJelu";
             this.Size = new System.Drawing.Size(355, 69);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +121,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox KolicinaJelotextBox;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

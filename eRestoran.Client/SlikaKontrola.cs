@@ -1,7 +1,9 @@
-﻿using System;
+﻿using eRestoran.Client.Properties;
+using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Net;
+using System.Windows.Forms;
 
 namespace eRestoran.Client
 {
@@ -34,10 +36,21 @@ namespace eRestoran.Client
         }
         public void setImage(string lokacijaSlike)
         {
-            if (!String.IsNullOrWhiteSpace(lokacijaSlike))
+            if (lokacijaSlike != null)
+            {
+                var sUrl = Resources.apiUrlDevelopment + lokacijaSlike;
+                WebRequest req = WebRequest.Create(sUrl);
+
+                WebResponse res = req.GetResponse();
+
+                Stream imgStream = res.GetResponseStream();
+
+                ProizvodpictureBox.Image = new Bitmap(Image.FromStream(imgStream), new Size(120, 100));
+                imgStream.Close();
+            }
+            else
             {
                 ProizvodpictureBox.ImageLocation = lokacijaSlike;
-
             }
         }
 

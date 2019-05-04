@@ -126,6 +126,9 @@
   <data name="Cijena_zarez" xml:space="preserve">
     <value>Neispravan format, unesite sa ' . '</value>
   </data>
+  <data name="Integer" xml:space="preserve">
+    <value>Cijeli broj !</value>
+  </data>
   <data name="Naziv_req" xml:space="preserve">
     <value>Ime je obavezno!</value>
   </data>

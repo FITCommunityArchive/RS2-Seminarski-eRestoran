@@ -172,8 +172,6 @@ namespace eRestoran.Client
                 e.Cancel = true;
                 errorProvider.SetError(emailTextBox, Messages.NeispravanEmail);
             }
-
-
         }
 
         private void telefonTextBox_Validating(object sender, CancelEventArgs e)

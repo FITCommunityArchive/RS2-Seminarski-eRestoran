@@ -55,7 +55,7 @@ namespace FastFoodDemo
 
         private void SetupLayoutForUser()
         {
-            if (VerifikovaniKorisnik.TipKorisnika == TipKorisnika.Admin)
+            if (VerifikovaniKorisnik.TipKorisnika == TipKorisnika.Admin || VerifikovaniKorisnik.TipKorisnika == TipKorisnika.Menadzer)
             {
                 btnMenu.Visible = true;
                 btnNalozi.Visible = true;
@@ -332,7 +332,7 @@ namespace FastFoodDemo
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
             HttpClient client = new HttpClient();
             List<PonudaVM.PonudaInfo> pica;
-            client.BaseAddress = new Uri("https://erestoranapi20180630082851.azurewebsites.net/");
+            client.BaseAddress = new Uri(Resources.apiUrlDevelopment);
             HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPonuda").Result;
             if (response.IsSuccessStatusCode)
             {

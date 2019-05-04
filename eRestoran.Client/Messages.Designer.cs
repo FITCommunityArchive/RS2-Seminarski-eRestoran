@@ -88,6 +88,15 @@ namespace eRestoran.Client {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cijeli broj !.
+        /// </summary>
+        internal static string Integer {
+            get {
+                return ResourceManager.GetString("Integer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ime je obavezno!.
         /// </summary>
         internal static string Naziv_req {

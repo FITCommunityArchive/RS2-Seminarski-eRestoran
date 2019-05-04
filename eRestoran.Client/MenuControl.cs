@@ -105,6 +105,11 @@ namespace FirstUserControlUsage
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         //((Form1)this.ParentForm).activeControl=p.Name;

@@ -9,16 +9,19 @@ using static FastFoodDemo.UnosProizvoda;
 using eRestoran.PCL.VM;
 using eRestoran.Client.Shared.Helpers;
 using FastFoodDemo;
+using eRestoran.Client.Properties;
+using System.Linq;
 
 namespace eRestoran.Client
 {
     public partial class UrediProizvod : UserControl
     {
         Proizvod p;
-        private WebAPIHelper vrsteSkladista = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/Skladiste/GetSkladista");
-        private WebAPIHelper vrsteProizvoda = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/TipProizvodas/GetTipoviProizvoda");
-        private WebAPIHelper getProizvod = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/Proizvodi/GetProizvod");
-        private WebAPIHelper putProizvod = new WebAPIHelper("https://erestoranapi20180630082851.azurewebsites.net/", "api/Proizvodi/PutProizvod");
+        private WebAPIHelper vrsteSkladista = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Skladiste/GetSkladista");
+        private WebAPIHelper vrsteProizvoda = new WebAPIHelper(Resources.apiUrlDevelopment, "api/TipProizvodas/GetTipoviProizvoda");
+        private WebAPIHelper getProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/GetProizvod");
+        private WebAPIHelper postImage = new WebAPIHelper(Resources.apiUrlDevelopment, "api/image/upload");
+        private WebAPIHelper putProizvod = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Proizvodi/PutProizvod");
         List<MenuLista> listaMenu;
 
 
@@ -109,7 +112,16 @@ namespace eRestoran.Client
                 p.Sifra = p.Sifra;
                 p.Menu = MenucomboBox.SelectedIndex.ToString();
                 p.Naziv = NazivtextBox.Text;
-                p.SlikaUrl = slikaKontrola1.SaveImage();
+                try
+                {
+                    HttpResponseMessage responseMessage2 = postImage.PostFile(p.Id, slikaKontrola1.GetData()).Result;
+                    var slikaUrl = responseMessage2.Headers.GetValues("image-url").ElementAt(0);
+                    p.SlikaUrl = slikaUrl;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 
                 HttpResponseMessage responseMessage = putProizvod.PutResponse(p.Id,p);
                 if (responseMessage.IsSuccessStatusCode)

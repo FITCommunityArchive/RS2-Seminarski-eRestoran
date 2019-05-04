@@ -117,9 +117,9 @@ namespace FastFoodDemo
                         proizvod.SlikaUrl = slikaUrl;
                         putProizvod.PutResponse(proizvod.Id, proizvod);
                     }
-                    catch (Exception eee)
+                    catch (Exception ex)
                     {
-                        var xxx = eee.Message;
+                        MessageBox.Show(ex.Message);
                     }
 
                     TipProizvodacomboBox.ResetText();
@@ -156,7 +156,7 @@ namespace FastFoodDemo
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
             HttpClient client = new HttpClient();
             List<PonudaVM.PonudaInfo> pica;
-            client.BaseAddress = new Uri("https://erestoranapi20180630082851.azurewebsites.net/");
+            client.BaseAddress = new Uri(Resources.apiUrlDevelopment);
             HttpResponseMessage response = client.GetAsync("api/PonudaAdministrator/GetPica").Result;
             if (response.IsSuccessStatusCode)
             {

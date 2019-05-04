@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FastFoodDemo;
-using eRestoran.Client;
-using System.IO;
+﻿using eRestoran.Client.Properties;
 using eRestoran.PCL.VM;
+using FastFoodDemo;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Windows.Forms;
 
 namespace FirstUserControlUsage
 {
@@ -23,7 +19,7 @@ namespace FirstUserControlUsage
         public CartItem()
         {
             InitializeComponent();
-          
+
         }
 
         public CartItem(CartRow viewModel) : this()
@@ -38,12 +34,20 @@ namespace FirstUserControlUsage
             txtCijena.Text = ViewModel.Cijena.ToString() + "KM ";
             //kolicina = ((Form1)this.ParentForm).CartRowExists(ViewModel.Id);
             kolicina = ViewModel.Kolicina;
-            txtCijena.Text = ViewModel.Cijena+ "KM ";
+            txtCijena.Text = ViewModel.Cijena + "KM ";
             lblKolicina.Text = kolicina.ToString();
 
             if (ViewModel.Imageurl != null)
             {
-                pictureBox1.Image = new Bitmap(Image.FromFile(ViewModel.Imageurl), new Size(120, 100));
+                var sUrl = Resources.apiUrlDevelopment + ViewModel.Imageurl;
+                WebRequest req = WebRequest.Create(sUrl);
+
+                WebResponse res = req.GetResponse();
+
+                Stream imgStream = res.GetResponseStream();
+
+                pictureBox1.Image = new Bitmap(Image.FromStream(imgStream), new Size(120, 100));
+                imgStream.Close();
             }
             else
             {
@@ -66,7 +70,7 @@ namespace FirstUserControlUsage
             lblKolicina.Text = kolicina.ToString();
             DodajUKorpu();
         }
-       
+
         public bool DodajUKorpu()
         {
             if (ViewModel.Id != null)
@@ -107,12 +111,12 @@ namespace FirstUserControlUsage
 
         private void btnDodajStavku_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-       
+
     }
-   
+
 
 
 }
