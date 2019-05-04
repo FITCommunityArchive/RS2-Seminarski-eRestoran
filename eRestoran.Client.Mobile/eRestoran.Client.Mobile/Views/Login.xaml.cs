@@ -36,23 +36,21 @@ namespace eRestoran.Client.Mobile.Views
         private async Task ValidateLogin()
         {
             btnLogin.Text = "Logging in...";
-            var x = new MyPage();
-            Application.Current.MainPage = x;
             ViewModel.IsBusy = true;
-           // var isSuccess = await Task.Run(PostLogin);
+            var isSuccess = await Task.Run(PostLogin);
             // do work son
             ViewModel.IsBusy = false;
 
-            //if (isSuccess)
-            //{
-            //    var x = new MyPage();
-            //    Application.Current.MainPage = x;
-            //}
-            //else
-            //{
-            //    btnLogin.Text = "Login";
-            //    await this.DisplayAlert("Info", "Password or email are not valid!", "OK");
-            //}
+            if (isSuccess)
+            {
+                var x = new MyPage();
+                Application.Current.MainPage = x;
+            }
+            else
+            {
+                btnLogin.Text = "Login";
+                await this.DisplayAlert("Info", "Password or email are not valid!", "OK");
+            }
         }
 
         private async Task<bool> PostLogin()

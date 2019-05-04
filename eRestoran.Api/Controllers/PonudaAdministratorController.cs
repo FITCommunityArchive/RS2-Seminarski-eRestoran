@@ -120,6 +120,36 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
             return model;
         }
 
+        [Route("api/ponuda/GetProizvodBySifra/{sifra}")]
+        public PonudaVM.PonudaInfo GetProizvodBySifra(string sifra)
+        {
+
+            PonudaVM.PonudaInfo model = new PonudaVM.PonudaInfo();
+            var pice = ctx.Proizvodi.FirstOrDefault(x => x.TipProizvoda.Naziv == "Pica" && x.Sifra.Equals(sifra, System.StringComparison.InvariantCultureIgnoreCase));
+            var jelo = ctx.Jelo.FirstOrDefault(x => x.Sifra.Equals(sifra, System.StringComparison.InvariantCultureIgnoreCase));
+            if (pice != null)
+            {
+                model.Id = pice.Id;
+                model.Kategorija = pice.TipProizvoda.Naziv;
+                model.Cijena = pice.Cijena;
+                model.Kolicina = pice.Kolicina;
+                model.Naziv = pice.Naziv;
+                model.KolicinaString = pice.Kolicina.ToString();
+            }
+            else if (jelo != null)
+            {
+                var nemaSastojaka = jelo.JelaStavke.Any(x => x.Proizvod.Kolicina == 0);
+                model.Id = jelo.Id;
+                model.Kategorija = jelo.Naziv;
+                model.Cijena = jelo.Cijena;
+                model.Kolicina = nemaSastojaka ? 0 : 1;
+                model.Naziv = jelo.Naziv;
+                model.KolicinaString = nemaSastojaka ? "Nema na stanju" : "Ima na stanju";
+            }
+
+            return model;
+        }
+
         public List<KriticneZalihe> GetKriticneZalihe()
         {
 

@@ -25,8 +25,8 @@ namespace eRestoran.Client.Mobile.Views
 
         }
 
-        private async Task<bool> getStavka(string id) {
-            var apiUrl = "api/PonudaAdministrator/GetPice/" + id;
+        private async Task<bool> getStavka(string sifra) {
+            var apiUrl = "api/ponuda/GetProizvodBySifra/" + sifra;
             WebAPIHelper helperPica = new WebAPIHelper(apiUrl);
 
             var response = helperPica.GetResponse();
