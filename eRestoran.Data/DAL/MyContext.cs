@@ -31,6 +31,7 @@ namespace eRestoran.Data.DAL
         public DbSet<ObracunskiMjesec> ObracunskiMjesec { get; set; }
         public DbSet<Klijent> Klijenti { get; set; }
         public DbSet<Zaposlenik> Zaposlenici { get; set; }
+        public DbSet<Promocija> Promocije { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

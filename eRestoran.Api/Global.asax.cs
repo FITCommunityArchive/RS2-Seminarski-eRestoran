@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
-using System.Web.Http;
 
 namespace eRestoran.Api
 {
@@ -23,6 +19,10 @@ namespace eRestoran.Api
             System.IO.Directory.CreateDirectory(Server.MapPath("/images"));
             var config = GlobalConfiguration.Configuration;
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+           
+            var sched = new eRestoran.Api.Infrastructure.JobScheduler();
+            sched.start();
+
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

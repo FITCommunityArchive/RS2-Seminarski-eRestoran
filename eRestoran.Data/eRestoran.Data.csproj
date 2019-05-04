@@ -48,9 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\MyContext.cs" />
-    <Compile Include="Migrations\201805312120501_Dodan IsDeleted to rezervacije.cs" />
-    <Compile Include="Migrations\201805312120501_Dodan IsDeleted to rezervacije.Designer.cs">
-      <DependentUpon>201805312120501_Dodan IsDeleted to rezervacije.cs</DependentUpon>
+    <Compile Include="Migrations\201905041613176_Added-Promocije.cs" />
+    <Compile Include="Migrations\201905041613176_Added-Promocije.Designer.cs">
+      <DependentUpon>201905041613176_Added-Promocije.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HistorijaCijenaJela.cs" />
@@ -64,6 +64,7 @@
     <Compile Include="Models\NarudzbaStavke.cs" />
     <Compile Include="Models\ObracunskiMjesec.cs" />
     <Compile Include="Models\Proizvod.cs" />
+    <Compile Include="Models\Promocija.cs" />
     <Compile Include="Models\RadnoVrijeme.cs" />
     <Compile Include="Models\Rezervacija.cs" />
     <Compile Include="Models\Skladiste.cs" />
@@ -78,12 +79,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805312120501_Dodan IsDeleted to rezervacije.resx">
-      <DependentUpon>201805312120501_Dodan IsDeleted to rezervacije.cs</DependentUpon>
-    </EmbeddedResource>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <EmbeddedResource Include="Migrations\201905041613176_Added-Promocije.resx">
+      <DependentUpon>201905041613176_Added-Promocije.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

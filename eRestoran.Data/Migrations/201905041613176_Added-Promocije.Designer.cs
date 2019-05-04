@@ -7,13 +7,13 @@ namespace eRestoran.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DodanIsDeletedtorezervacije : IMigrationMetadata
+    public sealed partial class AddedPromocije : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DodanIsDeletedtorezervacije));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedPromocije));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805312120501_Dodan IsDeleted to rezervacije"; }
+            get { return "201905041613176_Added-Promocije"; }
         }
         
         string IMigrationMetadata.Source
