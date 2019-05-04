@@ -19,33 +19,65 @@
                           FontSize="25" 
                           HorizontalTextAlignment="Center"
                           VerticalTextAlignment="Center"/>
+              
+              <StackLayout Orientation="Horizontal" x:Name="kategorijaRow"  Padding="15,10,0,0" Margin="0,0,15,0">
+                <Label HeightRequest="40" Text="Kategorija" VerticalTextAlignment="Center"
+                     HorizontalOptions="FillAndExpand">
+                </Label>
 
+                <Entry HeightRequest="40" x:Name="kategorija"
+                              HorizontalOptions="FillAndExpand" IsEnabled="false" Text="----">
+                </Entry>
+              </StackLayout>
+
+              <StackLayout Orientation="Horizontal" x:Name="staraCijenaRow"  Padding="15,10,0,0" Margin="0,0,15,0">
+                <Label HeightRequest="40" Text="Stara cijena" VerticalTextAlignment="Center"
+                     HorizontalOptions="FillAndExpand">
+                </Label>
+
+                <Entry HeightRequest="40" x:Name="staraCijena"
+                              HorizontalOptions="FillAndExpand" IsEnabled="false" Text="----">
+                </Entry>
+              </StackLayout>
+
+             
+              
+                <!--Sifra-->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
-                    <Label HeightRequest="40" Text="Cijena " VerticalTextAlignment="Center"
+                    <Label HeightRequest="40" Text="Šifra proizvoda " VerticalTextAlignment="Center"
                          HorizontalOptions="FillAndExpand">
 
                     </Label>
 
-                    <Entry HeightRequest="40" 
+                    <Entry HeightRequest="40" x:Name="sifra"
                                   HorizontalOptions="FillAndExpand"
-                                 Placeholder="Ime">
+                                 Placeholder="Šifra proizvoda ">
 
                     </Entry>
                 </StackLayout>
-                <!--ime-->
-                <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
-                    <Label HeightRequest="40" Text="Promotivna cijena " VerticalTextAlignment="Center"
-                         HorizontalOptions="FillAndExpand">
+              <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                <Button Margin="10,10,10,0"
+                        HeightRequest="40"
+                        TextColor="White"
+                        Text="Pronađi stavku"
+                        BackgroundColor="Gray"
+                         x:Name="btnSearch"
+                        HorizontalOptions="FillAndExpand"/>
+              </StackLayout>
 
-                    </Label>
+              <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
+                <Label HeightRequest="40" Text="Promotivna cijena" VerticalTextAlignment="Center"
+                     HorizontalOptions="FillAndExpand">
 
-                    <Entry HeightRequest="40" 
-                                  HorizontalOptions="FillAndExpand"
-                                 Placeholder="Promotivna cijena">
+                </Label>
 
-                    </Entry>
-                </StackLayout>
-                <!--emails-->
+                <Entry HeightRequest="40"
+                              HorizontalOptions="FillAndExpand"
+                             Placeholder="Promotivna cijena">
+                </Entry>
+              </StackLayout>
+              
+                <!--Datum od-->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                     <Label HeightRequest="40" Text="Datum od " VerticalTextAlignment="Center"
                          HorizontalOptions="FillAndExpand">
@@ -54,7 +86,7 @@
                     <DatePicker x:Name="StartDatePicker" Format="dd-MM-YYYY" />
 
                 </StackLayout>
-                <!--Username-->
+                <!--Datum do-->
                 <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                     <Label HeightRequest="40" Text="Datum do " VerticalTextAlignment="Center"
                          HorizontalOptions="FillAndExpand">
