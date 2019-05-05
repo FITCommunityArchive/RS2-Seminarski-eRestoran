@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json;
-using eData = eRestoran.Data.Models;
+using eData = eRestoran.PCL.VM;
 using eRestoran.Client.Mobile.ViewModels;
 
 namespace eRestoran.Client.Mobile.Views
@@ -70,9 +70,9 @@ namespace eRestoran.Client.Mobile.Views
 
         private async Task<bool> postPromotion()
         {
-            var promocijeService = new WebAPIHelper("api/promocija");
+            var promocijeService = new WebAPIHelper("api/promocija/promovisi");
             if (stavkaId != 0 && double.TryParse(promotivnaCijena.Text, out double cijena)) {
-                var promocija = new eData.Promocija()
+                var promocija = new eData.PromocijaVM()
                 {
                     DatumOd = StartDatePicker.Date,
                     DatumDo = EndDatePicker.Date,

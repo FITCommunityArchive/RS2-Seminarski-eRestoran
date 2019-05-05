@@ -18,6 +18,15 @@ namespace eRestoran.Api.Infrastructure
                                                        && x.DatumDo.Month == DateTime.Now.Month && x.DatumDo.Year == DateTime.Now.Year);
             var endingPromotionsJela = db.Promocije.Where(x => x.JeloId.HasValue && x.DatumDo.Day == DateTime.Now.Day
                                                        && x.DatumDo.Month == DateTime.Now.Month && x.DatumDo.Year == DateTime.Now.Year);
+            endingPromotionsPica.ToList().ForEach(x =>
+            {
+                x.Proizvod.Cijena = x.StaraCijena;
+            });
+
+            endingPromotionsJela.ToList().ForEach(x =>
+            {
+                x.Jelo.Cijena = x.StaraCijena;
+            });
 
             startingPromotionsPica.ToList().ForEach(x =>
             {
@@ -31,18 +40,8 @@ namespace eRestoran.Api.Infrastructure
                 x.Jelo.Cijena = x.PromotivnaCijena;
             });
 
-            endingPromotionsPica.ToList().ForEach(x =>
-            {
-                x.Proizvod.Cijena = x.StaraCijena;
-            });
-
-            endingPromotionsJela.ToList().ForEach(x =>
-            {
-                x.Jelo.Cijena = x.StaraCijena;
-            });
 
             db.SaveChanges();
-            db.Dispose();
 
             return;
         }

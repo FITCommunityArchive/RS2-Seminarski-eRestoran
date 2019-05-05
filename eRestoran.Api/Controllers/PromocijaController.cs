@@ -1,6 +1,7 @@
 ﻿using eRestoran.Api.Infrastructure;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
+using eRestoran.PCL.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,23 +21,36 @@ namespace eRestoran.Api.Controllers
 
         // POST: api/Skladiste
         [ResponseType(typeof(Promocija))]
-        public IHttpActionResult PostPromocija(Promocija promocija)
+        [HttpPost]
+        [Route("api/promocija/promovisi", Name = "PromovisiProizvod")]
+        public IHttpActionResult PostPromocija(PromocijaVM model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
-            }
+                var promocija = new Promocija()
+                {
+                    DatumDo = model.DatumDo,
+                    DatumOd = model.DatumOd,
+                    PromotivnaCijena = model.PromotivnaCijena,
+                    JeloId = model.JeloId,
+                    ProizvodId = model.ProizvodId
+                };
 
-            if (promocija.DatumOd.Date == DateTime.Now.Date)
+                db.Promocije.Add(promocija);
+                db.SaveChanges();
+
+                if (promocija.DatumOd.Date == DateTime.Now.Date)
+                {
+                    var promotionsService = new PromotionsService();
+                    promotionsService.CheckPromotions();
+                }
+
+                return CreatedAtRoute("PromovisiProizvod", new { Id = promocija.Id }, promocija);
+            }
+            catch(Exception e)
             {
-                var promotionsService = new PromotionsService();
-                promotionsService.CheckPromotions();
+                return CreatedAtRoute("DefaultApi", new { mess = e.Message }, new Promocija());
             }
-
-            db.Promocije.Add(promocija);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = promocija.Id }, promocija);
         }
 
 
