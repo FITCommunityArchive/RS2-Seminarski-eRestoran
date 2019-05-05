@@ -83,6 +83,7 @@
 
                 <Entry HeightRequest="40"
                               HorizontalOptions="FillAndExpand"
+                              x:Name="promotivnaCijena"
                              Placeholder="Promotivna cijena">
                 </Entry>
               </StackLayout>
@@ -110,7 +111,8 @@
                 <Button Margin="10,10,10,0" 
                          HeightRequest="40" 
                          TextColor="White" 
-                         Text="Snimi"  
+                         Text="Snimi"
+                         x:Name="btnAddPromotion"
                          BackgroundColor="Gray"
                          HorizontalOptions="FillAndExpand"/>
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace eRestoran.Client.Mobile.ViewModels
 {
@@ -17,6 +15,7 @@ namespace eRestoran.Client.Mobile.ViewModels
             public int Kolicina { get; set; }
             public string KolicinaString { get; set; }
             public int? ProdataKolicina { get; set; }
+            public bool IsJelo { get; set; }
         }
         public List<PonudaInfo> Ponuda { get; set; }
         public List<PonudaInfo> Pica { get; set; }

@@ -152,6 +152,7 @@
     <Compile Include="Controllers\NarudzbaController.cs" />
     <Compile Include="Controllers\PonudaAdministratorController.cs" />
     <Compile Include="Controllers\ProizvodiController.cs" />
+    <Compile Include="Controllers\PromocijaController.cs" />
     <Compile Include="Controllers\SkladisteController.cs" />
     <Compile Include="Controllers\StoloviController.cs" />
     <Compile Include="Controllers\TipProizvodasController.cs" />
@@ -166,6 +167,8 @@
     <Compile Include="Helper\CryptoHelper.cs" />
     <Compile Include="Helper\JwtManager.cs" />
     <Compile Include="Infrastructure\JobScheduler.cs" />
+    <Compile Include="Infrastructure\PromotionsJob.cs" />
+    <Compile Include="Infrastructure\PromotionsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
