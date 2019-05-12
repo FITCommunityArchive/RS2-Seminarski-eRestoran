@@ -17,32 +17,39 @@ namespace eRestoran.Client.Mobile.Views
     {
         private bool isJelo = false;
         private int stavkaId = 0;
+        private double cijena = double.MinValue;
         //WebAPIHelper helperPica = new WebAPIHelper("api/PonudaAdministrator/GetPice/");
 
         public Promocija()
         {
+            var today = DateTime.Now.Date;
             InitializeComponent();
             staraCijenaRow.IsVisible = false;
             kategorijaRow.IsVisible = false;
             nazivRow.IsVisible = false;
             btnSearch.Clicked += async (sender, e) => await getStavka(sifra.Text);
             btnAddPromotion.Clicked += async (sender, e) => await postPromotion();
-
+            
+            StartDatePicker.Date = today;
+            StartDatePicker.MinimumDate = today;
+            EndDatePicker.Date = today.AddDays(1);
+            EndDatePicker.MinimumDate = today.AddDays(1);
         }
 
         private async Task<bool> getStavka(string sifra)
         {
             var apiUrl = "api/ponuda/GetProizvodBySifra/" + sifra;
-            WebAPIHelper helperPica = new WebAPIHelper(apiUrl);
+            WebAPIHelper helper = new WebAPIHelper(apiUrl);
 
-            var response = helperPica.GetResponse();
+            var response = helper.GetResponse();
             if (response.IsSuccessStatusCode)
             {
                 var content = response.Content.ReadAsStringAsync().Result;
                 var item = JsonConvert.DeserializeObject<PonudaVM.PonudaInfo>(content);
-                if (item != null)
+                if (item.Id.HasValue)
                 {
                     staraCijena.Text = item.Cijena.ToString() + " KM";
+                    cijena = item.Cijena;
                     kategorija.Text = item.Kategorija;
                     nazivProizvoda.Text = item.Naziv;
                     isJelo = item.IsJelo;
@@ -50,13 +57,17 @@ namespace eRestoran.Client.Mobile.Views
                     staraCijenaRow.IsVisible = true;
                     kategorijaRow.IsVisible = true;
                     nazivRow.IsVisible = true;
-                    this.DisplayAlert("Info", "Trazena stavka je pronađena", "OK");
+                    addons.IsVisible = true;
+                    await this.DisplayAlert("Info", "Trazena stavka je pronađena", "OK");
+
                     return true;
                 }
-                this.DisplayAlert("Info", "Trazena stavka ne postoji", "OK");
+
+                await this.DisplayAlert("Info", "Trazena stavka ne postoji", "OK");
                 staraCijenaRow.IsVisible = false;
                 kategorijaRow.IsVisible = false;
                 nazivRow.IsVisible = false;
+
                 return false;
             }
             else
@@ -64,6 +75,7 @@ namespace eRestoran.Client.Mobile.Views
                 staraCijenaRow.IsVisible = false;
                 kategorijaRow.IsVisible = false;
                 nazivRow.IsVisible = false;
+
                 return false;
             }
         }
@@ -71,12 +83,13 @@ namespace eRestoran.Client.Mobile.Views
         private async Task<bool> postPromotion()
         {
             var promocijeService = new WebAPIHelper("api/promocija/promovisi");
-            if (stavkaId != 0 && double.TryParse(promotivnaCijena.Text, out double cijena)) {
+            if (stavkaId != 0 && double.TryParse(promotivnaCijena.Text, out double novaCijena)) {
                 var promocija = new eData.PromocijaVM()
                 {
-                    DatumOd = StartDatePicker.Date,
-                    DatumDo = EndDatePicker.Date,
-                    PromotivnaCijena = cijena,
+                    DatumOd = DateTime.SpecifyKind(StartDatePicker.Date.Date, DateTimeKind.Utc),
+                    DatumDo = DateTime.SpecifyKind(EndDatePicker.Date.Date, DateTimeKind.Utc),
+                    PromotivnaCijena = novaCijena,
+                    StaraCijena = cijena
                 };
 
                 if (isJelo)
@@ -87,11 +100,11 @@ namespace eRestoran.Client.Mobile.Views
                 var response = await promocijeService.PostResponse(promocija);
                 if (response.IsSuccessStatusCode)
                 {
-                    this.DisplayAlert("Uspjesno", "Proizvod je promovisan", "U redu");
+                    await this.DisplayAlert("Uspjesno", "Proizvod je promovisan", "U redu");
                     return true;
                 }
             }
-            this.DisplayAlert("Neuspjesno", "Izmijenite unesene podatke", "U redu");
+            await this.DisplayAlert("Neuspjesno", "Izmijenite unesene podatke", "U redu");
 
             return false;
         }

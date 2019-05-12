@@ -75,6 +75,7 @@
                         HorizontalOptions="FillAndExpand"/>
               </StackLayout>
 
+            <StackLayout x:Name="addons" Orientation="Vertical" IsVisible="False">
               <StackLayout Orientation="Horizontal"  Padding="15,10,0,0" Margin="0,0,15,0">
                 <Label HeightRequest="40" Text="Promotivna cijena" VerticalTextAlignment="Center"
                      HorizontalOptions="FillAndExpand">
@@ -94,7 +95,7 @@
                          HorizontalOptions="FillAndExpand">
 
                     </Label>
-                    <DatePicker x:Name="StartDatePicker" Format="dd-MM-YYYY" />
+                    <DatePicker x:Name="StartDatePicker"  />
 
                 </StackLayout>
                 <!--Datum do-->
@@ -104,7 +105,7 @@
 
                     </Label>
 
-                    <DatePicker x:Name="EndDatePicker" Format="dd-MM-YYYY" />
+                    <DatePicker x:Name="EndDatePicker"/>
 
                 </StackLayout>
                
@@ -115,7 +116,7 @@
                          x:Name="btnAddPromotion"
                          BackgroundColor="Gray"
                          HorizontalOptions="FillAndExpand"/>
-
+            </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -25,34 +25,38 @@ namespace eRestoran.Api.Controllers
         [Route("api/promocija/promovisi", Name = "PromovisiProizvod")]
         public IHttpActionResult PostPromocija(PromocijaVM model)
         {
-            try
+            if (model.ProizvodId.HasValue)
             {
-                var promocija = new Promocija()
-                {
-                    DatumDo = model.DatumDo,
-                    DatumOd = model.DatumOd,
-                    PromotivnaCijena = model.PromotivnaCijena,
-                    JeloId = model.JeloId,
-                    ProizvodId = model.ProizvodId
-                };
-
-                db.Promocije.Add(promocija);
-                db.SaveChanges();
-
-                if (promocija.DatumOd.Date == DateTime.Now.Date)
-                {
-                    var promotionsService = new PromotionsService();
-                    promotionsService.CheckPromotions();
-                }
-
-                return CreatedAtRoute("PromovisiProizvod", new { Id = promocija.Id }, promocija);
+                var promotionsService = new PromotionsService();
+                promotionsService.endPromotions(proizvodId: model.ProizvodId.Value);
             }
-            catch(Exception e)
+            else
             {
-                return CreatedAtRoute("DefaultApi", new { mess = e.Message }, new Promocija());
+                var promotionsService = new PromotionsService();
+                promotionsService.endPromotions(jeloId: model.JeloId.Value);
             }
+
+            var promocija = new Promocija()
+            {
+                DatumDo = model.DatumDo,
+                DatumOd = model.DatumOd,
+                PromotivnaCijena = model.PromotivnaCijena,
+                JeloId = model.JeloId,
+                ProizvodId = model.ProizvodId,
+                StaraCijena = model.StaraCijena
+            };
+
+            db.Promocije.Add(promocija);
+            db.SaveChanges();
+
+            if (promocija.DatumOd.Date == DateTime.Now.Date)
+            {
+                var promotionsService = new PromotionsService();
+                promotionsService.CheckPromotions();
+            }
+
+            return CreatedAtRoute("PromovisiProizvod", new { Id = promocija.Id }, promocija);
         }
-
 
         protected override void Dispose(bool disposing)
         {
@@ -60,6 +64,7 @@ namespace eRestoran.Api.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }
