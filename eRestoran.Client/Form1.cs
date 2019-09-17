@@ -473,6 +473,11 @@ namespace FastFoodDemo
             AddToControlHistory(kont);
             SetSideMenuPosition((Control)sender);
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
         //korpa viewmodel
     }
 }

@@ -98,6 +98,12 @@
     <Compile Include="DodajstavkuJelu.Designer.cs">
       <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Promocija.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Promocija.Designer.cs">
+      <DependentUpon>Promocija.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DodajstavkuJelu.resx">
       <DependentUpon>DodajstavkuJelu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Promocija.resx">
+      <DependentUpon>Promocija.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
