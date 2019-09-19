@@ -33,7 +33,7 @@ namespace FastFoodDemo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPromocije = new System.Windows.Forms.Button();
             this.digitalClock1 = new eRestoran.Client.DigitalClock();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.btnIzvjestaji = new System.Windows.Forms.Button();
@@ -58,7 +58,7 @@ namespace FastFoodDemo
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(39)))), ((int)(((byte)(40)))));
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnPromocije);
             this.panel1.Controls.Add(this.digitalClock1);
             this.panel1.Controls.Add(this.SidePanel);
             this.panel1.Controls.Add(this.btnIzvjestaji);
@@ -73,23 +73,23 @@ namespace FastFoodDemo
             this.panel1.Size = new System.Drawing.Size(209, 687);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // btnPromocije
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(10, 383);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 54);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "       Promocije";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.btnPromocije.FlatAppearance.BorderSize = 0;
+            this.btnPromocije.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPromocije.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPromocije.ForeColor = System.Drawing.Color.White;
+            this.btnPromocije.Image = ((System.Drawing.Image)(resources.GetObject("btnPromocije.Image")));
+            this.btnPromocije.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPromocije.Location = new System.Drawing.Point(10, 383);
+            this.btnPromocije.Name = "btnPromocije";
+            this.btnPromocije.Size = new System.Drawing.Size(197, 54);
+            this.btnPromocije.TabIndex = 13;
+            this.btnPromocije.Text = "       Promocije";
+            this.btnPromocije.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPromocije.UseVisualStyleBackColor = true;
+            this.btnPromocije.Visible = false;
+            this.btnPromocije.Click += new System.EventHandler(this.Button1_Click);
             // 
             // digitalClock1
             // 
@@ -372,7 +372,7 @@ namespace FastFoodDemo
         private System.Windows.Forms.Button cartButton;
         private DigitalClock digitalClock1;
         private System.Windows.Forms.Button btnOdaberiSto;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPromocije;
     }
 }
 

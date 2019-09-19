@@ -29,37 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ImeLabel = new System.Windows.Forms.Label();
+            this.nazivProizvodaLabel = new System.Windows.Forms.Label();
             this.PrezimeLabel = new System.Windows.Forms.Label();
-            this.UsernameLabel = new System.Windows.Forms.Label();
-            this.DatumRodjenjaLabel = new System.Windows.Forms.Label();
+            this.staraCijenaLabel = new System.Windows.Forms.Label();
+            this.datumOdLabel = new System.Windows.Forms.Label();
             this.sifraTextBox = new System.Windows.Forms.TextBox();
             this.nazivProizvodaTextBox = new System.Windows.Forms.TextBox();
             this.staraCijenaTextBox = new System.Windows.Forms.TextBox();
-            this.datumOd = new System.Windows.Forms.DateTimePicker();
+            this.datumOdDate = new System.Windows.Forms.DateTimePicker();
             this.snimiPromocijuBtn = new System.Windows.Forms.Button();
             this.NaslovLabel = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.promocijeCijenaTextBox = new System.Windows.Forms.TextBox();
-            this.PasswordLabel = new System.Windows.Forms.Label();
-            this.backButton1 = new eRestoran.Client.BackButton();
+            this.promotivnaLabel = new System.Windows.Forms.Label();
             this.searchArtikal = new System.Windows.Forms.Button();
-            this.datumDo = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.datumDoDate = new System.Windows.Forms.DateTimePicker();
+            this.datumDoLabel = new System.Windows.Forms.Label();
             this.slikaArtiklaPromocija = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slikaArtiklaPromocija)).BeginInit();
             this.SuspendLayout();
             // 
-            // ImeLabel
+            // nazivProizvodaLabel
             // 
-            this.ImeLabel.AutoSize = true;
-            this.ImeLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.ImeLabel.Location = new System.Drawing.Point(53, 128);
-            this.ImeLabel.Name = "ImeLabel";
-            this.ImeLabel.Size = new System.Drawing.Size(123, 18);
-            this.ImeLabel.TabIndex = 0;
-            this.ImeLabel.Text = "Naziv proizvoda";
+            this.nazivProizvodaLabel.AutoSize = true;
+            this.nazivProizvodaLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.nazivProizvodaLabel.Location = new System.Drawing.Point(53, 131);
+            this.nazivProizvodaLabel.Name = "nazivProizvodaLabel";
+            this.nazivProizvodaLabel.Size = new System.Drawing.Size(123, 18);
+            this.nazivProizvodaLabel.TabIndex = 0;
+            this.nazivProizvodaLabel.Text = "Naziv proizvoda";
+            this.nazivProizvodaLabel.Visible = false;
             // 
             // PrezimeLabel
             // 
@@ -71,25 +71,27 @@
             this.PrezimeLabel.TabIndex = 1;
             this.PrezimeLabel.Text = "Sifra proizvoda";
             // 
-            // UsernameLabel
+            // staraCijenaLabel
             // 
-            this.UsernameLabel.AutoSize = true;
-            this.UsernameLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.UsernameLabel.Location = new System.Drawing.Point(52, 172);
-            this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(91, 18);
-            this.UsernameLabel.TabIndex = 2;
-            this.UsernameLabel.Text = "Stara cijena";
+            this.staraCijenaLabel.AutoSize = true;
+            this.staraCijenaLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.staraCijenaLabel.Location = new System.Drawing.Point(52, 175);
+            this.staraCijenaLabel.Name = "staraCijenaLabel";
+            this.staraCijenaLabel.Size = new System.Drawing.Size(91, 18);
+            this.staraCijenaLabel.TabIndex = 2;
+            this.staraCijenaLabel.Text = "Stara cijena";
+            this.staraCijenaLabel.Visible = false;
             // 
-            // DatumRodjenjaLabel
+            // datumOdLabel
             // 
-            this.DatumRodjenjaLabel.AutoSize = true;
-            this.DatumRodjenjaLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.DatumRodjenjaLabel.Location = new System.Drawing.Point(54, 256);
-            this.DatumRodjenjaLabel.Name = "DatumRodjenjaLabel";
-            this.DatumRodjenjaLabel.Size = new System.Drawing.Size(75, 18);
-            this.DatumRodjenjaLabel.TabIndex = 4;
-            this.DatumRodjenjaLabel.Text = "Datum od";
+            this.datumOdLabel.AutoSize = true;
+            this.datumOdLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.datumOdLabel.Location = new System.Drawing.Point(53, 260);
+            this.datumOdLabel.Name = "datumOdLabel";
+            this.datumOdLabel.Size = new System.Drawing.Size(75, 18);
+            this.datumOdLabel.TabIndex = 4;
+            this.datumOdLabel.Text = "Datum od";
+            this.datumOdLabel.Visible = false;
             // 
             // sifraTextBox
             // 
@@ -101,27 +103,30 @@
             // 
             // nazivProizvodaTextBox
             // 
-            this.nazivProizvodaTextBox.Location = new System.Drawing.Point(201, 127);
+            this.nazivProizvodaTextBox.Location = new System.Drawing.Point(201, 130);
             this.nazivProizvodaTextBox.Name = "nazivProizvodaTextBox";
             this.nazivProizvodaTextBox.Size = new System.Drawing.Size(220, 20);
             this.nazivProizvodaTextBox.TabIndex = 8;
+            this.nazivProizvodaTextBox.Visible = false;
             this.nazivProizvodaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeTextBox_Validating);
             // 
             // staraCijenaTextBox
             // 
-            this.staraCijenaTextBox.Location = new System.Drawing.Point(202, 171);
+            this.staraCijenaTextBox.Location = new System.Drawing.Point(202, 174);
             this.staraCijenaTextBox.Name = "staraCijenaTextBox";
             this.staraCijenaTextBox.Size = new System.Drawing.Size(220, 20);
             this.staraCijenaTextBox.TabIndex = 9;
+            this.staraCijenaTextBox.Visible = false;
             this.staraCijenaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.usernamaTextBox_Validating);
             // 
-            // datumOd
+            // datumOdDate
             // 
-            this.datumOd.Location = new System.Drawing.Point(201, 257);
-            this.datumOd.Name = "datumOd";
-            this.datumOd.Size = new System.Drawing.Size(220, 20);
-            this.datumOd.TabIndex = 12;
-            this.datumOd.Validating += new System.ComponentModel.CancelEventHandler(this.datumRodjenjaDateTimePicker_Validating);
+            this.datumOdDate.Location = new System.Drawing.Point(201, 261);
+            this.datumOdDate.Name = "datumOdDate";
+            this.datumOdDate.Size = new System.Drawing.Size(220, 20);
+            this.datumOdDate.TabIndex = 12;
+            this.datumOdDate.Visible = false;
+            this.datumOdDate.Validating += new System.ComponentModel.CancelEventHandler(this.datumRodjenjaDateTimePicker_Validating);
             // 
             // snimiPromocijuBtn
             // 
@@ -140,7 +145,7 @@
             // 
             this.NaslovLabel.AutoSize = true;
             this.NaslovLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.NaslovLabel.Location = new System.Drawing.Point(215, 16);
+            this.NaslovLabel.Location = new System.Drawing.Point(57, 16);
             this.NaslovLabel.Name = "NaslovLabel";
             this.NaslovLabel.Size = new System.Drawing.Size(252, 29);
             this.NaslovLabel.TabIndex = 45;
@@ -152,29 +157,24 @@
             // 
             // promocijeCijenaTextBox
             // 
-            this.promocijeCijenaTextBox.Location = new System.Drawing.Point(202, 214);
+            this.promocijeCijenaTextBox.Location = new System.Drawing.Point(202, 218);
             this.promocijeCijenaTextBox.Name = "promocijeCijenaTextBox";
             this.promocijeCijenaTextBox.PasswordChar = '*';
             this.promocijeCijenaTextBox.Size = new System.Drawing.Size(220, 20);
             this.promocijeCijenaTextBox.TabIndex = 10;
+            this.promocijeCijenaTextBox.Visible = false;
             this.promocijeCijenaTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.passwordTextBox_Validating);
             // 
-            // PasswordLabel
+            // promotivnaLabel
             // 
-            this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.PasswordLabel.Location = new System.Drawing.Point(53, 216);
-            this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(135, 18);
-            this.PasswordLabel.TabIndex = 3;
-            this.PasswordLabel.Text = "Promotivna cijena";
-            // 
-            // backButton1
-            // 
-            this.backButton1.Location = new System.Drawing.Point(114, 16);
-            this.backButton1.Name = "backButton1";
-            this.backButton1.Size = new System.Drawing.Size(62, 29);
-            this.backButton1.TabIndex = 59;
+            this.promotivnaLabel.AutoSize = true;
+            this.promotivnaLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.promotivnaLabel.Location = new System.Drawing.Point(53, 219);
+            this.promotivnaLabel.Name = "promotivnaLabel";
+            this.promotivnaLabel.Size = new System.Drawing.Size(135, 18);
+            this.promotivnaLabel.TabIndex = 3;
+            this.promotivnaLabel.Text = "Promotivna cijena";
+            this.promotivnaLabel.Visible = false;
             // 
             // searchArtikal
             // 
@@ -187,53 +187,56 @@
             this.searchArtikal.TabIndex = 60;
             this.searchArtikal.Text = "Trazi proizvod";
             this.searchArtikal.UseVisualStyleBackColor = false;
+            this.searchArtikal.Click += new System.EventHandler(this.SearchArtikal_Click);
             // 
-            // datumDo
+            // datumDoDate
             // 
-            this.datumDo.Location = new System.Drawing.Point(202, 297);
-            this.datumDo.Name = "datumDo";
-            this.datumDo.Size = new System.Drawing.Size(220, 20);
-            this.datumDo.TabIndex = 62;
+            this.datumDoDate.Location = new System.Drawing.Point(202, 303);
+            this.datumDoDate.Name = "datumDoDate";
+            this.datumDoDate.Size = new System.Drawing.Size(220, 20);
+            this.datumDoDate.TabIndex = 62;
+            this.datumDoDate.Visible = false;
             // 
-            // label1
+            // datumDoLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(55, 297);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 18);
-            this.label1.TabIndex = 61;
-            this.label1.Text = "Datum do";
+            this.datumDoLabel.AutoSize = true;
+            this.datumDoLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold);
+            this.datumDoLabel.Location = new System.Drawing.Point(55, 305);
+            this.datumDoLabel.Name = "datumDoLabel";
+            this.datumDoLabel.Size = new System.Drawing.Size(75, 18);
+            this.datumDoLabel.TabIndex = 61;
+            this.datumDoLabel.Text = "Datum do";
+            this.datumDoLabel.Visible = false;
             // 
             // slikaArtiklaPromocija
             // 
-            this.slikaArtiklaPromocija.Location = new System.Drawing.Point(491, 117);
+            this.slikaArtiklaPromocija.Location = new System.Drawing.Point(491, 127);
             this.slikaArtiklaPromocija.Name = "slikaArtiklaPromocija";
             this.slikaArtiklaPromocija.Size = new System.Drawing.Size(227, 198);
             this.slikaArtiklaPromocija.TabIndex = 63;
             this.slikaArtiklaPromocija.TabStop = false;
+            this.slikaArtiklaPromocija.Visible = false;
             // 
             // Promocija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.slikaArtiklaPromocija);
-            this.Controls.Add(this.datumDo);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.datumDoDate);
+            this.Controls.Add(this.datumDoLabel);
             this.Controls.Add(this.searchArtikal);
-            this.Controls.Add(this.backButton1);
             this.Controls.Add(this.NaslovLabel);
             this.Controls.Add(this.snimiPromocijuBtn);
-            this.Controls.Add(this.datumOd);
+            this.Controls.Add(this.datumOdDate);
             this.Controls.Add(this.promocijeCijenaTextBox);
             this.Controls.Add(this.staraCijenaTextBox);
             this.Controls.Add(this.nazivProizvodaTextBox);
             this.Controls.Add(this.sifraTextBox);
-            this.Controls.Add(this.DatumRodjenjaLabel);
-            this.Controls.Add(this.PasswordLabel);
-            this.Controls.Add(this.UsernameLabel);
+            this.Controls.Add(this.datumOdLabel);
+            this.Controls.Add(this.promotivnaLabel);
+            this.Controls.Add(this.staraCijenaLabel);
             this.Controls.Add(this.PrezimeLabel);
-            this.Controls.Add(this.ImeLabel);
+            this.Controls.Add(this.nazivProizvodaLabel);
             this.Name = "Promocija";
             this.Size = new System.Drawing.Size(794, 447);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
@@ -245,22 +248,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Label ImeLabel;
+        private System.Windows.Forms.Label nazivProizvodaLabel;
         private System.Windows.Forms.Label PrezimeLabel;
-        private System.Windows.Forms.Label UsernameLabel;
-        private System.Windows.Forms.Label DatumRodjenjaLabel;
+        private System.Windows.Forms.Label staraCijenaLabel;
+        private System.Windows.Forms.Label datumOdLabel;
         private System.Windows.Forms.TextBox sifraTextBox;
         private System.Windows.Forms.TextBox nazivProizvodaTextBox;
         private System.Windows.Forms.TextBox staraCijenaTextBox;
-        private System.Windows.Forms.DateTimePicker datumOd;
+        private System.Windows.Forms.DateTimePicker datumOdDate;
         private System.Windows.Forms.Button snimiPromocijuBtn;
         private System.Windows.Forms.Label NaslovLabel;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.TextBox promocijeCijenaTextBox;
-        private System.Windows.Forms.Label PasswordLabel;
-        private BackButton backButton1;
-        private System.Windows.Forms.DateTimePicker datumDo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label promotivnaLabel;
+        private System.Windows.Forms.DateTimePicker datumDoDate;
+        private System.Windows.Forms.Label datumDoLabel;
         private System.Windows.Forms.Button searchArtikal;
         private System.Windows.Forms.PictureBox slikaArtiklaPromocija;
     }

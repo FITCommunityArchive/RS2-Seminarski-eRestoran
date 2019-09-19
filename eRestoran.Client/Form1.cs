@@ -60,6 +60,8 @@ namespace FastFoodDemo
                 btnMenu.Visible = true;
                 btnNalozi.Visible = true;
                 btnPonuda.Visible = true;
+                btnIzvjestaji.Visible = true;
+                btnPromocije.Visible = true;
             }
                 
         }
@@ -476,7 +478,10 @@ namespace FastFoodDemo
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            var kont = new eRestoran.Client.Promocija();
+            DodajKontrolu(kont);
+            AddToControlHistory(kont);
+            SetSideMenuPosition((Control)sender);
         }
         //korpa viewmodel
     }
