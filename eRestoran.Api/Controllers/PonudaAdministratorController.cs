@@ -136,6 +136,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 model.Naziv = pice.Naziv;
                 model.KolicinaString = pice.Kolicina.ToString();
                 model.IsJelo = false;
+                model.imageUrl = pice.SlikaUrl;
             }
             else if (jelo != null)
             {
@@ -147,6 +148,7 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 model.Naziv = jelo.Naziv;
                 model.KolicinaString = nemaSastojaka ? "Nema na stanju" : "Ima na stanju";
                 model.IsJelo = true;
+                model.imageUrl = jelo.SlikaUrl;
             }
 
             return model;

@@ -1,174 +1,22 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 using eRestoran.Client.Shared.Helpers;
-using eRestoran.Data.Models;
 using System.Net.Http;
 using eRestoran.Client.Properties;
-using eRestoran.PCL.VM;
-using FastFoodDemo;
 using Newtonsoft.Json;
 using eRestoran.VM;
-using System.Drawing;
-using System.Net;
-using System.IO;
+using System.Threading.Tasks;
+using eRestoran.PCL.VM;
+using System.ComponentModel;
 
 namespace eRestoran.Client
 {
     public partial class Promocija : UserControl
     {
-        private WebAPIHelper korisnikPostService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Nalog/PostZaposlenik");
-        private WebAPIHelper korisnikPutService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Nalog/PutZaposlenik");
-        private WebAPIHelper getKorisniciService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/Nalog/GetNaloge");
-        private Zaposlenik model = new Zaposlenik();
+        PonudaVM.PonudaInfo item = null;
         public Promocija()
         {
             InitializeComponent();
-            BindComboBoxes();
-        }
-
-        public Promocija(string zaposlenikId)
-        {
-            InitializeComponent();
-            BindComboBoxes();
-            BindZaposlenik(zaposlenikId);
-        }
-
-        private void BindZaposlenik(string zaposlenikId)
-        {
-            HttpResponseMessage responseMessage = getKorisniciService.GetResponse(zaposlenikId);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var zaposlenik = responseMessage.Content.ReadAsAsync<ZaposlenikVM>().Result;
-                datumOdDate.Value = zaposlenik.DatumRodjenja;
-                sifraTextBox.Text = zaposlenik.Ime;
-                nazivProizvodaTextBox.Text = zaposlenik.Prezime;
-                staraCijenaTextBox.Text = zaposlenik.Username;
-                NaslovLabel.Text = "Uredivanje korisnika";
-                promocijeCijenaTextBox.Text = zaposlenik.Password;
-                model.Id = zaposlenik.Id;
-            }
-        }
-
-        private void BindComboBoxes()
-        {
-            var statusi = System.Enum.GetValues(typeof(StatusZaposlenika));
-            var tipoviKorisnika = System.Enum.GetValues(typeof(TipKorisnika)).Cast<TipKorisnika>().ToList();
-            tipoviKorisnika = tipoviKorisnika.Where(x => x != TipKorisnika.Klijent).ToList();
-        }
-
-        private void snimiKorbtn_Click(object sender, EventArgs e)
-        {
-            if (this.ValidateChildren())
-            {
-                if (model.Id != 0)
-                {
-                    model.DatumRodjenja = datumOdDate.Value;
-                    model.Ime = sifraTextBox.Text;
-                    model.Password = promocijeCijenaTextBox.Text;
-                    model.Prezime = nazivProizvodaTextBox.Text;
-                    model.Username = staraCijenaTextBox.Text;
-
-                    HttpResponseMessage responseMessage = korisnikPutService.PutResponse(model.Id, model);
-                    if (responseMessage.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Korisnik uspjesno uređen!");
-                        var korisnickinalozi = new KorisnickiNalozi();
-                        ((Form1)this.ParentForm).DodajKontrolu(korisnickinalozi);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Doslo je do greske!");
-                    }
-                }
-                else
-                {
-                    model = new Zaposlenik()
-                    {
-                        DatumRodjenja = datumOdDate.Value,
-                        Ime = sifraTextBox.Text,
-                        Password = promocijeCijenaTextBox.Text,
-                        Prezime = nazivProizvodaTextBox.Text,
-                        Username = staraCijenaTextBox.Text,
-                    };
-                    HttpResponseMessage responseMessage = korisnikPostService.PostResponse(model);
-                    if (responseMessage.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Korisnik uspjesno dodan!");
-                        var korisnickinalozi = new KorisnickiNalozi();
-                        ((Form1)this.ParentForm).DodajKontrolu(korisnickinalozi);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Doslo je do greske!");
-                    }
-                }
-            }
-            
-        }
-
-        private void imeTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (String.IsNullOrEmpty(sifraTextBox.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(sifraTextBox, Messages.Univerzalno);
-            }
-        }
-
-        private void prezimeTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (String.IsNullOrEmpty(nazivProizvodaTextBox.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(nazivProizvodaTextBox, Messages.Univerzalno);
-            }
-        }
-
-        private void usernamaTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (String.IsNullOrEmpty(staraCijenaTextBox.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(staraCijenaTextBox, Messages.Univerzalno);
-            }
-        }
-
-        private void passwordTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if (String.IsNullOrEmpty(promocijeCijenaTextBox.Text))
-            {
-                e.Cancel = true;
-                errorProvider.SetError(promocijeCijenaTextBox, Messages.Univerzalno);
-            }
-
-        }
-
-        private void datumRodjenjaDateTimePicker_Validating(object sender, CancelEventArgs e)
-        {
-            if (datumOdDate.Value.ToString() == "")
-            {
-                e.Cancel = true;
-                errorProvider.SetError(datumOdDate, Messages.Univerzalno);
-                datumOdDate.Focus();
-
-            }
-        }
-
-
-        bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
         }
         
         private void prikaziPronadjenjiProizvod(PonudaVM.PonudaInfo item)
@@ -176,6 +24,7 @@ namespace eRestoran.Client
             toggleVisibility(true);
             nazivProizvodaTextBox.Text = item.Naziv;
             staraCijenaTextBox.Text = item.Cijena.ToString();
+            promocijeCijenaTextBox.Focus();
             //var sUrl = Resources.apiUrlDevelopment + item.imageUrl;
             //WebRequest req = WebRequest.Create(sUrl);
 
@@ -188,6 +37,8 @@ namespace eRestoran.Client
 
         private void toggleVisibility(bool isVisible)
         {
+            snimiPromocijuBtn.Visible = isVisible;
+
             nazivProizvodaLabel.Visible = isVisible;
             nazivProizvodaTextBox.Visible = isVisible;
 
@@ -219,17 +70,113 @@ namespace eRestoran.Client
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var content = responseMessage.Content.ReadAsStringAsync().Result;
-                    var item = JsonConvert.DeserializeObject<PonudaVM.PonudaInfo>(content);
+                    item = JsonConvert.DeserializeObject<PonudaVM.PonudaInfo>(content);
                     if (item.Id.HasValue)
                     {
                         prikaziPronadjenjiProizvod(item);
                     } else
                     {
+                        toggleVisibility(false);
+                        this.sifraTextBox.Focus();
+                        item = null;
                         MessageBox.Show("Nazalost, ne postoji proizvod sa navedenom sifrom");
 
                     }
 
                 }
+            }
+        }
+
+        private void sifraTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchArtikal.PerformClick();
+            }
+        }
+
+        private void Promocija_Load(object sender, EventArgs e)
+        {
+            this.sifraTextBox.Focus();
+        }
+
+        private void promocijeCijenaTextBox_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (String.IsNullOrEmpty(promocijeCijenaTextBox.Text))
+            {
+                e.Cancel = true;
+                promocijeCijenaTextBox.Focus();
+                errorProvider.SetError(promocijeCijenaTextBox, Messages.Cijena_req);
+            }
+            else
+            {
+                if (promocijeCijenaTextBox.Text.Contains(","))
+                {
+                    e.Cancel = true;
+                    promocijeCijenaTextBox.Focus();
+                    errorProvider.SetError(promocijeCijenaTextBox, Messages.Cijena_zarez);
+                }
+                if (promocijeCijenaTextBox.Text.Contains("-"))
+                {
+                    e.Cancel = true;
+                    promocijeCijenaTextBox.Focus();
+                    errorProvider.SetError(promocijeCijenaTextBox, Messages.NegVrijednost);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(promocijeCijenaTextBox.Text, "\\d+(\\.\\d{1,2})?"))
+                {
+                    e.Cancel = true;
+                    promocijeCijenaTextBox.Focus();
+                    errorProvider.SetError(promocijeCijenaTextBox, Messages.Cijena_decimale);
+                }
+
+            }
+        }
+
+
+        private async Task<bool> postPromotion()
+        {
+            var promocijeService = new WebAPIHelper(Resources.apiUrlDevelopment, "api/promocija/promovisi");
+            if (item.Id != 0 && double.TryParse(promocijeCijenaTextBox.Text, out double novaCijena))
+            {
+                var promocija = new PromocijaVM()
+                {
+                    DatumOd = DateTime.SpecifyKind(datumOdDate.Value, DateTimeKind.Utc),
+                    DatumDo = DateTime.SpecifyKind(datumDoDate.Value, DateTimeKind.Utc),
+                    PromotivnaCijena = novaCijena,
+                    StaraCijena = item.Cijena
+                };
+
+                if (item.IsJelo)
+                    promocija.JeloId = item.Id;
+                else
+                    promocija.ProizvodId = item.Id;
+
+                var response = promocijeService.PostResponse(promocija);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Proizvod je promovisan");
+                    return true;
+                }
+            }
+            MessageBox.Show("Nazalost, nismo uspjelo promovisat proizvod."); ;
+
+            return false;
+        }
+
+        private void SnimiPromocijuBtn_Click(object sender, EventArgs e)
+        {
+            if (this.ValidateChildren())
+            {
+                this.postPromotion();
+                toggleVisibility(false);
+                this.sifraTextBox.Text = "";
+                this.nazivProizvodaTextBox.Text = "";
+                this.staraCijenaTextBox.Text = "";
+                this.sifraTextBox.Focus();
+                item = null;
+                errorProvider.Clear();
+
             }
         }
     }
