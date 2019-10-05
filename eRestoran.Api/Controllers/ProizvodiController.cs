@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+//using eRestoran.Api.Util;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
 using eRestoran.PCL.VM;
@@ -51,6 +52,18 @@ namespace eRestoran.Api.Controllers
 
             return proizvod;
         }
+
+        //start recomended system
+
+        [HttpGet]
+        [Route("api/Proizvodi/RecommendProducts/[productID]")]
+
+        //public List<PonudaInfo> RecommendProducts(int productID) {
+        //    Recommender rec = new Recommender();
+        //    return rec.GetSlicneProizvode(productID);
+        //}
+
+        //end recomended system
         public PonudaInfo GetProizvodVM(int id)
         {
             PonudaInfo proizvod = db.Proizvodi.Where(x => x.Id == id).Select(x => new PonudaInfo

@@ -91,7 +91,7 @@ namespace eRestoran.Client
                                 postCheckout.AddBearerToken(((Form1)this.ParentForm).VerifikovaniKorisnik.Token);
                                 var response2 = postCheckout.PostWithParametar(brojStola, ((Form1)this.ParentForm).GetCartForCheckout());
                                 if(response2.IsSuccessStatusCode)
-                                MessageBox.Show("ok proslo");
+                                MessageBox.Show("Uspjesno obavljena rezervacija.");
                             }
                         }
                         else
@@ -100,7 +100,7 @@ namespace eRestoran.Client
                             if (response.IsSuccessStatusCode)
                             {
                                 btn.BackColor = Color.Transparent;
-                                MessageBox.Show("ok proslo");
+                                MessageBox.Show("Uspjesno izbrisana rezervacija");
                             }
                         }
                         odabraniSto.IsSlobodan = !odabraniSto.IsSlobodan;
