@@ -57,27 +57,27 @@ namespace eRestoran.PCL.Helpers
         public async Task<HttpResponseMessage> PostResponse(object obj)
         {
             var serializedObj = JsonConvert.SerializeObject(obj);
-            var x = client.PostAsync(route, new StringContent(serializedObj, Encoding.UTF8, "application/json")).Result;
+            var x = await client.PostAsync(route, new StringContent(serializedObj, Encoding.UTF8, "application/json"));
             return x;
         }
         public async Task<T> PostResponse<T>(string url, FormUrlEncodedContent content) where T : class
         {
             var response = client.PostAsync(url, content).Result;
             var result = response.Content.ReadAsStringAsync().Result;
-            var resultObject = JsonConvert.DeserializeObject<T>(result);
+            var resultObject = await Task.Run(() => JsonConvert.DeserializeObject<T>(result));
             return resultObject;
 
         }
         public async Task<HttpResponseMessage> PostWithParametar(int id, object obj)
         {
             var serializedObj = JsonConvert.SerializeObject(obj);
-            return client.PostAsync(route + "/" + id, new StringContent(serializedObj, Encoding.UTF8, "application/json")).Result;
+            return await client.PostAsync(route + "/" + id, new StringContent(serializedObj, Encoding.UTF8, "application/json"));
         }
 
         public async Task<HttpResponseMessage> PutResponse(int id, object obj)
         {
             var serializedObj = JsonConvert.SerializeObject(obj);
-            return client.PutAsync(route + "/" + id, new StringContent(serializedObj, Encoding.UTF8, "application/json")).Result;
+            return await client.PutAsync(route + "/" + id, new StringContent(serializedObj, Encoding.UTF8, "application/json"));
         }
     }
 }
