@@ -26,7 +26,7 @@ namespace eRestoran.Api.Controllers
 
             if (korisnik.TipKorisnika != TipKorisnika.Konobar && korisnik.TipKorisnika != TipKorisnika.Klijent)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             Narudzba narudzba = new Narudzba();

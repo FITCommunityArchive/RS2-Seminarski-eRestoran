@@ -12,6 +12,7 @@ namespace eRestoran.Data.Models
             this.JelaStavke = new HashSet<JelaStavke>();
             this.NarudzbaStavke = new HashSet<NarudzbaStavke>();
             this.HistorijaCijenaProizvoda = new HashSet<HistorijaCijenaProizvoda>();
+            this.Ocjene = new HashSet<Ocjene>();
         }
         public int Id { get; set; }
         public string Naziv { get; set; }
@@ -31,5 +32,6 @@ namespace eRestoran.Data.Models
         public virtual ICollection<JelaStavke> JelaStavke { get; set; }
         public virtual ICollection<HistorijaCijenaProizvoda> HistorijaCijenaProizvoda { get; set; }
         public virtual ICollection<NarudzbaStavke> NarudzbaStavke { get; set; }
+        public virtual ICollection<Ocjene> Ocjene { get; set; }
     }
 }

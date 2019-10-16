@@ -184,6 +184,7 @@ namespace FastFoodDemo
             cart.Pica = new List<CartRow>();
             cart.TotalPrice = 0;
             label4.Text = "0";
+            SetBtnOdaberiStoVisibility();
         }
 
         private void SetBtnOdaberiStoVisibility()

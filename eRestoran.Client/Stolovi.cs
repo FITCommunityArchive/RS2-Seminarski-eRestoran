@@ -89,9 +89,16 @@ namespace eRestoran.Client
                             {
                                 btn.BackColor = zauzetiStoColor;
                                 postCheckout.AddBearerToken(((Form1)this.ParentForm).VerifikovaniKorisnik.Token);
-                                var response2 = postCheckout.PostWithParametar(brojStola, ((Form1)this.ParentForm).GetCartForCheckout());
-                                if(response2.IsSuccessStatusCode)
-                                MessageBox.Show("Uspjesno obavljena rezervacija.");
+                                CartIndexVM cartItems = ((Form1)this.ParentForm).GetCartForCheckout();
+                                var response2 = postCheckout.PostWithParametar(brojStola, cartItems);
+                                if (response2.IsSuccessStatusCode)
+                                {
+                                    MessageBox.Show("Uspjesno obavljena rezervacija.");
+                                }
+                                else {
+                                    MessageBox.Show("Neuspjesno obavljena rezervacija.");
+
+                                }
                             }
                         }
                         else

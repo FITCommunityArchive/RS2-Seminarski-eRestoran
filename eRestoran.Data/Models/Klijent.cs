@@ -15,11 +15,14 @@ namespace eRestoran.Data.Models
         {
             this.NarudzbaRacun = new HashSet<NarudzbaRacun>();
             this.Rezervacija = new HashSet<Rezervacija>();
+            this.Ocjene = new HashSet<Ocjene>();
 
         }
 
         public virtual ICollection<NarudzbaRacun> NarudzbaRacun { get; set; }
         public virtual ICollection<Rezervacija> Rezervacija { get; set; }
+        public virtual ICollection<Ocjene> Ocjene { get; set; }
+
 
     }
 }

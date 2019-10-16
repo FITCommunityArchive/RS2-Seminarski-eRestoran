@@ -52,6 +52,10 @@
     <Compile Include="Migrations\201905041613176_Added-Promocije.Designer.cs">
       <DependentUpon>201905041613176_Added-Promocije.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910092351177_createOcjene.cs" />
+    <Compile Include="Migrations\201910092351177_createOcjene.Designer.cs">
+      <DependentUpon>201910092351177_createOcjene.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HistorijaCijenaJela.cs" />
     <Compile Include="Models\HistorijaCijenaProizvoda.cs" />
@@ -63,6 +67,7 @@
     <Compile Include="Models\NarudzbaRacun.cs" />
     <Compile Include="Models\NarudzbaStavke.cs" />
     <Compile Include="Models\ObracunskiMjesec.cs" />
+    <Compile Include="Models\Ocjene.cs" />
     <Compile Include="Models\Proizvod.cs" />
     <Compile Include="Models\Promocija.cs" />
     <Compile Include="Models\RadnoVrijeme.cs" />
@@ -84,6 +89,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905041613176_Added-Promocije.resx">
       <DependentUpon>201905041613176_Added-Promocije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910092351177_createOcjene.resx">
+      <DependentUpon>201910092351177_createOcjene.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
