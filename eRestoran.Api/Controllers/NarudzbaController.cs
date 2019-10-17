@@ -6,6 +6,9 @@ using eRestoran.Api.Filter;
 using eRestoran.PCL.VM;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 
 namespace eRestoran.Api.Controllers
 {
@@ -39,6 +42,7 @@ namespace eRestoran.Api.Controllers
             ctx.Narudzbe.Add(narudzba);
             ctx.SaveChanges();
 
+
             if (korisnik.TipKorisnika == TipKorisnika.Konobar)
             {
                 zaposlenikId = korisnik.Id;
@@ -55,7 +59,10 @@ namespace eRestoran.Api.Controllers
 
             narudzba.StatusJela = statusNarudzbe.U_Pripremi;
             narudzba.StatusPica = statusNarudzbe.U_Pripremi;
+            ctx.Narudzbe.AddOrUpdate(narudzba);
             ctx.SaveChanges();
+
+
 
             List<NarudzbaStavke> narudzbaStavke = new List<NarudzbaStavke>();
             double racunTotal = 0;
