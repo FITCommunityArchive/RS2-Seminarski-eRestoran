@@ -19,6 +19,21 @@ namespace eRestoran.Client.Mobile.Helpers
             }
         }
 
+        public static string KorisnikId
+        {
+            get
+            {
+                return Application.Current.Properties["user_id"].ToString();
+            }
+            set
+            {
+                Application.Current.Properties["user_id"] = value;
+                Application.Current.SavePropertiesAsync();
+            }
+        }
+
+
+
         public static CartIndexVM cart
         {
             get

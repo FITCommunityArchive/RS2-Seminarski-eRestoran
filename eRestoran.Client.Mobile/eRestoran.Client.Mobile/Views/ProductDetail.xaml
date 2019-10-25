@@ -38,6 +38,8 @@
                 </Grid.ColumnDefinitions>
 
                 <StackLayout Grid.Column="0">
+                    <Label Style="{StaticResource StatsNumberLabel}" IsVisible="False" x:Name="proizvodId" Text="{Binding Id}" />
+                    <Label Style="{StaticResource StatsNumberLabel}" IsVisible="False" x:Name="IsJelo" Text="{Binding Kategorija}" />
                     <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Cijena, StringFormat='{}{0:N} KM'}" />
                     <Label Style="{StaticResource StatsCaptionLabel}" Text="Cijena" />
                 </StackLayout>
@@ -46,9 +48,24 @@
                     <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Kategorija}" />
                     <Label Style="{StaticResource StatsCaptionLabel}" Text="Kategorija" />
                 </StackLayout>
-                <StackLayout Grid.Column="2">
-                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Kolicina, StringFormat='{}{0:N} KOM'}" />
-                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Kolicina" />
+            </Grid>
+
+            <Grid ColumnSpacing="0" RowSpacing="0" Margin="50,20,50,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Slider Maximum="5" ValueChanged="OnSliderValueChanged" x:Name="ocjenaSlider" BackgroundColor="#10338F" AnchorX="1" AnchorY="1" AutomationProperties.IsInAccessibleTree="False" VerticalOptions="FillAndExpand" Minimum="1" />
+                    <Label  Style="{StaticResource StatsCaptionLabel}" x:Name="displayLabel" Text="Molimo Vas da ocjenite nas proizvod." HorizontalOptions="Center" VerticalOptions="CenterAndExpand" ></Label>
+                    <Button Margin="10,0,10,0" 
+                         HeightRequest="40" 
+                         TextColor="White" 
+                         Text="Ocijeni"  
+                         BackgroundColor="{StaticResource primary}"
+                         HorizontalOptions="FillAndExpand"
+                         IsVisible="False"
+                        x:Name="btnOcjeni" />
                 </StackLayout>
             </Grid>
         </StackLayout>

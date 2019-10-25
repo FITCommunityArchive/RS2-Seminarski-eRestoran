@@ -164,6 +164,24 @@ namespace eRestoran.Api.Controllers
             return Ok(proizvod);
         }
 
+        [ResponseType(typeof(void))]
+        [HttpPost]
+        [Route("api/Proizvodi/OcjeniProizvod")]
+        public IHttpActionResult OcjeniProizvod(OcjeneVM ocjene)
+        {
+
+            var ocjena = new Ocjene();
+            ocjena.KupacId = ocjene.KupacId;
+            ocjena.ProizvodId = ocjene.ProizvodId;
+            ocjena.Ocjena = ocjene.Ocjena;
+            ocjena.IsJelo = ocjene.IsJelo;
+
+            db.Ocjene.Add(ocjena);
+            db.SaveChanges();
+
+            return StatusCode(HttpStatusCode.OK);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -48,14 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\MyContext.cs" />
-    <Compile Include="Migrations\201905041613176_Added-Promocije.cs" />
-    <Compile Include="Migrations\201905041613176_Added-Promocije.Designer.cs">
-      <DependentUpon>201905041613176_Added-Promocije.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201910092351177_createOcjene.cs" />
-    <Compile Include="Migrations\201910092351177_createOcjene.Designer.cs">
-      <DependentUpon>201910092351177_createOcjene.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HistorijaCijenaJela.cs" />
     <Compile Include="Models\HistorijaCijenaProizvoda.cs" />
@@ -85,14 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905041613176_Added-Promocije.resx">
-      <DependentUpon>201905041613176_Added-Promocije.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910092351177_createOcjene.resx">
-      <DependentUpon>201910092351177_createOcjene.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

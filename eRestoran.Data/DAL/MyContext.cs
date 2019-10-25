@@ -32,6 +32,7 @@ namespace eRestoran.Data.DAL
         public DbSet<Klijent> Klijenti { get; set; }
         public DbSet<Zaposlenik> Zaposlenici { get; set; }
         public DbSet<Promocija> Promocije { get; set; }
+        public DbSet<Ocjene> Ocjene { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

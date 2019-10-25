@@ -13,8 +13,8 @@ namespace eRestoran.Data.Models
         public int ProizvodId { get; set; }
         public int KupacId { get; set; }
         public int Ocjena { get; set; }
+        public int IsJelo { get; set; }
 
-        public virtual Proizvod Proizvod { get; set; }
         public virtual Klijent Kupac { get; set; }
     }
 }
