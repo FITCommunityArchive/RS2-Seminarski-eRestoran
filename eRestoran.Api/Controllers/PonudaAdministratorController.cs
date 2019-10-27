@@ -1,6 +1,7 @@
 ﻿using eRestoran.Data.DAL;
 using eRestoran.PCL.VM;
 using eRestoran.VM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -25,7 +26,8 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Cijena = x.Cijena,
                 Kolicina = x.Kolicina,
                 Naziv = x.Naziv,
-                imageUrl = x.SlikaUrl
+                imageUrl = x.SlikaUrl,
+                Ocjena = ctx.Ocjene.Where(y => y.IsJelo == 0 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString()
             }).ToList();
 
             model.Ponuda = ctx.Jelo.Select(x => new PonudaVM.PonudaInfo
@@ -35,7 +37,8 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 KolicinaString = "N/A",
                 Cijena = x.Cijena,
                 Naziv = x.Naziv,
-                imageUrl = x.SlikaUrl
+                imageUrl = x.SlikaUrl,
+                Ocjena = ctx.Ocjene.Where(y => y.IsJelo == 1 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString()
 
             }).ToList();
 
@@ -54,8 +57,8 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 KolicinaString = "N/A",
                 Cijena = x.Cijena,
                 Naziv = x.Naziv,
-                imageUrl = x.SlikaUrl
-
+                imageUrl = x.SlikaUrl,
+                Ocjena = ctx.Ocjene.Where(y => y.IsJelo == 0 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString()
             }).ToList();
             return model.Jela;
         }
@@ -99,8 +102,16 @@ namespace eRestoran.Areas.ModulAdministracija.Controllers
                 Cijena = x.Cijena,
                 Kolicina = x.Kolicina,
                 Naziv = x.Naziv,
-                KolicinaString = x.Kolicina.ToString()
+                KolicinaString = x.Kolicina.ToString(),
+                Ocjena = ctx.Ocjene.Where(y => y.IsJelo == 0 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString(),
+                imageUrl = x.SlikaUrl
             }).ToList();
+
+            foreach (var item in model.Pica) {
+                if (item.imageUrl == null) {
+                    item.imageUrl = "http://erestoranapi20180630082851.azurewebsites.net/images/28f8bd6b-7c16-44da-8fb3-c217ebb44c2dupload.jpg";
+                }
+            }
             return model.Pica;
         }
 

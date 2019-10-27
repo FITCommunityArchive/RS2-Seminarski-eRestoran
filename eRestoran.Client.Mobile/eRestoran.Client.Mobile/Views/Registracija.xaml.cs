@@ -1,4 +1,5 @@
-﻿using eRestoran.Client.Mobile.Navigation;
+﻿using eRestoran.Client.Mobile.Helpers;
+using eRestoran.Client.Mobile.Navigation;
 using eRestoran.PCL.Helpers;
 using eRestoran.PCL.VM;
 using System;
@@ -53,9 +54,8 @@ namespace eRestoran.Client.Mobile.Views
             {
                 ClearForm();
                 await Task.Run(RegisterUser);
-                var x = new MyPage();
-                Application.Current.MainPage = x;
-                await this.DisplayAlert("Login", "Uspjesan login", "OK");
+                NavigateToLogin();
+                await this.DisplayAlert("Registracija", "Uspjesna registracija", "OK");
 
             }
 
@@ -157,7 +157,6 @@ namespace eRestoran.Client.Mobile.Views
             var response = await registerService.PostResponse(kor);
             if (response.IsSuccessStatusCode)
             {
-
                 return true;
             }
             return false;

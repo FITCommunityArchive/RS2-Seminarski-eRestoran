@@ -13,6 +13,7 @@ namespace eRestoran.Client.Mobile.ViewModels
             //public Bitmap urIPicture { get; set; }
             public string imageUrl { get; set; }
             public int Kolicina { get; set; }
+            public string Ocjena { get; set; }
             public string KolicinaString { get; set; }
             public int? ProdataKolicina { get; set; }
             public bool IsJelo { get; set; }

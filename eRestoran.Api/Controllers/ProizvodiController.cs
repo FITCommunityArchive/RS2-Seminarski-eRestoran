@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using eRestoran.Api.Util;
 //using eRestoran.Api.Util;
 using eRestoran.Data.DAL;
 using eRestoran.Data.Models;
@@ -35,7 +36,7 @@ namespace eRestoran.Api.Controllers
                 Kategorija = x.TipProizvoda.Naziv,
                 Naziv = x.Naziv,
                 Id = x.Id,
-                imageUrl = baseUrl + x.SlikaUrl
+                imageUrl = baseUrl + x.SlikaUrl,
 
             }).ToList();
         }
@@ -56,12 +57,12 @@ namespace eRestoran.Api.Controllers
         //start recomended system
 
         [HttpGet]
-        [Route("api/Proizvodi/RecommendProducts/[productID]")]
-
-        //public List<PonudaInfo> RecommendProducts(int productID) {
-        //    Recommender rec = new Recommender();
-        //    return rec.GetSlicneProizvode(productID);
-        //}
+        [Route("api/Proizvodi/RecommendProducts/{productID}/{isJelo}")]
+        public List<PonudaInfo> RecommendProducts(int productID, int isJelo)
+        {
+            Recommender rec = new Recommender();
+            return rec.GetSlicneProizvode(productID, isJelo);
+        }
 
         //end recomended system
         public PonudaInfo GetProizvodVM(int id)
@@ -170,13 +171,22 @@ namespace eRestoran.Api.Controllers
         public IHttpActionResult OcjeniProizvod(OcjeneVM ocjene)
         {
 
-            var ocjena = new Ocjene();
-            ocjena.KupacId = ocjene.KupacId;
-            ocjena.ProizvodId = ocjene.ProizvodId;
-            ocjena.Ocjena = ocjene.Ocjena;
-            ocjena.IsJelo = ocjene.IsJelo;
+            var proslaOcjena = db.Ocjene.Where(x => x.KupacId == ocjene.KupacId && x.IsJelo == ocjene.IsJelo && x.ProizvodId == ocjene.ProizvodId).SingleOrDefault();
+            if (proslaOcjena != null)
+            {
+                proslaOcjena.Ocjena = ocjene.Ocjena;
+            }
+            else
+            {
+                var ocjena = new Ocjene();
+                ocjena.KupacId = ocjene.KupacId;
+                ocjena.ProizvodId = ocjene.ProizvodId;
+                ocjena.Ocjena = ocjene.Ocjena;
+                ocjena.IsJelo = ocjene.IsJelo;
 
-            db.Ocjene.Add(ocjena);
+                db.Ocjene.Add(ocjena);
+            }
+
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.OK);

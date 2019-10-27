@@ -29,6 +29,13 @@ namespace eRestoran.Client.Mobile.Views
 
             }
 
+            foreach (var item in Items) {
+                if (item.imageUrl == null)
+                {
+                    item.imageUrl = "http://erestoranapi20180630082851.azurewebsites.net/images/28f8bd6b-7c16-44da-8fb3-c217ebb44c2dupload.jpg";
+                }
+            }
+
             var listaKategorija = new List<string>();
             listaKategorija.Add("Odaberite kategoriju");
             listaKategorija.Add("Pica");
@@ -40,9 +47,6 @@ namespace eRestoran.Client.Mobile.Views
         }
         protected override void OnAppearing()
         {
-            //ovdje napraviti listu koja sadrzi 2 elementa;
-
-
             base.OnAppearing();
 
         }
@@ -53,7 +57,7 @@ namespace eRestoran.Client.Mobile.Views
             if (e.Item == null)
                 return;
 
-            var newPage = new ProductDetail(e.Item);
+            var newPage = new ProductDetail((PonudaVM.PonudaInfo)e.Item);
             await Navigation.PushAsync(newPage);
             //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
@@ -72,6 +76,13 @@ namespace eRestoran.Client.Mobile.Views
                     {
                         var content = resp2.Content.ReadAsStringAsync().Result;
                         Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
+                        foreach (var item in Items)
+                        {
+                            if (item.imageUrl == null)
+                            {
+                                item.imageUrl = "http://erestoranapi20180630082851.azurewebsites.net/images/28f8bd6b-7c16-44da-8fb3-c217ebb44c2dupload.jpg";
+                            }
+                        }
                     }
                     break;
 
@@ -93,6 +104,13 @@ namespace eRestoran.Client.Mobile.Views
                     {
                         var content = resp.Content.ReadAsStringAsync().Result;
                         Items = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
+                        foreach (var item in Items)
+                        {
+                            if (item.imageUrl == null)
+                            {
+                                item.imageUrl = "http://erestoranapi20180630082851.azurewebsites.net/images/28f8bd6b-7c16-44da-8fb3-c217ebb44c2dupload.jpg";
+                            }
+                        }
                     }
                     break;
             }

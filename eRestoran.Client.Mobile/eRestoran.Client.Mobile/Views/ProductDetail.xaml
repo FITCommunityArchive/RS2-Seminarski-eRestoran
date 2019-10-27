@@ -48,6 +48,11 @@
                     <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Kategorija}" />
                     <Label Style="{StaticResource StatsCaptionLabel}" Text="Kategorija" />
                 </StackLayout>
+
+                <StackLayout Grid.Column="2">
+                    <Label Style="{StaticResource StatsNumberLabel}" Text="{Binding Ocjena}" />
+                    <Label Style="{StaticResource StatsCaptionLabel}" Text="Ocjena" />
+                </StackLayout>
             </Grid>
 
             <Grid ColumnSpacing="0" RowSpacing="0" Margin="50,20,50,10">

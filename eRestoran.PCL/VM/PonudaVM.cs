@@ -16,6 +16,7 @@ namespace eRestoran.VM
             public double Cijena { get; set; }
             public int Kolicina { get; set; }
             public string KolicinaString { get; set; }
+            public string Ocjena { get; set; }
             public int? ProdataKolicina { get; set; }
             public string imageUrl { get; set; }
             public bool IsJelo { get; set; }
