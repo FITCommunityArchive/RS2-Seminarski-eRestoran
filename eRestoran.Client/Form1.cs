@@ -13,6 +13,7 @@ using eRestoran.Client.Properties;
 using eRestoran.Data.Models;
 using System.Linq;
 using eRestoran.PCL.VM;
+using System.Threading.Tasks;
 
 namespace FastFoodDemo
 {
@@ -63,7 +64,7 @@ namespace FastFoodDemo
                 btnIzvjestaji.Visible = true;
                 btnPromocije.Visible = true;
             }
-                
+
         }
 
         public bool AddToCartPice(CartRow cartRow)
@@ -248,23 +249,24 @@ namespace FastFoodDemo
             }
             cardsPanel1.Controls.Clear();
             cardsPanel1.Controls.Add(controlsHistory.Last.Value);
-            
+
         }
         #region Events
 
         public CardsPanel NapraviPanelMenu()
         {
-            var ponuda = GetPonuda();
             var panel = new CardsPanel();
-            panel.ViewModel = ponuda;
+            Task.Run(() => { AddToControlHistory(panel); });
+            cardsPanel1.Controls.Clear();
+
+            cardsPanel1.Controls.Add(panel);
+            var ponuda = GetPonuda();
+            panel.PonudaViewModel = ponuda.ToList();
             var panelSize = cardsPanel1.Size;
             panelSize.Height -= 10;
             panel.Size = panelSize;
 
             panel.AutoScroll = true;
-            cardsPanel1.Controls.Clear();
-            cardsPanel1.Controls.Add(panel);
-            AddToControlHistory(panel);
 
             return panel;
         }
@@ -285,22 +287,22 @@ namespace FastFoodDemo
             {
                 var label = new Label()
                 {
-                    Text="KORPA JE PRAZNA !",
+                    Text = "KORPA JE PRAZNA !",
                     AutoSize = false,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Dock = DockStyle.None,
                     Left = 10,
-                    
+
                     Width = panel.Width - 10,
-                    Height=panel.Height-10
+                    Height = panel.Height - 10
                 };
                 label.Font = new Font("Arial", 24, FontStyle.Bold);
                 cardsPanel1.Controls.Add(label);
             }
-            
+
             AddToControlHistory(panel);
 
-           
+
 
 
             return panel;
@@ -330,7 +332,7 @@ namespace FastFoodDemo
 
         #region Methods
 
-        private PonudaVM GetPonuda()
+        private IEnumerable<PonudaVM.PonudaInfo> GetPonuda()
         {
             List<PonudaVM.PonudaInfo> cards = new List<PonudaVM.PonudaInfo>();
             HttpClient client = new HttpClient();
@@ -342,25 +344,12 @@ namespace FastFoodDemo
                 pica = response.Content.ReadAsAsync<List<PonudaVM.PonudaInfo>>().Result;
                 foreach (var item in pica)
                 {
-                    cards.Add(new PonudaVM.PonudaInfo()
-                    {
-                        Id = item.Id,
-                        Cijena = item.Cijena,
-                        Naziv = "NAZIV - " + item.Naziv,
-                        Kategorija = item.Kategorija,
-                        Kolicina = item.Kolicina,
-                        KolicinaString = item.KolicinaString + " KOM",
-                        imageUrl = item.imageUrl
-                    });
+                    item.Naziv = "NAZIV - " + item.Naziv;
+                    item.KolicinaString = item.KolicinaString + " KOM";
+
+                    yield return item;
                 }
             }
-
-            PonudaVM VM = new PonudaVM()
-            {
-                Ponuda = cards
-            };
-
-            return VM;
         }
 
         public void SwitchActiveControls(Control newActiveControl)
@@ -460,7 +449,7 @@ namespace FastFoodDemo
         private void button4_Click(object sender, EventArgs e)
         {
             DodajKontrolu(new KorisnickiNalozi());
-             SetSideMenuPosition((Control)sender);
+            SetSideMenuPosition((Control)sender);
         }
 
         private void btnRezervacije_Click(object sender, EventArgs e)
@@ -484,6 +473,12 @@ namespace FastFoodDemo
             AddToControlHistory(kont);
             SetSideMenuPosition((Control)sender);
         }
-        //korpa viewmodel
+
+        private void LogOutBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var loginForm = new LoginForm();
+            loginForm.ShowDialog();
+        }
     }
 }

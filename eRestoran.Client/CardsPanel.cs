@@ -1,7 +1,9 @@
 ﻿using eRestoran.PCL.VM;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using static eRestoran.VM.PonudaVM;
 
 namespace FirstUserControlUsage
 {
@@ -11,15 +13,15 @@ namespace FirstUserControlUsage
         private Panel panel1;
         const int CardHeight = 305;
 
-        public PonudaVM ViewModel { get; set; }
+        public IEnumerable<PonudaVM.PonudaInfo> PonudaViewModel { get; set; }
         public List<CartRow> ViewModelKorpa { get; set; }
 
         public CardsPanel()
         {
         }
-        public CardsPanel(PonudaVM viewModel)
+        public CardsPanel(IEnumerable<PonudaVM.PonudaInfo> viewModel)
         {
-            ViewModel = viewModel;
+            PonudaViewModel = viewModel.ToList();
            
         }
         public CardsPanel(List<CartRow> viewModel)
@@ -38,9 +40,9 @@ namespace FirstUserControlUsage
             SuspendLayout();
             Controls.Clear();
 
-            for (int i = 0; i < ViewModel.Ponuda.Count; i++)
+            for (int i = 0; i < PonudaViewModel.Count(); i++)
             {
-                var newCtl = new CardControl(ViewModel.Ponuda[i]);
+                var newCtl = new CardControl(PonudaViewModel.ElementAt(i));
                 newCtl.DataBind();
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);
@@ -53,9 +55,9 @@ namespace FirstUserControlUsage
             SuspendLayout();
             Controls.Clear();
 
-            for (int i = 0; i < ViewModel.Ponuda.Count; i++)
+            for (int i = 0; i < PonudaViewModel.Count(); i++)
             {
-                var newCtl = new PonudaItem(ViewModel.Ponuda[i]);
+                var newCtl = new PonudaItem(PonudaViewModel.ElementAt(i));
                 SetCardControlLayout(newCtl, i);
                 Controls.Add(newCtl);
                 newCtl.DataBind();

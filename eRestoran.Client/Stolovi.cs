@@ -1,14 +1,13 @@
-﻿using System;
+﻿using eRestoran.Client.Properties;
+using eRestoran.Client.Shared.Helpers;
+using eRestoran.PCL.VM;
+using FastFoodDemo;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using eRestoran.Client.Shared.Helpers;
-using eRestoran.Client.Properties;
 using System.Net.Http;
-using eRestoran.Data.Models;
-using eRestoran.PCL.VM;
-using FastFoodDemo;
+using System.Windows.Forms;
 
 namespace eRestoran.Client
 {
@@ -23,8 +22,6 @@ namespace eRestoran.Client
         public WebAPIHelper postIzbrisiRezervaciju = new WebAPIHelper(Resources.apiUrlDevelopment, "api/post/izbrisirezervaciju");
         public WebAPIHelper postCheckout = new WebAPIHelper(Resources.apiUrlDevelopment, "api/checkout");
 
-
-
         private Color zauzetiStoColor = Color.FromArgb(60, 255, 1, 1);
         List<StoloviRezervacijaVM> stolovi { get; set; }
         public DateTime DatumRezervacije = DateTime.Now;
@@ -32,11 +29,6 @@ namespace eRestoran.Client
         public Stolovi()
         {
             InitializeComponent();
-            var responseMessage = getStolove.GetResponse();
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                stolovi = responseMessage.Content.ReadAsAsync<List<StoloviRezervacijaVM>>().Result;
-            }
 
             BindControlsAndData();
             BindEvents();
@@ -84,21 +76,19 @@ namespace eRestoran.Client
                     {
                         if (odabraniSto.IsSlobodan)
                         {
-                            var response = postRezervisiSto.PostWithParametar(brojStola, DatumRezervacije.ToString("o"));
-                            if (response.IsSuccessStatusCode)
+                            btn.BackColor = zauzetiStoColor;
+                            postCheckout.AddBearerToken(((Form1)this.ParentForm).VerifikovaniKorisnik.Token);
+                            CartIndexVM cartItems = ((Form1)this.ParentForm).GetCartForCheckout();
+                            var response2 = postCheckout.PostWithParametar(brojStola, cartItems);
+                            if (response2.IsSuccessStatusCode)
                             {
-                                btn.BackColor = zauzetiStoColor;
-                                postCheckout.AddBearerToken(((Form1)this.ParentForm).VerifikovaniKorisnik.Token);
-                                CartIndexVM cartItems = ((Form1)this.ParentForm).GetCartForCheckout();
-                                var response2 = postCheckout.PostWithParametar(brojStola, cartItems);
-                                if (response2.IsSuccessStatusCode)
-                                {
-                                    MessageBox.Show("Uspjesno obavljena rezervacija.");
-                                }
-                                else {
-                                    MessageBox.Show("Neuspjesno obavljena rezervacija.");
+                                var response = postRezervisiSto.PostWithParametar(brojStola, DatumRezervacije.ToString("o"));
 
-                                }
+                                MessageBox.Show("Uspjesno obavljena rezervacija.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Neuspjesno obavljena rezervacija, morate dodati artikle u korpu.");
                             }
                         }
                         else
@@ -112,8 +102,8 @@ namespace eRestoran.Client
                         }
                         odabraniSto.IsSlobodan = !odabraniSto.IsSlobodan;
                     }
-
                 }
+
                 BindControlsAndData();
             }
         }

@@ -9,11 +9,12 @@ namespace eRestoran.Client
         {
             InitializeComponent();
             ctrlStolovi.DatumRezervacije = DateTime.Now;
+
         }
 
         private void datumRezervacije_ValueChanged(object sender, EventArgs e)
         {
-            ctrlStolovi.DatumRezervacije = datumRezervacije.Value;
+            ctrlStolovi.DatumRezervacije = DateTime.Now;
             ctrlStolovi.BindControlsAndData();
         }
     }

@@ -248,6 +248,15 @@
         D053nYYvAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="LogOutBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJ
+        TUUH4wocExY0LzdvQQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABDSURBVDhP
+        Y/gPBfb29v/r6+vheNq0aVCZ/2A2shxILQzADUBWAMJdXV1Qmf9gNro8DIwaMGoACIwaQE0DyMvO//8D
+        ALdlDd59vGmbAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIABsGgUAZgAAAAAAAAABACAAr54BANIaBQCAgAAAAQAgACgIAQCBuQYAMDAAAAEA

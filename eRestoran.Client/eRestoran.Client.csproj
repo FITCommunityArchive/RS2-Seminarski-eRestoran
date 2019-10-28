@@ -171,6 +171,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RezervacijaStola.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -334,14 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UrediProizvod.resx">
       <DependentUpon>UrediProizvod.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,9 +395,13 @@
     <Content Include="Images\icons8-close-window-50.png" />
     <Content Include="Images\if_shop-01_186387.png" />
     <Content Include="Images\ncemo_jebate.jpg" />
+    <None Include="Images\pause.png" />
+    <None Include="Images\pause2.png" />
+    <Content Include="Images\pauseBtn.png" />
     <Content Include="Images\tene.jpg" />
     <Content Include="Images\test.jpg" />
     <Content Include="Images\TWalsh__close1-512.png" />
+    <None Include="Resources\stolovi.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Display\" />

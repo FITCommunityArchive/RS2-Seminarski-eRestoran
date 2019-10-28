@@ -68,5 +68,15 @@ namespace eRestoran.Client.Properties {
                 return ResourceManager.GetString("apiUrlDevelopment", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stolovi {
+            get {
+                object obj = ResourceManager.GetObject("stolovi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

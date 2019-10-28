@@ -51,6 +51,7 @@ namespace FastFoodDemo
             this.label4 = new System.Windows.Forms.Label();
             this.cartButton = new System.Windows.Forms.Button();
             this.btnOdaberiSto = new System.Windows.Forms.Button();
+            this.LogOutBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +139,7 @@ namespace FastFoodDemo
             this.btnRezervacije.Name = "btnRezervacije";
             this.btnRezervacije.Size = new System.Drawing.Size(197, 54);
             this.btnRezervacije.TabIndex = 4;
-            this.btnRezervacije.Text = "       Rezervacije";
+            this.btnRezervacije.Text = "       Stolovi";
             this.btnRezervacije.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRezervacije.UseVisualStyleBackColor = true;
             this.btnRezervacije.Click += new System.EventHandler(this.btnRezervacije_Click);
@@ -323,11 +324,28 @@ namespace FastFoodDemo
             this.btnOdaberiSto.Visible = false;
             this.btnOdaberiSto.Click += new System.EventHandler(this.btnRezervacije_Click);
             // 
+            // LogOutBtn
+            // 
+            this.LogOutBtn.FlatAppearance.BorderSize = 0;
+            this.LogOutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogOutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOutBtn.ForeColor = System.Drawing.Color.LightGray;
+            this.LogOutBtn.Image = ((System.Drawing.Image)(resources.GetObject("LogOutBtn.Image")));
+            this.LogOutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LogOutBtn.Location = new System.Drawing.Point(988, 19);
+            this.LogOutBtn.Name = "LogOutBtn";
+            this.LogOutBtn.Size = new System.Drawing.Size(32, 35);
+            this.LogOutBtn.TabIndex = 13;
+            this.LogOutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.LogOutBtn.UseVisualStyleBackColor = true;
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 687);
+            this.Controls.Add(this.LogOutBtn);
             this.Controls.Add(this.btnOdaberiSto);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cardsPanel1);
@@ -373,6 +391,7 @@ namespace FastFoodDemo
         private DigitalClock digitalClock1;
         private System.Windows.Forms.Button btnOdaberiSto;
         private System.Windows.Forms.Button btnPromocije;
+        private System.Windows.Forms.Button LogOutBtn;
     }
 }
 

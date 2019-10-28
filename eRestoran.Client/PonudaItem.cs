@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using eRestoran.Client.Properties;
+using eRestoran.PCL.VM;
+using FastFoodDemo;
+using System;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FastFoodDemo;
-using eRestoran.Client;
-using System.IO;
-using eRestoran.PCL.VM;
-using eRestoran.Client.Properties;
-using System.Net;
 
 namespace FirstUserControlUsage
 {
@@ -35,27 +29,32 @@ namespace FirstUserControlUsage
         public void DataBind()
         {
             SuspendLayout();
+
             txtNaziv.Text = ViewModel.Naziv;
-            txtCijena.Text = ViewModel.Cijena.ToString() + "KM ";
+            txtCijena.Text = string.Concat(ViewModel.Cijena.ToString(), "KM ");
             kolicina = ((Form1)this.ParentForm).CartRowExists(ViewModel.Id);
             lblKolicina.Text = kolicina.ToString();
 
-            if (ViewModel.imageUrl != null)
+            Task.Run(() =>
             {
-                var sUrl = Resources.apiUrlDevelopment + ViewModel.imageUrl;
-                WebRequest req = WebRequest.Create(sUrl);
+                if (ViewModel.imageUrl != null)
+                {
+                    var sUrl = Resources.apiUrlDevelopment + ViewModel.imageUrl;
+                    WebRequest req = WebRequest.Create(sUrl);
 
-                WebResponse res = req.GetResponse();
+                    WebResponse res = req.GetResponse();
 
-                Stream imgStream = res.GetResponseStream();
+                    Stream imgStream = res.GetResponseStream();
 
-                pictureBox1.Image = new Bitmap(Image.FromStream(imgStream), new Size(120, 100));
-                imgStream.Close();
-            }
-            else
-            {
-                pictureBox1.Image = new Bitmap(Image.FromFile(imagesFolderPath + "tene.jpg"), new Size(120, 100));
-            }
+                    pictureBox1.Image = new Bitmap(Image.FromStream(imgStream), new Size(120, 100));
+                    imgStream.Close();
+                }
+                else
+                {
+                    pictureBox1.Image = new Bitmap(Image.FromFile(string.Concat(imagesFolderPath, "tene.jpg")), new Size(120, 100));
+                }
+            });
+
             ResumeLayout();
         }
 
@@ -86,32 +85,32 @@ namespace FirstUserControlUsage
                     Kolicina = kolicina,
                     Id = ViewModel.Id ?? 0,
                     Kategorija = ViewModel.Kategorija,
-                    StanjeKolicina=ViewModel.Kolicina,
+                    StanjeKolicina = ViewModel.Kolicina,
                     Imageurl = ViewModel.imageUrl
                 };
                 if (ViewModel.Kategorija == "Jela")
                 {
-                    
+
                     ((Form1)this.ParentForm).AddToCartJelo(stavkaKorpe);
                     return true;
 
                 }
                 else
                 {
-                   ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
+                    ((Form1)this.ParentForm).AddToCartPice(stavkaKorpe);
                     return true;
                 }
             }
             return false;
         }
-       
+
         private void btnSmanjiKolicinu_Click(object sender, EventArgs e)
         {
             if (kolicina > 0)
             {
-               
+
                 kolicina -= 1;
-               
+
             }
             lblKolicina.Text = kolicina.ToString();
             DodajUKorpu();
