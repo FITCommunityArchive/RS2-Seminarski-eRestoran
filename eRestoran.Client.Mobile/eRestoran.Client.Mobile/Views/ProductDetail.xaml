@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:forms1="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:controls1="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions"
              x:Class="eRestoran.Client.Mobile.Views.ProductDetail">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -71,6 +73,15 @@
                          HorizontalOptions="FillAndExpand"
                          IsVisible="False"
                         x:Name="btnOcjeni" />
+                </StackLayout>
+            </Grid>
+
+            <Grid ColumnSpacing="0" RowSpacing="0" Margin="50,20,50,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <controls1:ImageCarousel x:Name="imgSlider" HeightRequest="300" WidthRequest="200" />
                 </StackLayout>
             </Grid>
         </StackLayout>

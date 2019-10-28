@@ -57,12 +57,21 @@ namespace eRestoran.Client.Mobile.Views
             if (e.Item == null)
                 return;
 
-            var newPage = new ProductDetail((PonudaVM.PonudaInfo)e.Item);
-            await Navigation.PushAsync(newPage);
-            //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            var itemClicked = (PonudaVM.PonudaInfo)e.Item;
+            var isJeloParam = itemClicked.IsJelo ? 0 : 1;
+            var getRecommened = new WebAPIHelper("api/Proizvodi/RecommendProducts/" + itemClicked.Id + "/" + isJeloParam);
+            var response = getRecommened.GetResponse();
+            if (response.IsSuccessStatusCode)
+            {
+                var content = response.Content.ReadAsStringAsync().Result;
+                var proizvodi = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
+                var newPage = new ProductDetail(itemClicked, proizvodi);
+                await Navigation.PushAsync(newPage);
+                //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
-            //Deselect Item
-            ((ListView)sender).SelectedItem = null;
+                //Deselect Item
+                ((ListView)sender).SelectedItem = null;
+            }
         }
 
         private void kategorijaProizvodaPicker_SelectedIndexChanged(object sender, EventArgs e)

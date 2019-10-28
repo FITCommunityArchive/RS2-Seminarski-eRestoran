@@ -6,6 +6,7 @@ using eRestoran.PCL.VM;
 using eRestoran.VM;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,9 +55,12 @@ namespace eRestoran.Client.Mobile.Views
             }
         }
 
-        public ProductDetail(PonudaVM.PonudaInfo proizvod)
+        public ProductDetail(PonudaVM.PonudaInfo proizvod, List<PonudaVM.PonudaInfo> pp)
         {
             InitializeComponent();
+            ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
+
+            var baseRoute = "http://erestoranapi20180630082851.azurewebsites.net";
             if (proizvod.Ocjena.Length > 3)
             {
                 proizvod.Ocjena = proizvod.Ocjena.Substring(0, 3);
@@ -64,6 +68,12 @@ namespace eRestoran.Client.Mobile.Views
             else if (proizvod.Ocjena.Length == 0) {
                 proizvod.Ocjena = "N/A";
             }
+            foreach (var item in pp)
+            {
+                var imageUrl = baseRoute + item.imageUrl;
+                imageSources.Add(imageUrl);
+            }
+            imgSlider.Images = imageSources;
 
             BindingContext = proizvod;
             btnOcjeni.Clicked += async (sender, e) => OcjeniProizvod();
