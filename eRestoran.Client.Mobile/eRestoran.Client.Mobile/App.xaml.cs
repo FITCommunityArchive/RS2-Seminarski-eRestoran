@@ -13,12 +13,10 @@ namespace eRestoran.Client.Mobile
 	public partial class App : Application
 	{
        
-        //eso tu ?????????????  cujes li me  jebse uisljucio sam  oksve c hoces rbadit ovdje ? hocu ok pozz
-        // ako ti bude trebalo sta upali mikrofon cut cu 
-
         public App ()
 		{
 			InitializeComponent();
+
             MainPage = new Login();
 #if __ANDROID__
 
