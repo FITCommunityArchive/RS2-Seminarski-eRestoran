@@ -65,9 +65,6 @@
       <Version>3.0.0.6-beta</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
-    <PackageReference Include="Xamd.Plugins.Forms.ImageCarousel">
-      <Version>1.0.2</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Fragment1.cs" />

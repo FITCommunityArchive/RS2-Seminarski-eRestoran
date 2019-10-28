@@ -52,6 +52,9 @@ namespace FastFoodDemo
             this.cartButton = new System.Windows.Forms.Button();
             this.btnOdaberiSto = new System.Windows.Forms.Button();
             this.LogOutBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.korisnikUlogaLabel = new System.Windows.Forms.Label();
+            this.korisnikLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -340,11 +343,43 @@ namespace FastFoodDemo
             this.LogOutBtn.UseVisualStyleBackColor = true;
             this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(767, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(150, 18);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Trenutni korisnik - ";
+            // 
+            // korisnikUlogaLabel
+            // 
+            this.korisnikUlogaLabel.AutoSize = true;
+            this.korisnikUlogaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.korisnikUlogaLabel.Location = new System.Drawing.Point(785, 27);
+            this.korisnikUlogaLabel.Name = "korisnikUlogaLabel";
+            this.korisnikUlogaLabel.Size = new System.Drawing.Size(0, 18);
+            this.korisnikUlogaLabel.TabIndex = 15;
+            // 
+            // korisnikLabel
+            // 
+            this.korisnikLabel.AutoSize = true;
+            this.korisnikLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.korisnikLabel.Location = new System.Drawing.Point(913, 27);
+            this.korisnikLabel.Name = "korisnikLabel";
+            this.korisnikLabel.Size = new System.Drawing.Size(54, 18);
+            this.korisnikLabel.TabIndex = 16;
+            this.korisnikLabel.Text = "Klijent";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 687);
+            this.Controls.Add(this.korisnikLabel);
+            this.Controls.Add(this.korisnikUlogaLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.LogOutBtn);
             this.Controls.Add(this.btnOdaberiSto);
             this.Controls.Add(this.label4);
@@ -354,6 +389,7 @@ namespace FastFoodDemo
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -392,6 +428,9 @@ namespace FastFoodDemo
         private System.Windows.Forms.Button btnOdaberiSto;
         private System.Windows.Forms.Button btnPromocije;
         private System.Windows.Forms.Button LogOutBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label korisnikUlogaLabel;
+        private System.Windows.Forms.Label korisnikLabel;
     }
 }
 

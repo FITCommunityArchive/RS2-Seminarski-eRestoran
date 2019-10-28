@@ -6,7 +6,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using Xamd.ImageCarousel.Forms.Plugin.Droid;
 
 namespace eRestoran.Client.Mobile.Droid
 {
@@ -17,7 +16,6 @@ namespace eRestoran.Client.Mobile.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            ImageCarouselRenderer.Init();
             Android.Support.V7.Widget.Toolbar toolbar = this.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
                 toolbar.SetTitle(Resource.String.search_menu_title);

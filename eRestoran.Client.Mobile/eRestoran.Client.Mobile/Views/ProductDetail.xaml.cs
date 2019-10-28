@@ -73,7 +73,6 @@ namespace eRestoran.Client.Mobile.Views
                 var imageUrl = baseRoute + item.imageUrl;
                 imageSources.Add(imageUrl);
             }
-            imgSlider.Images = imageSources;
 
             BindingContext = proizvod;
             btnOcjeni.Clicked += async (sender, e) => OcjeniProizvod();

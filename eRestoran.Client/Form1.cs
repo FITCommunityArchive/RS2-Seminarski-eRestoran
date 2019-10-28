@@ -39,6 +39,8 @@ namespace FastFoodDemo
             VerifikovaniKorisnik = korisnik;
             controlsHistory = new LinkedList<Control>();
             InitializeComponent();
+            string[] tipKorisnika = { "Admin", "Menadzer", "Klijent", "Konobar", "Kuhar", "Sanker" };
+            korisnikLabel.Text = tipKorisnika[(int)korisnik.TipKorisnika];
             SetupLayoutForUser();
             cart = new CartIndexVM();
             cart.Jela = new List<CartRow>();
