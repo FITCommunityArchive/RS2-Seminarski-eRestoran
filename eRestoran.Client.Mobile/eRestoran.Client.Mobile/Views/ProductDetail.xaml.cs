@@ -4,6 +4,7 @@ using eRestoran.Client.Mobile.Models;
 using eRestoran.PCL.Helpers;
 using eRestoran.PCL.VM;
 using eRestoran.VM;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,9 @@ namespace eRestoran.Client.Mobile.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ProductDetail : ContentPage
 	{
-		public ProductDetail ()
+        public ObservableCollection<PonudaVM.PonudaInfo> OCFabrics { get; }
+
+        public ProductDetail ()
 		{
 			InitializeComponent ();
             BindingContext = DataRepository.MockDriver;
@@ -55,12 +58,31 @@ namespace eRestoran.Client.Mobile.Views
             }
         }
 
+        async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item == null)
+                return;
+            var itemClicked = (PonudaVM.PonudaInfo)e.Item;
+            itemClicked.Kategorija = itemClicked.IsJelo ? "Jelo" : "Pice";
+            var isJeloParam = itemClicked.IsJelo ? 1 : 0;
+            var getRecommened = new WebAPIHelper("api/Proizvodi/RecommendProducts/" + itemClicked.Id + "/" + isJeloParam);
+            var response = getRecommened.GetResponse();
+            if (response.IsSuccessStatusCode)
+            {
+                var content = response.Content.ReadAsStringAsync().Result;
+                var proizvodi = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
+                var newPage = new ProductDetail(itemClicked, proizvodi);
+                await Navigation.PushAsync(newPage);
+                //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+
+                //Deselect Item
+                ((ListView)sender).SelectedItem = null;
+            }
+        }
+
         public ProductDetail(PonudaVM.PonudaInfo proizvod, List<PonudaVM.PonudaInfo> pp)
         {
             InitializeComponent();
-            ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
-
-            var baseRoute = "http://erestoranapi20180630082851.azurewebsites.net";
             if (proizvod.Ocjena.Length > 3)
             {
                 proizvod.Ocjena = proizvod.Ocjena.Substring(0, 3);
@@ -68,12 +90,13 @@ namespace eRestoran.Client.Mobile.Views
             else if (proizvod.Ocjena.Length == 0) {
                 proizvod.Ocjena = "N/A";
             }
-            foreach (var item in pp)
+            OCFabrics = new ObservableCollection<PonudaVM.PonudaInfo>();
+            foreach(var item in pp)
             {
-                var imageUrl = baseRoute + item.imageUrl;
-                imageSources.Add(imageUrl);
+                OCFabrics.Add(new PonudaVM.PonudaInfo {  Id=item.Id ,Naziv = item.Naziv, Cijena = item.Cijena, imageUrl = item.imageUrl, Ocjena = item.Ocjena, IsJelo = item.IsJelo });
             }
 
+            lista.ItemsSource = OCFabrics;
             BindingContext = proizvod;
             btnOcjeni.Clicked += async (sender, e) => OcjeniProizvod();
         }

@@ -48,6 +48,7 @@ namespace eRestoran.Api.Util
                         Id = x.Id,
                         imageUrl = x.SlikaUrl,
                         Naziv = x.Naziv,
+                        Ocjena = db.Ocjene.Where(y => y.IsJelo == 0 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString()
                     }).FirstOrDefault());
 
                     zajednickeOcjene1.Clear();
@@ -55,8 +56,7 @@ namespace eRestoran.Api.Util
                 }
 
             }
-
-            return preporuceniProizvodi;
+            return preporuceniProizvodi.Skip(Math.Max(0, preporuceniProizvodi.Count() - 3)).ToList();
 
         }
 
