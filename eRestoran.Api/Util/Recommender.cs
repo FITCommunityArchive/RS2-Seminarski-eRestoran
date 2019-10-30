@@ -42,14 +42,29 @@ namespace eRestoran.Api.Util
 
                 if (slicnost > 0.5)
                 {
-                    preporuceniProizvodi.Add(db.Proizvodi.Where(x => x.Id == item.Key).Select(x => new PonudaInfo
+                    if (isJelo == 1)
                     {
-                        Cijena = x.Cijena,
-                        Id = x.Id,
-                        imageUrl = x.SlikaUrl,
-                        Naziv = x.Naziv,
-                        Ocjena = db.Ocjene.Where(y => y.IsJelo == 0 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString()
-                    }).FirstOrDefault());
+                        preporuceniProizvodi.Add(db.Jelo.Where(x => x.Id == item.Key).Select(x => new PonudaInfo
+                        {
+                            Cijena = x.Cijena,
+                            Id = x.Id,
+                            imageUrl = x.SlikaUrl,
+                            Naziv = x.Naziv,
+                            Kategorija = "Jela",
+                            Ocjena = db.Ocjene.Where(y => y.IsJelo == 1 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString()
+                        }).FirstOrDefault());
+                    } else
+                    {
+                        preporuceniProizvodi.Add(db.Proizvodi.Where(x => x.Id == item.Key).Select(x => new PonudaInfo
+                        {
+                            Cijena = x.Cijena,
+                            Id = x.Id,
+                            imageUrl = x.SlikaUrl,
+                            Naziv = x.Naziv,
+                            Kategorija = "Pica",
+                            Ocjena = db.Ocjene.Where(y => y.IsJelo == 0 && y.ProizvodId == x.Id).Select(z => z.Ocjena).Average().ToString()
+                        }).FirstOrDefault());
+                    }
 
                     zajednickeOcjene1.Clear();
                     zajednickeOcjene2.Clear();
@@ -92,13 +107,30 @@ namespace eRestoran.Api.Util
 
             List<Ocjene> ocjene;
 
-            foreach (Proizvod p in aktivniProizvodi)
+            if (isJelo == 1)
             {
-                ocjene = db.Ocjene.Where(x => x.ProizvodId == p.Id).OrderBy(x => x.KupacId).ToList();
+                List<Jelo> aktivnaJela = db.Jelo.Where(x => x.Id != proizvodId).ToList();
+                aktivnaJela = db.Jelo.Where(x => x.Id != proizvodId).ToList();
 
-                if (ocjene.Count > 0)
+                foreach (Jelo p in aktivnaJela)
                 {
-                    proizvodi.Add(p.Id, ocjene);
+                    ocjene = db.Ocjene.Where(x => x.ProizvodId == p.Id && x.IsJelo == 1).OrderBy(x => x.KupacId).ToList();
+
+                    if (ocjene.Count > 0)
+                    {
+                        proizvodi.Add(p.Id, ocjene);
+                    }
+                }
+            } else {
+
+                foreach (Proizvod p in aktivniProizvodi)
+                {
+                    ocjene = db.Ocjene.Where(x => x.ProizvodId == p.Id).OrderBy(x => x.KupacId).ToList();
+
+                    if (ocjene.Count > 0)
+                    {
+                        proizvodi.Add(p.Id, ocjene);
+                    }
                 }
             }
         }

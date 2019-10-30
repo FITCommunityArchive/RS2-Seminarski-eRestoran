@@ -63,8 +63,7 @@ namespace eRestoran.Client.Mobile.Views
             if (e.Item == null)
                 return;
             var itemClicked = (PonudaVM.PonudaInfo)e.Item;
-            itemClicked.Kategorija = itemClicked.IsJelo ? "Jelo" : "Pice";
-            var isJeloParam = itemClicked.IsJelo ? 1 : 0;
+            var isJeloParam = itemClicked.Kategorija == "Jela" ? 1 : 0;
             var getRecommened = new WebAPIHelper("api/Proizvodi/RecommendProducts/" + itemClicked.Id + "/" + isJeloParam);
             var response = getRecommened.GetResponse();
             if (response.IsSuccessStatusCode)
@@ -93,7 +92,7 @@ namespace eRestoran.Client.Mobile.Views
             OCFabrics = new ObservableCollection<PonudaVM.PonudaInfo>();
             foreach(var item in pp)
             {
-                OCFabrics.Add(new PonudaVM.PonudaInfo {  Id=item.Id ,Naziv = item.Naziv, Cijena = item.Cijena, imageUrl = item.imageUrl, Ocjena = item.Ocjena, IsJelo = item.IsJelo });
+                OCFabrics.Add(new PonudaVM.PonudaInfo {  Id=item.Id ,Naziv = item.Naziv, Cijena = item.Cijena, imageUrl = item.imageUrl, Ocjena = item.Ocjena, Kategorija = item.Kategorija });
             }
 
             lista.ItemsSource = OCFabrics;

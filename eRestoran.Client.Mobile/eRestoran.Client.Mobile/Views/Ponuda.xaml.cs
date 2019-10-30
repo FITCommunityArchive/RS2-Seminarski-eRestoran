@@ -58,7 +58,7 @@ namespace eRestoran.Client.Mobile.Views
                 return;
 
             var itemClicked = (PonudaVM.PonudaInfo)e.Item;
-            var isJeloParam = itemClicked.IsJelo ? 1 : 0;
+            var isJeloParam = itemClicked.Kategorija == "Jela" ? 1 : 0;
             var getRecommened = new WebAPIHelper("api/Proizvodi/RecommendProducts/" + itemClicked.Id + "/" + isJeloParam);
             var response = getRecommened.GetResponse();
             if (response.IsSuccessStatusCode)
