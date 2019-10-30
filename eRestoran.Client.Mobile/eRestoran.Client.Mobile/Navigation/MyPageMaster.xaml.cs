@@ -1,4 +1,5 @@
-﻿using eRestoran.Client.Mobile.Views;
+﻿using eRestoran.Client.Mobile.Helpers;
+using eRestoran.Client.Mobile.Views;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -28,15 +29,26 @@ namespace eRestoran.Client.Mobile.Navigation
             
             public MyPageMasterViewModel()
             {
-                MenuItems = new ObservableCollection<MyPageMenuItem>(new[]
+                if (ApplicationProperties.userRole != 1)
+                {
+                    MenuItems = new ObservableCollection<MyPageMenuItem>(new[]
                 {
                     new MyPageMenuItem {  Title = "Ponuda",TargetType=typeof(Ponuda) },
-                    new MyPageMenuItem { Title = "Detalji(noclick)",TargetType=typeof(Detalji) },
                     new MyPageMenuItem { Title = "Rezervacije",TargetType=typeof(RezervisiSto) },
                     new MyPageMenuItem { Title = "Dodavanje naloga",TargetType=typeof(DodavanjeNaloga) },
                     new MyPageMenuItem { Title = "Promocija ",TargetType=typeof(Promocija) },
                     new MyPageMenuItem { Title = "Odjava ",TargetType=typeof(Login)},
                 });
+                } else
+                {
+                    MenuItems = new ObservableCollection<MyPageMenuItem>(new[]
+                {
+                    new MyPageMenuItem {  Title = "Ponuda",TargetType=typeof(Ponuda) },
+                    new MyPageMenuItem { Title = "Rezervacije",TargetType=typeof(RezervisiSto) },
+                    new MyPageMenuItem { Title = "Odjava ",TargetType=typeof(Login)},
+                });
+                }
+                
             }
             
             #region INotifyPropertyChanged Implementation

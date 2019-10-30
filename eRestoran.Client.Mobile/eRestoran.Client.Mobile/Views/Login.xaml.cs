@@ -68,6 +68,7 @@ namespace eRestoran.Client.Mobile.Views
                 var korisnik = WebAPIHelper.GetResponseContent<VerifikovanKorisnikVM>(response);
                 ApplicationProperties.UserToken = korisnik.Token;
                 ApplicationProperties.KorisnikId = korisnik.Id.ToString();
+                ApplicationProperties.userRole = (int)korisnik.isUserRole;
                 return true;
             }
 

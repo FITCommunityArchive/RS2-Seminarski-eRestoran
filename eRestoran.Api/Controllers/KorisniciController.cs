@@ -134,7 +134,8 @@ namespace eRestoran.Api.Controllers
                     Id = korisnik.Id,
                     ImePrezime = korisnik.Ime + " " + korisnik.Prezime,
                     Token = token,
-                    TipKorisnika = korisnik.TipKorisnika
+                    TipKorisnika = korisnik.TipKorisnika,
+                    isUserRole = (int)korisnik.TipKorisnika != 2 ? 0 : 1
                 });
             }
 

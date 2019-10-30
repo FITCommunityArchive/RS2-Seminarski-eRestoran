@@ -19,6 +19,19 @@ namespace eRestoran.Client.Mobile.Helpers
             }
         }
 
+        public static int userRole
+        {
+            get
+            {
+                return (int)Application.Current.Properties["user_role"];
+            }
+            set
+            {
+                Application.Current.Properties["user_role"] = value;
+                Application.Current.SavePropertiesAsync();
+            }
+        }
+
         public static string KorisnikId
         {
             get

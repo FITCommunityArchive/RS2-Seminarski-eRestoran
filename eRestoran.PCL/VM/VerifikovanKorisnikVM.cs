@@ -7,6 +7,7 @@ namespace eRestoran.PCL.VM
         public string Token { get; set; }
         public int Id { get; set; }
         public string ImePrezime { get; set; }
+        public int? isUserRole { get; set; }
         public TipKorisnika TipKorisnika { get; set; }
     }
 }
