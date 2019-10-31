@@ -71,11 +71,11 @@ namespace eRestoran.Client.Mobile.Views
                 var content = response.Content.ReadAsStringAsync().Result;
                 var proizvodi = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
                 var newPage = new ProductDetail(itemClicked, proizvodi);
+                ((ListView)sender).SelectedItem = null;
                 await Navigation.PushAsync(newPage);
                 //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
 
                 //Deselect Item
-                ((ListView)sender).SelectedItem = null;
             }
         }
 

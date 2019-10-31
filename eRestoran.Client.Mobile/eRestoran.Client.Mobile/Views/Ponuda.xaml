@@ -4,6 +4,7 @@
              x:Class="eRestoran.Client.Mobile.Views.Ponuda">
     <StackLayout Padding="30">
         <Picker x:Name="kategorijaProizvodaPicker" Title="Odaberite kategoriju" SelectedIndexChanged="kategorijaProizvodaPicker_SelectedIndexChanged" SelectedIndex="0"></Picker>
+        <SearchBar Placeholder="Pocnite pisati ..."  x:Name="pretragaPonuda" TextChanged="pretragaPonudaSearchEventHandler"  />
         <ListView x:Name="MyListView"
             ItemsSource="{Binding Items}"
             ItemTapped="Handle_ItemTapped"

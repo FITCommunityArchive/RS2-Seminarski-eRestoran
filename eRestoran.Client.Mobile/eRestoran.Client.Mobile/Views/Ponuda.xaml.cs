@@ -14,6 +14,7 @@ namespace eRestoran.Client.Mobile.Views
     public partial class Ponuda : ContentPage
     {
         public List<PonudaVM.PonudaInfo> Items { get; set; }
+        public List<PonudaVM.PonudaInfo> ItemsSearchBar { get; set; }
         WebAPIHelper helperPonuda = new WebAPIHelper("api/PonudaAdministrator/GetPonuda");
         WebAPIHelper helperPica = new WebAPIHelper("api/PonudaAdministrator/GetPica");
         WebAPIHelper helperJela = new WebAPIHelper("api/PonudaAdministrator/GetJela");
@@ -66,11 +67,29 @@ namespace eRestoran.Client.Mobile.Views
                 var content = response.Content.ReadAsStringAsync().Result;
                 var proizvodi = JsonConvert.DeserializeObject<List<PonudaVM.PonudaInfo>>(content);
                 var newPage = new ProductDetail(itemClicked, proizvodi);
-                await Navigation.PushAsync(newPage);
-                //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
-                //Deselect Item
                 ((ListView)sender).SelectedItem = null;
+                await Navigation.PushAsync(newPage);
+            }
+        }
+
+        private void pretragaPonudaSearchEventHandler(object sender, EventArgs e) {
+            SearchBar searchBar = (SearchBar)sender;
+            var textSearched = searchBar.Text;
+            ItemsSearchBar = new List<PonudaVM.PonudaInfo>();
+            foreach (var item in Items) {
+                if(item.Naziv.ToLower().Contains(textSearched))
+                {
+                    ItemsSearchBar.Add(item);
+                }
+            }
+
+            if (textSearched == "")
+            {
+                MyListView.ItemsSource = Items;
+            }
+            else {
+                MyListView.ItemsSource = ItemsSearchBar;
+
             }
         }
 
@@ -125,16 +144,6 @@ namespace eRestoran.Client.Mobile.Views
             }
 
             MyListView.ItemsSource = Items;
-
-            //int vrstaId = (kategorijaProizvodaPicker.SelectedItem as KategorijaProizvoda).VrstaId;
-            //HttpResponseMessage response = proizvodiService.getResponse("url", "vrstaId");
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    var jsonObject = response.Content.ReadAsStringAsync();
-            //    List<Proizvodi> proizvodis = JsonConvert.DeserializeObject<List<Proizvodi>>(jsonObject.Result);
-            //    kategorijaProizvodaPicker.ItemSource = proizvodis;
-
-            //}
         }
     }
 
